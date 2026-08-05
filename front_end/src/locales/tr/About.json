@@ -1,0 +1,93 @@
+{
+  "title": "Sağlık Hizmetlerinde Mükemmellik",
+  "subtitle": "Hikayemiz ve Premium Küresel Sağlık Vizyonumuz",
+  "heritage": "Mirasımız ve Hikayemiz",
+  "desc": "Premier Health, kişiselleştirilmiş bakım, gelişmiş tedaviler ve kalıcı refah sağlamaya kendini adamış lider bir sağlık ve zindelik kliniğidir.",
+  "ourMission": "Misyonumuz",
+  "missionTitle": "Premier Health Misyonu",
+  "missionDesc": "Premier Health Clinic'teki misyonumuz, sağlığı, güzelliği ve genel refahı teşvik eden yüksek kaliteli IV serumları ve gelişmiş dermatoloji hizmetleri sunmaktır.",
+  "missionQuote": "Müşterilerimize yüksek kaliteli serumlar ve profesyonel derma hizmetleri sunarak, hastalıkları ve yaşlanma belirtilerini azaltmayı hedeflemektedir.",
+  "ourVision": "Vizyonumuz",
+  "visionTitle": "Premier Health Vizyonu",
+  "visionDesc": "Vizyonumuz, Premier Health Clinic'i daha geniş bir topluluğa ulaşacak ve hizmet edecek şekilde genişletmek, yüksek kaliteli sağlık ve estetik tedavilerini herkes için erişilebilir kılmaktır.",
+  "visionQuote": "Hizmetlerimize ihtiyaç duyan geniş bir insan yelpazesinin erişebilmesi için kliniklerimizi genişletmek.",
+  "coreValuesTag": "Temel Değerler",
+  "coreValuesTitle": "Değerlerimiz",
+  "coreValuesDesc": "Premier Health Clinic'te değerlerimiz, sunduğumuz her hizmette mükemmelliğe, şefkate ve dürüstlüğe olan bağlılığımızı yansıtır.",
+  "values": {
+    "excellence": {
+      "title": "Mükemmellik",
+      "desc": "En yüksek bakım ve hizmet standartları için çaba göstermek."
+    },
+    "integrity": {
+      "title": "Dürüstlük",
+      "desc": "Etik ilkelere bağlı kalmak, dürüstlüğü ve şeffaflığı korumak."
+    },
+    "patientCare": {
+      "title": "Hasta Odaklı Bakım",
+      "desc": "Hastalarımızın ihtiyaçlarını ve refahını ön planda tutmak."
+    },
+    "compassion": {
+      "title": "Şefkat",
+      "desc": "Her hastaya nezaket, empati ve anlayışla yaklaşmak."
+    },
+    "innovation": {
+      "title": "Yenilikçilik",
+      "desc": "Hasta bakımını iyileştirmek için yeni teknolojileri ve yaklaşımları benimsemek."
+    }
+  },
+  "timeline": {
+    "journeyTag": "Yolculuğumuz",
+    "historyTitle": "Premier Health Hikayesi",
+    "items": {
+      "2018": {
+        "year": "2018",
+        "title": "Fairmont Nile City'de Kuruldu",
+        "desc": "Premier Health Clinic, 2018 yılında Fairmont Nile City bölgesinde kuruldu. Klinik, damardan besinlerden Botox, dolgu ve diğer kozmetik ve temel hizmetlere kadar en yüksek kapasite ve en kaliteli sağlık malzemeleriyle donatılmış kapsamlı bir sağlık merkezidir."
+      },
+      "2020": {
+        "year": "2020–2022",
+        "title": "Kahire & Gize Genelinde Genişleme",
+        "desc": "Klinik, Şeyh Zayed'deki Arkan Plaza ve Beşinci Bölge'deki EDNC Sodic dahil olmak üzere Kahire ve Gize genelinde şubeler açarak Premier deneyimini daha fazla müşteriye ulaştırdı."
+      },
+      "2023": {
+        "year": "2023+",
+        "title": "Birleşik Arap Emirlikleri'ne Genişleme",
+        "desc": "Başarısının ardından Premier Health, uluslararası düzeyde Birleşik Arap Emirlikleri'ne genişledi. Klinik, IV terapisi ve kozmetik dermatoloji dahil olmak üzere geniş bir yelpazede gelişmiş hizmetler sunan çok disiplinli bir sağlık destinasyonu haline geldi."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "imageBadge": "Sağlığa giden Premier yolunu keşfedin.",
+    "tag": "Neden Biz",
+    "title": "Neden Premier Health Clinic'i Seçmelisiniz?",
+    "desc": "Erişim yaklaşımımız, güven ve güvenilirlik oluşturmak ve yüksek değerli müşterileri çekmek için tasarlanmıştır:",
+    "points": {
+      "history": {
+        "num": "01",
+        "title": "Tıbbi Geçmiş Değerlendirmesi",
+        "desc": "Geçmişteki ve şimdiki sağlık durumunuzu ayrıntılı olarak inceliyoruz."
+      },
+      "concerns": {
+        "num": "02",
+        "title": "Temel Sağlık Hedefleri",
+        "desc": "Spesifik sağlık hedeflerinizi ve endişelerinizi belirliyoruz."
+      },
+      "medications": {
+        "num": "03",
+        "title": "İlaç Kontrolü",
+        "desc": "Şu anda kullanmakta olduğunuz tüm ilaçları göz önünde bulunduruyoruz."
+      },
+      "labTests": {
+        "num": "04",
+        "title": "Laboratuvar Testleri Analizi",
+        "desc": "Nutrient seviyelerini değerlendirmek için kan testi sonuçlarınızı analiz ediyoruz."
+      },
+      "needs": {
+        "num": "05",
+        "title": "Bireysel İhtiyaçlar",
+        "desc": "Önerileri vücudunuza ve yaşam tarzınıza göre özelleştiriyoruz."
+      }
+    }
+  }
+}

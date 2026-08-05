@@ -1,0 +1,99 @@
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+
+import { ReactNode } from "react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Arapey } from "next/font/google";
+import { PageLoader } from "@/components/layout/PageLoader";
+import { Toaster } from "sonner";
+import { PatientAuthProvider } from "@/context/PatientAuthContext";
+import { Providers } from "@/app/providers";
+import { getSeoMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import { getQueryClient } from "@/app/get-query-client";
+import { getDepartments, getServices } from "@/lib/api/endpoints";
+import { queryKeys } from "@/lib/api/queryKeys";
+
+const arapey = Arapey({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-arapey",
+  display: "swap",
+});
+
+type Props = {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return getSeoMetadata(locale);
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
+
+  const messages = await getMessages();
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
+  const queryClient = getQueryClient();
+  await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: queryKeys.departments.all,
+      queryFn: getDepartments,
+    }),
+    queryClient.prefetchQuery({
+      queryKey: queryKeys.services.all,
+      queryFn: getServices,
+    }),
+  ]);
+
+  return (
+    <html
+      lang={locale}
+      dir={dir}
+      className={`${arapey.variable} h-full antialiased scroll-smooth`}
+    >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.simpleicons.org" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" fetchPriority="high" />
+      </head>
+      <body className="bg-white flex min-h-screen flex-col font-sans selection:bg-accent-light selection:text-primary">
+        <JsonLd locale={locale} />
+        <Providers>
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <NextIntlClientProvider messages={messages} locale={locale}>
+              <PatientAuthProvider>
+                <PageLoader />
+                <Toaster richColors position="top-center" />
+                <div className="flex min-h-screen flex-col">
+                  <Navbar />
+                  <main className="flex-1 flex flex-col bg-white">
+                    {children}
+                  </main>
+                  <Footer />
+                </div>
+              </PatientAuthProvider>
+            </NextIntlClientProvider>
+          </HydrationBoundary>
+        </Providers>
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Medizinische Abteilungen",
+  "treatments": "Behandlungen für {name}",
+  "serviceBadge": "Service",
+  "specialties": "Medizinische Fachgebiete",
+  "departmentSpecialists": "Spezialisten der Abteilung",
+  "subtitle": "Durchsuchen und filtern Sie unsere erstklassigen klinischen Abteilungen",
+  "searchPlaceholder": "Fachbereich suchen...",
+  "filterAll": "Alle Abteilungen",
+  "ivTherapy": "IV-Therapie",
+  "dermatology": "Dermatologie",
+  "aesthetics": "Ästhetik",
+  "bodyContouring": "Körperformung",
+  "explore": "Fachbereich Erkunden",
+  "doctorsCount": "{count} Ärzte",
+  "medicalDepartment": "Medizinischer Fachbereich",
+  "ctaTitle": "Bereit, Ihre Wellness-Reise zu beginnen?",
+  "ctaSubtitle": "Buchen Sie jetzt Ihren Termin bei unseren erstklassigen Spezialisten für eine unvergleichlich luxuriöse Gesundheitsversorgung.",
+  "ctaButton": "Termin buchen"
+}

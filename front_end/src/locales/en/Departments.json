@@ -1,0 +1,20 @@
+{
+  "title": "Medical Departments",
+  "treatments": "{name} Treatments",
+  "serviceBadge": "Service",
+  "specialties": "Medical Specialties",
+  "departmentSpecialists": "Department Specialists",
+  "subtitle": "Search and filter our elite clinical departments",
+  "searchPlaceholder": "Search departments or treatments...",
+  "filterAll": "All Departments",
+  "ivTherapy": "IV Therapy",
+  "dermatology": "Dermatology",
+  "aesthetics": "Aesthetics",
+  "bodyContouring": "Body Contouring",
+  "explore": "Explore Department",
+  "doctorsCount": "{count} Doctors",
+  "medicalDepartment": "Medical Department",
+  "ctaTitle": "Ready to Start Your Wellness Journey?",
+  "ctaSubtitle": "Book your appointment now with our elite specialists for an unparalleled luxury healthcare experience.",
+  "ctaButton": "Book Appointment"
+}

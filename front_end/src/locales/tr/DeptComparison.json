@@ -1,0 +1,9 @@
+{
+  "title": "Ağız Yoluyla vs. IV Vitaminler",
+  "desc1": "Oral takviyeler kapsül, tablet ve sıvı gibi çeşitli formlarda gelirken, IV vitaminler doğrudan bir serum yoluyla kan dolaşımına verilir. Bu doğrudan yol, sindirim sistemini devre dışı bırakarak oral takviyelere kıyasla besinlerin daha hızlı ve daha verimli emilmesini sağlar.",
+  "desc2": "IV tedavisi çeşitli sağlık sorunlarına hitap ederek baş ağrısı, dehidratasyon ve mide bulantısı gibi semptomlardan hızlı bir rahatlama sağlar.",
+  "oralLabel": "Oral Vitaminler",
+  "oralDesc": "Sınırlı emilim",
+  "ivLabel": "IV Serum",
+  "ivDesc": "Tam ve anında emilim"
+}

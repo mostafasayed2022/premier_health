@@ -1,0 +1,93 @@
+{
+  "title": "Excellence in Healthcare",
+  "subtitle": "Our heritage and vision for global premium wellness",
+  "heritage": "Our Heritage & Story",
+  "desc": "Premier Health is a leading wellness and healthcare clinic dedicated to personalized care, advanced treatments, and lasting well-being.",
+  "ourMission": "Our Mission",
+  "missionTitle": "Premier Health Mission",
+  "missionDesc": "Our mission at Premier Health Clinic is to deliver high-quality IV drips and advanced dermatology services that promote health, beauty, and overall well-being.",
+  "missionQuote": "To deliver high-quality drips and professional derma services to our clients, aiming to reduce diseases and the symptoms of aging.",
+  "ourVision": "Our Vision",
+  "visionTitle": "Premier Health Vision",
+  "visionDesc": "Our vision is to expand Premier Health Clinic to reach and serve a wider community, making high-quality healthcare and aesthetic treatments accessible to everyone.",
+  "visionQuote": "To expand our clinics to be available to a wide range of people who need our services.",
+  "coreValuesTag": "Core Values",
+  "coreValuesTitle": "Our Values",
+  "coreValuesDesc": "At Premier Health Clinic, our values reflect our commitment to excellence, compassion, and integrity in every service we provide.",
+  "values": {
+    "excellence": {
+      "title": "Excellence",
+      "desc": "Striving for the highest standards of care and service."
+    },
+    "integrity": {
+      "title": "Integrity",
+      "desc": "Adhering to ethical principles and maintaining honesty and transparency."
+    },
+    "patientCare": {
+      "title": "Patient-Centered Care",
+      "desc": "Prioritizing the needs and well-being of our patients."
+    },
+    "compassion": {
+      "title": "Compassion",
+      "desc": "Treating every patient with kindness, empathy, and understanding."
+    },
+    "innovation": {
+      "title": "Innovation",
+      "desc": "Embracing new technologies and approaches to improve patient care."
+    }
+  },
+  "timeline": {
+    "journeyTag": "Our Journey",
+    "historyTitle": "Premier Health History",
+    "items": {
+      "2018": {
+        "year": "2018",
+        "title": "Founded at Fairmont Nile City",
+        "desc": "Premier Health Clinic was established in 2018 in the Fairmont area, Nile City — a comprehensive healthcare center equipped with the highest capabilities and the finest health supplies, from intravenous nutrients to derma services such as Botox, fillers, and other cosmetic and basic services."
+      },
+      "2020": {
+        "year": "2020–2022",
+        "title": "Expansion Across Cairo & Giza",
+        "desc": "The clinic expanded by opening several branches within Cairo and Giza, including Arkan Plaza in Sheikh Zayed and EDNC Sodic in the Fifth Settlement — bringing the Premier experience closer to more clients."
+      },
+      "2023": {
+        "year": "2023+",
+        "title": "International Expansion into UAE",
+        "desc": "Following its success, Premier Health expanded internationally to the United Arab Emirates. The clinic grew into a multi-disciplinary healthcare destination, offering a wide range of advanced services including IV therapy, cosmetic dermatology, aestheticians, and nurses."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "imageBadge": "Discover the Premier Way to Wellness.",
+    "tag": "Why Choose Us",
+    "title": "Why Choose Premier Health Clinic?",
+    "desc": "Our outreach approach is designed to build trust, credibility, and attract high-value leads through:",
+    "points": {
+      "history": {
+        "num": "01",
+        "title": "Medical History Review",
+        "desc": "We review your past and present health conditions."
+      },
+      "concerns": {
+        "num": "02",
+        "title": "Main Concerns",
+        "desc": "We identify your specific health goals and concerns."
+      },
+      "medications": {
+        "num": "03",
+        "title": "Medications Check",
+        "desc": "We consider any medications you are currently taking."
+      },
+      "labTests": {
+        "num": "04",
+        "title": "Lab Tests Analysis",
+        "desc": "We analyze your blood test results to assess nutrient levels."
+      },
+      "needs": {
+        "num": "05",
+        "title": "Individual Needs",
+        "desc": "We customize recommendations to fit your body and lifestyle."
+      }
+    }
+  }
+}

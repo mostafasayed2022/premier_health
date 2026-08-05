@@ -1,0 +1,15 @@
+{
+  "title": "Patient Profile",
+  "subtitle": "Manage your personal information & medical bookings",
+  "personalInfo": "Personal Information",
+  "myBookings": "My Bookings",
+  "medicalHistory": "Medical History",
+  "updateProfile": "Update Profile",
+  "saving": "Saving...",
+  "saveSuccess": "Profile updated successfully!",
+  "noAppointments": "No previous bookings found.",
+  "statusConfirmed": "Confirmed",
+  "statusPending": "Pending",
+  "statusCompleted": "Completed",
+  "statusCancelled": "Cancelled"
+}

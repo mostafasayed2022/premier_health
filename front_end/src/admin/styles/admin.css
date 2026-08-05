@@ -1,0 +1,204 @@
+/* admin/styles/admin.css */
+@import url("https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --admin-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --admin-heading: "Arapey", serif;
+  --admin-gold: #c8a96b;
+  --admin-navy: #1f3d5a;
+  --admin-cream: #faf9f6;
+  --admin-white: #ffffff;
+  --admin-text: #1e293b;
+  --admin-muted: #64748b;
+  --admin-border: rgba(200, 169, 107, 0.15);
+}
+
+.admin-root * {
+  box-sizing: border-box;
+}
+
+.admin-root {
+  font-family: var(--admin-sans);
+  color: var(--admin-text);
+  background: var(--admin-cream);
+  min-height: 100vh;
+}
+
+@keyframes admin-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.admin-root button:hover {
+  opacity: 0.9;
+  transform: translateY(-0.5px);
+  transition: all 0.15s;
+}
+
+.admin-root input:focus,
+.admin-root select:focus,
+.admin-root textarea:focus {
+  border-color: var(--admin-navy) !important;
+  box-shadow: 0 0 0 3px rgba(31, 61, 90, 0.08);
+  outline: none;
+}
+
+.admin-root tr:hover td {
+  background: rgba(200, 169, 107, 0.02);
+}
+
+.admin-root ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.admin-root ::-webkit-scrollbar-track {
+  background: var(--admin-cream);
+}
+
+.admin-root ::-webkit-scrollbar-thumb {
+  background: rgba(200, 169, 107, 0.2);
+  border-radius: 3px;
+}
+
+.admin-root select option {
+  background: var(--admin-white);
+  color: var(--admin-text);
+}
+
+/* ─── Responsive Layout for Mobile ─── */
+@media (max-width: 1024px) {
+  /* Shell becomes vertical column */
+  .admin-shell {
+    flex-direction: column !important;
+  }
+
+  /* Show hamburger topbar */
+  .admin-mobile-topbar {
+    display: flex !important;
+  }
+
+  /* Hide the sidebar sidebar on mobile and transition it off-screen to the left */
+  .admin-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -280px !important;
+    width: 280px !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2) !important;
+    overflow-y: auto !important;
+  }
+
+  /* When open, slide the sidebar in */
+  .admin-sidebar.open {
+    left: 0 !important;
+  }
+
+  /* Show sidebar close button */
+  .admin-sidebar-close-btn {
+    display: flex !important;
+  }
+
+  /* Expand main container padding */
+  .admin-main-content {
+    padding: 16px !important;
+  }
+
+  /* Stack page header controls */
+  .admin-page-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+  }
+
+  .admin-page-header button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Toolbar adjustments */
+  .admin-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .admin-search-wrap {
+    max-width: 100% !important;
+  }
+
+  /* Form columns grid collapse */
+  .admin-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Dashboard grid collapse */
+  .admin-dash-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Modal responsive resizing */
+  .admin-modal-card {
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* ─── Responsive Table Horizontal Slider & Cell Protection ─── */
+.admin-root table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+.admin-root th,
+.admin-root td {
+  white-space: nowrap !important;
+  vertical-align: middle;
+}
+
+.admin-table-container,
+.admin-root div[style*="overflowX"],
+.admin-root div[style*="overflow-x"],
+.admin-root div[style*="overflow: auto"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #c8a96b #f7f2ea;
+}
+
+/* Custom Gold Horizontal Table Slider Bar */
+.admin-root ::-webkit-scrollbar {
+  height: 10px !important;
+  width: 8px !important;
+}
+
+.admin-root ::-webkit-scrollbar-track {
+  background: #f7f2ea !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(200, 169, 107, 0.2) !important;
+}
+
+.admin-root ::-webkit-scrollbar-thumb {
+  background: #c8a96b !important;
+  border-radius: 9999px !important;
+  border: 2px solid #f7f2ea !important;
+}
+
+.admin-root ::-webkit-scrollbar-thumb:hover {
+  background: #b69557 !important;
+}
+
+
+

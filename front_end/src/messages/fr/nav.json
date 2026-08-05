@@ -1,0 +1,20 @@
+{
+  "home": "Accueil",
+  "about": "À propos",
+  "departments": "Départements",
+  "doctors": "Nos Médecins",
+  "services": "Services",
+  "branches": "Succursales",
+  "gallery": "Galerie",
+  "testimonials": "Témoignages",
+  "contact": "Contact",
+  "book": "Prendre RDV",
+  "portal": "Portail",
+  "workingHours": "Sam - Jeu: 8h00 - 22h00",
+  "welcomeHi": "Bonjour, ",
+  "logout": "Se déconnecter",
+  "login": "Se connecter",
+  "register": "S'inscrire",
+  "tagline": "Soins Médicaux",
+  "profile": "Profil"
+}

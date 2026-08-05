@@ -1,0 +1,9 @@
+{
+  "title": "Vitamines Orales vs. IV",
+  "desc1": "Alors que les suppléments oraux se présentent sous diverses formes comme des capsules, des pilules et des liquides, les vitamines IV sont administrées directement dans la circulation sanguine via une perfusion. Cette voie directe contourne le système digestif, permettant une absorption plus rapide et plus efficace des nutriments par rapport aux suppléments oraux.",
+  "desc2": "La thérapie IV répond à divers problèmes de santé, offrant un soulagement rapide des symptômes tels que les maux de tête, la déshydratation et les nausées.",
+  "oralLabel": "Vitamines Orales",
+  "oralDesc": "Absorption limitée",
+  "ivLabel": "Perfusion IV",
+  "ivDesc": "Absorption totale & immédiate"
+}

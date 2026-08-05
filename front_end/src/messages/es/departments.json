@@ -1,0 +1,20 @@
+{
+  "title": "Departamentos Médicos",
+  "treatments": "Tratamientos de {name}",
+  "serviceBadge": "Servicio",
+  "specialties": "Especialidades Médicas",
+  "departmentSpecialists": "Especialistas del Departamento",
+  "subtitle": "Busque y filtre nuestros departamentos clínicos de élite",
+  "searchPlaceholder": "Buscar departamentos o tratamientos...",
+  "filterAll": "Todos los Departamentos",
+  "ivTherapy": "Terapia IV",
+  "dermatology": "Dermatología",
+  "aesthetics": "Estética",
+  "bodyContouring": "Contorno Corporal",
+  "explore": "Explorar Departamento",
+  "doctorsCount": "{count} Médicos",
+  "medicalDepartment": "Departamento Médico",
+  "ctaTitle": "¿Listo para comenzar su viaje de bienestar?",
+  "ctaSubtitle": "Reserve su cita ahora con nuestros especialistas de élite para una experiencia de atención médica de lujo inigualable.",
+  "ctaButton": "Reservar Cita"
+}

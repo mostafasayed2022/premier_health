@@ -1,0 +1,20 @@
+{
+  "title": "Reparti Medici",
+  "treatments": "Trattamenti di {name}",
+  "serviceBadge": "Servizio",
+  "specialties": "Specializzazioni Mediche",
+  "departmentSpecialists": "Specialisti del Reparto",
+  "subtitle": "Cerca e filtra i nostri reparti clinici d'élite",
+  "searchPlaceholder": "Cerca reparti o trattamenti...",
+  "filterAll": "Tutti i Reparti",
+  "ivTherapy": "Terapia IV",
+  "dermatology": "Dermatologia",
+  "aesthetics": "Estetica",
+  "bodyContouring": "Contorno Corporeo",
+  "explore": "Esplora il Reparto",
+  "doctorsCount": "{count} Medici",
+  "medicalDepartment": "Reparto Medico",
+  "ctaTitle": "Pronto a iniziare il tuo percorso di benessere?",
+  "ctaSubtitle": "Prenota ora il tuo appuntamento con i nostri specialisti d'élite per un'esperienza di assistenza sanitaria di lusso senza pari.",
+  "ctaButton": "Prenota Appuntamento"
+}

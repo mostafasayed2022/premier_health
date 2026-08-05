@@ -1,0 +1,20 @@
+{
+  "title": "Tıbbi Bölümler",
+  "treatments": "{name} Tedavileri",
+  "serviceBadge": "Hizmet",
+  "specialties": "Tıbbi Uzmanlıklar",
+  "departmentSpecialists": "Bölüm Uzmanları",
+  "subtitle": "Seçkin klinik bölümlerimizi arayın ve filtreleyin",
+  "searchPlaceholder": "Bölüm veya tedavi ara...",
+  "filterAll": "Tüm Bölümler",
+  "ivTherapy": "IV Tedavisi",
+  "dermatology": "Dermatoloji",
+  "aesthetics": "Estetik",
+  "bodyContouring": "Vücut Şekillendirme",
+  "explore": "Bölümü Keşfet",
+  "doctorsCount": "{count} Doktor",
+  "medicalDepartment": "Medikal Bölüm",
+  "ctaTitle": "Sağlıklı Yaşam Yolculuğunuza Başlamaya Hazır mısınız?",
+  "ctaSubtitle": "Eşsiz bir lüks sağlık hizmeti deneyimi için hemen seçkin uzmanlarımızdan randevu alın.",
+  "ctaButton": "Randevu Al"
+}

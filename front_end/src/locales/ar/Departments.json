@@ -1,0 +1,20 @@
+{
+  "title": "الأقسام الطبية",
+  "treatments": "خدمات {name}",
+  "serviceBadge": "خدمة",
+  "specialties": "تخصصاتنا الطبية",
+  "departmentSpecialists": "أطباء القسم",
+  "subtitle": "ابحث وتصفح أقسامنا الطبية المتميزة",
+  "searchPlaceholder": "ابحث عن الأقسام أو العلاجات...",
+  "filterAll": "جميع الأقسام",
+  "ivTherapy": "العلاج الوريدي",
+  "dermatology": "الأمراض الجلدية",
+  "aesthetics": "الطب التجميلي",
+  "bodyContouring": "نحت القوام وتنسيق القوام",
+  "explore": "استكشف القسم",
+  "doctorsCount": "{count} أطباء",
+  "medicalDepartment": "قسم طبي متخصص",
+  "ctaTitle": "جاهز للبدء في رحلتك الصحية؟",
+  "ctaSubtitle": "احجز موعدك الآن مع نخبة أطبائنا للحصول على تجربة رعاية صحية فاخرة لا مثيل لها.",
+  "ctaButton": "احجز موعد الآن"
+}

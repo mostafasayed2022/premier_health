@@ -1,0 +1,93 @@
+{
+  "title": "Exzellenz im Gesundheitswesen",
+  "subtitle": "Unsere Geschichte und Vision für weltweites Wohlbefinden",
+  "heritage": "Unser Erbe & Geschichte",
+  "desc": "Premier Health ist eine führende Wellness- und Gesundheitsklinik, die sich der personalisierten Pflege, fortschrittlichen Behandlungen und dauerhaftem Wohlbefinden widmet.",
+  "ourMission": "Unsere Mission",
+  "missionTitle": "Premier Health Mission",
+  "missionDesc": "Unsere Mission in der Premier Health Clinic ist es, qualitativ hochwertige IV-Infusionen und fortschrittliche dermatologische Dienstleistungen anzubieten, die Gesundheit, Schönheit und allgemeines Wohlbefinden fördern.",
+  "missionQuote": "Bereitstellung professioneller Infusionen und fortschrittlicher derma-kosmetischer Dienstleistungen für unsere Kunden, mit dem Ziel, Krankheiten und Alterungserscheinungen zu reduzieren.",
+  "ourVision": "Unsere Vision",
+  "visionTitle": "Premier Health Vision",
+  "visionDesc": "Unsere Vision ist es, die Premier Health Clinic weltweit zu erweitern, um einer breiteren Gemeinschaft zu dienen und qualitativ hochwertige Gesundheits- und Ästhetikbehandlungen für jeden zugänglich zu machen.",
+  "visionQuote": "Erweiterung unserer Kliniken, um einer breiten Palette von Menschen, die unsere Dienstleistungen benötigen, zur Verfügung zu stehen.",
+  "coreValuesTag": "Grundwerte",
+  "coreValuesTitle": "Unsere Werte",
+  "coreValuesDesc": "In der Premier Health Clinic spiegeln unsere Werte unser Engagement für Exzellenz, Mitgefühl und Integrität in jedem von uns angebotenen Service wider.",
+  "values": {
+    "excellence": {
+      "title": "Exzellenz",
+      "desc": "Streben nach den höchsten Standards bei Pflege und Service."
+    },
+    "integrity": {
+      "title": "Integrität",
+      "desc": "Festhalten an ethischen Prinzipien sowie Wahrung von Ehrlichkeit und Transparenz."
+    },
+    "patientCare": {
+      "title": "Patientenzentrierte Pflege",
+      "desc": "Priorisierung der Bedürfnisse und des Wohlbefindens unserer Patienten."
+    },
+    "compassion": {
+      "title": "Mitgefühl",
+      "desc": "Behandlung jedes Patienten mit Freundlichkeit, Empathie und Verständnis."
+    },
+    "innovation": {
+      "title": "Innovation",
+      "desc": "Einführung neuer Technologien und Ansätze zur Verbesserung der Patientenversorgung."
+    }
+  },
+  "timeline": {
+    "journeyTag": "Unsere Reise",
+    "historyTitle": "Premier Health Geschichte",
+    "items": {
+      "2018": {
+        "year": "2018",
+        "title": "Gegründet in Fairmont Nile City",
+        "desc": "Die Premier Health Clinic wurde 2018 im Fairmont-Viertel in Nile City gegründet – ein umfassendes Gesundheitszentrum, das mit modernsten Geräten und besten medizinischen Hilfsmitteln ausgestattet ist, von intravenösen Nährstoffen bis hin zu dermatologischen Dienstleistungen wie Botox, Fillern und anderen kosmetischen Dienstleistungen."
+      },
+      "2020": {
+        "year": "2020–2022",
+        "title": "Expansion in Kairo und Gizeh",
+        "desc": "Die Klinik expandierte durch die Eröffnung mehrerer Niederlassungen in Kairo und Gizeh, darunter in der Arkan Plaza in Sheikh Zayed und bei EDNC Sodic im Fifth Settlement, um das Premier-Erlebnis näher an mehr Kunden heranzutragen."
+      },
+      "2023": {
+        "year": "2023+",
+        "title": "Internationale Expansion in die VAE",
+        "desc": "Nach ihrem Erfolg expandierte Premier Health international in die Vereinigten Arabischen Emirate. Die Klinik entwickelte sich zu einem multidisziänären Gesundheitsziel und bietet ein breites Spektrum fortschrittlicher Dienstleistungen an, darunter IV-Therapie, kosmetische Dermatologie und Kosmetik."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "imageBadge": "Entdecken Sie den Premier-Weg zum Wohlbefinden.",
+    "tag": "Warum uns wählen",
+    "title": "Warum die Premier Health Clinic wählen?",
+    "desc": "Unser Ansatz ist darauf ausgelegt, Vertrauen und Glaubwürdigkeit aufzubauen und anspruchsvolle Kunden zu gewinnen durch:",
+    "points": {
+      "history": {
+        "num": "01",
+        "title": "Überprüfung der Krankengeschichte",
+        "desc": "Wir überprüfen Ihre früheren und aktuellen Gesundheitsbedingungen."
+      },
+      "concerns": {
+        "num": "02",
+        "title": "Hauptanliegen",
+        "desc": "Wir identifizieren Ihre spezifischen Gesundheitsziele und Bedenken."
+      },
+      "medications": {
+        "num": "03",
+        "title": "Medikamenten-Check",
+        "desc": "Wir berücksichtigen alle Medikamente, die Sie derzeit einnehmen."
+      },
+      "labTests": {
+        "num": "04",
+        "title": "Laborwert-Analyse",
+        "desc": "Wir analysieren Ihre Bluttestergebnisse, um Nährstoffwerte zu bewerten."
+      },
+      "needs": {
+        "num": "05",
+        "title": "Individuelle Bedürfnisse",
+        "desc": "Wir passen die Empfehlungen an Ihren Körper und Lebensstil an."
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Départements Médicaux",
+  "treatments": "Traitements de {name}",
+  "serviceBadge": "Service",
+  "specialties": "Spécialités Médicales",
+  "departmentSpecialists": "Spécialistes du Département",
+  "subtitle": "Recherchez et filtrez nos départements cliniques d'élite",
+  "searchPlaceholder": "Rechercher des départements ou des traitements...",
+  "filterAll": "Tous les Départements",
+  "ivTherapy": "Thérapie IV",
+  "dermatology": "Dermatologie",
+  "aesthetics": "Esthétique",
+  "bodyContouring": "Contour Corporel",
+  "explore": "Explorer le Département",
+  "doctorsCount": "{count} Médecins",
+  "medicalDepartment": "Département Médical",
+  "ctaTitle": "Prêt à commencer votre parcours de bien-être ?",
+  "ctaSubtitle": "Réservez votre rendez-vous dès maintenant auprès de nos spécialistes d'élite pour une expérience de soins de santé de luxe inégalée.",
+  "ctaButton": "Prendre Rendez-vous"
+}

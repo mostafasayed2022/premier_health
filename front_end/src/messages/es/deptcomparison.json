@@ -1,0 +1,9 @@
+{
+  "title": "Vitaminas Orales vs. IV",
+  "desc1": "Mientras que los suplementos orales vienen en diversas formas como cápsulas, pastillas y líquidos, las vitaminas IV se administran directamente en el torrente sanguíneo mediante un goteo. Esta vía directa evita el sistema digestivo, lo que permite una absorción de nutrientes más rápida y eficiente en comparación con los suplementos orales.",
+  "desc2": "La terapia IV aborda diversas preocupaciones de salud, proporcionando un alivio rápido de síntomas como dolor de cabeza, deshidratación y náuseas.",
+  "oralLabel": "Vitaminas Orales",
+  "oralDesc": "Absorción limitada",
+  "ivLabel": "Suero IV",
+  "ivDesc": "Absorción completa e inmediata"
+}

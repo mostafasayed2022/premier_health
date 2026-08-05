@@ -1,0 +1,93 @@
+{
+  "title": "L'excellence dans les Soins de Santé",
+  "subtitle": "Notre histoire et notre vision du bien-être mondial de prestige",
+  "heritage": "Notre Histoire et Patrimoine",
+  "desc": "Premier Health est une clinique de premier plan en matière de bien-être et de soins de santé, dédiée aux soins personnalisés, aux traitements avancés et à un bien-être durable.",
+  "ourMission": "Notre Mission",
+  "missionTitle": "Mission de Premier Health",
+  "missionDesc": "Notre mission chez Premier Health Clinic est de fournir des perfusions IV de haute qualité et des services de dermatologie avancés qui favorisent la santé, la beauté et le bien-être général.",
+  "missionQuote": "Fournir des perfusions de haute qualité et des services dermatologiques professionnels à nos clients, visant à réduire les maladies et les symptômes du vieillissement.",
+  "ourVision": "Notre Vision",
+  "visionTitle": "Vision de Premier Health",
+  "visionDesc": "Notre vision est d'étendre Premier Health Clinic pour atteindre et servir une communauté plus large, en rendant les soins de santé de haute qualité et les traitements esthétiques accessibles à tous.",
+  "visionQuote": "Élargir nos cliniques afin d'être à la portée d'un large éventail de personnes qui ont besoin de nos services.",
+  "coreValuesTag": "Valeurs Fondamentales",
+  "coreValuesTitle": "Nos Valeurs",
+  "coreValuesDesc": "Chez Premier Health Clinic, nos valeurs reflètent notre engagement envers l'excellence, la compassion et l'intégrité dans chaque service que nous fournissons.",
+  "values": {
+    "excellence": {
+      "title": "Excellence",
+      "desc": "S'efforcer d'atteindre les normes de soins et de service les plus élevées."
+    },
+    "integrity": {
+      "title": "Intégrité",
+      "desc": "Adhérer aux principes éthiques et maintenir l'honnêteté et la transparence."
+    },
+    "patientCare": {
+      "title": "Soins Centrés sur le Patient",
+      "desc": "Prioriser les besoins et le bien-être de nos patients."
+    },
+    "compassion": {
+      "title": "Compassion",
+      "desc": "Traiter chaque patient avec gentillesse, empathie et compréhension."
+    },
+    "innovation": {
+      "title": "Innovation",
+      "desc": "Adopter de nouvelles technologies et approches pour améliorer les soins aux patients."
+    }
+  },
+  "timeline": {
+    "journeyTag": "Notre Voyage",
+    "historyTitle": "Histoire de Premier Health",
+    "items": {
+      "2018": {
+        "year": "2018",
+        "title": "Fondée au Fairmont Nile City",
+        "desc": "Premier Health Clinic a été créée en 2018 dans le quartier de Fairmont, Nile City - un centre de soins de santé complet équipé des capacités les plus élevées et des meilleures fournitures de santé, des nutriments intraveineux aux services dermatologiques tels que le botox, les fillers et autres services cosmétiques."
+      },
+      "2020": {
+        "year": "2020–2022",
+        "title": "Expansion au Caire et à Gizeh",
+        "desc": "La clinique s'est développée en ouvrant plusieurs succursales au Caire et à Gizeh, dont Arkan Plaza à Sheikh Zayed et EDNC Sodic dans le Cinquième Établissement, rapprochant l'expérience Premier de plus de clients."
+      },
+      "2023": {
+        "year": "2023+",
+        "title": "Expansion Internationale aux EAU",
+        "desc": "Forte de son succès, Premier Health s'est développée à l'international aux Émirats Arabes Unis. La clinique est devenue une destination de soins de santé multidisciplinaire, offrant une large gamme de services avancés, notamment la thérapie intraveineuse et la dermatologie cosmétique."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "imageBadge": "Découvrez la voie Premier vers le bien-être.",
+    "tag": "Pourquoi nous choisir",
+    "title": "Pourquoi choisir Premier Health Clinic ?",
+    "desc": "Notre approche est conçue pour instaurer la confiance, la crédibilité et attirer des clients à haute valeur ajoutée grâce à :",
+    "points": {
+      "history": {
+        "num": "01",
+        "title": "Revue des antécédents médicaux",
+        "desc": "Nous examinons vos conditions de santé passées et présentes."
+      },
+      "concerns": {
+        "num": "02",
+        "title": "Préoccupations majeures",
+        "desc": "Nous identifions vos objectifs et préoccupations de santé spécifiques."
+      },
+      "medications": {
+        "num": "03",
+        "title": "Vérification des médicaments",
+        "desc": "Nous prenons en compte tous les médicaments que vous prenez actuellement."
+      },
+      "labTests": {
+        "num": "04",
+        "title": "Analyse des tests de laboratoire",
+        "desc": "Nous analysons les résultats de vos analyses de sang pour évaluer les niveaux de nutriments."
+      },
+      "needs": {
+        "num": "05",
+        "title": "Besoins individuels",
+        "desc": "Nous personnalisons les recommandations pour les adapter à votre corps et à votre style de vie."
+      }
+    }
+  }
+}
