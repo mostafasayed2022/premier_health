@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://premierhealthclinic.com";
+const getSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "https://premier-health-delta.vercel.app";
+};
+
+export const SITE_URL = getSiteUrl();
 export const LOCALES = ["en", "ar", "fr", "de", "es", "it", "tr"] as const;
 export type SupportedLocale = (typeof LOCALES)[number];
 
@@ -372,12 +377,13 @@ export function getSeoMetadata(locale: string, pageKey?: string): Metadata {
   const path = pageKey ? `/${currentLocale}/${pageKey}` : `/${currentLocale}`;
   const canonicalUrl = `${SITE_URL}${path}`;
 
-  // Build hreflang map for all 7 supported languages
+  // Build hreflang map for all 7 supported languages + x-default
   const languageAlternates: Record<string, string> = {};
   LOCALES.forEach((loc) => {
     const locPath = pageKey ? `/${loc}/${pageKey}` : `/${loc}`;
     languageAlternates[loc] = `${SITE_URL}${locPath}`;
   });
+  languageAlternates["x-default"] = `${SITE_URL}${pageKey ? `/${pageKey}` : "/en"}`;
 
   return {
     title,

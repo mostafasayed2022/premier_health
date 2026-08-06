@@ -32,6 +32,7 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
         {/* Logo */}
         <Link
           href="/"
+          aria-label="Premier Health Homepage"
           className="flex items-center gap-3 group focus:outline-none shrink-0"
         >
           <div className="relative overflow-hidden border-2 border-slate-100 p-0.5 bg-white transition-colors w-12 h-12 lg:w-16 lg:h-16">

@@ -71,6 +71,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="WhatsApp"
+          aria-label="WhatsApp"
         >
           <WhatsappIcon className="w-4 h-4 fill-current" />
         </a>
@@ -80,6 +81,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Instagram"
+          aria-label="Instagram"
         >
           <InstagramIcon className="w-4 h-4 fill-current" />
         </a>
@@ -89,6 +91,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Facebook"
+          aria-label="Facebook"
         >
           <FacebookIcon className="w-4 h-4 fill-current" />
         </a>
@@ -98,6 +101,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Threads"
+          aria-label="Threads"
         >
           <ThreadsIcon className="w-4 h-4 fill-current" />
         </a>
@@ -107,6 +111,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="TikTok"
+          aria-label="TikTok"
         >
           <TiktokIcon className="w-4 h-4 fill-current" />
         </a>
@@ -116,6 +121,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Snapchat"
+          aria-label="Snapchat"
         >
           <SnapchatIcon className="w-4 h-4 fill-current" />
         </a>
@@ -125,6 +131,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Google Listing"
+          aria-label="Google Listing"
         >
           <GoogleIcon className="w-4 h-4 fill-current" />
         </a>
@@ -134,6 +141,7 @@ export function FooterBottom() {
           rel="noopener noreferrer"
           className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent font-bold text-[10px]"
           title="Linktree Portal"
+          aria-label="Linktree Portal"
         >
           LT
         </a>
