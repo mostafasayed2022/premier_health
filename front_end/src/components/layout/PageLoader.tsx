@@ -7,15 +7,7 @@ import Image from "next/image";
 
 export function PageLoader() {
   const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(true);
-
-  // 1. Initial Load: Fade out after 600ms
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 600);
-    return () => clearTimeout(timer);
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
   // 2. Intercept page transitions (anchor clicks)
   useEffect(() => {
@@ -73,7 +65,7 @@ export function PageLoader() {
               {/* Logo container inside */}
               <div className="relative w-14 h-14 rounded-full overflow-hidden bg-white/40 flex items-center justify-center p-1.5 shadow-sm">
                 <Image
-                  src="/logo/logo1.jpg"
+                  src="/logo/logo1.webp"
                   alt="Premier Health Logo"
                   width={48}
                   height={48}

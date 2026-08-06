@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { getOptimizedImageUrl } from "@/lib/utils/image";
 import { ServiceData } from "./types";
 
 interface ServiceCardProps {
@@ -22,7 +23,8 @@ export function ServiceCard({ service }: ServiceCardProps) {
     (service.photo.endsWith(".mp4") ||
       service.photo.endsWith(".webm") ||
       service.photo.includes("/video/upload/"));
-  const photoUrl = !service.photo || isVideo ? defaultPhoto : service.photo;
+  const rawPhoto = !service.photo || isVideo ? defaultPhoto : service.photo;
+  const photoUrl = getOptimizedImageUrl(rawPhoto, 600, 75);
 
   return (
     <Link href={`/services/${service.slug}`} className="group block h-full">
@@ -34,6 +36,8 @@ export function ServiceCard({ service }: ServiceCardProps) {
             alt={isAr ? service.name_ar : service.name}
             width={400}
             height={250}
+            quality={75}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent" />

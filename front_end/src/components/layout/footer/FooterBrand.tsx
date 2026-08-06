@@ -11,7 +11,7 @@ export function FooterBrand() {
       <div className="flex items-center gap-3">
         <div className="rounded-full bg-white/10 p-0.5 border border-accent/20">
           <Image
-            src="/logo/logo1.jpg"
+            src="/logo/logo1.webp"
             alt="Logo"
             width={55}
             height={55}
@@ -20,7 +20,9 @@ export function FooterBrand() {
         </div>
         <div className="flex items-center font-sans text-lg md:text-xl tracking-wider select-none">
           <span className="text-accent font-bold">PREMIER</span>
-          <span className="text-white font-light ml-1.5 rtl:mr-1.5">HEALTH</span>
+          <span className="text-white font-light ml-1.5 rtl:mr-1.5">
+            HEALTH
+          </span>
         </div>
       </div>
 

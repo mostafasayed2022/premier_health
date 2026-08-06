@@ -44,6 +44,10 @@ const nextConfig: NextConfig = {
       "lucide-react",
       "framer-motion",
       "@tanstack/react-query",
+      "recharts",
+      "sonner",
+      "zustand",
+      "@radix-ui/react-slot",
     ],
   },
 };

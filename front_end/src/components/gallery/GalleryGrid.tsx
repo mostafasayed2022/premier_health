@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { getGallery } from "@/lib/api";
+import { getOptimizedImageUrl } from "@/lib/utils/image";
 import { GalleryItem } from "@/lib/types";
 
 export function GalleryGrid() {
@@ -137,9 +138,10 @@ export function GalleryGrid() {
               >
                 {item.image ? (
                   <Image
-                    src={item.image}
+                    src={getOptimizedImageUrl(item.image, 800, 75)}
                     alt={isAr ? item.title_ar : item.title}
                     fill
+                    quality={75}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />

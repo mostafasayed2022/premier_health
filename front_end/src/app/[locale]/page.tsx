@@ -1,19 +1,38 @@
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/home/HeroSection";
 import StatsSection from "@/components/home/StatesSection";
-// Standard Static Imports
 import AboutPreviewSection from "@/components/home/AboutPreviewSection";
 import DepartmentsSection from "@/components/home/DepartmentsSection";
-import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
-import { DepartmentDripsIntro } from "@/components/departments/DepartmentDripsIntro";
-import FeaturedTreatmentsSection from "@/components/home/FeaturedTreatmentsSection";
-import { DepartmentDermaIntro } from "@/components/departments/DepartmentDermaIntro";
-import BranchesSection from "@/components/home/BranchesSection";
-import FAQSection from "@/components/home/FAQSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
+
+// Below-the-fold sections dynamically imported to reduce initial JS payload
+const WhyChooseUsSection = dynamic(
+  () => import("@/components/home/WhyChooseUsSection")
+);
+const DepartmentDripsIntro = dynamic(() =>
+  import("@/components/departments/DepartmentDripsIntro").then(
+    (mod) => mod.DepartmentDripsIntro
+  )
+);
+const FeaturedTreatmentsSection = dynamic(
+  () => import("@/components/home/FeaturedTreatmentsSection")
+);
+const DepartmentDermaIntro = dynamic(() =>
+  import("@/components/departments/DepartmentDermaIntro").then(
+    (mod) => mod.DepartmentDermaIntro
+  )
+);
+const TestimonialsSection = dynamic(
+  () => import("@/components/home/TestimonialsSection")
+);
+const BranchesSection = dynamic(
+  () => import("@/components/home/BranchesSection")
+);
+const FAQSection = dynamic(() => import("@/components/home/FAQSection"));
+const WelcomeToast = dynamic(() =>
+  import("@/components/shared/WelcomeToast").then((mod) => mod.WelcomeToast)
+);
 
 import { generatePageMetadata } from "@/lib/seo";
-import { WelcomeToast } from "@/components/shared/WelcomeToast";
 
 export const generateMetadata = generatePageMetadata("home");
 

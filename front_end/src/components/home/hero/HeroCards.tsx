@@ -1,8 +1,5 @@
-"use client";
-
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Activity, Award, MapPin } from "lucide-react";
 
 export default function HeroCards() {
@@ -10,12 +7,7 @@ export default function HeroCards() {
 
   return (
     <div className="luxury-container relative z-30 w-full px-6 mt-12 md:mt-24">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 w-[calc(100%+3rem)] md:w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-      >
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 w-[calc(100%+3rem)] md:w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Card 1: Specialists */}
         <Link
           href="/doctors"
@@ -99,7 +91,7 @@ export default function HeroCards() {
             </p>
           </div>
         </Link>
-      </motion.div>
+      </div>
     </div>
   );
 }

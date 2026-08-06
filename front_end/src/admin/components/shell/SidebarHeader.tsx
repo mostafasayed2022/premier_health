@@ -21,7 +21,7 @@ export function SidebarHeader({ onClose }: SidebarHeaderProps) {
     >
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <Image
-          src="/logo/logo1.jpg"
+          src="/logo/logo1.webp"
           alt="PremierCare"
           width={30}
           height={30}

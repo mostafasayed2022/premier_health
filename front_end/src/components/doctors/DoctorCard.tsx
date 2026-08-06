@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Star, Award, Languages } from "lucide-react";
 import Image from "next/image";
+import { getOptimizedImageUrl } from "@/lib/utils/image";
 import { DoctorData } from "./types";
 
 interface DoctorCardProps {
@@ -17,15 +18,18 @@ export const DoctorCard = React.memo(function DoctorCard({ doctor }: DoctorCardP
   const locale = useLocale();
   const isAr = locale === "ar";
 
+  const optimizedPhoto = getOptimizedImageUrl(doctor.photo, 600, 75);
+
   return (
     <Link href={`/doctor/${doctor.id}`} className="group block h-full">
       <div className="h-full bg-white rounded-3xl border border-accent/10 shadow-sm overflow-hidden hover:-translate-y-2 transition-transform duration-300 card-gold-accent">
         {/* Photo */}
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image
-            src={doctor.photo}
+            src={optimizedPhoto}
             alt={doctor.name}
             fill
+            quality={75}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
           />

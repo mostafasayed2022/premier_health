@@ -64,7 +64,7 @@ function InnerShell({ children }: { children: ReactNode }) {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <Image
-            src="/logo/logo1.jpg"
+            src="/logo/logo.webp"
             alt="PremierCare"
             width={24}
             height={24}

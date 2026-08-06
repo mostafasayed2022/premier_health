@@ -3,15 +3,21 @@
 import React, { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { useBranches, useDepartments, useBranchGallery } from "@/lib/api";
+import dynamic from "next/dynamic";
 import {
   BranchesHero,
   BranchCard,
   BranchesContactBanner,
   BranchGallerySection,
   BranchSpecialtiesSection,
-  BranchLightboxModal,
   LightboxItem,
 } from "@/components/branches";
+
+const BranchLightboxModal = dynamic(() =>
+  import("@/components/branches/BranchLightboxModal").then(
+    (m) => m.BranchLightboxModal
+  )
+);
 
 export function BranchesPageClient() {
   const locale = useLocale();

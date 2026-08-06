@@ -4,9 +4,13 @@ import { useState, useEffect } from "react";
 import { AvailabilitySlot, DoctorProfileBooking } from "@/lib/types";
 import { useAppointments } from "@/lib/api/hooks";
 import { toast } from "sonner";
+import dynamic from "next/dynamic";
 import { ScheduleHeader } from "./components/ScheduleHeader";
 import { ScheduleWeekdayCard } from "./components/ScheduleWeekdayCard";
-import { AddSlotModal } from "./components/AddSlotModal";
+
+const AddSlotModal = dynamic(() =>
+  import("./components/AddSlotModal").then((m) => m.AddSlotModal)
+);
 
 interface DoctorScheduleManagerProps {
   initialSlots?: AvailabilitySlot[];

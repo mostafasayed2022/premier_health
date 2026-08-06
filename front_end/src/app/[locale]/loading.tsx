@@ -15,12 +15,11 @@ export default function Loading() {
           {/* Logo container inside */}
           <div className="relative w-14 h-14 rounded-full overflow-hidden bg-white/40 flex items-center justify-center p-1.5 shadow-sm">
             <Image
-              src="/logo/logo1.jpg"
+              src="/logo/logo1.webp"
               alt="Premier Health Logo"
               width={48}
               height={48}
               className="object-contain"
-
             />
           </div>
         </div>

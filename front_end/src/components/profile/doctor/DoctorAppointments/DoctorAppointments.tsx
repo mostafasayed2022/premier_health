@@ -4,11 +4,15 @@ import { useState } from "react";
 import { useAppointments, useRescheduleBooking } from "@/lib/api/hooks";
 import { DoctorProfileBooking, Appointment } from "@/lib/types";
 
+import dynamic from "next/dynamic";
 import { AppointmentsFilterBar, FilterType } from "./components/AppointmentsFilterBar";
 import { AppointmentCard } from "./components/AppointmentCard";
-import { RescheduleModal } from "./components/RescheduleModal";
 import { AppointmentsEmptyState } from "./components/AppointmentsEmptyState";
 import { AppointmentsLoadingState, AppointmentsErrorState } from "./components/AppointmentsStates";
+
+const RescheduleModal = dynamic(() =>
+  import("./components/RescheduleModal").then((m) => m.RescheduleModal)
+);
 
 const DEMO_BOOKINGS: Appointment[] = [
   {

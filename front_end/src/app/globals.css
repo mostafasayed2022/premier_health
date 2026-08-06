@@ -4,9 +4,7 @@
 
 @theme {
   --font-serif: var(--font-arapey), serif;
-  --font-sans:
-    "Helvetica World", "Arial Unicode MS", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  --font-sans: var(--font-sans-default), "Helvetica Neue", Arial, sans-serif;
 
   --color-primary: var(--primary);
   --color-primary-light: #4c6c82;
@@ -56,6 +54,7 @@
 
 [dir="rtl"] {
   text-align: right;
+  font-family: var(--font-cairo), var(--font-sans-default), sans-serif;
 }
 
 body {

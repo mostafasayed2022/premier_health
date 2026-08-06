@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Users, Loader2 } from "lucide-react";
 import { useDepartments } from "@/lib/api";
+import { getOptimizedImageUrl } from "@/lib/utils/image";
 import Image from "next/image";
 
 export function DepartmentGrid() {
@@ -49,10 +50,12 @@ export function DepartmentGrid() {
                 {/* Image Header */}
                 <div className="relative h-60 w-full overflow-hidden bg-beige">
                   <Image
-                    src={dept.photo}
+                    src={getOptimizedImageUrl(dept.photo, 600, 75)}
                     alt={isAr ? dept.name_ar || dept.name : dept.name}
                     width={400}
                     height={250}
+                    quality={75}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent" />

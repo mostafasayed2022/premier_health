@@ -36,12 +36,11 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
         >
           <div className="relative overflow-hidden border-2 border-slate-100 p-0.5 bg-white transition-colors w-12 h-12 lg:w-16 lg:h-16">
             <Image
-              src="/logo/logo1.jpg"
+              src="/logo/logo1.webp"
               alt="Premier Health"
               fill
               sizes="(max-width: 1024px) 48px, 64px"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
-
             />
           </div>
           <div className="flex flex-col justify-center">

@@ -5,7 +5,7 @@ import { routing } from "@/i18n/routing";
 import { ReactNode } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Arapey } from "next/font/google";
+import { Arapey, Cairo, Plus_Jakarta_Sans } from "next/font/google";
 import { PageLoader } from "@/components/layout/PageLoader";
 import { Toaster } from "sonner";
 import { PatientAuthProvider } from "@/context/PatientAuthContext";
@@ -21,6 +21,18 @@ const arapey = Arapey({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-arapey",
+  display: "swap",
+});
+
+const fontSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans-default",
+  display: "swap",
+});
+
+const fontArabic = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
   display: "swap",
 });
 
@@ -64,14 +76,14 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       dir={dir}
-      className={`${arapey.variable} h-full antialiased scroll-smooth`}
+      className={`${arapey.variable} ${fontSans.variable} ${fontArabic.variable} h-full antialiased scroll-smooth`}
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdn.simpleicons.org" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://cdn.simpleicons.org" />
         <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" fetchPriority="high" />
       </head>
       <body className="bg-white flex min-h-screen flex-col font-sans selection:bg-accent-light selection:text-primary">

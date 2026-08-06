@@ -1,5 +1,3 @@
-"use client";
-
 import { Link } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
 import { ArrowRight } from "lucide-react";
@@ -22,7 +20,9 @@ export default function AboutPreviewSection() {
               src="/AboutPreview/layout2.webp"
               alt="Premier Health Facility"
               fill
-              sizes="(max-width: 768px) 50vw, 33vw"
+              loading="lazy"
+              sizes="250px"
+              quality={65}
               className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
             />
           </div>
@@ -33,7 +33,9 @@ export default function AboutPreviewSection() {
               src="/AboutPreview/layout1.webp"
               alt="Premier Health Care"
               fill
-              sizes="(max-width: 768px) 50vw, 33vw"
+              loading="lazy"
+              sizes="250px"
+              quality={65}
               className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
             />
           </div>
@@ -44,7 +46,9 @@ export default function AboutPreviewSection() {
               src="/AboutPreview/layout3.webp"
               alt="Premier Health Team"
               fill
-              sizes="(max-width: 768px) 50vw, 33vw"
+              loading="lazy"
+              sizes="250px"
+              quality={65}
               className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
             />
           </div>

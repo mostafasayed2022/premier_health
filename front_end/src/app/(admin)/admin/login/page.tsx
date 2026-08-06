@@ -33,7 +33,7 @@ export default function LoginPage() {
       <div style={S.loginCard}>
         <div style={{ ...S.loginLogo, alignItems: "center" }}>
           <Image
-            src="/logo/logo1.jpg"
+            src="/logo/logo1.webp"
             alt="PremierCare"
             width={42}
             height={42}

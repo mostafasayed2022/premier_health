@@ -1,38 +1,41 @@
 "use client";
 
-import { motion, AnimatePresence, MotionValue } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 interface HeroSlideshowProps {
-  bgIndex: number;
   images: string[];
-  translateX: MotionValue<number>;
-  translateY: MotionValue<number>;
 }
 
-export default function HeroSlideshow({
-  bgIndex,
-  images,
-  translateX,
-  translateY,
-}: HeroSlideshowProps) {
+export default function HeroSlideshow({ images }: HeroSlideshowProps) {
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % images.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
   return (
     <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
       <AnimatePresence mode="popLayout">
         <motion.div
           key={bgIndex}
-          initial={{ opacity: 0, scale: 1.15 }}
+          initial={bgIndex === 0 ? false : { opacity: 0, scale: 1.15 }}
           animate={{ opacity: 1, scale: 1.05 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 2.2, ease: "easeInOut" }}
-          style={{ x: translateX, y: translateY }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0 w-full h-full"
         >
           <Image
             src={images[bgIndex]}
             alt="Premier Care Cinematic Background"
             fill
-            priority
+            priority={bgIndex === 0}
+            fetchPriority={bgIndex === 0 ? "high" : "auto"}
+            quality={75}
             sizes="100vw"
             className="object-cover object-top sm:object-center"
           />

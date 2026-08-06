@@ -12,6 +12,7 @@ import type {
 } from "@/lib/types";
 // removed mock data imports
 import { mapBookingStatus, mapPaymentStatus } from "@/lib/utils/bookingStatus";
+import { getOptimizedImageUrl } from "@/lib/utils/image";
 
 // ─── API Response Types ────────────────────────────────────────────
 
@@ -101,9 +102,11 @@ export function mergeDept(d: ApiDepartment): Department {
     id: String(d.id),
     name_ar: d.name_ar || d.name,
     description_ar: d.description_ar || d.description,
-    photo:
+    photo: getOptimizedImageUrl(
       d.image_url ||
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+      800
+    ),
     doctorsCount: 0,
   } as Department;
 }
@@ -124,9 +127,11 @@ export function mergeSvc(s: ApiService): Service {
     duration: s.duration_minutes ?? 0,
     name_ar: s.name_ar || s.name,
     description_ar: s.description_ar || s.description,
-    photo:
+    photo: getOptimizedImageUrl(
       s.image_url ||
-      "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=600",
+      600
+    ),
     benefits: [],
     benefits_ar: [],
     process: [],
@@ -142,9 +147,11 @@ export function mergeBranch(b: ApiBranch): Branch {
     id: String(b.id),
     name_ar: b.name_ar || b.name,
     address_ar: b.address_ar || b.address,
-    photo:
+    photo: getOptimizedImageUrl(
       b.image_url ||
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
+      800
+    ),
     hours: "",
     hours_ar: "",
     mapEmbed: "",
@@ -167,10 +174,12 @@ export function mergeDoc(d: ApiDoctor): Doctor {
     position_ar: d.position_ar || "أخصائي طبي",
     bio: d.bio || "",
     bio_ar: d.bio_ar || d.bio || "",
-    photo:
+    photo: getOptimizedImageUrl(
       d.image_url ||
-      d.photo ||
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600",
+        d.photo ||
+        "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600",
+      600
+    ),
     effective_fee: d.effective_fee ?? 0,
     languages: [],
     languages_ar: [],

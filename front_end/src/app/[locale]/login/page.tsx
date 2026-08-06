@@ -44,12 +44,11 @@ export default function PatientLoginPage() {
         <div className="flex flex-col items-center text-center gap-2.5 mt-6">
           <div className="relative overflow-hidden rounded-full border border-accent/15 p-0.5 bg-beige/50 shadow-sm">
             <Image
-              src="/logo/logo1.jpg"
+              src="/logo/logo1.webp"
               alt="Premier Health"
               width={65}
               height={65}
               className="rounded-full object-contain"
-
             />
           </div>
           <h2 className="text-xl font-bold tracking-wider text-primary font-serif">
