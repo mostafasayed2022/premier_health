@@ -70,7 +70,14 @@ export default function AboutPreviewSection() {
             variant="outline"
             className="w-fit rounded-full border-accent text-accent hover:bg-accent hover:text-white mt-4 transition-all duration-300 font-semibold px-6"
           >
-            <Link href="/about">
+            <Link
+              href="/about"
+              aria-label={
+                isAr
+                  ? "تعرف أكثر عن عيادة بريمير هيلث"
+                  : "Learn more about Premier Health Clinic"
+              }
+            >
               {t("Home.learnMore")}
               <ArrowRight size={14} className="ml-2 rtl:rotate-180" />
             </Link>

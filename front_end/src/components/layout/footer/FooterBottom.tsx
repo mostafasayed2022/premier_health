@@ -64,12 +64,12 @@ export function FooterBottom() {
   return (
     <div className="mt-16 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
       <p suppressHydrationWarning>© {currentYear} Premier Health Clinic. All rights reserved.</p>
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-3 flex-wrap">
         <a
           href="https://wa.me/201200644663"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="WhatsApp"
           aria-label="WhatsApp"
         >
@@ -79,7 +79,7 @@ export function FooterBottom() {
           href="https://www.instagram.com/premierhealth.clinics"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Instagram"
           aria-label="Instagram"
         >
@@ -89,7 +89,7 @@ export function FooterBottom() {
           href="https://www.facebook.com/premierecareclinics"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Facebook"
           aria-label="Facebook"
         >
@@ -99,7 +99,7 @@ export function FooterBottom() {
           href="https://www.threads.net/@premierhealth.clinics"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Threads"
           aria-label="Threads"
         >
@@ -109,7 +109,7 @@ export function FooterBottom() {
           href="https://www.tiktok.com/@premierhealthclinics"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="TikTok"
           aria-label="TikTok"
         >
@@ -119,7 +119,7 @@ export function FooterBottom() {
           href="https://www.snapchat.com/@premier.health?share_id=inVm7XArR_w&locale=en-GB"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Snapchat"
           aria-label="Snapchat"
         >
@@ -129,7 +129,7 @@ export function FooterBottom() {
           href="https://www.google.com/search?client=safari&hl=en-eg&sxsrf=ALiCzsYe7w__J5YT0kbjpTX0pf9lCL6qpw:1656257145699&q=Premier+Care&ludocid=16492088125003417627&gsas=1&client=safari&lsig=AB86z5VbyTY4DN7nfpzAGrbJfjP1&kgs=09e54351cf095e2e&shndl=-1&source=sh/x/kp/local/3&entrypoint=sh/x/kp/local"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
           title="Google Listing"
           aria-label="Google Listing"
         >
@@ -139,7 +139,7 @@ export function FooterBottom() {
           href="https://linktr.ee/premierhealthclinic"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent font-bold text-[10px]"
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent font-bold text-xs"
           title="Linktree Portal"
           aria-label="Linktree Portal"
         >

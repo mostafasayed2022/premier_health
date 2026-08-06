@@ -42,6 +42,7 @@ export function BranchSpecialtiesSection({
           </div>
           <Link
             href="/departments"
+            aria-label={isAr ? "عرض جميع التخصصات" : "View all specialties"}
             className="inline-flex items-center gap-2 text-sm font-bold text-[#C8A96B] hover:text-white transition-colors"
           >
             <span>{t("viewAllSpecialties")}</span>
@@ -100,6 +101,7 @@ export function BranchSpecialtiesSection({
                     </p>
                     <Link
                       href={`/department/${dept.slug}`}
+                      aria-label={`${isAr ? "اقرأ المزيد عن قسم" : "Learn more about"} ${isAr ? dept.name_ar : dept.name}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8A96B] mt-3 hover:underline"
                     >
                       <span>{t("learnMore")}</span>
