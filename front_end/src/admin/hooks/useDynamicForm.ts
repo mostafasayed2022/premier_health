@@ -106,14 +106,23 @@ export function useDynamicForm({
       const payload: Record<string, unknown> = {};
       editableFields.forEach((f) => {
         let v = values[f.name];
-        if (f.type === "file" && typeof v === "string") {
-          return;
-        }
+
+        // Skip empty values for non-nullable fields to avoid null constraint violations
         if (v === "" || v == null) {
-          payload[f.name] = null;
+          if (f.nullable) {
+            payload[f.name] = null;
+          }
           return;
         }
-        if (f.type === "number") v = Number(v);
+
+        // Convert number and relation fields to numbers if valid numeric string
+        if (f.type === "number" || f.type === "relation") {
+          if (typeof v === "string" && v.trim() !== "") {
+            const num = Number(v);
+            if (!isNaN(num)) v = num;
+          }
+        }
+
         if (f.type === "boolean") v = Boolean(v);
         payload[f.name] = v;
       });

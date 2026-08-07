@@ -12,7 +12,7 @@
 
 const BASE_URL =
   (typeof process !== "undefined" && process.env?.NEXT_PUBLIC_API_BASE_URL) ??
-  "http://localhost:8000";
+  "https://premiier.pythonanywhere.com/";
 
 // ─── Token storage ────────────────────────────────────────────────────────
 
@@ -46,9 +46,19 @@ export class ApiError extends Error {
   data: Record<string, unknown>;
 
   constructor(status: number, data: Record<string, unknown>) {
-    const message =
-      (data?.detail as string) ?? (data?.error as string) ?? `HTTP ${status}`;
-    super(message);
+    let message = (data?.detail as string) ?? (data?.error as string);
+    if (!message && data && typeof data === "object") {
+      const parts = Object.entries(data)
+        .map(([field, errs]) => {
+          const formatted = Array.isArray(errs) ? errs.join(", ") : String(errs);
+          return `${field}: ${formatted}`;
+        })
+        .filter(Boolean);
+      if (parts.length > 0) {
+        message = parts.join(" | ");
+      }
+    }
+    super(message || `HTTP ${status}`);
     this.name = "ApiError";
     this.status = status;
     this.data = data;

@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/";
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api/";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -22,7 +22,12 @@ api.interceptors.request.use((config) => {
         localStorage.getItem("admin_access") ||
         localStorage.getItem("access_token")
       : null;
-  if (token && token !== "undefined" && token !== "null" && token.trim() !== "") {
+  if (
+    token &&
+    token !== "undefined" &&
+    token !== "null" &&
+    token.trim() !== ""
+  ) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;

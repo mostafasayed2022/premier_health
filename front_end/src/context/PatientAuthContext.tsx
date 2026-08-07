@@ -1,6 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  type ReactNode,
+} from "react";
 import axios from "axios";
 import { savePatientToken, clearAllTokens } from "@/lib/api/auth";
 
@@ -31,7 +38,8 @@ interface PatientAuthContextValue {
 
 const PatientAuthContext = createContext<PatientAuthContextValue | null>(null);
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api/";
 
 export function PatientAuthProvider({ children }: { children: ReactNode }) {
   const [patientUser, setPatientUser] = useState<PatientUser | null>(null);
@@ -55,40 +63,46 @@ export function PatientAuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const login = useCallback(async (emailOrUsername: string, password: string) => {
-    const { data } = await axios.post(`${API_URL}token/`, {
-      username: emailOrUsername,
-      password,
-    });
+  const login = useCallback(
+    async (emailOrUsername: string, password: string) => {
+      const { data } = await axios.post(`${API_URL}token/`, {
+        username: emailOrUsername,
+        password,
+      });
 
-    if (data.access && data.user) {
-      // Persist to localStorage AND cookie (for server middleware)
-      savePatientToken(data.access);
-      localStorage.setItem("patient_refresh", data.refresh);
-      localStorage.setItem("patient_user", JSON.stringify(data.user));
-      setPatientUser(data.user);
-    }
-  }, []);
+      if (data.access && data.user) {
+        // Persist to localStorage AND cookie (for server middleware)
+        savePatientToken(data.access);
+        localStorage.setItem("patient_refresh", data.refresh);
+        localStorage.setItem("patient_user", JSON.stringify(data.user));
+        setPatientUser(data.user);
+      }
+    },
+    [],
+  );
 
-  const register = useCallback(async (payload: {
-    email: string;
-    password: string;
-    phoneNumber: string;
-    firstName?: string;
-    lastName?: string;
-  }) => {
-    // 1. Submit registration
-    await axios.post(`${API_URL}auth/register/`, {
-      email: payload.email,
-      password: payload.password,
-      phone_number: payload.phoneNumber,
-      first_name: payload.firstName || "",
-      last_name: payload.lastName || "",
-    });
+  const register = useCallback(
+    async (payload: {
+      email: string;
+      password: string;
+      phoneNumber: string;
+      firstName?: string;
+      lastName?: string;
+    }) => {
+      // 1. Submit registration
+      await axios.post(`${API_URL}auth/register/`, {
+        email: payload.email,
+        password: payload.password,
+        phone_number: payload.phoneNumber,
+        first_name: payload.firstName || "",
+        last_name: payload.lastName || "",
+      });
 
-    // 2. Perform silent login after successful registration
-    await login(payload.email, payload.password);
-  }, [login]);
+      // 2. Perform silent login after successful registration
+      await login(payload.email, payload.password);
+    },
+    [login],
+  );
 
   const logout = useCallback(() => {
     clearAllTokens();

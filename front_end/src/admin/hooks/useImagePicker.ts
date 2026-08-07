@@ -4,12 +4,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { api } from "../api/client";
 import { toast } from "sonner";
 import axios from "axios";
-import type { FileUpload } from "@/lib/types";
+import { uploadFile } from "@/lib/api/endpoints";
+import { FileUpload } from "@/lib/types";
 
 // ─── Constants ──────────────────────────────────────────────────
 
 const API_BASE = (
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api"
 ).replace(/\/+$/, "");
 
 const IMAGE_EXTENSIONS = ["png", "jpg", "jpeg", "webp", "svg", "gif"];
@@ -103,36 +104,9 @@ export function useImagePicker({
   // ── Upload single file with progress ──────────────────────────
   const uploadSingleFile = useCallback(
     async (file: File): Promise<FileUpload> => {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const token = getToken();
-
-      if (!token) {
-        throw new Error(
-          "No authentication token found. Please log in as admin.",
-        );
-      }
-
-      const { data } = await axios.post<FileUpload>(
-        `${API_BASE}/files/`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          onUploadProgress: (progressEvent) => {
-            if (progressEvent.total) {
-              const percent = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total,
-              );
-              setProgress(percent);
-            }
-          },
-        },
-      );
-
-      return data;
+      return await uploadFile(file, (percent) => {
+        setProgress(percent);
+      });
     },
     [],
   );
@@ -148,7 +122,9 @@ export function useImagePicker({
         : [...IMAGE_EXTENSIONS, ...VIDEO_EXTENSIONS];
       if (!allowedExtensions.includes(ext)) {
         const typeLabel = isVideoField ? "video" : "image or video";
-        toast.error(`Invalid file type: .${ext}. Please select a ${typeLabel}.`);
+        toast.error(
+          `Invalid file type: .${ext}. Please select a ${typeLabel}.`,
+        );
         return;
       }
 
@@ -239,7 +215,9 @@ export function useImagePicker({
       setPreviewUrl(file.url);
       setShowFilePicker(false);
       const isVideo = VIDEO_EXTENSIONS.includes(file.extension?.toLowerCase());
-      toast.success(isVideo ? "Video selected from library" : "Image selected from library");
+      toast.success(
+        isVideo ? "Video selected from library" : "Image selected from library",
+      );
     },
     [onChange],
   );

@@ -4,18 +4,33 @@ import { useState, useEffect, useCallback } from "react";
 import { api } from "../../api/client";
 import { toast } from "sonner";
 import axios from "axios";
-import type { FileUpload } from "@/lib/types";
+import { uploadFile } from "@/lib/api/endpoints";
+import { FileUpload } from "@/lib/types";
 
 // ─── Constants ──────────────────────────────────────────────────
 
 const API_BASE = (
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api"
 ).replace(/\/+$/, "");
 
 const ALLOWED_EXTENSIONS = [
-  "pdf", "doc", "docx", "xls", "xlsx", "csv",
-  "png", "jpg", "jpeg", "gif", "webp", "svg",
-  "mp4", "mp3", "mov", "txt", "md",
+  "pdf",
+  "doc",
+  "docx",
+  "xls",
+  "xlsx",
+  "csv",
+  "png",
+  "jpg",
+  "jpeg",
+  "gif",
+  "webp",
+  "svg",
+  "mp4",
+  "mp3",
+  "mov",
+  "txt",
+  "md",
 ];
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -165,25 +180,26 @@ export function useFilesPage() {
         const interval = setInterval(() => {
           progressVal = Math.min(
             progressVal + Math.floor(Math.random() * 15) + 5,
-            95
+            95,
           );
           setUploadQueue((prev) =>
             prev.map((item) =>
               item.id === queueItem.id
                 ? { ...item, progress: progressVal }
-                : item
-            )
+                : item,
+            ),
           );
         }, 150);
 
         try {
-          const formData = new FormData();
-          formData.append("file", file);
-
-          const token = getToken();
-
-          await axios.post<FileUpload>(`${API_BASE}/files/`, formData, {
-            headers: token ? { Authorization: `Bearer ${token}` } : {},
+          await uploadFile(file, (percent) => {
+            setUploadQueue((prev) =>
+              prev.map((item) =>
+                item.id === queueItem.id
+                  ? { ...item, progress: percent }
+                  : item,
+              ),
+            );
           });
 
           clearInterval(interval);
@@ -191,8 +207,8 @@ export function useFilesPage() {
             prev.map((item) =>
               item.id === queueItem.id
                 ? { ...item, progress: 100, status: "success" }
-                : item
-            )
+                : item,
+            ),
           );
           toast.success(`${file.name} uploaded`);
         } catch (err: unknown) {
@@ -203,8 +219,8 @@ export function useFilesPage() {
             prev.map((item) =>
               item.id === queueItem.id
                 ? { ...item, status: "error", errorMessage: errMsg }
-                : item
-            )
+                : item,
+            ),
           );
           toast.error(`Failed: ${file.name} — ${errMsg}`);
         }
@@ -213,7 +229,7 @@ export function useFilesPage() {
       await loadFiles();
       setUploading(false);
     },
-    [loadFiles]
+    [loadFiles],
   );
 
   // ── Delete file ──────────────────────────────────────────────
@@ -234,7 +250,7 @@ export function useFilesPage() {
 
   // ── Filtered results ─────────────────────────────────────────
   const filtered = files.filter((f) =>
-    f.original_name.toLowerCase().includes(search.toLowerCase())
+    f.original_name.toLowerCase().includes(search.toLowerCase()),
   );
 
   return {

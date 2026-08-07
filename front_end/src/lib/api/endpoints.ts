@@ -165,13 +165,53 @@ export interface BookingStatusResponse {
 // ─── File Upload ──────────────────────────────────────────────────
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/";
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/";
 
-/** Upload a file to Cloudinary via the backend. Uses raw axios for progress. */
+/** Upload a file to Cloudinary via backend or direct unsigned Cloudinary upload. */
 export const uploadFile = async (
   file: File,
   onProgress?: (percent: number) => void,
 ): Promise<FileUpload> => {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "u3q5mcfx";
+  const uploadPreset =
+    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "premierhealth_upload";
+
+  // Try direct Cloudinary upload if preset is explicitly provided
+  if (uploadPreset) {
+    try {
+      const cldFormData = new FormData();
+      cldFormData.append("file", file);
+      cldFormData.append("upload_preset", uploadPreset);
+
+      const { data: cldRes } = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+        cldFormData,
+        {
+          onUploadProgress: (progressEvent) => {
+            if (onProgress && progressEvent.total) {
+              onProgress(
+                Math.round((progressEvent.loaded * 100) / progressEvent.total),
+              );
+            }
+          },
+        },
+      );
+
+      return {
+        id: typeof cldRes.public_id === "number" ? cldRes.public_id : Date.now(),
+        url: cldRes.secure_url,
+        original_name: file.name,
+        size: file.size,
+        size_display: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+        content_type: file.type,
+        extension: file.name.split(".").pop() || "",
+        created_at: new Date().toISOString(),
+      } as unknown as FileUpload;
+    } catch {
+      // Fallback to backend API upload below
+    }
+  }
+
   const formData = new FormData();
   formData.append("file", file);
 
@@ -183,7 +223,7 @@ export const uploadFile = async (
       : null;
 
   const { data } = await axios.post<FileUpload>(
-    `${API_BASE_URL}/api/files/`,
+    `${API_BASE_URL.replace(/\/+$/, "")}/api/files/`,
     formData,
     {
       headers: token ? { Authorization: `Bearer ${token}` } : {},
@@ -322,10 +362,15 @@ export const getGallery = async (): Promise<GalleryItem[]> => {
   }
 };
 
-export const getBranchGallery = async (branchId?: string): Promise<BranchGalleryItem[]> => {
+export const getBranchGallery = async (
+  branchId?: string,
+): Promise<BranchGalleryItem[]> => {
   try {
-    const params = branchId && branchId !== "all" ? { branch_id: branchId } : {};
-    const { data } = await api.get<any[]>("branch-galleries-public/", { params });
+    const params =
+      branchId && branchId !== "all" ? { branch_id: branchId } : {};
+    const { data } = await api.get<any[]>("branch-galleries-public/", {
+      params,
+    });
     return data.map((g) => ({
       id: String(g.id),
       branch_id: String(g.branch_id || g.branch || ""),
