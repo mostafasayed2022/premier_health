@@ -15,8 +15,8 @@ import {
 
 const BranchLightboxModal = dynamic(() =>
   import("@/components/branches/BranchLightboxModal").then(
-    (m) => m.BranchLightboxModal
-  )
+    (m) => m.BranchLightboxModal,
+  ),
 );
 
 export function BranchesPageClient() {
@@ -24,15 +24,19 @@ export function BranchesPageClient() {
   const isAr = locale === "ar";
 
   const { data: branches = [], isLoading: isBranchesLoading } = useBranches();
-  const { data: departments = [], isLoading: isDeptsLoading } = useDepartments();
+  const { data: departments = [], isLoading: isDeptsLoading } =
+    useDepartments();
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>("all");
-  const { data: rawBranchGalleryItems = [], isLoading: isGalleryLoading } = useBranchGallery(
-    selectedBranchId
-  );
+  const { data: rawBranchGalleryItems = [], isLoading: isGalleryLoading } =
+    useBranchGallery(selectedBranchId);
 
-  const [activeBranchImageIndex, setActiveBranchImageIndex] = useState<number | null>(null);
-  const [activeGalleryModalIndex, setActiveGalleryModalIndex] = useState<number | null>(null);
+  const [activeBranchImageIndex, setActiveBranchImageIndex] = useState<
+    number | null
+  >(null);
+  const [activeGalleryModalIndex, setActiveGalleryModalIndex] = useState<
+    number | null
+  >(null);
 
   // Fallback to branch cover photos if admin hasn't added branch gallery images yet
   const displayGalleryItems =
@@ -40,7 +44,8 @@ export function BranchesPageClient() {
       ? rawBranchGalleryItems
       : branches
           .filter(
-            (b: any) => selectedBranchId === "all" || String(b.id) === selectedBranchId
+            (b: any) =>
+              selectedBranchId === "all" || String(b.id) === selectedBranchId,
           )
           .map((b: any) => ({
             id: String(b.id),
@@ -72,15 +77,17 @@ export function BranchesPageClient() {
   }));
 
   // Map gallery items to LightboxItem format for modal
-  const galleryLightboxItems: LightboxItem[] = displayGalleryItems.map((item: any) => ({
-    id: String(item.id),
-    image: item.image,
-    title: item.title,
-    title_ar: item.title_ar || item.title,
-    description: item.description,
-    description_ar: item.description_ar || item.description,
-    branch_name: item.branch_name,
-  }));
+  const galleryLightboxItems: LightboxItem[] = displayGalleryItems.map(
+    (item: any) => ({
+      id: String(item.id),
+      image: item.image,
+      title: item.title,
+      title_ar: item.title_ar || item.title,
+      description: item.description,
+      description_ar: item.description_ar || item.description,
+      branch_name: item.branch_name,
+    }),
+  );
 
   const handleNextBranch = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -91,20 +98,27 @@ export function BranchesPageClient() {
   const handlePrevBranch = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (activeBranchImageIndex === null || branches.length === 0) return;
-    setActiveBranchImageIndex((prev) => (prev! - 1 + branches.length) % branches.length);
+    setActiveBranchImageIndex(
+      (prev) => (prev! - 1 + branches.length) % branches.length,
+    );
   };
 
   const handleNextGallery = (e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (activeGalleryModalIndex === null || displayGalleryItems.length === 0) return;
-    setActiveGalleryModalIndex((prev) => (prev! + 1) % displayGalleryItems.length);
+    if (activeGalleryModalIndex === null || displayGalleryItems.length === 0)
+      return;
+    setActiveGalleryModalIndex(
+      (prev) => (prev! + 1) % displayGalleryItems.length,
+    );
   };
 
   const handlePrevGallery = (e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (activeGalleryModalIndex === null || displayGalleryItems.length === 0) return;
+    if (activeGalleryModalIndex === null || displayGalleryItems.length === 0)
+      return;
     setActiveGalleryModalIndex(
-      (prev) => (prev! - 1 + displayGalleryItems.length) % displayGalleryItems.length
+      (prev) =>
+        (prev! - 1 + displayGalleryItems.length) % displayGalleryItems.length,
     );
   };
 
@@ -112,18 +126,28 @@ export function BranchesPageClient() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (activeBranchImageIndex !== null) {
         if (e.key === "Escape") setActiveBranchImageIndex(null);
-        if (e.key === "ArrowRight") isAr ? handlePrevBranch() : handleNextBranch();
-        if (e.key === "ArrowLeft") isAr ? handleNextBranch() : handlePrevBranch();
+        if (e.key === "ArrowRight")
+          isAr ? handlePrevBranch() : handleNextBranch();
+        if (e.key === "ArrowLeft")
+          isAr ? handleNextBranch() : handlePrevBranch();
       }
       if (activeGalleryModalIndex !== null) {
         if (e.key === "Escape") setActiveGalleryModalIndex(null);
-        if (e.key === "ArrowRight") isAr ? handlePrevGallery() : handleNextGallery();
-        if (e.key === "ArrowLeft") isAr ? handleNextGallery() : handlePrevGallery();
+        if (e.key === "ArrowRight")
+          isAr ? handlePrevGallery() : handleNextGallery();
+        if (e.key === "ArrowLeft")
+          isAr ? handleNextGallery() : handlePrevGallery();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeBranchImageIndex, activeGalleryModalIndex, branches, displayGalleryItems, isAr]);
+  }, [
+    activeBranchImageIndex,
+    activeGalleryModalIndex,
+    branches,
+    displayGalleryItems,
+    isAr,
+  ]);
 
   return (
     <div className="flex flex-col bg-background min-h-screen">
@@ -178,7 +202,9 @@ export function BranchesPageClient() {
       <BranchLightboxModal
         isOpen={activeBranchImageIndex !== null}
         activeItem={
-          activeBranchImageIndex !== null ? branchLightboxItems[activeBranchImageIndex] : null
+          activeBranchImageIndex !== null
+            ? branchLightboxItems[activeBranchImageIndex]
+            : null
         }
         activeIndex={activeBranchImageIndex}
         totalItems={branches.length}

@@ -165,7 +165,7 @@ export interface BookingStatusResponse {
 // ─── File Upload ──────────────────────────────────────────────────
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/";
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com";
 
 /** Upload a file to Cloudinary via backend or direct unsigned Cloudinary upload. */
 export const uploadFile = async (
@@ -198,7 +198,8 @@ export const uploadFile = async (
       );
 
       return {
-        id: typeof cldRes.public_id === "number" ? cldRes.public_id : Date.now(),
+        id:
+          typeof cldRes.public_id === "number" ? cldRes.public_id : Date.now(),
         url: cldRes.secure_url,
         original_name: file.name,
         size: file.size,

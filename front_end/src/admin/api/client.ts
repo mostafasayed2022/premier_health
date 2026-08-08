@@ -10,9 +10,11 @@
  *  - Standardized error envelope parsing
  */
 
-const BASE_URL =
-  (typeof process !== "undefined" && process.env?.NEXT_PUBLIC_API_BASE_URL) ??
-  "https://premiier.pythonanywhere.com/";
+const BASE_URL = (
+  (typeof process !== "undefined"
+    ? process.env?.NEXT_PUBLIC_API_URL || process.env?.NEXT_PUBLIC_API_BASE_URL
+    : undefined) || "https://premiier.pythonanywhere.com"
+).replace(/\/+$/, "");
 
 // ─── Token storage ────────────────────────────────────────────────────────
 
@@ -50,7 +52,9 @@ export class ApiError extends Error {
     if (!message && data && typeof data === "object") {
       const parts = Object.entries(data)
         .map(([field, errs]) => {
-          const formatted = Array.isArray(errs) ? errs.join(", ") : String(errs);
+          const formatted = Array.isArray(errs)
+            ? errs.join(", ")
+            : String(errs);
           return `${field}: ${formatted}`;
         })
         .filter(Boolean);
@@ -115,7 +119,7 @@ export async function apiFetch<T = unknown>(
 ): Promise<T> {
   const { params, ...init } = options;
 
-  let url = `${BASE_URL}${path}`;
+  let url = `${BASE_URL}/${path.replace(/^\/+/, "")}`;
   if (params && Object.keys(params).length > 0) {
     const qs = new URLSearchParams(
       Object.fromEntries(

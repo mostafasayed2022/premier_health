@@ -3,11 +3,7 @@
 import React from "react";
 import { Icon } from "../../lib/icons";
 import { useDropzone } from "react-dropzone";
-import {
-  useFilesPage,
-  type AdminFile,
-  type UploadQueueItem,
-} from "./useFilesPage";
+import { useFilesPage } from "./useFilesPage";
 import { DropZone } from "./DropZone";
 import { FilesPageHero } from "./FilesPageHero";
 import { UploadQueueUI } from "./UploadQueueUI";
@@ -35,7 +31,10 @@ export function FilesPage() {
 
       <DropZone onFiles={handleUpload} uploading={uploading} />
 
-      <UploadQueueUI uploadQueue={uploadQueue} setUploadQueue={setUploadQueue} />
+      <UploadQueueUI
+        uploadQueue={uploadQueue}
+        setUploadQueue={setUploadQueue}
+      />
 
       <div className="flex gap-2.5 mb-4 items-center mt-4">
         <div className="relative flex-1 max-w-sm">
