@@ -28,22 +28,42 @@ export function StepIndicator({
   ];
 
   return (
-    <div className="w-full mb-8">
-      {/* Mobile Step Progress Text */}
-      <div className="flex items-center justify-between sm:hidden mb-4 px-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-accent">
-          {t("step" + activeStep as any)} ({activeStep}/{total})
-        </span>
-        <div className="h-1.5 flex-1 mx-3 bg-muted rounded-full overflow-hidden">
+    <div className="w-full mb-5 sm:mb-8">
+      {/* Mobile Step Progress Text & Bar */}
+      <div className="sm:hidden mb-2 px-1">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
+            {t("step" + activeStep as any)}
+          </span>
+          <span className="text-[11px] font-extrabold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+            {activeStep} / {total}
+          </span>
+        </div>
+        <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden border border-accent/15">
           <div
-            className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300 rounded-full"
+            className="h-full bg-gradient-to-r from-primary via-accent to-accent transition-all duration-300 rounded-full"
             style={{ width: `${(activeStep / total) * 100}%` }}
           />
+        </div>
+        {/* Step dots for quick visual step progress on mobile */}
+        <div className="flex items-center justify-between mt-2 px-0.5">
+          {Array.from({ length: total }).map((_, i) => (
+            <div
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i + 1 === activeStep
+                  ? "w-5 bg-accent"
+                  : i + 1 < activeStep
+                  ? "w-2 bg-accent/60"
+                  : "w-2 bg-slate-200"
+              }`}
+            />
+          ))}
         </div>
       </div>
 
       {/* Desktop & Tablet Stepper Bar */}
-      <div className="flex items-center overflow-x-auto scrollbar-hide py-2 px-1 justify-between w-full">
+      <div className="hidden sm:flex items-center overflow-x-auto scrollbar-hide py-2 px-1 justify-between w-full">
         {steps.slice(0, total).map((label, i) => {
           const stepNum = i + 1;
           const isPassed = stepNum < activeStep;

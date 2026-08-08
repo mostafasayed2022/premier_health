@@ -88,17 +88,17 @@ export function Step5DateTime({ selectedDate, selectedTime, onSelect, doctorId, 
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6 sm:gap-8">
       {/* Date Picker Section */}
       <div>
-        <div className="flex items-center gap-2 mb-4">
-          <Calendar size={16} className="text-accent" />
-          <h4 className="text-xs uppercase tracking-wider font-bold text-primary">
+        <div className="flex items-center gap-2 mb-3 sm:mb-4">
+          <Calendar size={15} className="text-accent" />
+          <h4 className="text-[11px] sm:text-xs uppercase tracking-wider font-bold text-primary">
             {t("selectDate")}
           </h4>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3">
           {availableDates.map((date) => {
             const isSelected = date === activeDate;
             const { weekday, day, month } = parseDateParts(date);
@@ -108,23 +108,23 @@ export function Step5DateTime({ selectedDate, selectedTime, onSelect, doctorId, 
                 key={date}
                 type="button"
                 onClick={() => handleDateClick(date)}
-                className={`flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all duration-300 active:scale-95 ${
+                className={`flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border-2 transition-all duration-300 active:scale-95 ${
                   isSelected
                     ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-105"
                     : "bg-white border-accent/20 text-foreground/80 hover:border-accent hover:shadow-md"
                 }`}
               >
                 <span
-                  className={`text-[10px] font-bold uppercase tracking-wider ${
+                  className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${
                     isSelected ? "text-amber-300" : "text-accent"
                   }`}
                 >
                   {weekday}
                 </span>
-                <span className="text-xl font-serif font-bold my-0.5">
+                <span className="text-base sm:text-xl font-serif font-bold my-0.5">
                   {day}
                 </span>
-                <span className="text-[10px] font-medium opacity-80">
+                <span className="text-[9px] sm:text-[10px] font-medium opacity-80">
                   {month}
                 </span>
               </button>
@@ -135,15 +135,15 @@ export function Step5DateTime({ selectedDate, selectedTime, onSelect, doctorId, 
 
       {/* Time Slots Section */}
       <div>
-        <div className="flex items-center gap-2 mb-4">
-          <Clock size={16} className="text-accent" />
-          <h4 className="text-xs uppercase tracking-wider font-bold text-primary">
+        <div className="flex items-center gap-2 mb-3 sm:mb-4">
+          <Clock size={15} className="text-accent" />
+          <h4 className="text-[11px] sm:text-xs uppercase tracking-wider font-bold text-primary">
             {t("selectTime")}
           </h4>
         </div>
 
         {availableTimes.length > 0 ? (
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3">
             {availableTimes.map((time) => {
               const isSelected = selectedTime === time;
 
@@ -152,13 +152,13 @@ export function Step5DateTime({ selectedDate, selectedTime, onSelect, doctorId, 
                   key={time}
                   type="button"
                   onClick={() => onSelect(activeDate, time)}
-                  className={`py-3 px-2 rounded-xl border-2 text-xs font-bold transition-all duration-200 active:scale-95 flex items-center justify-center gap-1.5 ${
+                  className={`py-2.5 px-1.5 sm:py-3 sm:px-2 rounded-xl border-2 text-[11px] sm:text-xs font-bold transition-all duration-200 active:scale-95 flex items-center justify-center gap-1 sm:gap-1.5 ${
                     isSelected
                       ? "bg-accent text-white border-accent shadow-lg shadow-accent/20 scale-105"
                       : "bg-white border-accent/20 text-primary hover:border-accent hover:shadow-md"
                   }`}
                 >
-                  <Clock size={13} className={isSelected ? "text-white" : "text-accent"} />
+                  <Clock size={12} className={isSelected ? "text-white" : "text-accent"} />
                   <span>{time}</span>
                 </button>
               );

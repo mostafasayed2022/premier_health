@@ -64,7 +64,7 @@ export function Step2Service({
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
       {filteredServices.map((svc) => {
         const isSelected = selected === svc.id;
         const name = isAr ? (svc.name_ar || svc.name) : (svc.name || svc.name_ar);
@@ -75,14 +75,14 @@ export function Step2Service({
             key={svc.id}
             type="button"
             onClick={() => onSelect(svc.id)}
-            className={`group relative flex items-start gap-4 p-5 rounded-2xl border-2 text-left rtl:text-right transition-all duration-300 active:scale-95 ${
+            className={`group relative flex items-start gap-3 sm:gap-4 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border-2 text-left rtl:text-right transition-all duration-300 active:scale-[0.98] ${
               isSelected
                 ? "border-accent bg-accent/8 ring-2 ring-accent/30 shadow-md shadow-accent/10 translate-y-[-2px]"
                 : "border-accent/15 bg-white hover:border-accent/50 hover:shadow-lg hover:-translate-y-1"
             }`}
           >
             {/* Service Photo / Icon */}
-            <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-accent/20 bg-beige/50 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform mt-0.5">
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border border-accent/20 bg-beige/50 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform mt-0.5">
               {svc.photo ? (
                 <Image
                   src={svc.photo}
@@ -93,33 +93,34 @@ export function Step2Service({
                 />
               ) : (
                 <div
-                  className={`w-full h-full flex items-center justify-center text-2xl transition-colors ${
+                  className={`w-full h-full flex items-center justify-center text-xl sm:text-2xl transition-colors ${
                     isSelected ? "bg-accent text-white" : "bg-primary/10 text-primary"
                   }`}
                 >
-                  <Sparkles size={24} />
+                  <Sparkles size={20} className="sm:hidden" />
+                  <Sparkles size={24} className="hidden sm:block" />
                 </div>
               )}
             </div>
 
             {/* Service Details */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-serif font-bold text-primary text-base leading-snug truncate group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-primary text-sm sm:text-base leading-snug truncate group-hover:text-accent transition-colors">
                 {name}
               </h3>
-              <p className="text-xs text-foreground/75 mt-1 line-clamp-2 leading-relaxed">
+              <p className="text-[11px] sm:text-xs text-foreground/75 mt-0.5 sm:mt-1 line-clamp-2 leading-relaxed">
                 {desc}
               </p>
               
-              <div className="flex items-center gap-3 mt-3">
+              <div className="flex items-center gap-2 sm:gap-3 mt-2 sm:mt-3 flex-wrap">
                 {svc.price != null && (
-                  <span className="inline-block px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-bold text-xs">
+                  <span className="inline-block px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-bold text-[10px] sm:text-xs">
                     ${svc.price}
                   </span>
                 )}
                 {svc.duration && (
-                  <span className="inline-flex items-center gap-1 text-[11px] text-foreground/60 font-medium">
-                    <Clock size={12} className="text-accent" />
+                  <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] text-foreground/60 font-medium">
+                    <Clock size={11} className="text-accent" />
                     {svc.duration}
                   </span>
                 )}
@@ -128,13 +129,14 @@ export function Step2Service({
 
             {/* Selection Checkmark */}
             <div
-              className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ml-auto rtl:ml-0 rtl:mr-auto mt-0.5 ${
+              className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ml-auto rtl:ml-0 rtl:mr-auto mt-0.5 ${
                 isSelected
                   ? "bg-accent text-white scale-110 shadow-md"
                   : "border-2 border-accent/30 bg-transparent group-hover:border-accent"
               }`}
             >
-              {isSelected && <Check size={14} strokeWidth={3} />}
+              {isSelected && <Check size={12} strokeWidth={3} className="sm:hidden" />}
+              {isSelected && <Check size={14} strokeWidth={3} className="hidden sm:block" />}
             </div>
           </button>
         );

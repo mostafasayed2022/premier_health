@@ -80,7 +80,7 @@ export function Step4Doctor({
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
       {doctors.map((doc) => {
         const isSelected = selected === doc.id;
         const photoSrc = doc.image_url || doc.photo;
@@ -94,14 +94,14 @@ export function Step4Doctor({
             key={doc.id}
             type="button"
             onClick={() => onSelect(doc.id)}
-            className={`group relative flex items-center gap-4 p-5 rounded-2xl border-2 text-left rtl:text-right transition-all duration-300 active:scale-95 ${
+            className={`group relative flex items-center gap-3 sm:gap-4 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border-2 text-left rtl:text-right transition-all duration-300 active:scale-[0.98] ${
               isSelected
                 ? "border-accent bg-accent/8 ring-2 ring-accent/30 shadow-xl shadow-accent/10 translate-y-[-2px]"
                 : "border-accent/15 bg-white hover:border-accent/50 hover:shadow-lg hover:-translate-y-1"
             }`}
           >
             {/* Avatar Container */}
-            <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border-2 border-accent/30 bg-beige/60 shadow-sm group-hover:scale-105 transition-transform">
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 border-accent/30 bg-beige/60 shadow-sm group-hover:scale-105 transition-transform">
               {photoSrc ? (
                 <Image
                   src={photoSrc}
@@ -112,7 +112,7 @@ export function Step4Doctor({
                 />
               ) : (
                 <div
-                  className={`w-full h-full flex items-center justify-center text-2xl transition-colors ${
+                  className={`w-full h-full flex items-center justify-center text-xl sm:text-2xl transition-colors ${
                     isSelected
                       ? "bg-accent text-white"
                       : "bg-primary/10 text-primary"
@@ -125,14 +125,14 @@ export function Step4Doctor({
 
             {/* Doctor Info */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-serif font-bold text-primary text-base leading-snug truncate group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-primary text-sm sm:text-base leading-snug truncate group-hover:text-accent transition-colors">
                 {name}
               </h3>
-              <p className="text-xs text-foreground/75 mt-1 truncate font-medium">
+              <p className="text-[11px] sm:text-xs text-foreground/75 mt-0.5 sm:mt-1 truncate font-medium">
                 {position}
               </p>
               {doc.specialty && (
-                <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-primary/8 text-primary font-bold text-[10px] uppercase tracking-wider">
+                <span className="inline-block mt-1.5 sm:mt-2 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full bg-primary/8 text-primary font-bold text-[9px] sm:text-[10px] uppercase tracking-wider">
                   {isAr ? doc.specialty_ar || doc.specialty : doc.specialty}
                 </span>
               )}
@@ -140,13 +140,14 @@ export function Step4Doctor({
 
             {/* Selection Checkmark Badge */}
             <div
-              className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ml-auto rtl:ml-0 rtl:mr-auto ${
+              className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ml-auto rtl:ml-0 rtl:mr-auto ${
                 isSelected
                   ? "bg-accent text-white scale-110 shadow-md"
                   : "border-2 border-accent/30 bg-transparent group-hover:border-accent"
               }`}
             >
-              {isSelected && <Check size={14} strokeWidth={3} />}
+              {isSelected && <Check size={12} strokeWidth={3} className="sm:hidden" />}
+              {isSelected && <Check size={14} strokeWidth={3} className="hidden sm:block" />}
             </div>
           </button>
         );

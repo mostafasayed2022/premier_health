@@ -66,23 +66,24 @@ export function BookAppointmentClient() {
 
   return (
     <PatientProtectedRoute>
-      <div className="flex flex-col bg-slate-50/60 min-h-screen pb-24">
+      <div className="flex flex-col bg-slate-50/60 min-h-screen pb-20 sm:pb-24">
         <BookingHero />
 
-        <div className="luxury-container pt-4 max-w-4xl mx-auto px-4">
+        <div className="luxury-container pt-2 sm:pt-4 max-w-4xl mx-auto px-3 sm:px-6">
           <StepIndicator currentStep={step} />
 
-          <div className="bg-white border border-accent/20 rounded-3xl p-6 sm:p-10 shadow-md shadow-primary/5 mb-8 transition-all relative overflow-hidden">
+          <div className="bg-white border border-accent/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-md shadow-primary/5 mb-8 transition-all relative overflow-hidden">
             {/* Top Step Header Banner */}
-            <div className="flex items-center gap-3 pb-6 mb-8 border-b border-accent/15">
-              <div className="w-10 h-10 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 shadow-sm">
-                <StepHeaderIcon size={20} />
+            <div className="flex items-center gap-3 pb-4 mb-6 sm:pb-6 sm:mb-8 border-b border-accent/15">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 shadow-sm">
+                <StepHeaderIcon size={18} className="sm:hidden" />
+                <StepHeaderIcon size={20} className="hidden sm:block" />
               </div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-accent">
+              <div className="min-w-0 flex-1">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-accent block">
                   {t("step" + step as any)} • {step} / 7
                 </span>
-                <h2 className="text-xl sm:text-2xl font-serif font-bold text-primary">
+                <h2 className="text-lg sm:text-2xl font-serif font-bold text-primary truncate">
                   {currentHeader.title}
                 </h2>
               </div>
@@ -154,18 +155,18 @@ export function BookAppointmentClient() {
             </AnimatePresence>
 
             {/* Navigation Controls */}
-            <div className="flex items-center justify-between mt-10 pt-6 border-t border-accent/15">
+            <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-8 sm:mt-10 pt-4 sm:pt-6 border-t border-accent/15">
               {step > 1 ? (
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-accent/30 text-primary font-bold text-xs hover:bg-accent/10 active:scale-95 transition-all shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-accent/30 text-primary font-bold text-xs sm:text-xs hover:bg-accent/10 active:scale-95 transition-all shadow-sm min-h-[44px]"
                 >
                   <ArrowLeft size={15} className="rtl:rotate-180" />
                   <span>{t("previousStep")}</span>
                 </button>
               ) : (
-                <div />
+                <div className="hidden sm:block" />
               )}
 
               {step < 7 ? (
@@ -173,7 +174,7 @@ export function BookAppointmentClient() {
                   type="button"
                   disabled={!canProceed}
                   onClick={nextStep}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-accent/20 hover:bg-accent/90 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-accent text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-accent/20 hover:bg-accent/90 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition-all min-h-[44px]"
                 >
                   <span>{t("nextStep")}</span>
                   <ArrowRight size={15} className="rtl:rotate-180" />
@@ -183,7 +184,7 @@ export function BookAppointmentClient() {
                   type="button"
                   disabled={isSubmitting}
                   onClick={handleConfirm}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-bold text-xs tracking-wider uppercase shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-bold text-xs tracking-wider uppercase shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition-all min-h-[48px]"
                 >
                   <CheckCircle size={17} />
                   <span>

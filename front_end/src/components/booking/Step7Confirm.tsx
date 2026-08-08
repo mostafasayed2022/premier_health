@@ -95,18 +95,19 @@ export function Step7Confirm({
   ];
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-5 sm:gap-6">
       {/* Booking Summary Card */}
-      <div className="bg-beige/60 border border-accent/20 rounded-2xl divide-y divide-accent/15 overflow-hidden shadow-sm">
+      <div className="bg-beige/60 border border-accent/20 rounded-xl sm:rounded-2xl divide-y divide-accent/15 overflow-hidden shadow-sm">
         {detailRows.map((row, i) => (
-          <div key={i} className="flex items-center gap-4 px-6 py-4 hover:bg-amber-50/40 transition-colors">
-            <div className="w-8 h-8 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
-              <row.icon size={16} />
+          <div key={i} className="flex items-center gap-3 sm:gap-4 px-3.5 py-3 sm:px-6 sm:py-4 hover:bg-amber-50/40 transition-colors">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+              <row.icon size={15} className="sm:hidden" />
+              <row.icon size={16} className="hidden sm:block" />
             </div>
-            <span className="text-xs uppercase tracking-wider font-bold text-foreground/75 w-28 shrink-0">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-bold text-foreground/75 w-20 sm:w-28 shrink-0">
               {row.label}
             </span>
-            <span className="text-sm text-primary font-bold truncate">
+            <span className="text-xs sm:text-sm text-primary font-bold truncate">
               {row.value || "-"}
             </span>
           </div>
