@@ -167,78 +167,79 @@ export interface BookingStatusResponse {
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com";
 
-/** Upload a file to Cloudinary via backend or direct unsigned Cloudinary upload. */
+/** Upload a file to the backend /api/files/ to get a real DB integer PK.
+ *  Cloudinary direct upload is only used as fallback if the backend call fails.
+ */
 export const uploadFile = async (
   file: File,
   onProgress?: (percent: number) => void,
 ): Promise<FileUpload> => {
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "u3q5mcfx";
-  const uploadPreset =
-    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "premierhealth_upload";
-
-  // Try direct Cloudinary upload if preset is explicitly provided
-  if (uploadPreset) {
-    try {
-      const cldFormData = new FormData();
-      cldFormData.append("file", file);
-      cldFormData.append("upload_preset", uploadPreset);
-
-      const { data: cldRes } = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
-        cldFormData,
-        {
-          onUploadProgress: (progressEvent) => {
-            if (onProgress && progressEvent.total) {
-              onProgress(
-                Math.round((progressEvent.loaded * 100) / progressEvent.total),
-              );
-            }
-          },
-        },
-      );
-
-      return {
-        id:
-          typeof cldRes.public_id === "number" ? cldRes.public_id : Date.now(),
-        url: cldRes.secure_url,
-        original_name: file.name,
-        size: file.size,
-        size_display: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
-        content_type: file.type,
-        extension: file.name.split(".").pop() || "",
-        created_at: new Date().toISOString(),
-      } as unknown as FileUpload;
-    } catch {
-      // Fallback to backend API upload below
-    }
-  }
+  const baseUrl = (
+    process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com"
+  ).replace(/\/api\/?$/, "").replace(/\/+$/, "");
 
   const formData = new FormData();
   formData.append("file", file);
 
   const token =
     typeof window !== "undefined"
-      ? localStorage.getItem("patient_access") ||
-        localStorage.getItem("admin_access") ||
-        localStorage.getItem("access_token")
+      ? localStorage.getItem("admin_access") ||
+        localStorage.getItem("access_token") ||
+        localStorage.getItem("patient_access")
       : null;
 
-  const { data } = await axios.post<FileUpload>(
-    `${API_BASE_URL.replace(/\/+$/, "")}/api/files/`,
-    formData,
-    {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-      onUploadProgress: (progressEvent) => {
-        if (onProgress && progressEvent.total) {
-          onProgress(
-            Math.round((progressEvent.loaded * 100) / progressEvent.total),
-          );
-        }
+  // ── Primary: upload to Django backend to register a real File record ───────
+  try {
+    const { data } = await axios.post<FileUpload>(
+      `${baseUrl}/api/files/`,
+      formData,
+      {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        onUploadProgress: (progressEvent) => {
+          if (onProgress && progressEvent.total) {
+            onProgress(
+              Math.round((progressEvent.loaded * 100) / progressEvent.total),
+            );
+          }
+        },
       },
-    },
-  );
+    );
+    return data;
+  } catch {
+    // ── Fallback: direct Cloudinary upload (id will be a Cloudinary public_id) ─
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "u3q5mcfx";
+    const uploadPreset =
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "premierhealth_upload";
 
-  return data;
+    const cldFormData = new FormData();
+    cldFormData.append("file", file);
+    cldFormData.append("upload_preset", uploadPreset);
+
+    const { data: cldRes } = await axios.post(
+      `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+      cldFormData,
+      {
+        onUploadProgress: (progressEvent) => {
+          if (onProgress && progressEvent.total) {
+            onProgress(
+              Math.round((progressEvent.loaded * 100) / progressEvent.total),
+            );
+          }
+        },
+      },
+    );
+
+    return {
+      id: typeof cldRes.public_id === "number" ? cldRes.public_id : Date.now(),
+      url: cldRes.secure_url,
+      original_name: file.name,
+      size: file.size,
+      size_display: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+      content_type: file.type,
+      extension: file.name.split(".").pop() || "",
+      created_at: new Date().toISOString(),
+    } as unknown as FileUpload;
+  }
 };
 
 // ─── Departments ──────────────────────────────────────────────────
