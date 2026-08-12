@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api/";
+  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -30,10 +30,19 @@ function getActiveLocale(): string {
 // ─── Request Interceptor: Accept-Language + Bearer Token ─────────────────────
 
 api.interceptors.request.use((config) => {
-  // 1. Attach locale so Django returns translated content in base fields
+  // 1. Prevent duplicate /api/ in URL when baseURL already ends with /api
+  if (config.url) {
+    const rawBase = (config.baseURL || API_BASE_URL || "").trim().replace(/\/+$/, "");
+    let cleanUrl = config.url.replace(/^\/+/, "");
+    if (rawBase.endsWith("/api") && cleanUrl.startsWith("api/")) {
+      config.url = cleanUrl.substring(4);
+    }
+  }
+
+  // 2. Attach locale so Django returns translated content in base fields
   config.headers["Accept-Language"] = getActiveLocale();
 
-  // 2. Attach auth token when available
+  // 3. Attach auth token when available
   const token =
     typeof window !== "undefined"
       ? localStorage.getItem("patient_access") ||

@@ -28,6 +28,7 @@ import {
   mergeBranch,
   mergeDoc,
   mapBooking,
+  type ApiDoctor,
 } from "./helpers";
 
 // ─── API Response Types ─────────────────────────────────────────────
@@ -67,23 +68,6 @@ interface ApiBranch {
   name_ar?: string;
   address_ar?: string;
 }
-
-interface ApiDoctor {
-  id: number;
-  name?: string;
-  slug?: string;
-  specialization?: string;
-  specialty?: string;
-  specialty_ar?: string;
-  position?: string;
-  position_ar?: string;
-  bio?: string;
-  bio_ar?: string;
-  image_url?: string;
-  photo?: string;
-  effective_fee?: number;
-}
-
 interface ApiGalleryItem {
   id: number | string;
   title: string;
@@ -174,7 +158,9 @@ export const uploadFile = async (
 ): Promise<FileUpload> => {
   const baseUrl = (
     process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com"
-  ).replace(/\/api\/?$/, "").replace(/\/+$/, "");
+  )
+    .replace(/\/api\/?$/, "")
+    .replace(/\/+$/, "");
 
   const formData = new FormData();
   formData.append("file", file);
@@ -532,6 +518,37 @@ export const getPayments = async (): Promise<Payment[]> => {
   } catch {
     return [];
   }
+};
+
+// ─── Admin Analytics Stats ────────────────────────────────────────
+
+export interface AdminAnalytics {
+  total_bookings: number;
+  bookings_this_month: number;
+  active_bookings: number;
+  completed_bookings: number;
+  cancelled_bookings: number;
+  total_patients: number;
+  total_doctors: number;
+  total_departments: number;
+  total_services: number;
+  total_branches: number;
+  total_staff: number;
+  total_availability: number;
+  total_revenue: number;
+}
+
+export interface AdminStatsResponse {
+  analytics: AdminAnalytics;
+  daily_bookings: { date: string; count: number }[];
+  branch_bookings: { branch: string; count: number }[];
+  doctor_bookings: { doctor: string; count: number }[];
+  payment_stats: { status: string; count: number }[];
+}
+
+export const getAdminStats = async (): Promise<AdminStatsResponse> => {
+  const { data } = await api.get<AdminStatsResponse>("admin/stats/");
+  return data;
 };
 
 // ─── Profile Mock Data & Endpoints ─────────────────────────────────

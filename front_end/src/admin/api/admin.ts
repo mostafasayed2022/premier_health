@@ -1,4 +1,3 @@
-
 import { api, tokenStorage } from "./client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -27,7 +26,7 @@ export interface SchemaField {
     | "nested_list"
     | "nested"
     | "multi_file";
-    
+
   label: string;
   read_only: boolean;
   required: boolean;
@@ -126,8 +125,13 @@ export function useLogin() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ username, password }: { username: string; password: string }) =>
-      authApi.login(username, password),
+    mutationFn: ({
+      username,
+      password,
+    }: {
+      username: string;
+      password: string;
+    }) => authApi.login(username, password),
     onSuccess: () => {
       // Invalidate any user-related queries
       queryClient.invalidateQueries({ queryKey: ["user"] });
@@ -183,7 +187,8 @@ export function useInvalidateSchemas() {
   const queryClient = useQueryClient();
 
   return {
-    invalidateAll: () => queryClient.invalidateQueries({ queryKey: ["schemas"] }),
+    invalidateAll: () =>
+      queryClient.invalidateQueries({ queryKey: ["schemas"] }),
     invalidateOne: (modelName: string) =>
       queryClient.invalidateQueries({ queryKey: ["schemas", modelName] }),
   };
@@ -247,13 +252,11 @@ export const crudApi = {
       );
       return res.results.map((item) => ({
         value: (item.id ?? item.pk ?? item.slug ?? "") as number | string,
-        label: (
-          item.name ??
+        label: (item.name ??
           item.title ??
           item.username ??
           item.label ??
-          String(item.id)
-        ) as string,
+          String(item.id)) as string,
       }));
     } catch (error) {
       console.error("Failed to fetch relation options:", error);

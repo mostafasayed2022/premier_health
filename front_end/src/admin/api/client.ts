@@ -10,11 +10,24 @@
  *  - Standardized error envelope parsing
  */
 
-const BASE_URL = (
+const RAW_BASE = (
   (typeof process !== "undefined"
     ? process.env?.NEXT_PUBLIC_API_URL || process.env?.NEXT_PUBLIC_API_BASE_URL
-    : undefined) || "https://premiier.pythonanywhere.com"
-).replace(/\/+$/, "");
+    : undefined) || "https://premiier.pythonanywhere.com/api"
+).trim().replace(/\/+$/, "");
+
+/**
+ * Constructs a normalized full API URL.
+ * Automatically ensures the URL contains a single `/api/` prefix and avoids `/api/api/`.
+ */
+export function getFullApiUrl(path: string): string {
+  const apiBase = RAW_BASE.endsWith("/api") ? RAW_BASE : `${RAW_BASE}/api`;
+  let cleanPath = path.replace(/^\/+/, "");
+  if (cleanPath.startsWith("api/")) {
+    cleanPath = cleanPath.substring(4);
+  }
+  return `${apiBase}/${cleanPath}`;
+}
 
 // ─── Token storage ────────────────────────────────────────────────────────
 
@@ -80,7 +93,7 @@ async function refreshAccessToken(): Promise<string> {
     const refresh = tokenStorage.getRefresh();
     if (!refresh) throw new ApiError(401, { detail: "No refresh token" });
 
-    const res = await fetch(`${BASE_URL}/api/auth/refresh/`, {
+    const res = await fetch(getFullApiUrl("auth/refresh/"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refresh }),
@@ -119,7 +132,7 @@ export async function apiFetch<T = unknown>(
 ): Promise<T> {
   const { params, ...init } = options;
 
-  let url = `${BASE_URL}/${path.replace(/^\/+/, "")}`;
+  let url = getFullApiUrl(path);
   if (params && Object.keys(params).length > 0) {
     const qs = new URLSearchParams(
       Object.fromEntries(

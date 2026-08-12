@@ -38,8 +38,19 @@ interface PatientAuthContextValue {
 
 const PatientAuthContext = createContext<PatientAuthContextValue | null>(null);
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api/";
+function getApiUrl(path: string): string {
+  const raw = (
+    process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api"
+  )
+    .trim()
+    .replace(/\/+$/, "");
+  const apiBase = raw.endsWith("/api") ? raw : `${raw}/api`;
+  let cleanPath = path.replace(/^\/+/, "");
+  if (cleanPath.startsWith("api/")) {
+    cleanPath = cleanPath.substring(4);
+  }
+  return `${apiBase}/${cleanPath}`;
+}
 
 export function PatientAuthProvider({ children }: { children: ReactNode }) {
   const [patientUser, setPatientUser] = useState<PatientUser | null>(null);
@@ -65,7 +76,7 @@ export function PatientAuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback(
     async (emailOrUsername: string, password: string) => {
-      const { data } = await axios.post(`${API_URL}token/`, {
+      const { data } = await axios.post(getApiUrl("token/"), {
         username: emailOrUsername,
         password,
       });
@@ -90,7 +101,7 @@ export function PatientAuthProvider({ children }: { children: ReactNode }) {
       lastName?: string;
     }) => {
       // 1. Submit registration
-      await axios.post(`${API_URL}auth/register/`, {
+      await axios.post(getApiUrl("auth/register/"), {
         email: payload.email,
         password: payload.password,
         phone_number: payload.phoneNumber,
