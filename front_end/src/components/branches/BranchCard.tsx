@@ -23,7 +23,9 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800";
 
   const branchServices: string[] = Array.isArray(branch.services)
-    ? branch.services.map((s: any) => (typeof s === "string" ? s : s.name || String(s)))
+    ? branch.services.map((s: any) =>
+        typeof s === "string" ? s : s.name || String(s),
+      )
     : [];
 
   return (
@@ -39,7 +41,11 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
         <div
           onClick={() => onImageClick?.(index)}
           className="relative h-60 w-full overflow-hidden bg-beige cursor-pointer group/img"
-          title={isAr ? "انقر لمشاهدة الصورة بحجم كامل" : "Click to view photo in gallery"}
+          title={
+            isAr
+              ? "انقر لمشاهدة الصورة بحجم كامل"
+              : "Click to view photo in gallery"
+          }
         >
           <Image
             src={imageUrl}
@@ -62,7 +68,10 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
           {/* Expand / View Photo Badge */}
           <div className="absolute bottom-4 left-4 rtl:left-auto rtl:right-4">
             <span className="inline-flex items-center gap-1.5 bg-primary/70 backdrop-blur-sm rounded-full px-3.5 py-1.5 border border-white/10 text-white text-xs font-medium hover:bg-accent transition-colors shadow-md">
-              <Maximize2 size={13} className="text-accent group-hover/img:text-white" />
+              <Maximize2
+                size={13}
+                className="text-accent group-hover/img:text-white"
+              />
               <span>{t("viewPhoto")}</span>
             </span>
           </div>
@@ -85,7 +94,9 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
                 <div className="flex items-start gap-3">
                   <MapPin size={14} className="text-accent mt-0.5 shrink-0" />
                   <p className="text-xs text-foreground/75 leading-relaxed font-medium">
-                    {isAr ? branch.address_ar || branch.address : branch.address}
+                    {isAr
+                      ? branch.address_ar || branch.address
+                      : branch.address}
                   </p>
                 </div>
               )}
@@ -123,29 +134,40 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
           </div>
 
           {/* Footer Bar */}
-          <div className="flex items-center justify-between pt-4 border-t border-accent/10 mt-auto">
-            {branch.mapUrl ? (
-              <a
-                href={branch.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-bold text-accent tracking-wide uppercase flex items-center gap-1.5 hover:text-primary transition-colors"
-              >
-                <MapPin size={13} />
-                <span>{t("directions")}</span>
-              </a>
-            ) : (
-              <span className="text-xs font-bold text-accent tracking-wide uppercase">
-                {t("branchLabel")}
-              </span>
-            )}
-            <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
-              <ArrowRight
-                size={15}
-                className="text-accent group-hover:text-white group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 transition-all"
-              />
-            </div>
-          </div>
+          {(() => {
+            const finalMapUrl =
+              branch.mapUrl ||
+              branch.map_url ||
+              (branch.latitude && branch.longitude
+                ? `https://www.google.com/maps?q=${branch.latitude},${branch.longitude}`
+                : null);
+
+            return (
+              <div className="flex items-center justify-between pt-4 border-t border-accent/10 mt-auto">
+                {finalMapUrl ? (
+                  <a
+                    href={finalMapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-accent tracking-wide uppercase flex items-center gap-1.5 hover:text-primary transition-colors"
+                  >
+                    <MapPin size={13} />
+                    <span>{t("directions")}</span>
+                  </a>
+                ) : (
+                  <span className="text-xs font-bold text-accent tracking-wide uppercase">
+                    {t("branchLabel")}
+                  </span>
+                )}
+                <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <ArrowRight
+                    size={15}
+                    className="text-accent group-hover:text-white group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 transition-all"
+                  />
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </motion.div>

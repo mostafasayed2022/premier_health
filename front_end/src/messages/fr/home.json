@@ -56,5 +56,15 @@
   "faqBadge": "FAQ",
   "departmentsBadge": "DÉPARTEMENTS MÉDICAUX",
   "departmentsFooter": "Allier innovation, excellence médicale et soins personnalisés.",
-  "details": "Détails"
+  "details": "Détails",
+  "watchVideoReview": "Regarder l'avis vidéo",
+  "clientVideoReview": "Avis vidéo client",
+  "statsDoctorsLabel": "Médecins Experts",
+  "statsDoctorsSublabel": "Spécialistes Certifiés",
+  "statsDeptLabel": "Départements Spécialisés",
+  "statsDeptSublabel": "Centres Médicaux Complets",
+  "statsPatientsLabel": "Patients Satisfaits",
+  "statsPatientsSublabel": "Soins Exceptionnels de Confiance",
+  "statsServicesLabel": "Services Premium",
+  "statsServicesSublabel": "Solutions de Santé Avancées"
 }

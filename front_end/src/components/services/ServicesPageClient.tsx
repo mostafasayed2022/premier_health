@@ -20,7 +20,12 @@ export function ServicesPageClient() {
   const { data: services = [], isLoading } = useServices();
 
   const filtered = services.filter((s) => {
-    const matchesCategory = activeCategory === "all" || s.category === activeCategory;
+    const matchesCategory =
+      activeCategory === "all" ||
+      s.category === activeCategory ||
+      s.department_slug === activeCategory ||
+      (s.department_name &&
+        s.department_name.toLowerCase() === activeCategory.toLowerCase());
     const q = search.toLowerCase();
     const matchesSearch =
       !q ||
@@ -50,7 +55,9 @@ export function ServicesPageClient() {
           </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-foreground/60 font-medium">
-            {isAr ? "لم نجد خدمات تطابق اختيارك." : "No services found matching your criteria."}
+            {isAr
+              ? "لم نجد خدمات تطابق اختيارك."
+              : "No services found matching your criteria."}
           </div>
         ) : (
           <motion.div

@@ -39,6 +39,7 @@ interface ApiService {
   description_ar?: string;
   department_slug?: string;
   department_name?: string;
+  category?: string;
 }
 
 interface ApiBranch {
@@ -50,11 +51,15 @@ interface ApiBranch {
   latitude: number | null;
   longitude: number | null;
   image_url: string | null;
+  map_url?: string | null;
   name_ar?: string;
   address_ar?: string;
 }
 
-interface ApiDoctor {
+export interface ApiDoctor {
+  patients?: number;
+  experience?: number;
+  languages?: any;
   id: number;
   name?: string;
   name_ar?: string;
@@ -105,7 +110,7 @@ export function mergeDept(d: ApiDepartment): Department {
     photo: getOptimizedImageUrl(
       d.image_url ||
         "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
-      800
+      800,
     ),
     doctorsCount: 0,
   } as Department;
@@ -114,15 +119,14 @@ export function mergeDept(d: ApiDepartment): Department {
 // ─── Service Merge ────────────────────────────────────────────────────────────
 
 export function mergeSvc(s: ApiService): Service {
+  const deptSlug = s.department_slug || s.category || "general";
+
   return {
     ...s,
     id: String(s.id),
-    category: s.department_slug || "general",
-    department_name:
-      s.department_name ||
-      s.department_slug ||
-      "General",
-    department_slug: s.department_slug || "general",
+    category: deptSlug,
+    department_name: s.department_name || deptSlug,
+    department_slug: deptSlug,
     price: s.default_fee ?? 150,
     duration: s.duration_minutes ?? 0,
     name_ar: s.name_ar || s.name,
@@ -130,7 +134,7 @@ export function mergeSvc(s: ApiService): Service {
     photo: getOptimizedImageUrl(
       s.image_url ||
         "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=600",
-      600
+      600,
     ),
     benefits: [],
     benefits_ar: [],
@@ -142,6 +146,12 @@ export function mergeSvc(s: ApiService): Service {
 // ─── Branch Merge ─────────────────────────────────────────────────────────────
 
 export function mergeBranch(b: ApiBranch): Branch {
+  const generatedMapUrl =
+    b.map_url ||
+    (b.latitude && b.longitude
+      ? `https://www.google.com/maps?q=${b.latitude},${b.longitude}`
+      : "");
+
   return {
     ...b,
     id: String(b.id),
@@ -150,12 +160,13 @@ export function mergeBranch(b: ApiBranch): Branch {
     photo: getOptimizedImageUrl(
       b.image_url ||
         "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
-      800
+      800,
     ),
     hours: "",
     hours_ar: "",
     mapEmbed: "",
-    mapUrl: "",
+    mapUrl: generatedMapUrl,
+    map_url: generatedMapUrl,
     country: "",
     services: [],
   } as Branch;
@@ -178,12 +189,16 @@ export function mergeDoc(d: ApiDoctor): Doctor {
       d.image_url ||
         d.photo ||
         "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600",
-      600
+      600,
     ),
     effective_fee: d.effective_fee ?? 0,
-    languages: [],
+    languages: d.languages
+      ? typeof d.languages === "string"
+        ? d.languages.split(",").map((s) => s.trim())
+        : d.languages
+      : ["English", "Arabic"],
     languages_ar: [],
-    experience: 0,
+    experience: d.experience ?? 10,
     gender: "Male" as const,
     branch: "",
     branch_ar: "",
@@ -191,8 +206,8 @@ export function mergeDoc(d: ApiDoctor): Doctor {
     certifications: [],
     certifications_ar: [],
     schedule: [],
-    rating: 0,
-    patients: 0,
+    rating: 5,
+    patients: d.patients ?? 500,
     education: [],
     specializations: [],
   } as Doctor;

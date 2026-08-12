@@ -64,5 +64,8 @@
   "verifyingPayment": "Verifica del pagamento in corso, attendere...",
   "verifyingLonger": "La verifica del pagamento richiede più tempo del previsto. Ti avviseremo una volta confermato.",
   "cannotVerifyPayment": "Impossibile verificare lo stato del pagamento. Contatta l'assistenza.",
-  "completeCurrentStep": "Completa prima il passaggio corrente."
+  "completeCurrentStep": "Completa prima il passaggio corrente.",
+  "noDepartments": "Nessun reparto disponibile al momento.",
+  "noServices": "Nessun servizio disponibile in questo reparto al momento.",
+  "noBranches": "Nessuna clinica disponibile per questo servizio al momento."
 }

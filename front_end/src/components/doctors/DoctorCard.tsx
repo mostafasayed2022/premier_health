@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Star, Award, Languages } from "lucide-react";
 import Image from "next/image";
@@ -15,8 +15,6 @@ import React from "react";
 
 export const DoctorCard = React.memo(function DoctorCard({ doctor }: DoctorCardProps) {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   const optimizedPhoto = getOptimizedImageUrl(doctor.photo, 600, 75);
 
@@ -36,7 +34,7 @@ export const DoctorCard = React.memo(function DoctorCard({ doctor }: DoctorCardP
           <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent pointer-events-none" />
           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
             <span className="bg-accent text-white text-[9px] uppercase tracking-wider font-bold px-3 py-1 rounded-full">
-              {isAr ? doctor.specialty_ar : doctor.specialty}
+              {doctor.specialty}
             </span>
             <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-2.5 py-1">
               <Star size={10} className="text-accent fill-current" />
@@ -50,10 +48,10 @@ export const DoctorCard = React.memo(function DoctorCard({ doctor }: DoctorCardP
         {/* Info */}
         <div className="p-6">
           <h3 className="text-base font-serif font-bold text-primary group-hover:text-accent transition-colors">
-            {isAr ? doctor.name_ar : doctor.name}
+            {doctor.name}
           </h3>
           <p className="text-[10px] uppercase tracking-wider text-accent font-bold mt-1">
-            {isAr ? doctor.position_ar : doctor.position}
+            {doctor.position}
           </p>
           <div className="flex items-center gap-4 mt-4 text-[10px] text-foreground/75 border-t border-accent/10 pt-4">
             <span className="flex items-center gap-1">

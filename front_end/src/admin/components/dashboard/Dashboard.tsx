@@ -1,15 +1,14 @@
 "use client";
 // admin/components/dashboard/Dashboard.tsx
-import React from "react";
 import { S } from "../../lib/styles";
 import { Icon } from "../../lib/icons";
 import type { SchemaListing } from "../../api/admin";
 import { useDashboard } from "../../hooks/useDashboard";
-import { getItemIcon } from "../../hooks/useSidebar";
 import { BookingsTable } from "./BookingsTable";
 import { DashboardHero } from "./DashboardHero";
 import { DashboardNavCards } from "./DashboardNavCards";
 import dynamic from "next/dynamic";
+import { AnalyticsCards } from "@/components/dashboard/analytics";
 
 const DashboardCharts = dynamic(
   () => import("./DashboardCharts").then((mod) => mod.DashboardCharts),
@@ -32,7 +31,7 @@ const DashboardCharts = dynamic(
         {Icon.spinner} Loading charts...
       </div>
     ),
-  }
+  },
 );
 
 interface DashboardProps {
@@ -46,7 +45,10 @@ export function Dashboard({ schemas }: DashboardProps) {
   return (
     <div style={{ ...S.pageWrap, maxWidth: 1280 }}>
       <DashboardHero user={user} navigateTo={navigateTo} />
-      
+      {/* ─── Live Analytics Cards ──────────────────────────────────────── */}
+      <div style={{ marginBottom: 32 }}>
+        <AnalyticsCards />
+      </div>
       <DashboardNavCards schemas={schemas} navigateTo={navigateTo} />
 
       {/* ─── 4. Analytics & Recent Bookings ───────────────────────────── */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Star, ShieldCheck, Calendar } from "lucide-react";
 import Image from "next/image";
@@ -15,8 +15,6 @@ interface DoctorDetailHeroProps {
 
 export function DoctorDetailHero({ doctor, children }: DoctorDetailHeroProps) {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#fcfbf9] via-[#f7f2ea] to-[#fcfbf9] py-12 md:py-16 text-primary border-b border-accent/15">
@@ -34,7 +32,7 @@ export function DoctorDetailHero({ doctor, children }: DoctorDetailHeroProps) {
           </Link>
           <span>/</span>
           <span className="text-primary font-bold">
-            {isAr ? doctor.name_ar : doctor.name}
+            {doctor.name}
           </span>
         </div>
 
@@ -119,16 +117,16 @@ export function DoctorDetailHero({ doctor, children }: DoctorDetailHeroProps) {
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-[10px] uppercase tracking-widest font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  {isAr ? doctor.specialty_ar : doctor.specialty}
+                  {doctor.specialty}
                 </span>
               </div>
 
               <h1 className="text-3xl md:text-4xl font-serif font-bold text-primary leading-tight mt-1">
-                {isAr ? doctor.name_ar : doctor.name}
+                {doctor.name}
               </h1>
 
               <p className="text-xs uppercase tracking-widest text-accent font-bold">
-                {isAr ? doctor.position_ar : doctor.position}
+                {doctor.position}
               </p>
             </div>
 

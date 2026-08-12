@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { DoctorData } from "./types";
 
 interface DoctorDetailBioProps {
@@ -9,8 +9,6 @@ interface DoctorDetailBioProps {
 
 export function DoctorDetailBio({ doctor }: DoctorDetailBioProps) {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   return (
     <div className="flex flex-col gap-6">
@@ -20,7 +18,7 @@ export function DoctorDetailBio({ doctor }: DoctorDetailBioProps) {
           {t("Doctors.about")}
         </h3>
         <p className="text-sm text-foreground/80 leading-relaxed font-medium">
-          {isAr ? doctor.bio_ar : doctor.bio}
+          {doctor.bio}
         </p>
       </div>
 

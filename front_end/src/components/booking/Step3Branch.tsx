@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { getBranchesByService, Branch } from "@/lib/api";
 import { MapPin, Check, Phone } from "lucide-react";
 import Image from "next/image";
@@ -17,8 +17,7 @@ export function Step3Branch({
   onSelect,
   serviceId,
 }: Step3BranchProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+  const t = useTranslations("Booking");
   const [branches, setBranches] = useState<Branch[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -48,7 +47,7 @@ export function Step3Branch({
     return (
       <div className="text-center py-12">
         <p className="text-foreground/70 font-medium">
-          {isAr ? "لا توجد فروع متاحة حالياً لهذه الخدمة." : "No branches available for this service right now."}
+          {t("noBranches")}
         </p>
       </div>
     );
@@ -59,8 +58,6 @@ export function Step3Branch({
       {branches.map((branch) => {
         const isSelected = selected === branch.id;
         const photoSrc = branch.image_url || branch.photo;
-        const name = isAr ? (branch.name_ar || branch.name) : (branch.name || branch.name_ar);
-        const address = isAr ? (branch.address_ar || branch.address) : (branch.address || branch.address_ar);
 
         return (
           <button
@@ -78,7 +75,7 @@ export function Step3Branch({
               {photoSrc ? (
                 <Image
                   src={photoSrc}
-                  alt={name || "Branch"}
+                  alt={branch.name || "Branch"}
                   fill
                   sizes="64px"
                   className="object-cover"
@@ -98,11 +95,11 @@ export function Step3Branch({
             {/* Branch Info */}
             <div className="flex-1 min-w-0">
               <h3 className="font-serif font-bold text-primary text-sm sm:text-base leading-snug truncate group-hover:text-accent transition-colors">
-                {name}
+                {branch.name}
               </h3>
               <div className="flex items-start gap-1 sm:gap-1.5 mt-1 sm:mt-1.5 text-[11px] sm:text-xs text-foreground/75">
                 <MapPin size={12} className="text-accent shrink-0 mt-0.5" />
-                <span className="line-clamp-2 leading-relaxed">{address}</span>
+                <span className="line-clamp-2 leading-relaxed">{branch.address}</span>
               </div>
               {branch.phone && (
                 <div className="flex items-center gap-1 sm:gap-1.5 mt-1.5 sm:mt-2 text-[10px] sm:text-[11px] text-foreground/60 font-mono">

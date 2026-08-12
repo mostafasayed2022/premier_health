@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -14,8 +14,6 @@ export function DepartmentDetailHero({
   department,
 }: DepartmentDetailHeroProps) {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   return (
     <section className="relative overflow-hidden w-full min-h-[35vh] md:min-h-[50vh] flex items-center py-12 md:py-20 bg-[#385366] rounded-none md:rounded-[32px] border-y md:border border-accent/15 mb-8 md:mb-12">
@@ -47,7 +45,7 @@ export function DepartmentDetailHero({
           </Link>
           <span>/</span>
           <span className="text-white/80 font-medium">
-            {isAr ? department.name_ar : department.name}
+            {department.name}
           </span>
         </div>
 
@@ -61,11 +59,11 @@ export function DepartmentDetailHero({
             {t("Departments.medicalDepartment")}
           </span>
           <h1 className="text-3xl md:text-5xl font-serif text-white leading-tight">
-            {isAr ? department.name_ar : department.name}
+            {department.name}
           </h1>
           <div className="h-[1px] w-20 bg-accent shrink-0" />
           <p className="text-white/90 text-xs md:text-sm leading-relaxed font-medium">
-            {isAr ? department.description_ar : department.description}
+            {department.description}
           </p>
         </motion.div>
       </div>

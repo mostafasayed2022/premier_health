@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   getDepartments,
   getServicesByDepartment,
@@ -21,9 +21,8 @@ interface UseStep7ConfirmProps {
 }
 
 export function useStep7Confirm({ booking, onEmailChange, onPhoneChange }: UseStep7ConfirmProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
   const t = useTranslations("Booking");
+  const tAuth = useTranslations("Auth");
 
   const { patientUser, isAuthenticated, login, register, logout } = usePatientAuth();
   
@@ -85,7 +84,7 @@ export function useStep7Confirm({ booking, onEmailChange, onPhoneChange }: UseSt
     setAuthLoading(true);
     try {
       await login(loginForm.username, loginForm.password);
-      toast.success(isAr ? "تم تسجيل الدخول بنجاح!" : "Logged in successfully!");
+      toast.success(tAuth("loginSuccess"));
       setAuthMode("guest"); // Go back to guest tab which is now authenticated
     } catch (err: any) {
       toast.error(err.response?.data?.detail || err.message || "Login failed.");
@@ -105,7 +104,7 @@ export function useStep7Confirm({ booking, onEmailChange, onPhoneChange }: UseSt
         firstName: registerForm.firstName,
         lastName: registerForm.lastName,
       });
-      toast.success(isAr ? "تم إنشاء الحساب بنجاح!" : "Account created successfully!");
+      toast.success(tAuth("registerSuccess"));
       setAuthMode("guest");
     } catch (err: any) {
       toast.error(err.response?.data?.detail || err.message || "Registration failed.");
@@ -139,7 +138,6 @@ export function useStep7Confirm({ booking, onEmailChange, onPhoneChange }: UseSt
   };
 
   return {
-    isAr,
     t,
     authMode,
     setAuthMode,

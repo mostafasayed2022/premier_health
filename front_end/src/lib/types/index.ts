@@ -76,6 +76,9 @@ export interface Branch {
   mapUrl: string;
   photo: string;
   image_url?: string;
+  latitude?: number | null;
+  longitude?: number | null;
+  map_url?: string | null;
   country: string;
   services: string[];
 }

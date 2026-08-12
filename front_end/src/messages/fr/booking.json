@@ -64,5 +64,8 @@
   "verifyingPayment": "Vérification de votre paiement, veuillez patienter...",
   "verifyingLonger": "La vérification du paiement prend plus de temps que prévu. Nous vous informerons dès confirmation.",
   "cannotVerifyPayment": "Impossible de vérifier le statut du paiement. Veuillez contacter le support.",
-  "completeCurrentStep": "Veuillez d'abord compléter l'étape actuelle."
+  "completeCurrentStep": "Veuillez d'abord compléter l'étape actuelle.",
+  "noDepartments": "Aucun département disponible pour le moment.",
+  "noServices": "Aucun service disponible dans ce département pour le moment.",
+  "noBranches": "Aucune clinique disponible pour ce service pour le moment."
 }

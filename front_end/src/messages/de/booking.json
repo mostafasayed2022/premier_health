@@ -64,5 +64,8 @@
   "verifyingPayment": "Zahlung wird überprüft, bitte warten...",
   "verifyingLonger": "Die Zahlungsüberprüfung dauert länger als erwartet. Wir benachrichtigen Sie nach der Bestätigung.",
   "cannotVerifyPayment": "Zahlungsstatus konnte nicht überprüft werden. Bitte kontaktieren Sie den Support.",
-  "completeCurrentStep": "Bitte schließen Sie zuerst den aktuellen Schritt ab."
+  "completeCurrentStep": "Bitte schließen Sie zuerst den aktuellen Schritt ab.",
+  "noDepartments": "Derzeit sind keine Abteilungen verfügbar.",
+  "noServices": "Derzeit sind keine Dienste in dieser Abteilung verfügbar.",
+  "noBranches": "Derzeit sind keine Filialen für diesen Dienst verfügbar."
 }

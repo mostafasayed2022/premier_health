@@ -63,12 +63,8 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // ── /dashboard/* — outside next-intl, requires admin or doctor ─────────────
+  // ── /dashboard/* — outside next-intl (no locale prefix) ─────────────
   if (pathname.startsWith("/dashboard")) {
-    const role = getRoleFromCookies(request);
-    if (role !== "admin" && role !== "doctor") {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
     return NextResponse.next();
   }
 

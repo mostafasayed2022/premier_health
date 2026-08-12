@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote, Sparkles, ChevronLeft, ChevronRight, Play, Video, X } from "lucide-react";
 import { Card } from "@/components/ui/Card";
@@ -10,8 +10,6 @@ import { TestimonialItem } from "@/lib/types";
 
 export default function TestimonialsSection() {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,9 +51,8 @@ export default function TestimonialsSection() {
   const videoTarget = activeTestimonial?.video_file_url || activeTestimonial?.video_url;
   const ratingCount = Math.max(0, Math.min(5, Math.floor(Number(activeTestimonial?.rating) || 5)));
 
-  const descriptionText = isAr
-    ? activeTestimonial?.text_ar || (activeTestimonial as any)?.description_ar || activeTestimonial?.text || (activeTestimonial as any)?.description || ""
-    : activeTestimonial?.text || (activeTestimonial as any)?.description || activeTestimonial?.text_ar || (activeTestimonial as any)?.description_ar || "";
+  const descriptionText =
+    activeTestimonial?.text || (activeTestimonial as any)?.description || "";
 
   const slideVariants = {
     enter: (dir: number) => ({
@@ -134,14 +131,14 @@ export default function TestimonialsSection() {
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-20 w-12 h-12 rounded-full border border-accent/30 bg-white/90 hover:bg-accent hover:border-accent text-accent hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none hidden md:flex"
             aria-label="Previous review"
           >
-            <ChevronLeft size={22} className={isAr ? "rotate-180" : ""} />
+            <ChevronLeft size={22} />
           </button>
           <button
             onClick={nextSlide}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-20 w-12 h-12 rounded-full border border-accent/30 bg-white/90 hover:bg-accent hover:border-accent text-accent hover:text-white flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none hidden md:flex"
             aria-label="Next review"
           >
-            <ChevronRight size={22} className={isAr ? "rotate-180" : ""} />
+            <ChevronRight size={22} />
           </button>
 
           {/* Review Card - Fixed height to completely eliminate CLS */}
@@ -173,7 +170,7 @@ export default function TestimonialsSection() {
                         className="mb-6 px-4 py-1.5 rounded-full bg-primary/90 text-white text-[11px] font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-accent transition-all duration-300 shadow-md border border-accent/30 group"
                       >
                         <Play size={12} fill="currentColor" className="text-accent group-hover:text-white" />
-                        <span>{isAr ? "شاهد مراجعة الفيديو" : "Watch Video Review"}</span>
+                        <span>{t("Home.watchVideoReview")}</span>
                       </button>
                     )}
 
@@ -203,7 +200,7 @@ export default function TestimonialsSection() {
                       {activeTestimonial.image_url ? (
                         <Image
                           src={activeTestimonial.image_url}
-                          alt={isAr ? activeTestimonial.name_ar || activeTestimonial.name : activeTestimonial.name}
+                          alt={activeTestimonial.name}
                           width={56}
                           height={56}
                           className="h-14 w-14 rounded-full object-cover shadow-inner border border-accent/30"
@@ -216,14 +213,10 @@ export default function TestimonialsSection() {
 
                       <div>
                         <h4 className="text-base md:text-lg font-serif font-bold text-[#3B3223]">
-                          {isAr
-                            ? activeTestimonial.name_ar || activeTestimonial.name
-                            : activeTestimonial.name}
+                          {activeTestimonial.name}
                         </h4>
                         <p className="text-[10px] uppercase tracking-[0.25em] text-[#8C7A5D] font-black mt-1">
-                          {isAr
-                            ? activeTestimonial.role_ar || activeTestimonial.role
-                            : activeTestimonial.role}
+                          {activeTestimonial.role}
                         </p>
                       </div>
                     </div>
@@ -241,7 +234,7 @@ export default function TestimonialsSection() {
               className="w-10 h-10 rounded-full border border-accent/30 bg-white text-accent flex items-center justify-center transition-all duration-300 md:hidden shadow-sm"
               aria-label="Previous review"
             >
-              <ChevronLeft size={18} className={isAr ? "rotate-180" : ""} />
+              <ChevronLeft size={18} />
             </button>
 
             {/* Dots */}
@@ -272,7 +265,7 @@ export default function TestimonialsSection() {
               className="w-10 h-10 rounded-full border border-accent/30 bg-white text-accent flex items-center justify-center transition-all duration-300 md:hidden shadow-sm"
               aria-label="Next review"
             >
-              <ChevronRight size={18} className={isAr ? "rotate-180" : ""} />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>
@@ -293,7 +286,7 @@ export default function TestimonialsSection() {
               <div className="flex items-center gap-2 text-white">
                 <Sparkles size={16} className="text-accent animate-pulse" />
                 <span className="text-[10px] uppercase font-bold text-accent tracking-widest">
-                  {locale === "ar" ? "رأي فيديو لعميل" : "Client Video Review"}
+                  {t("Home.clientVideoReview")}
                 </span>
               </div>
               <button

@@ -56,5 +56,15 @@
   "faqBadge": "FAQ",
   "departmentsBadge": "TIBBİ BÖLÜMLER",
   "departmentsFooter": "İnovasyon, tıbbi mükemmellik ve kişiselleştirilmiş bakımı bir araya getiriyoruz.",
-  "details": "Detaylar"
+  "details": "Detaylar",
+  "watchVideoReview": "Video yorumunu izle",
+  "clientVideoReview": "Müşteri video yorumu",
+  "statsDoctorsLabel": "Uzman Doktorlar",
+  "statsDoctorsSublabel": "Sertifikalı Uzmanlar",
+  "statsDeptLabel": "Uzman Departmanlar",
+  "statsDeptSublabel": "Kapsamlı Tıp Merkezleri",
+  "statsPatientsLabel": "Memnun Hastalar",
+  "statsPatientsSublabel": "Güvenilir Olağanüstü Bakım",
+  "statsServicesLabel": "Premium Hizmetler",
+  "statsServicesSublabel": "Gelişmiş Sağlık Çözüleri"
 }

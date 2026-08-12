@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Award, Calendar, Languages } from "lucide-react";
 import { DoctorData } from "./types";
 
@@ -10,8 +10,6 @@ interface DoctorDetailStatsProps {
 
 export function DoctorDetailStats({ doctor }: DoctorDetailStatsProps) {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   const stats = [
     {

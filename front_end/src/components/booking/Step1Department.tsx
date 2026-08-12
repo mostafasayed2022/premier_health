@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { getDepartments, Department } from "@/lib/api";
 import { Stethoscope, Check } from "lucide-react";
 import Image from "next/image";
@@ -12,8 +12,7 @@ interface Step1DepartmentProps {
 }
 
 export function Step1Department({ selected, onSelect }: Step1DepartmentProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+  const t = useTranslations("Booking");
   const [departments, setDepartments] = useState<Department[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +37,7 @@ export function Step1Department({ selected, onSelect }: Step1DepartmentProps) {
     return (
       <div className="text-center py-12">
         <p className="text-foreground/70 font-medium">
-          {isAr ? "لا توجد أقسام متاحة حالياً." : "No departments available right now."}
+          {t("noDepartments")}
         </p>
       </div>
     );
@@ -49,8 +48,6 @@ export function Step1Department({ selected, onSelect }: Step1DepartmentProps) {
       {departments.map((dept) => {
         const isSelected = selected === dept.id;
         const photoSrc = dept.image_url || dept.photo;
-        const name = isAr ? (dept.name_ar || dept.name) : (dept.name || dept.name_ar);
-        const desc = isAr ? (dept.description_ar || dept.description) : (dept.description || dept.description_ar);
 
         return (
           <button
@@ -68,7 +65,7 @@ export function Step1Department({ selected, onSelect }: Step1DepartmentProps) {
               {photoSrc ? (
                 <Image
                   src={photoSrc}
-                  alt={name || "Department"}
+                  alt={dept.name || "Department"}
                   fill
                   sizes="56px"
                   className="object-cover"
@@ -90,10 +87,10 @@ export function Step1Department({ selected, onSelect }: Step1DepartmentProps) {
             {/* Department Info */}
             <div className="flex-1 min-w-0">
               <h3 className="font-serif font-bold text-primary text-sm sm:text-base leading-snug truncate group-hover:text-accent transition-colors">
-                {name}
+                {dept.name}
               </h3>
               <p className="text-[11px] sm:text-xs text-foreground/75 mt-0.5 sm:mt-1 line-clamp-2 leading-relaxed">
-                {desc}
+                {dept.description}
               </p>
             </div>
 

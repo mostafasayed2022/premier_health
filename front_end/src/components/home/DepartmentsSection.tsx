@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Link } from "@/i18n/routing";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -12,8 +12,6 @@ import { useEffect } from "react";
 
 export default function DepartmentsSection() {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   const [departments, setDepartments] = useState<Department[]>([]);
   const [activeDepartment, setActiveDepartment] = useState<Department | null>(null);
@@ -99,7 +97,7 @@ export default function DepartmentsSection() {
               >
                 <Image
                   src={activeDepartment.photo}
-                  alt={isAr ? activeDepartment.name_ar : activeDepartment.name}
+                  alt={activeDepartment.name}
                   fill
                   sizes="(max-width:768px) 100vw, 60vw"
                   loading="lazy"
@@ -142,13 +140,11 @@ export default function DepartmentsSection() {
               </span>
 
               <h3 className="text-2xl lg:text-4xl font-serif text-white mt-4 mb-4 leading-tight">
-                {isAr ? activeDepartment.name_ar : activeDepartment.name}
+                {activeDepartment.name}
               </h3>
 
               <p className="text-white/95 leading-relaxed mb-6 font-semibold">
-                {isAr
-                  ? activeDepartment.description_ar
-                  : activeDepartment.description}
+                {activeDepartment.description}
               </p>
 
               <Button
@@ -190,7 +186,7 @@ export default function DepartmentsSection() {
                     key={dept.id}
                     onClick={() => setActiveDepartment(dept)}
                     whileHover={{
-                      x: isAr ? -6 : 6,
+                      x: 6,
                     }}
                     className={`
                   group
@@ -215,17 +211,13 @@ export default function DepartmentsSection() {
                         </span>
 
                         <h4 className="text-white text-lg font-medium group-hover:text-accent transition-colors">
-                          {isAr ? dept.name_ar : dept.name}
+                          {dept.name}
                         </h4>
                       </div>
 
                       <ArrowRight
                         size={18}
-                        className={`
-                      text-accent
-                      shrink-0
-                      ${isAr ? "rotate-180" : ""}
-                    `}
+                        className="text-accent shrink-0"
                       />
                     </div>
                   </motion.button>

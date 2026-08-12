@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Stethoscope, Building2, Users, Sparkles } from "lucide-react";
 
 // Count-up timer component
@@ -49,32 +49,30 @@ function AnimatedCount({ value }: { value: string }) {
 
 export default function StatsSection() {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   const stats = [
     {
       value: "+10",
-      label: isAr ? "طبيب متخصص" : "Expert Doctors",
-      sublabel: isAr ? "نخبة من الاستشاريين" : "Board-Certified Specialists",
+      label: t("Home.statsDoctorsLabel"),
+      sublabel: t("Home.statsDoctorsSublabel"),
       icon: Stethoscope,
     },
     {
       value: "+5",
-      label: isAr ? "أقسام طبية" : "Specialized Departments",
-      sublabel: isAr ? "رعاية شاملة ومتكاملة" : "Comprehensive Medical Centers",
+      label: t("Home.statsDeptLabel"),
+      sublabel: t("Home.statsDeptSublabel"),
       icon: Building2,
     },
     {
       value: "+13,000",
-      label: isAr ? "مريض سعيد" : "Satisfied Patients",
-      sublabel: isAr ? "ثقة وتجربة استثنائية" : "Trusted Exceptional Care",
+      label: t("Home.statsPatientsLabel"),
+      sublabel: t("Home.statsPatientsSublabel"),
       icon: Users,
     },
     {
       value: "+15",
-      label: isAr ? "خدمة علاجية" : "Premium Services",
-      sublabel: isAr ? "تقنيات وأساليب حديثة" : "Advanced Healthcare Solutions",
+      label: t("Home.statsServicesLabel"),
+      sublabel: t("Home.statsServicesSublabel"),
       icon: Sparkles,
     },
   ];

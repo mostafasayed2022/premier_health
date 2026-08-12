@@ -56,5 +56,15 @@
   "faqBadge": "الأسئلة الشائعة",
   "departmentsBadge": "أقسامنا الطبية",
   "departmentsFooter": "الجودة الطبية والابتكار والرعاية الشخصية في مكان واحد.",
-  "details": "التفاصيل"
+  "details": "التفاصيل",
+  "watchVideoReview": "شاهد مراجعة الفيديو",
+  "clientVideoReview": "رأي فيديو لعميل",
+  "statsDoctorsLabel": "طبيب متخصص",
+  "statsDoctorsSublabel": "نخبة من الاستشاريين",
+  "statsDeptLabel": "أقسام طبية",
+  "statsDeptSublabel": "رعاية شاملة ومتكاملة",
+  "statsPatientsLabel": "مريض سعيد",
+  "statsPatientsSublabel": "ثقة وتجربة استثنائية",
+  "statsServicesLabel": "خدمة علاجية",
+  "statsServicesSublabel": "تقنيات وأساليب حديثة"
 }

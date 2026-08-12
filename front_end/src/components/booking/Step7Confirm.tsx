@@ -30,7 +30,6 @@ export function Step7Confirm({
   onPhoneChange,
 }: Step7ConfirmProps) {
   const {
-    isAr,
     t,
     authMode,
     setAuthMode,
@@ -50,41 +49,41 @@ export function Step7Confirm({
     doc,
     getPaymentLabel,
   } = useStep7Confirm({ booking, onEmailChange, onPhoneChange });
-  
+
   const tAuth = useTranslations("Auth");
 
-  // Data rows configuration
+  // Data rows configuration — names are returned already translated by Django
   const detailRows = [
     {
       icon: Stethoscope,
       label: t("step1"),
-      value: (isAr ? dept?.name_ar || dept?.name : dept?.name) || booking.department || "-",
+      value: dept?.name || booking.department || "-",
     },
     {
       icon: FlaskConical,
       label: t("step2"),
       value: svc
-        ? `${isAr ? svc.name_ar || svc.name : svc.name}${svc.price != null ? ` — $${svc.price}` : ""}`
+        ? `${svc.name}${svc.price != null ? ` — $${svc.price}` : ""}`
         : booking.service || "-",
     },
     {
       icon: Building2,
       label: t("step3"),
-      value: (isAr ? branch?.name_ar || branch?.name : branch?.name) || booking.branch || "-",
+      value: branch?.name || booking.branch || "-",
     },
     {
       icon: User,
       label: t("step4"),
-      value: (isAr ? doc?.name_ar || doc?.name : doc?.name) || booking.doctor || "-",
+      value: doc?.name || booking.doctor || "-",
     },
     {
       icon: Calendar,
       label: t("date"),
       value: booking.date || "-",
     },
-    { 
-      icon: Clock, 
-      label: t("time"), 
+    {
+      icon: Clock,
+      label: t("time"),
       value: booking.time || "-",
     },
     {
@@ -99,7 +98,10 @@ export function Step7Confirm({
       {/* Booking Summary Card */}
       <div className="bg-beige/60 border border-accent/20 rounded-xl sm:rounded-2xl divide-y divide-accent/15 overflow-hidden shadow-sm">
         {detailRows.map((row, i) => (
-          <div key={i} className="flex items-center gap-3 sm:gap-4 px-3.5 py-3 sm:px-6 sm:py-4 hover:bg-amber-50/40 transition-colors">
+          <div
+            key={i}
+            className="flex items-center gap-3 sm:gap-4 px-3.5 py-3 sm:px-6 sm:py-4 hover:bg-amber-50/40 transition-colors"
+          >
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
               <row.icon size={15} className="sm:hidden" />
               <row.icon size={16} className="hidden sm:block" />
@@ -158,7 +160,9 @@ export function Step7Confirm({
           <div className="flex items-center justify-between border-b border-accent/10 pb-3 mb-2">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-primary font-bold text-xs uppercase">
-                {patientUser?.first_name?.[0] || patientUser?.username?.[0] || "?"}
+                {patientUser?.first_name?.[0] ||
+                  patientUser?.username?.[0] ||
+                  "?"}
               </div>
               <div>
                 <h5 className="text-xs font-bold text-primary">

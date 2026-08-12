@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Compass, Info, MapPin, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -12,8 +12,6 @@ import Image from "next/image";
 
 export default function BranchesSection() {
   const t = useTranslations();
-  const currentLocale = useLocale();
-  const isAr = currentLocale === "ar";
   const [branches, setBranches] = useState<Branch[]>([]);
 
   useEffect(() => {
@@ -94,7 +92,7 @@ export default function BranchesSection() {
                   <div className="absolute inset-0 z-0">
                     <Image
                       src={cardPhoto}
-                      alt={isAr ? branch.name_ar || branch.name : branch.name}
+                      alt={branch.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
@@ -114,7 +112,7 @@ export default function BranchesSection() {
 
                     {/* Title */}
                     <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A96B] transition-colors leading-tight">
-                      {isAr ? branch.name_ar || branch.name : branch.name}
+                      {branch.name}
                     </h3>
 
                     {/* Collapsible Info (reveals on hover) */}
@@ -127,9 +125,7 @@ export default function BranchesSection() {
                               className="text-[#C8A96B] shrink-0 mt-0.5"
                             />
                             <span className="leading-relaxed">
-                              {isAr
-                                ? branch.address_ar || branch.address
-                                : branch.address}
+                              {branch.address}
                             </span>
                           </div>
                         )}

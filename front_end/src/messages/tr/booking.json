@@ -64,5 +64,8 @@
   "verifyingPayment": "Ödemeniz doğrulanıyor, lütfen bekleyin...",
   "verifyingLonger": "Ödeme doğrulaması beklenenden uzun sürüyor. Onaylandığında sizi bilgilendireceğiz.",
   "cannotVerifyPayment": "Ödeme durumu doğrulanamadı. Lütfen destek ile iletişime geçin.",
-  "completeCurrentStep": "Lütfen önce mevcut adımı tamamlayın."
+  "completeCurrentStep": "Lütfen önce mevcut adımı tamamlayın.",
+  "noDepartments": "şu anda müsait departman yok.",
+  "noServices": "Bu departmanda şu anda müsait hizmet yok.",
+  "noBranches": "Bu hizmet için şu anda müsait klinik yok."
 }

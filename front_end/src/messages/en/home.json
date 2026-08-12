@@ -56,5 +56,15 @@
   "faqBadge": "FAQ",
   "departmentsBadge": "MEDICAL DEPARTMENTS",
   "departmentsFooter": "Combining innovation, medical excellence and personalized care.",
-  "details": "Details"
+  "details": "Details",
+  "watchVideoReview": "Watch Video Review",
+  "clientVideoReview": "Client Video Review",
+  "statsDoctorsLabel": "Expert Doctors",
+  "statsDoctorsSublabel": "Board-Certified Specialists",
+  "statsDeptLabel": "Specialized Departments",
+  "statsDeptSublabel": "Comprehensive Medical Centers",
+  "statsPatientsLabel": "Satisfied Patients",
+  "statsPatientsSublabel": "Trusted Exceptional Care",
+  "statsServicesLabel": "Premium Services",
+  "statsServicesSublabel": "Advanced Healthcare Solutions"
 }

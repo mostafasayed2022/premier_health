@@ -56,5 +56,15 @@
   "departmentsBadge": "MEDIZINISCHE FACHBEREICHE",
   "departmentsFooter": "Kombination aus Innovation, medizinischer Exzellenz und personalisierter Pflege.",
   "details": "Details",
-  "layeredSubtitle": "Ein ruhiger Zufluchtsort, der fortschrittliche klinische Protokolle mit luxuriöser Gastfreundschaft für eine umfassende Verjüngung verbindet."
+  "layeredSubtitle": "Ein ruhiger Zufluchtsort, der fortschrittliche klinische Protokolle mit luxuriöser Gastfreundschaft für eine umfassende Verjüngung verbindet.",
+  "watchVideoReview": "Videobewertung ansehen",
+  "clientVideoReview": "Kunden-Videobewertung",
+  "statsDoctorsLabel": "Experten-Ärzte",
+  "statsDoctorsSublabel": "Zertifizierte Spezialisten",
+  "statsDeptLabel": "Spezialisierte Abteilungen",
+  "statsDeptSublabel": "Umfassende Medizinzentren",
+  "statsPatientsLabel": "Zufriedene Patienten",
+  "statsPatientsSublabel": "Vertrauensvolle Pflege",
+  "statsServicesLabel": "Premium-Dienste",
+  "statsServicesSublabel": "Fortschrittliche Gesundheitslösungen"
 }

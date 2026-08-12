@@ -17,6 +17,11 @@ import { getQueryClient } from "@/app/get-query-client";
 import { getDepartments, getServices } from "@/lib/api/endpoints";
 import { queryKeys } from "@/lib/api/queryKeys";
 
+import {
+  GoogleTagManagerScript,
+  GoogleTagManagerNoScript,
+} from "@/components/analytics/GoogleTagManager";
+
 const arapey = Arapey({
   subsets: ["latin"],
   weight: ["400"],
@@ -79,14 +84,38 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${arapey.variable} ${fontSans.variable} ${fontArabic.variable} h-full antialiased scroll-smooth`}
     >
       <head>
-        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <GoogleTagManagerScript />
+        <link
+          rel="icon"
+          href="/logo/logo1.webp"
+          type="image/webp"
+          sizes="any"
+        />
+        <link rel="shortcut icon" href="/logo/logo1.webp" type="image/webp" />
+        <link rel="apple-touch-icon" href="/logo/logo1.webp" />
+        <link
+          rel="preconnect"
+          href="https://res.cloudinary.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://images.unsplash.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="preconnect" href="https://cdn.simpleicons.org" />
-        <link rel="preload" as="image" href="/hero/hero1.webp" type="image/webp" fetchPriority="high" />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero/hero1.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
       </head>
       <body className="bg-white flex min-h-screen flex-col font-sans selection:bg-accent-light selection:text-primary">
+        <GoogleTagManagerNoScript />
         <JsonLd locale={locale} />
         <Providers>
           <HydrationBoundary state={dehydrate(queryClient)}>

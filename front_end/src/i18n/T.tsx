@@ -5,25 +5,21 @@ import { ReactNode } from "react";
 
 interface TProps {
   en: ReactNode;
-  ar: ReactNode;
   [key: string]: ReactNode;
 }
 
+/**
+ * Inline translation component for cases where a translation key cannot
+ * be used (e.g., JSX with complex markup). Pass any locale as a prop key.
+ * Priority: current locale → en → first available prop
+ */
 export function T(props: TProps) {
   const locale = useLocale();
-  
-  if (locale === "ar" && props.ar) {
-    return <>{props.ar}</>;
-  }
-  
-  if (locale === "en" && props.en) {
-    return <>{props.en}</>;
-  }
-  
-  // Fallback to the requested locale if it exists, otherwise English, otherwise Arabic
-  if (props[locale]) {
-    return <>{props[locale]}</>;
-  }
-  
-  return <>{props.en || props.ar}</>;
+
+  if (props[locale] != null) return <>{props[locale]}</>;
+  if (props.en != null) return <>{props.en}</>;
+
+  // Last resort: return the first non-null value
+  const first = Object.values(props).find((v) => v != null);
+  return <>{first ?? null}</>;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { getDoctorsByBranch, Doctor } from "@/lib/api";
 import { Check, Loader2, AlertCircle, UserCheck } from "lucide-react";
 import Image from "next/image";
@@ -19,8 +19,6 @@ export function Step4Doctor({
   branchId,
   serviceId,
 }: Step4DoctorProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
   const t = useTranslations("Booking");
 
   const [doctors, setDoctors] = useState<Doctor[]>([]);
@@ -84,10 +82,6 @@ export function Step4Doctor({
       {doctors.map((doc) => {
         const isSelected = selected === doc.id;
         const photoSrc = doc.image_url || doc.photo;
-        const name = isAr ? doc.name_ar || doc.name : doc.name || doc.name_ar;
-        const position = isAr
-          ? doc.position_ar || doc.position
-          : doc.position || doc.position_ar;
 
         return (
           <button
@@ -105,7 +99,7 @@ export function Step4Doctor({
               {photoSrc ? (
                 <Image
                   src={photoSrc}
-                  alt={name || "Doctor"}
+                  alt={doc.name || "Doctor"}
                   fill
                   sizes="64px"
                   className="object-cover object-top"
@@ -126,14 +120,14 @@ export function Step4Doctor({
             {/* Doctor Info */}
             <div className="flex-1 min-w-0">
               <h3 className="font-serif font-bold text-primary text-sm sm:text-base leading-snug truncate group-hover:text-accent transition-colors">
-                {name}
+                {doc.name}
               </h3>
               <p className="text-[11px] sm:text-xs text-foreground/75 mt-0.5 sm:mt-1 truncate font-medium">
-                {position}
+                {doc.position}
               </p>
               {doc.specialty && (
                 <span className="inline-block mt-1.5 sm:mt-2 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full bg-primary/8 text-primary font-bold text-[9px] sm:text-[10px] uppercase tracking-wider">
-                  {isAr ? doc.specialty_ar || doc.specialty : doc.specialty}
+                  {doc.specialty}
                 </span>
               )}
             </div>

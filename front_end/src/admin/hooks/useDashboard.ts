@@ -5,7 +5,24 @@ import { useAuth } from "../context/AuthContext";
 import { api } from "../api/client";
 import { toast } from "sonner";
 
+export interface AdminAnalyticsData {
+  total_bookings: number;
+  bookings_this_month: number;
+  active_bookings: number;
+  completed_bookings: number;
+  cancelled_bookings: number;
+  total_patients: number;
+  total_doctors: number;
+  total_departments: number;
+  total_services: number;
+  total_branches: number;
+  total_staff: number;
+  total_availability: number;
+  total_revenue: number;
+}
+
 export interface StatsData {
+  analytics?: AdminAnalyticsData;
   daily_bookings: { date: string; count: number }[];
   branch_bookings: { branch: string; count: number }[];
   doctor_bookings: { doctor: string; count: number }[];

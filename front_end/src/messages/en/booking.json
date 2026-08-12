@@ -64,5 +64,8 @@
   "verifyingPayment": "Verifying your payment, please wait...",
   "verifyingLonger": "Payment verification is taking longer than expected. We will notify you once confirmed.",
   "cannotVerifyPayment": "Could not verify payment status. Please contact support.",
-  "completeCurrentStep": "Please complete the current step first."
+  "completeCurrentStep": "Please complete the current step first.",
+  "noDepartments": "No departments available right now.",
+  "noServices": "No services available in this department right now.",
+  "noBranches": "No branches available for this service right now."
 }

@@ -56,5 +56,15 @@
   "faqBadge": "FAQ",
   "departmentsBadge": "REPARTI MEDICI",
   "departmentsFooter": "Unendo innovazione, eccellenza medica e cura personalizzata.",
-  "details": "Dettagli"
+  "details": "Dettagli",
+  "watchVideoReview": "Guarda la recensione video",
+  "clientVideoReview": "Recensione video del cliente",
+  "statsDoctorsLabel": "Medici Esperti",
+  "statsDoctorsSublabel": "Specialisti Certificati",
+  "statsDeptLabel": "Reparti Specializzati",
+  "statsDeptSublabel": "Centri Medici Completi",
+  "statsPatientsLabel": "Pazienti Soddisfatti",
+  "statsPatientsSublabel": "Cure Eccezionali di Fiducia",
+  "statsServicesLabel": "Servizi Premium",
+  "statsServicesSublabel": "Soluzioni Sanitarie Avanzate"
 }

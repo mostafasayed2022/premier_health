@@ -56,5 +56,15 @@
   "faqBadge": "FAQ",
   "departmentsBadge": "DEPARTAMENTOS MÉDICOS",
   "departmentsFooter": "Combinando innovación, excelencia médica y atención personalizada.",
-  "details": "Detalles"
+  "details": "Detalles",
+  "watchVideoReview": "Ver reseña en video",
+  "clientVideoReview": "Reseña en video del cliente",
+  "statsDoctorsLabel": "Médicos Expertos",
+  "statsDoctorsSublabel": "Especialistas Certificados",
+  "statsDeptLabel": "Departamentos Especializados",
+  "statsDeptSublabel": "Centros Médicos Completos",
+  "statsPatientsLabel": "Pacientes Satisfechos",
+  "statsPatientsSublabel": "Atención Excepcional de Confianza",
+  "statsServicesLabel": "Servicios Premium",
+  "statsServicesSublabel": "Soluciones Avanzadas de Salud"
 }

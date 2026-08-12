@@ -383,13 +383,25 @@ export function getSeoMetadata(locale: string, pageKey?: string): Metadata {
     const locPath = pageKey ? `/${loc}/${pageKey}` : `/${loc}`;
     languageAlternates[loc] = `${SITE_URL}${locPath}`;
   });
-  languageAlternates["x-default"] = `${SITE_URL}${pageKey ? `/${pageKey}` : "/en"}`;
+  languageAlternates["x-default"] =
+    `${SITE_URL}${pageKey ? `/${pageKey}` : "/en"}`;
 
   return {
     title,
     description,
     keywords: defaultMeta.keywords,
     metadataBase: new URL(SITE_URL),
+    icons: {
+      icon: [
+        { url: "/logo/logo1.webp" },
+        { url: "/logo/logo1.webp", sizes: "32x32", type: "image/webp" },
+        { url: "/logo/logo1.webp", sizes: "16x16", type: "image/webp" },
+      ],
+      apple: [
+        { url: "/logo/logo1.webp", sizes: "180x180", type: "image/webp" },
+      ],
+      shortcut: ["/logo/logo1.webp"],
+    },
     alternates: {
       canonical: canonicalUrl,
       languages: languageAlternates,

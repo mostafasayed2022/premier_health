@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   getDepartments,
   getServicesByDepartment,
@@ -22,8 +22,7 @@ export function Step2Service({
   selected,
   onSelect,
 }: Step2ServiceProps) {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+  const t = useTranslations("Booking");
 
   const [departments, setDepartments] = useState<Department[]>([]);
   const [services, setServices] = useState<Service[]>([]);
@@ -57,7 +56,7 @@ export function Step2Service({
     return (
       <div className="text-center py-12">
         <p className="text-foreground/70 font-medium">
-          {isAr ? "لا توجد خدمات متاحة حالياً في هذا القسم." : "No services available in this department right now."}
+          {t("noServices")}
         </p>
       </div>
     );
@@ -67,8 +66,6 @@ export function Step2Service({
     <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
       {filteredServices.map((svc) => {
         const isSelected = selected === svc.id;
-        const name = isAr ? (svc.name_ar || svc.name) : (svc.name || svc.name_ar);
-        const desc = isAr ? (svc.description_ar || svc.description) : (svc.description || svc.description_ar);
 
         return (
           <button
@@ -86,7 +83,7 @@ export function Step2Service({
               {svc.photo ? (
                 <Image
                   src={svc.photo}
-                  alt={name || "Service"}
+                  alt={svc.name || "Service"}
                   fill
                   sizes="64px"
                   className="object-cover"
@@ -106,10 +103,10 @@ export function Step2Service({
             {/* Service Details */}
             <div className="flex-1 min-w-0">
               <h3 className="font-serif font-bold text-primary text-sm sm:text-base leading-snug truncate group-hover:text-accent transition-colors">
-                {name}
+                {svc.name}
               </h3>
               <p className="text-[11px] sm:text-xs text-foreground/75 mt-0.5 sm:mt-1 line-clamp-2 leading-relaxed">
-                {desc}
+                {svc.description}
               </p>
               
               <div className="flex items-center gap-2 sm:gap-3 mt-2 sm:mt-3 flex-wrap">

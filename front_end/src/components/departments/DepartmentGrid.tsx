@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Users, Loader2 } from "lucide-react";
@@ -10,8 +10,6 @@ import Image from "next/image";
 
 export function DepartmentGrid() {
   const t = useTranslations();
-  const locale = useLocale();
-  const isAr = locale === "ar";
   const { data: departments, isLoading } = useDepartments();
 
   if (isLoading) {
@@ -51,7 +49,7 @@ export function DepartmentGrid() {
                 <div className="relative h-60 w-full overflow-hidden bg-beige">
                   <Image
                     src={getOptimizedImageUrl(dept.photo, 600, 75)}
-                    alt={isAr ? dept.name_ar || dept.name : dept.name}
+                    alt={dept.name}
                     width={400}
                     height={250}
                     quality={75}
@@ -73,10 +71,10 @@ export function DepartmentGrid() {
                 <div className="p-7 flex-1 flex flex-col justify-between gap-4">
                   <div>
                     <h3 className="text-xl font-serif font-bold text-primary group-hover:text-accent transition-colors mb-2">
-                      {isAr ? dept.name_ar : dept.name}
+                      {dept.name}
                     </h3>
                     <p className="text-xs text-foreground/75 leading-relaxed line-clamp-3">
-                      {isAr ? dept.description_ar : dept.description}
+                      {dept.description}
                     </p>
                   </div>
 

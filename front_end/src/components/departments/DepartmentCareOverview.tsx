@@ -1,65 +1,40 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ShieldCheck, Stethoscope, Sparkles, Award, UserCheck, Activity } from "lucide-react";
 
 export function DepartmentCareOverview() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
+  const t = useTranslations("Departments");
 
   const pillars = [
     {
       icon: <Stethoscope className="w-6 h-6 text-[#C8A96B]" />,
-      title: isAr ? "تقييم سريري شامل" : "Bespoke Clinical Assessment",
-      desc: isAr
-        ? "استشارة ودراسة دقيقة لكافة المتطلبات الطبية والتجميلية لكل مريض."
-        : "A thorough diagnostic consultation tailored to every patient's unique goals.",
+      title: t("pillar1Title"),
+      desc: t("pillar1Desc"),
     },
     {
       icon: <Sparkles className="w-6 h-6 text-emerald-400" />,
-      title: isAr ? "أحدث التقنيات العالمية" : "Advanced Medical Technology",
-      desc: isAr
-        ? "تجهيزات وعلاجات متطورة مطابقة لأعلى المعايير الصحية العالمية."
-        : "Cutting-edge equipment and FDA-approved protocols for maximum efficacy.",
+      title: t("pillar2Title"),
+      desc: t("pillar2Desc"),
     },
     {
       icon: <Award className="w-6 h-6 text-[#C8A96B]" />,
-      title: isAr ? "نخبة من الأطباء الاستشاريين" : "Certified Specialist Team",
-      desc: isAr
-        ? "فريق طبي مؤهل ذو خبرات عريقة يقدم الرعاية بأعلى احترافية."
-        : "Board-certified consultants delivering world-class compassionate care.",
+      title: t("pillar3Title"),
+      desc: t("pillar3Desc"),
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />,
-      title: isAr ? "متابعة مستمرة ورعاية متكاملة" : "Holistic Aftercare Support",
-      desc: isAr
-        ? "برامج متابعة مخصصة لضمان استدامة النتائج والصحة العامة."
-        : "Comprehensive post-treatment guidance to maintain optimal long-term health.",
+      title: t("pillar4Title"),
+      desc: t("pillar4Desc"),
     },
   ];
 
   const steps = [
-    {
-      step: "01",
-      title: isAr ? "الاستشارة الأولية" : "Initial Consultation",
-      desc: isAr ? "مناقشة الأهداف والفحص الطبي المبدئي" : "Detailed discussion & initial evaluation",
-    },
-    {
-      step: "02",
-      title: isAr ? "خطة العلاج المخصصة" : "Personalized Treatment Plan",
-      desc: isAr ? "تصميم بروتوكول علاج يناسب حالتك دقيقاً" : "Designing a tailored medical protocol",
-    },
-    {
-      step: "03",
-      title: isAr ? "تطبيق العلاج المتخصص" : "Expert Treatment Delivery",
-      desc: isAr ? "تنفيذ الإجراء بأحدث الأساليب الآمنة" : "Executing procedure with top safety standards",
-    },
-    {
-      step: "04",
-      title: isAr ? "الرعاية والمتابعة" : "Follow-Up & Continuous Care",
-      desc: isAr ? "تقييم النتائج وضمان التعافي المثالي" : "Assessing outcomes & long-term maintenance",
-    },
+    { step: "01", title: t("step1Title"), desc: t("step1Desc") },
+    { step: "02", title: t("step2Title"), desc: t("step2Desc") },
+    { step: "03", title: t("step3Title"), desc: t("step3Desc") },
+    { step: "04", title: t("step4Title"), desc: t("step4Desc") },
   ];
 
   return (
@@ -68,12 +43,10 @@ export function DepartmentCareOverview() {
       <div className="text-center max-w-3xl mx-auto mb-12">
         <span className="text-[#C8A96B] font-bold text-[10px] uppercase tracking-[0.25em] bg-[#C8A96B]/10 border border-[#C8A96B]/30 px-4 py-1.5 rounded-full inline-flex items-center gap-1.5 shadow-sm">
           <Activity className="w-3 h-3 text-[#C8A96B]" />
-          {isAr ? "معايير الجودة الطبية" : "Clinical Excellence Standards"}
+          {t("careStandardsBadge")}
         </span>
         <h2 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 mt-4 leading-tight">
-          {isAr
-            ? "الرؤية الطبية والخدمات الأساسية للقسم"
-            : "Core Care Standards & Clinical Framework"}
+          {t("careStandardsTitle")}
         </h2>
         <div className="h-[2px] w-20 bg-[#C8A96B] mx-auto mt-4" />
       </div>
@@ -107,10 +80,10 @@ export function DepartmentCareOverview() {
 
         <div className="relative z-10 text-center max-w-2xl mx-auto mb-10">
           <span className="text-[#C8A96B] font-bold text-[10px] uppercase tracking-widest">
-            {isAr ? "مسار رعاية المريض" : "PATIENT CARE JOURNEY"}
+            {t("journeyBadge")}
           </span>
           <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mt-2">
-            {isAr ? "خطوات رحلتك العلاجية بالقسم" : "Your Treatment Journey With Us"}
+            {t("journeyTitle")}
           </h3>
         </div>
 
