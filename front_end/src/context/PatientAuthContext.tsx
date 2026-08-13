@@ -40,7 +40,7 @@ const PatientAuthContext = createContext<PatientAuthContextValue | null>(null);
 
 function getApiUrl(path: string): string {
   const raw = (
-    process.env.NEXT_PUBLIC_API_URL || "https://premiier.pythonanywhere.com/api"
+    process.env.NEXT_PUBLIC_API_URL || "http://92.205.178.100:8000/api"
   )
     .trim()
     .replace(/\/+$/, "");
