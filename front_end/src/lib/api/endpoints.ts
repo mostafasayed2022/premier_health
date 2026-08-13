@@ -149,7 +149,7 @@ export interface BookingStatusResponse {
 // ─── File Upload ──────────────────────────────────────────────────
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://92.205.178.100:8000";
+  process.env.NEXT_PUBLIC_API_URL || "http://92.205.178.100:8000/api/";
 
 /** Upload a file to the backend /api/files/ to get a real DB integer PK. */
 export const uploadFile = async (
@@ -157,7 +157,7 @@ export const uploadFile = async (
   onProgress?: (percent: number) => void,
 ): Promise<FileUpload> => {
   const baseUrl = (
-    process.env.NEXT_PUBLIC_API_URL || "http://92.205.178.100:8000"
+    process.env.NEXT_PUBLIC_API_URL || "http://92.205.178.100:8000/api/"
   )
     .replace(/\/api\/?$/, "")
     .replace(/\/+$/, "");
