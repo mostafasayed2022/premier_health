@@ -42,13 +42,14 @@ function ProfileLoading() {
       <Loader2 className="w-8 h-8 animate-spin" style={{ color: "#385366" }} />
       <p className="text-sm font-medium" style={{ color: "#959ead" }}>
         <T
-          en="Loading PremierCare Profile..."
-          ar="جاري تحميل الملف الشخصي لبريمير كير..."
-          de="PremierCare-Profil wird geladen..."
-          es="Cargando perfil de PremierCare..."
-          fr="Chargement du profil PremierCare..."
-          it="Caricamento del profilo PremierCare..."
-          tr="PremierCare Profili Yükleniyor..."
+          en="Loading Premier Health Profile..."
+          ar="جاري تحميل الملف الشخصي لبريمير هيلث..."
+          de="Premier Health-Profil wird geladen..."
+          es="Cargando perfil de Premier Health..."
+          fr="Chargement du profil Premier Health..."
+          it="Caricamento del profilo Premier Health..."
+          tr="Premier Health Profili Yükleniyor..."
+          ru="Загрузка профиля Premier Health..."
         />
       </p>
     </div>
@@ -160,6 +161,7 @@ export default function ProfileHubPage() {
           fr="Aperçu"
           it="Panoramica"
           tr="Genel Bakış"
+          ru="Обзор"
         />
       ),
       icon: User,
@@ -175,6 +177,7 @@ export default function ProfileHubPage() {
           fr="Rendez-vous"
           it="Appuntamenti"
           tr="Randevular"
+          ru="Записи"
         />
       ),
       icon: Calendar,
@@ -190,6 +193,7 @@ export default function ProfileHubPage() {
           fr="Dossiers médicaux"
           it="Cartelle cliniche"
           tr="Tıbbi Kayıtlar"
+          ru="Медицинские карты"
         />
       ),
       icon: FileText,
@@ -206,6 +210,7 @@ export default function ProfileHubPage() {
           fr="Paramètres"
           it="Impostazioni"
           tr="Ayarlar"
+          ru="Настройки"
         />
       ),
       icon: Settings,
@@ -224,6 +229,7 @@ export default function ProfileHubPage() {
           fr="Bio du médecin"
           it="Biografia del medico"
           tr="Doktor Özgeçmişi"
+          ru="Биография врача"
         />
       ),
       icon: Stethoscope,
@@ -239,6 +245,7 @@ export default function ProfileHubPage() {
           fr="Rendez-vous"
           it="Appuntamenti"
           tr="Randevular"
+          ru="Записи"
         />
       ),
       icon: Calendar,
@@ -254,6 +261,7 @@ export default function ProfileHubPage() {
           fr="Calendrier"
           it="Programma"
           tr="Program"
+          ru="Расписание"
         />
       ),
       icon: Clock,
@@ -278,6 +286,7 @@ export default function ProfileHubPage() {
             fr="Échec du chargement du profil"
             it="Impossibile caricare il profilo"
             tr="Profil yüklenemedi"
+            ru="Не удалось загрузить профиль"
           />
         </p>
         <p className="text-sm text-gray-500">{error.message}</p>
@@ -301,7 +310,7 @@ export default function ProfileHubPage() {
             phone={patient.phone}
             // location={patient.address}
             avatar={patient.avatar || ""}
-            badge="PremierCare Patient"
+            badge="Premier Health Patient"
             onEditClick={() => setIsEditModalOpen(true)}
             onAvatarUpdate={handleAvatarUpdate}
             onDoctorFileUploaded={handleFileUploaded}

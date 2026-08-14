@@ -108,8 +108,7 @@ export function mergeDept(d: ApiDepartment): Department {
     name_ar: d.name_ar || d.name,
     description_ar: d.description_ar || d.description,
     photo: getOptimizedImageUrl(
-      d.image_url ||
-        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+      d.image_url || "/Departments/iv_theapy.webp",
       800,
     ),
     doctorsCount: 0,
@@ -132,8 +131,7 @@ export function mergeSvc(s: ApiService): Service {
     name_ar: s.name_ar || s.name,
     description_ar: s.description_ar || s.description,
     photo: getOptimizedImageUrl(
-      s.image_url ||
-        "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=600",
+      s.image_url || "/Treatments/Detox.webp",
       600,
     ),
     benefits: [],
@@ -158,8 +156,7 @@ export function mergeBranch(b: ApiBranch): Branch {
     name_ar: b.name_ar || b.name,
     address_ar: b.address_ar || b.address,
     photo: getOptimizedImageUrl(
-      b.image_url ||
-        "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
+      b.image_url || "/AboutPreview/about.webp",
       800,
     ),
     hours: "",
@@ -186,9 +183,7 @@ export function mergeDoc(d: ApiDoctor): Doctor {
     bio: d.bio || "",
     bio_ar: d.bio_ar || d.bio || "",
     photo: getOptimizedImageUrl(
-      d.image_url ||
-        d.photo ||
-        "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600",
+      d.image_url || d.photo || "/hero/hero1.webp",
       600,
     ),
     effective_fee: d.effective_fee ?? 0,

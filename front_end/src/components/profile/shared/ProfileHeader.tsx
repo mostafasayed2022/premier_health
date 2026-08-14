@@ -96,7 +96,7 @@ export function ProfileHeader({
   const displayAvatar =
     previewUrl ||
     avatar ||
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300";
+    "/hero/hero1.webp";
 
   return (
     <div className="bg-white border border-[#e8e0d5] rounded-2xl overflow-hidden shadow-sm">

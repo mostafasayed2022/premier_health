@@ -6,10 +6,10 @@ import { PageHero } from "../shared/PageHero";
 import { useGallery } from "@/lib/api";
 
 const DEFAULT_IMAGES = [
-  "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1600",
-  "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=1600",
-  "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=1600",
-  "https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?auto=format&fit=crop&q=80&w=1600",
+  "/hero/hero1.webp",
+  "/hero/hero2.webp",
+  "/hero/hero3.webp",
+  "/hero/hero4.webp",
 ];
 
 export function GalleryHero() {

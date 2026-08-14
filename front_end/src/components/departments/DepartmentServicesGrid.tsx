@@ -25,8 +25,7 @@ export function DepartmentServicesGrid({
     <section className="luxury-container py-16">
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => {
-          const defaultPhoto =
-            "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800";
+          const defaultPhoto = "/Treatments/Detox.webp";
           const isVideo =
             service.photo &&
             (service.photo.endsWith(".mp4") ||

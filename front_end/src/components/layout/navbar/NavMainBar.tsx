@@ -142,35 +142,69 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
           </Button>
 
           <div className="flex items-center gap-2 lg:hidden">
+            {/* Mobile Language Switcher (Matching Desktop Style with Flags) */}
             <div className="relative">
               <button
-                onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-slate-200 bg-slate-50 text-[11px] font-bold text-slate-600"
+                onClick={() => {
+                  setLangOpen(!langOpen);
+                  if (isOpen) setIsOpen(false);
+                }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-slate-700 transition-colors shadow-sm focus:outline-none"
+                aria-expanded={langOpen}
+                aria-label="Change Language"
               >
-                <Globe size={14} className="text-[#C8A96B]" />
-                <span className="uppercase">{currentLocale}</span>
+                <span
+                  className={`fi fi-${LANGUAGES.find((l) => l.code === currentLocale)?.flag ?? "un"} rounded-sm shadow-sm shrink-0`}
+                  style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                />
+                <span className="uppercase font-bold text-[11px]">{currentLocale}</span>
+                <ChevronDown
+                  size={12}
+                  className={`opacity-70 transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}
+                />
               </button>
+
               {langOpen && (
-                <div className="absolute right-0 mt-2 w-36 rounded-xl border border-slate-100 bg-white p-1.5 shadow-md z-50">
-                  {LANGUAGES.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => handleLanguageChange(lang.code)}
-                      className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-[11px] font-bold text-slate-600 hover:bg-slate-50 hover:text-primary"
-                    >
-                      <span>{lang.label}</span>
-                      {currentLocale === lang.code && (
-                        <Check size={12} className="text-primary" />
-                      )}
-                    </button>
-                  ))}
-                </div>
+                <>
+                  {/* Backdrop to close dropdown on tap outside */}
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setLangOpen(false)}
+                  />
+                  <div className="absolute right-0 rtl:right-auto rtl:left-0 top-full mt-2 w-44 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl animate-fade-in z-50">
+                    {LANGUAGES.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleLanguageChange(lang.code)}
+                        className={`flex w-full items-center gap-2.5 justify-between rounded-lg px-3 py-2 text-start text-xs font-bold transition-colors ${
+                          currentLocale === lang.code
+                            ? "bg-slate-100 text-primary"
+                            : "text-slate-600 hover:bg-slate-50 hover:text-primary"
+                        }`}
+                      >
+                        <span className="flex items-center gap-2.5">
+                          <span
+                            className={`fi fi-${lang.flag} rounded-sm shadow-sm shrink-0`}
+                            style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                          />
+                          <span>{lang.label}</span>
+                        </span>
+                        {currentLocale === lang.code && (
+                          <Check size={13} className="text-primary shrink-0" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
             <button
-              className="flex p-2 rounded-md bg-slate-50 border border-slate-200 text-slate-600 hover:text-primary transition-colors"
-              onClick={() => setIsOpen(!isOpen)}
+              className="flex p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-600 hover:text-primary transition-colors shadow-sm"
+              onClick={() => {
+                setIsOpen(!isOpen);
+                if (langOpen) setLangOpen(false);
+              }}
               aria-label="Toggle Navigation Menu"
             >
               {isOpen ? (

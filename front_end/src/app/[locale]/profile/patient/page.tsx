@@ -48,7 +48,7 @@ export default function PatientProfilePage() {
           email={patient.email}
           phone={patient.phone}
           avatar={patient.avatar || ""}
-          badge="PremierCare Elite Patient"
+          badge="Premier Health Elite Patient"
           onEditClick={() => setIsEditModalOpen(true)}
           onAvatarUpdate={handleAvatarUpdate}
         />

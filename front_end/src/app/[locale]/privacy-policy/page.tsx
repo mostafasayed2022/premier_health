@@ -1,4 +1,7 @@
 import { getTranslations } from "next-intl/server";
+import { generatePageMetadata } from "@/lib/seo";
+
+export const generateMetadata = generatePageMetadata("privacy-policy");
 
 export default async function PrivacyPolicyPage() {
   const t = await getTranslations();

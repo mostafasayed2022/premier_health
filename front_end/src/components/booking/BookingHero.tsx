@@ -9,11 +9,11 @@ export function BookingHero() {
   const t = useTranslations("Booking");
 
   return (
-    <section className="relative overflow-hidden w-full h-[22vh] min-h-[180px] sm:h-[34vh] sm:min-h-[260px] md:h-[40vh] md:min-h-[320px] rounded-none sm:rounded-[28px] md:rounded-[36px] border-b sm:border border-accent/25 mb-6 sm:mb-8 md:mb-12 flex items-center bg-[#2a4152] shadow-md">
+    <section className="relative overflow-hidden w-full min-h-[220px] sm:min-h-[260px] md:h-[40vh] md:min-h-[320px] rounded-none sm:rounded-[28px] md:rounded-[36px] border-b sm:border border-accent/25 mb-6 sm:mb-8 md:mb-12 flex items-center py-8 sm:py-10 bg-[#2a4152] shadow-md">
       {/* Background Image with Parallax Scale */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1400"
+          src="/hero/hero4.webp"
           alt="Luxury Booking Experience"
           fill
           priority
@@ -26,10 +26,10 @@ export function BookingHero() {
       </div>
 
       {/* Decorative luxury frame overlay */}
-      <div className="absolute inset-3 sm:inset-6 border border-amber-400/20 rounded-[20px] sm:rounded-[28px] pointer-events-none z-15" />
+      <div className="absolute inset-3 sm:inset-6 border border-amber-400/20 rounded-2xl sm:rounded-[28px] pointer-events-none z-15" />
 
       {/* Typography Content */}
-      <div className="luxury-container relative z-25 text-center text-white mx-auto flex flex-col items-center gap-2 sm:gap-3.5 px-4">
+      <div className="luxury-container relative z-25 text-center text-white mx-auto flex flex-col items-center gap-2.5 sm:gap-3.5 px-4">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,14 +53,14 @@ export function BookingHero() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="h-[2px] w-20 sm:w-28 bg-gradient-to-r from-transparent via-amber-400 to-transparent my-0.5 sm:my-1"
+          className="h-[2px] w-16 sm:w-28 bg-gradient-to-r from-transparent via-amber-400 to-transparent my-0.5 sm:my-1"
         />
 
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-white/85 max-w-xl text-[11px] sm:text-sm md:text-base leading-relaxed font-medium line-clamp-2 sm:line-clamp-none"
+          className="text-white/85 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed font-medium"
         >
           {t("subtitle")}
         </motion.p>

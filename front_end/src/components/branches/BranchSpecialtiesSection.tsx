@@ -62,7 +62,7 @@ export function BranchSpecialtiesSection({
               const imageUrl =
                 dept.image_url ||
                 dept.photo ||
-                "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800";
+                "/Departments/iv_theapy.webp";
 
               return (
                 <motion.div

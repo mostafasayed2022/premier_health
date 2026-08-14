@@ -6,8 +6,8 @@ export default function HeroCards() {
   const t = useTranslations("Home");
 
   return (
-    <div className="luxury-container relative z-30 w-full px-6 mt-12 md:mt-24">
-      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 w-[calc(100%+3rem)] md:w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+    <div className="luxury-container relative z-30 w-full px-4 sm:px-6 mt-8 sm:mt-12 md:mt-20">
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-3 sm:gap-4 pb-4 sm:pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 w-[calc(100%+2rem)] sm:w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Card 1: Specialists */}
         <Link
           href="/doctors"

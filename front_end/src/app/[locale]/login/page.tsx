@@ -90,6 +90,7 @@ export default function PatientLoginPage() {
               fr={`Compte temporairement verrouillé. Veuillez patienter ${Math.ceil((lockedUntil - Date.now()) / 1000 / 60)} minute(s).`}
               it={`Account temporaneamente bloccato. Si prega di attendere ${Math.ceil((lockedUntil - Date.now()) / 1000 / 60)} minuto/i.`}
               tr={`Hesap geçici olarak kilitlendi. Lütfen ${Math.ceil((lockedUntil - Date.now()) / 1000 / 60)} dakika bekleyin.`}
+              ru={`Аккаунт временно заблокирован. Пожалуйста, подождите ${Math.ceil((lockedUntil - Date.now()) / 1000 / 60)} мин.`}
             />
           </div>
         )}

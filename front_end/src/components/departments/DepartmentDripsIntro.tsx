@@ -15,32 +15,32 @@ export function DepartmentDripsIntro() {
       num: "01",
       title: t("step1Title") || "Cellular Hydration",
       desc: t("step1Desc") || "Direct intravenous delivery ensures 100% bioavailability for immediate cellular absorption.",
-      photo: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800"
+      photo: "/drip/History.webp",
     },
     {
       num: "02",
       title: t("step2Title") || "Bespoke Formulations",
       desc: t("step2Desc") || "Tailored nutrient blends targeting immunity, energy, anti-aging, and athletic recovery.",
-      photo: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&q=80&w=800"
+      photo: "/drip/Individual.webp",
     },
     {
       num: "03",
       title: t("step3Title") || "Physician Guided",
       desc: t("step3Desc") || "Administered in luxury private suites under continuous medical supervision.",
-      photo: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800"
+      photo: "/drip/Lab.webp",
     },
     {
       num: "04",
       title: t("step4Title") || "Instant Vitality",
       desc: t("step4Desc") || "Rapidly restores electrolyte balance, detoxifies the liver, and clears mental fatigue.",
-      photo: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800"
+      photo: "/drip/Medications.webp",
     },
     {
       num: "05",
       title: t("step5Title") || "Lasting Wellness",
       desc: t("step5Desc") || "Sustained physiological benefits that boost overall metabolic health and immunity.",
-      photo: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800"
-    }
+      photo: "/drip/Concerns.webp",
+    },
   ];
 
   // Auto-cycle through the steps every 5 seconds

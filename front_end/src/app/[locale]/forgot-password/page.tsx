@@ -26,6 +26,7 @@ export default function ForgotPasswordPage() {
             fr="Retour à la connexion"
             it="Torna al login"
             tr="Giriş Sayfasına Dön"
+            ru="Вернуться к входу"
           />
         </Link>
 
@@ -55,6 +56,7 @@ export default function ForgotPasswordPage() {
               fr="Récupération sécurisée du mot de passe"
               it="Recupero sicuro della password"
               tr="Güvenli Şifre Kurtarma"
+              ru="Безопасное восстановление пароля"
             />
           </p>
         </div>

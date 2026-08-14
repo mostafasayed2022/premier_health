@@ -20,7 +20,7 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
   const imageUrl =
     branch.image_url ||
     branch.photo ||
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800";
+    "/AboutPreview/about.webp";
 
   const branchServices: string[] = Array.isArray(branch.services)
     ? branch.services.map((s: any) =>

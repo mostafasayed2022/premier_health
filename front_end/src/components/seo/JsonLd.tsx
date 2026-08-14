@@ -33,6 +33,7 @@ export function JsonLd({ locale }: JsonLdProps) {
       { "@type": "Language", name: "Spanish", iso6391Code: "es" },
       { "@type": "Language", name: "Italian", iso6391Code: "it" },
       { "@type": "Language", name: "Turkish", iso6391Code: "tr" },
+      { "@type": "Language", name: "Russian", iso6391Code: "ru" },
     ],
     address: {
       "@type": "PostalAddress",

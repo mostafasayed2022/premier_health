@@ -17,6 +17,7 @@ export function DoctorExcellenceSection() {
           fr="Excellence Certifiée"
           it="Eccellenza Certificata"
           tr="Sertifikalı Mükemmeliyet"
+          ru="Сертифицированное превосходство"
         />
       ),
       desc: (
@@ -28,6 +29,7 @@ export function DoctorExcellenceSection() {
           fr="Normes médicales internationales strictes et recherche continue."
           it="Rigorosi standard medici internazionali e ricerca continua."
           tr="Katı uluslararası tıbbi standartlar ve sürekli araştırma."
+          ru="Строгие международные медицинские стандарты и непрерывные специализированные исследования."
         />
       ),
     },
@@ -42,6 +44,7 @@ export function DoctorExcellenceSection() {
           fr="Plans Personnalisés"
           it="Piani Personalizzati"
           tr="Kişiselleştirilmiş Planlar"
+          ru="Индивидуальные протоколы лечения"
         />
       ),
       desc: (
@@ -53,6 +56,7 @@ export function DoctorExcellenceSection() {
           fr="Protocole personnalisé selon votre profil biologique et vos objectifs."
           it="Protocolli personalizzati in base al tuo profilo e ai tuoi obiettivi."
           tr="Biyolojik profilinize ve hedeflerinize uygun özel protokoller."
+          ru="Персонализированные протоколы, соответствующие вашему уникальному биологическому профилю и целям здоровья."
         />
       ),
     },
@@ -67,6 +71,7 @@ export function DoctorExcellenceSection() {
           fr="Innovation Médicale"
           it="Innovazione Medica"
           tr="Tıbbi İnovasyon"
+          ru="Медицинские инновации нового поколения"
         />
       ),
       desc: (
@@ -78,6 +83,7 @@ export function DoctorExcellenceSection() {
           fr="Équipements de diagnostic et de thérapie de pointe approuvés FDA."
           it="Apparecchiature diagnostiche e terapeutiche approvate dalla FDA."
           tr="FDA onaylı, son teknoloji teşhis ve tedavi ekipmanları."
+          ru="Одобренное FDA передовое диагностическое и терапевтическое оборудование."
         />
       ),
     },
@@ -92,6 +98,7 @@ export function DoctorExcellenceSection() {
           fr="Expérience de Luxe Discrète"
           it="Esperienza di Lusso Discreta"
           tr="Gizli ve Lüks Deneyim"
+          ru="Конфиденциальный премиальный опыт"
         />
       ),
       desc: (
@@ -103,6 +110,7 @@ export function DoctorExcellenceSection() {
           fr="Suites privées et coordinateurs dédiés pour une discrétion absolue."
           it="Suite private e coordinatori dedicati per la massima riservatezza."
           tr="Tam gizlilik ve konfor için özel süitler ve özel koordinatörler."
+          ru="Индивидуальные клинические люксы и персональные координаторы для вашего полного спокойствия."
         />
       ),
     },
@@ -122,6 +130,7 @@ export function DoctorExcellenceSection() {
             fr="Piliers d'Excellence"
             it="Pilastri di Eccellenza"
             tr="Mükemmeliyet İlkeleri"
+            ru="Основы совершенства"
           />
         </span>
 
@@ -134,6 +143,7 @@ export function DoctorExcellenceSection() {
             fr="Maîtrise Médicale Mondiale & Soins aux Patients"
             it="Maestria Medica Globale e Cura del Paziente"
             tr="Dünya Standartlarında Tıbbi Uzmanlık ve Hasta Bakımı"
+            ru="Медицинское мастерство мирового уровня и забота о пациентах"
           />
         </h2>
 
@@ -148,6 +158,7 @@ export function DoctorExcellenceSection() {
             fr="Allier expertise clinique et technologies médicales de pointe pour des résultats d'exception."
             it="Unire l'esperienza clinica a tecnologie mediche all'avanguardia per risultati eccellenti."
             tr="Üstün sonuçlar için klinik uzmanlığı son teknolojiyle birleştiriyoruz."
+            ru="Сочетание клинического опыта и передовых медицинских технологий для исключительных результатов."
           />
         </p>
       </div>

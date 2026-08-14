@@ -5,11 +5,12 @@ import { useState, useMemo } from "react";
 import { useDoctors } from "@/lib/api";
 import { motion } from "framer-motion";
 import { Search, Loader2 } from "lucide-react";
-import { DoctorsHero, DoctorCard } from "@/components/doctors";
+import { DoctorsHero, DoctorCard, DoctorExcellenceSection } from "@/components/doctors";
+import { T } from "@/i18n/T";
 
 export function DoctorsPageClient() {
   const [search, setSearch] = useState("");
-  const t = useTranslations();
+  const t = useTranslations("Doctors");
   const locale = useLocale();
   const isAr = locale === "ar";
   const { data: doctors = [], isLoading } = useDoctors();
@@ -39,9 +40,7 @@ export function DoctorsPageClient() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={
-              isAr ? "ابحث باسم الطبيب أو التخصص..." : "Search doctor by name or specialty..."
-            }
+            placeholder={t("searchPlaceholder")}
             className="w-full pl-10 rtl:pl-4 rtl:pr-10 pr-4 py-3 bg-card border border-border/60 rounded-xl text-sm font-medium focus:outline-none focus:border-accent text-foreground transition-all"
           />
         </div>
@@ -51,12 +50,21 @@ export function DoctorsPageClient() {
           <div className="flex flex-col items-center justify-center py-20 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-accent" />
             <p className="text-sm font-medium text-foreground/60">
-              {isAr ? "جاري تحميل الأطباء..." : "Loading elite doctors..."}
+              <T
+                en="Loading elite doctors..."
+                ar="جاري تحميل الأطباء..."
+                de="Lade Elite-Ärzte..."
+                es="Cargando médicos de élite..."
+                fr="Chargement des médecins d'élite..."
+                it="Caricamento medici d'élite..."
+                tr="Seçkin doktorlar yükleniyor..."
+                ru="Загрузка врачей-экспертов..."
+              />
             </p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-foreground/60 font-medium">
-            {isAr ? "لم نجد أطباء يطابقون بحثك." : "No doctors match your search."}
+            {t("noDoctors")}
           </div>
         ) : (
           <motion.div
@@ -70,6 +78,9 @@ export function DoctorsPageClient() {
           </motion.div>
         )}
       </section>
+
+      {/* Pillars of Excellence Section */}
+      <DoctorExcellenceSection />
     </div>
   );
 }

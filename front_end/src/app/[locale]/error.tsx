@@ -25,7 +25,7 @@ export default function ErrorBoundary({ error, reset }: Props) {
       >
         {/* Luxury Brand Label */}
         <span className="text-[10px] tracking-[0.3em] text-[#998675] uppercase font-bold">
-          Premier Care | Clinic Support
+          Premier Health | Clinic Support
         </span>
 
         {/* Error Title */}

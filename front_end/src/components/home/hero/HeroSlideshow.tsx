@@ -31,7 +31,7 @@ export default function HeroSlideshow({ images }: HeroSlideshowProps) {
         >
           <Image
             src={images[bgIndex]}
-            alt="Premier Care Cinematic Background"
+            alt="Premier Health Cinematic Background"
             fill
             priority={bgIndex === 0}
             fetchPriority={bgIndex === 0 ? "high" : "auto"}

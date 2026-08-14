@@ -7,10 +7,10 @@ import { PageHero } from "../shared/PageHero";
 import { getTestimonials } from "@/lib/api";
 
 const DEFAULT_IMAGES = [
-  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600",
-  "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1600",
-  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1600",
-  "https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&q=80&w=1600",
+  "/hero/hero1.webp",
+  "/hero/hero2.webp",
+  "/hero/hero3.webp",
+  "/hero/hero4.webp",
 ];
 
 export function TestimonialsHero() {

@@ -1,9 +1,10 @@
-"use client";
-
 import React from "react";
 import { Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { TestimonialsHero } from "@/components/testimonials/TestimonialsHero";
+import { generatePageMetadata } from "@/lib/seo";
+
+export const generateMetadata = generatePageMetadata("testimonials");
 
 const TestimonialsGrid = dynamic(
   () =>

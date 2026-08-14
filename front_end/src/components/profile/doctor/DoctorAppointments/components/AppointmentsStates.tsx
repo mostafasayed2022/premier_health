@@ -16,6 +16,7 @@ export function AppointmentsLoadingState() {
           fr="Chargement des réservations de patients assignés..."
           it="Caricamento delle prenotazioni dei pazienti assegnati..."
           tr="Atanan hasta rezervasyonları yükleniyor..."
+          ru="Загрузка записей пациентов..."
         />
       </p>
     </div>
@@ -39,6 +40,7 @@ export function AppointmentsErrorState({ refetch }: AppointmentsErrorStateProps)
           fr="Impossible de charger les réservations du médecin"
           it="Impossibile caricare le prenotazioni del medico"
           tr="Doktor rezervasyonları yüklenemedi"
+          ru="Не удалось загрузить записи врача"
         />
       </p>
       <button
@@ -54,6 +56,7 @@ export function AppointmentsErrorState({ refetch }: AppointmentsErrorStateProps)
           fr="Réessayer"
           it="Riprova"
           tr="Yeniden Dene"
+          ru="Повторить"
         />
       </button>
     </div>

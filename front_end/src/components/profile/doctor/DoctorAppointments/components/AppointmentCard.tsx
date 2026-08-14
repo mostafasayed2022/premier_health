@@ -56,6 +56,7 @@ export function AppointmentCard({ apt, onRescheduleClick }: AppointmentCardProps
               fr="Patient"
               it="Paziente"
               tr="Hasta"
+              ru="Пациент"
             />:{" "}
             {(apt as any).customerName || apt.doctor || "Patient"}
           </p>
@@ -88,6 +89,7 @@ export function AppointmentCard({ apt, onRescheduleClick }: AppointmentCardProps
               fr="Frais de séance"
               it="Costo della sessione"
               tr="Seans Ücreti"
+              ru="Стоимость приема"
             />
           </span>
           <span className="text-sm font-bold text-foreground">
@@ -107,6 +109,7 @@ export function AppointmentCard({ apt, onRescheduleClick }: AppointmentCardProps
               fr="Reprogrammer"
               it="Riprogramma"
               tr="Yeniden Planla"
+              ru="Перенести"
             />
           </button>
         )}

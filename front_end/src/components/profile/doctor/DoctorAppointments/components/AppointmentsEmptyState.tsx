@@ -16,6 +16,7 @@ export function AppointmentsEmptyState() {
           fr="Aucune réservation assignée trouvée"
           it="Nessuna prenotazione assegnata trovata"
           tr="Atanmış Rezervasyon Bulunamadı"
+          ru="Назначенных записей не найдено"
         />
       </h4>
       <p className="text-xs text-muted-foreground">
@@ -27,6 +28,7 @@ export function AppointmentsEmptyState() {
           fr="Les nouvelles réservations de patients apparaîtront ici automatiquement une fois créées."
           it="Le nuove prenotazioni dei pazienti appariranno qui automaticamente una volta create."
           tr="Yeni hasta rezervasyonları oluşturulduktan sonra burada otomatik olarak görünecektir."
+          ru="Новые записи пациентов появятся здесь автоматически после создания."
         />
       </p>
     </div>

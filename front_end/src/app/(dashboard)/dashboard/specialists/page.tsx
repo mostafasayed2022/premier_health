@@ -7,9 +7,9 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
 const SPECIALISTS = [
-  { id: "1", name: "Dr. Elena Vance", specialty: "Aesthetic Dermatology", rating: 4.95, branch: "Dubai Marina", photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=300", status: "Available Today" },
-  { id: "2", name: "Dr. Marcus Thorne", specialty: "Regenerative Medicine", rating: 4.90, branch: "Abu Dhabi Corniche", photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=300", status: "In Session" },
-  { id: "3", name: "Dr. Sarah Paul", specialty: "IV Wellness Therapy", rating: 4.88, branch: "Dubai Marina", photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c4c?auto=format&fit=crop&q=80&w=300", status: "Available Today" },
+  { id: "1", name: "Dr. Elena Vance", specialty: "Aesthetic Dermatology", rating: 4.95, branch: "Dubai Marina", photo: "/hero/hero1.webp", status: "Available Today" },
+  { id: "2", name: "Dr. Marcus Thorne", specialty: "Regenerative Medicine", rating: 4.90, branch: "Abu Dhabi Corniche", photo: "/hero/hero2.webp", status: "In Session" },
+  { id: "3", name: "Dr. Sarah Paul", specialty: "IV Wellness Therapy", rating: 4.88, branch: "Dubai Marina", photo: "/hero/hero3.webp", status: "Available Today" },
 ];
 
 export default function SpecialistsDashboardPage() {

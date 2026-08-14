@@ -44,6 +44,7 @@ export function RescheduleModal({
               fr="Reprogrammer le rendez-vous"
               it="Riprogramma appuntamento"
               tr="Randevuyu Yeniden Planla"
+              ru="Перенести запись"
             />
           </h3>
           <button
@@ -65,6 +66,7 @@ export function RescheduleModal({
                 fr="Patient"
                 it="Paziente"
                 tr="Hasta"
+                ru="Пациент"
               />:
             </span>{" "}
             {selectedBooking.patientName}
@@ -79,6 +81,7 @@ export function RescheduleModal({
                 fr="Service"
                 it="Servizio"
                 tr="Hizmet"
+                ru="Услуга"
               />:
             </span>{" "}
             {selectedBooking.serviceName}
@@ -93,6 +96,7 @@ export function RescheduleModal({
                 fr="Emplacement"
                 it="Ubicazione"
                 tr="Konum"
+                ru="Филиал"
               />:
             </span>{" "}
             {selectedBooking.branchName}
@@ -107,6 +111,7 @@ export function RescheduleModal({
                 fr="Actuel"
                 it="Corrente"
                 tr="Mevcut"
+                ru="Текущий"
               />:
             </span>{" "}
             {selectedBooking.date} ({selectedBooking.startTime.slice(0, 5)})
@@ -149,6 +154,7 @@ export function RescheduleModal({
                 fr="Nouvelle date"
                 it="Nuova data"
                 tr="Yeni Tarih"
+                ru="Новая дата"
               /> *
             </label>
             <input
@@ -171,6 +177,7 @@ export function RescheduleModal({
                   fr="Heure de début"
                   it="Ora di inizio"
                   tr="Başlangıç Saati"
+                  ru="Время начала"
                 /> *
               </label>
               <input
@@ -192,6 +199,7 @@ export function RescheduleModal({
                   fr="Heure de fin"
                   it="Ora di fine"
                   tr="Bitiş Saati"
+                  ru="Время окончания"
                 /> *
               </label>
               <input
@@ -219,6 +227,7 @@ export function RescheduleModal({
                 fr="Annuler"
                 it="Annulla"
                 tr="İptal"
+                ru="Отмена"
               />
             </button>
             <button
@@ -235,6 +244,7 @@ export function RescheduleModal({
                   fr="Reprogrammation en cours..."
                   it="Riprogrammazione..."
                   tr="Yeniden planlanıyor..."
+                  ru="Перенос записи..."
                 />
               ) : (
                 <T
@@ -245,6 +255,7 @@ export function RescheduleModal({
                   fr="Confirmer la re-programmation"
                   it="Conferma riprogrammazione"
                   tr="Yeniden Planlamayı Onayla"
+                  ru="Подтвердить перенос"
                 />
               )}
             </button>

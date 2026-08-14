@@ -24,6 +24,7 @@ export function AppointmentsFilterBar({ filter, setFilter }: AppointmentsFilterB
             fr="Rendez-vous et réservations des patients"
             it="Appuntamenti e prenotazioni dei pazienti"
             tr="Hasta Randevuları ve Rezervasyonları"
+            ru="Записи и бронирования пациентов"
           />
         </h3>
         <p className="text-xs text-muted-foreground">
@@ -35,6 +36,7 @@ export function AppointmentsFilterBar({ filter, setFilter }: AppointmentsFilterB
             fr="Gérez les patients programmés pour vos séances cliniques"
             it="Gestisci i pazienti programmati per le tue sessioni cliniche"
             tr="Klinik seanslarınız için planlanan hastaları yönetin"
+            ru="Управление записями пациентов на ваши клинические приемы"
           />
         </p>
       </div>
@@ -59,6 +61,7 @@ export function AppointmentsFilterBar({ filter, setFilter }: AppointmentsFilterB
                 fr="Toutes les réservations"
                 it="Tutte le prenotazioni"
                 tr="Tüm Rezervasyonlar"
+                ru="Все записи"
               />
             ) : (
               tab

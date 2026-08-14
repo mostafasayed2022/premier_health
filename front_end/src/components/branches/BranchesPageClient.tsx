@@ -55,7 +55,7 @@ export function BranchesPageClient() {
             image:
               b.image_url ||
               b.photo ||
-              "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
+              "/AboutPreview/about.webp",
             description: b.address || "",
             description_ar: b.address_ar || b.address || "",
             branch_name: isAr ? b.name_ar || b.name : b.name,
@@ -67,7 +67,7 @@ export function BranchesPageClient() {
     image:
       b.image_url ||
       b.photo ||
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
+      "/AboutPreview/about.webp",
     title: b.name,
     title_ar: b.name_ar || b.name,
     address: b.address,

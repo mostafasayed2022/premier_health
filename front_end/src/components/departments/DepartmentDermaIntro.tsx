@@ -19,24 +19,21 @@ export function DepartmentDermaIntro({
     {
       title: t("hydrafacialTitle"),
       label: t("hydrafacialLabel"),
-      photo:
-        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
+      photo: "/Derma/HYDRAFACIAL.webp",
       desc: t("hydrafacialDesc"),
       slug: "hydrafacial",
     },
     {
       title: t("carbonLaserTitle"),
       label: t("carbonLaserLabel"),
-      photo:
-        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600",
+      photo: "/Derma/carbon.webp",
       desc: t("carbonLaserDesc"),
       slug: "carbon-laser",
     },
     {
       title: t("fillerBotoxTitle"),
       label: t("fillerBotoxLabel"),
-      photo:
-        "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+      photo: "/Derma/BOTOX.webp",
       desc: t("fillerBotoxDesc"),
       slug: "filler-botox",
     },

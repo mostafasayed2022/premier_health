@@ -1,4 +1,7 @@
 import { getTranslations } from "next-intl/server";
+import { generatePageMetadata } from "@/lib/seo";
+
+export const generateMetadata = generatePageMetadata("terms-and-conditions");
 
 export default async function TermsPage() {
   const t = await getTranslations();
