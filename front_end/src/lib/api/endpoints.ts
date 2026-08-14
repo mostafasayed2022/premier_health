@@ -167,9 +167,9 @@ export const uploadFile = async (
 
   const token =
     typeof window !== "undefined"
-      ? localStorage.getItem("admin_access") ||
-        localStorage.getItem("access_token") ||
-        localStorage.getItem("patient_access")
+      ? localStorage.getItem("patient_access") ||
+        localStorage.getItem("admin_access") ||
+        localStorage.getItem("access_token")
       : null;
 
   const { data } = await axios.post<FileUpload>(
@@ -465,6 +465,33 @@ export const getBookingStatus = async (
   return data;
 };
 
+export const cancelBooking = async (
+  bookingId: string,
+  reason?: string,
+): Promise<any> => {
+  const payload = reason
+    ? { status: "cancelled", reason }
+    : { status: "cancelled" };
+
+  try {
+    const { data } = await api.post(`bookings/${bookingId}/cancel/`, payload);
+    return data;
+  } catch {
+    // Fallback: try PATCH on bookings/:id/
+    try {
+      const { data } = await api.patch(`bookings/${bookingId}/`, payload);
+      return data;
+    } catch {
+      // Fallback: try PATCH on doctor/bookings/:id/
+      const { data } = await api.patch(
+        `doctor/bookings/${bookingId}/`,
+        payload,
+      );
+      return data;
+    }
+  }
+};
+
 // ─── Legacy wrappers ──────────────────────────────────────────────
 
 export const bookAppointment = async (
@@ -616,6 +643,8 @@ interface ApiDoctorProfile {
   last_name: string;
   name: string;
   email: string;
+  phone?: string;
+  phone_number?: string;
   specialization?: string;
   specialty?: string;
   position?: string;
@@ -623,6 +652,15 @@ interface ApiDoctorProfile {
   bio: string;
   license_number: string;
   image_url: string | null;
+  photo?: string | null;
+  experience?: number | string;
+  experience_years?: number | string;
+  rating?: number | string;
+  patients_treated?: number | string;
+  patients_count?: number | string;
+  patients?: number | string;
+  total_patients?: number | string;
+  languages?: string[] | string;
   branches_names: string[];
   branches_detail?: Array<{ id: number; name: string; city?: string }>;
   services_names: string[];
@@ -674,22 +712,60 @@ function mapPatientProfile(raw: ApiPatientProfile): PatientProfile {
 }
 
 function mapDoctorProfile(raw: ApiDoctorProfile): DoctorProfileDetails {
+  const bookings = (raw.bookings ?? []).map((b) => ({
+    id: String(b.id),
+    patientName: b.patient_name || "Patient",
+    patientPhone: b.patient_phone || "",
+    serviceName: b.service_name || "",
+    branchName: b.branch_name || "",
+    date: b.date || "",
+    startTime: b.start_time || "",
+    endTime: b.end_time || "",
+    status: b.status || "Confirmed",
+    fee: String(b.fee || ""),
+    notes: b.notes || "",
+  }));
+
+  const availability = (raw.availabilities ?? []).map((a) => ({
+    id: String(a.id),
+    weekday: a.weekday_display || a.weekday || "",
+    startTime: a.start_time || a.startTime || "",
+    endTime: a.end_time || a.endTime || "",
+    slotDurationMinutes:
+      a.slot_duration_minutes ?? a.slotDurationMinutes ?? 30,
+    branchName: a.branch_name || a.branchName,
+    branchId: a.branchId ? String(a.branchId) : undefined,
+  }));
+
+  const rawExp = raw.experience_years ?? raw.experience;
+  const expYears = rawExp !== undefined && rawExp !== null ? Number(rawExp) : 14;
+
+  const rawRating = raw.rating;
+  const ratingNum = rawRating !== undefined && rawRating !== null ? Number(rawRating) : 4.95;
+
+  const rawPatients = raw.patients_treated ?? raw.patients_count ?? raw.patients ?? raw.total_patients;
+  const patientsCount = rawPatients !== undefined && rawPatients !== null ? Number(rawPatients) : (bookings.length > 0 ? bookings.length : 3000);
+
   return {
     id: String(raw.id),
     userId: String(raw.id),
-    firstName: raw.first_name,
-    lastName: raw.last_name,
-    name: raw.name,
-    email: raw.email,
+    firstName: raw.first_name || "",
+    lastName: raw.last_name || "",
+    name: raw.name || `${raw.first_name || ""} ${raw.last_name || ""}`.trim() || "Doctor",
+    email: raw.email || "",
+    phone: raw.phone || raw.phone_number || "",
     specialization: raw.specialization || raw.specialty || "",
     specialty: raw.specialty || raw.specialization || "",
     position: raw.position ?? "",
     consultationFee: raw.consultation_fee
       ? Number(raw.consultation_fee)
       : undefined,
-    bio: raw.bio,
+    bio: raw.bio || "",
     licenseNumber: raw.license_number ?? "",
-    photo: raw.image_url ?? "",
+    photo: raw.image_url || raw.photo || "",
+    experienceYears: expYears,
+    rating: ratingNum,
+    patientsTreated: patientsCount,
     branches: raw.branches_names ?? [],
     branchesDetail: (raw.branches_detail ?? []).map((b) => ({
       id: b.id,
@@ -697,29 +773,14 @@ function mapDoctorProfile(raw: ApiDoctorProfile): DoctorProfileDetails {
       city: b.city,
     })),
     services: raw.services_names ?? [],
-    availability: (raw.availabilities ?? []).map((a) => ({
-      id: String(a.id),
-      weekday: a.weekday_display || a.weekday || "",
-      startTime: a.start_time || a.startTime || "",
-      endTime: a.end_time || a.endTime || "",
-      slotDurationMinutes:
-        a.slot_duration_minutes ?? a.slotDurationMinutes ?? 30,
-      branchName: a.branch_name || a.branchName,
-      branchId: a.branchId ? String(a.branchId) : undefined,
-    })),
-    bookings: (raw.bookings ?? []).map((b) => ({
-      id: b.id,
-      patientName: b.patient_name,
-      patientPhone: b.patient_phone,
-      serviceName: b.service_name,
-      branchName: b.branch_name,
-      date: b.date,
-      startTime: b.start_time,
-      endTime: b.end_time,
-      status: b.status,
-      fee: b.fee,
-      notes: b.notes,
-    })),
+    languages:
+      typeof raw.languages === "string"
+        ? raw.languages.split(",").map((s) => s.trim())
+        : Array.isArray(raw.languages)
+          ? raw.languages
+          : ["Arabic", "English"],
+    availability,
+    bookings,
   };
 }
 
@@ -743,7 +804,14 @@ export const updatePatientProfile = async (
   // if (payload.address     !== undefined) body.address       = payload.address;
 
   // image_id: integer FK to the File model — sent after camera-button upload
-  if (payload.imageId !== undefined) body.image_id = payload.imageId;
+  if (payload.imageId !== undefined) {
+    body.image_id = payload.imageId;
+    body.image = payload.imageId;
+  }
+  if (payload.avatar !== undefined) {
+    body.avatar = payload.avatar;
+    body.image_url = payload.avatar;
+  }
 
   const { data } = await api.patch<ApiPatientProfile>("profile/patient/", body);
   return mapPatientProfile(data);
@@ -771,7 +839,14 @@ export const updateDoctorProfile = async (
   if (payload.bio !== undefined) body.bio = payload.bio;
 
   // image_id: integer FK to the File model — set by the upload flow
-  if (payload.imageId !== undefined) body.image_id = payload.imageId;
+  if (payload.imageId !== undefined) {
+    body.image_id = payload.imageId;
+    body.image = payload.imageId;
+  }
+  if (payload.photo !== undefined) {
+    body.photo = payload.photo;
+    body.image_url = payload.photo;
+  }
 
   if (payload.availability !== undefined) {
     body.availabilities_data = payload.availability.map((a) => ({

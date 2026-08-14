@@ -11,7 +11,7 @@ export interface Appointment {
   date: string;
   time: string;
   endTime?: string;
-  status: "Pending" | "Confirmed" | "Rescheduled" | "Cancelled";
+  status: "Pending" | "Confirmed" | "Rescheduled" | "Cancelled" | "Completed" | "Pending Payment";
   amount: number;
   paymentStatus: "Unpaid" | "Paid";
   paymentMethod?: string;

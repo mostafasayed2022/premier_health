@@ -60,6 +60,7 @@ import {
   getDoctorsByBranch,
   getDoctorBySlug,
   rescheduleBooking,
+  cancelBooking,
   CreateBookingResult,
   CreateBookingPayload,
   RescheduleBookingPayload,
@@ -594,6 +595,48 @@ export function useBookAppointment(
     ...options,
   });
 }
+
+// ─── Cancel Booking ──────────────────────────────────────────────────────────
+
+export function useCancelBooking(
+  options?: Omit<
+    UseMutationOptions<
+      any,
+      ApiError,
+      { bookingId: string; reason?: string },
+      unknown
+    >,
+    "mutationFn"
+  >,
+) {
+  const queryClient = useQueryClient();
+
+  return useMutation<any, ApiError, { bookingId: string; reason?: string }>({
+    mutationFn: async ({ bookingId, reason }) => {
+      try {
+        return await cancelBooking(bookingId, reason);
+      } catch (e) {
+        throw normalizeError(e);
+      }
+    },
+    ...options,
+    onSuccess: (data, variables, context, onMutateResult) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.appointments.all });
+      queryClient.invalidateQueries({ queryKey: queryKeys.patientProfile.me });
+      queryClient.invalidateQueries({ queryKey: queryKeys.doctorProfile.me });
+      import("sonner").then(({ toast }) => {
+        toast.success("Visit has been cancelled successfully.");
+      });
+      options?.onSuccess?.(data, variables, context, onMutateResult);
+    },
+    onError: (err, variables, context, er) => {
+      import("sonner").then(({ toast }) => {
+        toast.error(err.message || "Failed to cancel appointment");
+      });
+      options?.onError?.(err, variables, context, er);
+    },
+  });
+}
 export function usePrefetchServices() {
   const queryClient = useQueryClient();
 
@@ -662,7 +705,7 @@ export function useUpdatePatientProfile(
       queryClient.setQueryData(queryKeys.patientProfile.me, data);
       queryClient.invalidateQueries({ queryKey: queryKeys.patientProfile.me });
       import("sonner").then(({ toast }) => {
-        if (variables?.imageId !== undefined) {
+        if (variables?.imageId !== undefined || variables?.avatar !== undefined) {
           toast.success("Patient profile picture updated successfully!");
         }
       });
@@ -716,7 +759,7 @@ export function useUpdateDoctorProfile(
       queryClient.setQueryData(queryKeys.doctorProfile.me, data);
       queryClient.invalidateQueries({ queryKey: queryKeys.doctorProfile.me });
       import("sonner").then(({ toast }) => {
-        if (variables?.imageId !== undefined) {
+        if (variables?.imageId !== undefined || variables?.photo !== undefined) {
           toast.success("Doctor profile picture updated successfully!");
         } else if (variables?.availability !== undefined) {
           toast.success("Profile schedule saved successfully!");

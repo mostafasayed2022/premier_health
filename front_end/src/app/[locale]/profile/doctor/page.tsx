@@ -7,29 +7,96 @@ import { ProfileStats } from "@/components/profile/shared/ProfileStats";
 import { ProfileTabs, TabItem } from "@/components/profile/shared/ProfileTabs";
 import { DoctorOverview } from "@/components/profile/doctor/DoctorOverview/DoctorOverview";
 import { DoctorScheduleManager } from "@/components/profile/doctor/DoctorScheduleManager/DoctorScheduleManager";
-import { Stethoscope, Clock, Loader2, User, Calendar } from "lucide-react";
+import { DoctorAppointments } from "@/components/profile/doctor/DoctorAppointments/DoctorAppointments";
+import { EditDoctorModal } from "@/components/profile/doctor/EditDoctorModal";
+import { Stethoscope, Clock, Loader2, Calendar } from "lucide-react";
+import { T } from "@/i18n/T";
 
 export default function DoctorProfilePage() {
   const [activeTab, setActiveTab] = useState("overview");
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const { data: doctor, isLoading, error } = useMyDoctorProfile();
   const updateDoctorMutation = useUpdateDoctorProfile();
 
-  const handleAvatarUpdate = (newUrl: string) => {
-    updateDoctorMutation.mutate({ photo: newUrl });
+  const handleFileUploaded = (fileId: number, fileUrl: string) => {
+    updateDoctorMutation.mutate({ imageId: fileId, photo: fileUrl });
+  };
+
+  const handleAvatarUpdate = (newUrl: string, fileId?: number) => {
+    if (fileId) {
+      handleFileUploaded(fileId, newUrl);
+    }
   };
 
   const tabs: TabItem[] = [
-    { id: "overview", label: "Doctor Bio", icon: User },
-    { id: "schedule", label: "Schedule Manager", icon: Calendar },
+    {
+      id: "overview",
+      label: (
+        <T
+          en="Doctor Bio"
+          ar="السيرة الذاتية للطبيب"
+          de="Arzt-Bio"
+          es="Biografía del médico"
+          fr="Bio du médecin"
+          it="Biografia del medico"
+          tr="Doktor Özgeçmişi"
+          ru="Биография врача"
+        />
+      ),
+      icon: Stethoscope,
+    },
+    {
+      id: "appointments",
+      label: (
+        <T
+          en="Appointments"
+          ar="المواعيد"
+          de="Termine"
+          es="Citas"
+          fr="Rendez-vous"
+          it="Appuntamenti"
+          tr="Randevular"
+          ru="Записи"
+        />
+      ),
+      icon: Calendar,
+      badge: doctor?.bookings?.length,
+    },
+    {
+      id: "schedule",
+      label: (
+        <T
+          en="Schedule Manager"
+          ar="إدارة الجدول والمواعيد"
+          de="Zeitplanverwaltung"
+          es="Administrador de horarios"
+          fr="Gestionnaire d'horaires"
+          it="Gestione orari"
+          tr="Program Yöneticisi"
+          ru="Управление расписанием"
+        />
+      ),
+      icon: Clock,
+      badge: doctor?.availability?.length,
+    },
   ];
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] bg-background">
-        <Loader2 className="w-8 h-8 animate-spin text-emerald-500 mb-3" />
-        <p className="text-sm font-medium text-muted-foreground">
-          Loading Doctor Profile...
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3">
+        <Loader2 className="w-8 h-8 animate-spin" style={{ color: "#385366" }} />
+        <p className="text-sm font-medium text-[#959ead]">
+          <T
+            en="Loading Doctor Profile..."
+            ar="جاري تحميل الملف الشخصي للطبيب..."
+            de="Arztprofil wird geladen..."
+            es="Cargando perfil del médico..."
+            fr="Chargement du profil du médecin..."
+            it="Caricamento del profilo del medico..."
+            tr="Doktor Profili Yükleniyor..."
+            ru="Загрузка профиля врача..."
+          />
         </p>
       </div>
     );
@@ -37,15 +104,25 @@ export default function DoctorProfilePage() {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <p className="text-lg font-bold text-red-500">Failed to load profile</p>
-        <p className="text-sm text-gray-500">{error.message}</p>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-center">
+        <p className="text-lg font-bold text-rose-600">
+          <T
+            en="Failed to load profile"
+            ar="تعذر تحميل الملف الشخصي"
+            de="Profil konnte nicht geladen werden"
+            es="No se pudo cargar el perfil"
+            fr="Impossible de charger le profil"
+            it="Impossibile caricare il profilo"
+            tr="Profil yüklenemedi"
+            ru="Не удалось загрузить профиль"
+          />
+        </p>
+        <p className="text-sm text-[#959ead]">{error.message}</p>
       </div>
     );
   }
 
   if (!doctor) return null;
-
 
   return (
     <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
@@ -60,7 +137,9 @@ export default function DoctorProfilePage() {
           badge={doctor.specialty}
           rating={doctor.rating}
           patientsCount={doctor.patientsTreated}
+          onEditClick={() => setIsEditModalOpen(true)}
           onAvatarUpdate={handleAvatarUpdate}
+          onFileUploaded={handleFileUploaded}
         />
 
         <ProfileStats
@@ -69,7 +148,7 @@ export default function DoctorProfilePage() {
             patientsTreated: doctor.patientsTreated,
             rating: doctor.rating,
             experienceYears: doctor.experienceYears,
-            availabilitySlots: doctor.availability?.length || 5,
+            availabilitySlots: doctor.availability?.length ?? 0,
           }}
         />
 
@@ -81,16 +160,26 @@ export default function DoctorProfilePage() {
           />
 
           {activeTab === "overview" && <DoctorOverview doctor={doctor} />}
+          {activeTab === "appointments" && <DoctorAppointments />}
           {activeTab === "schedule" && (
             <DoctorScheduleManager
               initialSlots={doctor.availability}
+              bookings={doctor.bookings}
+              availableBranches={doctor.branchesDetail}
               onSave={(slots) =>
                 updateDoctorMutation.mutate({ availability: slots })
               }
             />
           )}
         </div>
+
+        <EditDoctorModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          doctor={doctor}
+        />
       </div>
     </div>
   );
 }
+

@@ -5,9 +5,11 @@ import { T } from "@/i18n/T";
 
 export function AppointmentsEmptyState() {
   return (
-    <div className="p-12 text-center bg-card rounded-2xl border border-border">
-      <Calendar className="w-10 h-10 text-muted-foreground/50 mx-auto mb-3" />
-      <h4 className="text-base font-bold text-foreground mb-1">
+    <div className="p-12 text-center bg-white rounded-2xl border border-[#e8e0d5] shadow-xs">
+      <div className="w-12 h-12 rounded-2xl bg-[#f7f2ea] flex items-center justify-center mx-auto mb-3 text-[#c8a96b]">
+        <Calendar className="w-6 h-6" />
+      </div>
+      <h4 className="text-base font-bold text-[#1e293b] mb-1">
         <T
           en="No Assigned Bookings Found"
           ar="لا توجد حجوزات مسجلة باسمك حالياً"

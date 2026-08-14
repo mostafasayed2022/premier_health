@@ -30,7 +30,7 @@ export function AboutWhyChooseUs() {
             className="relative aspect-square rounded-3xl overflow-hidden border border-[#C8A96B]/15 shadow-md"
           >
             <Image
-              src="/AboutPreview/about.webp"
+              src="/AboutPreview/layout3.webp"
               alt="Premier Health Clinic"
               fill
               sizes="(max-width: 1024px) 100vw, 500px"

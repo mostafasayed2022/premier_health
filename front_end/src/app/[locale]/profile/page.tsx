@@ -12,10 +12,8 @@ import {
 import { ProfileHeader } from "@/components/profile/shared/ProfileHeader";
 import { ProfileStats } from "@/components/profile/shared/ProfileStats";
 import { ProfileTabs, TabItem } from "@/components/profile/shared/ProfileTabs";
-import { ProfileSettings } from "@/components/profile/shared/ProfileSettings";
 import { PatientOverview } from "@/components/profile/patient/PatientOverview";
 import { PatientAppointments } from "@/components/profile/patient/PatientAppointments";
-import { PatientRecords } from "@/components/profile/patient/PatientRecords";
 import { EditPatientModal } from "@/components/profile/patient/EditPatientModal";
 import { EditDoctorModal } from "@/components/profile/doctor/EditDoctorModal";
 import { DoctorOverview } from "@/components/profile/doctor/DoctorOverview/DoctorOverview";
@@ -24,8 +22,6 @@ import { DoctorAppointments } from "@/components/profile/doctor/DoctorAppointmen
 import {
   User,
   Calendar,
-  FileText,
-  Settings,
   Clock,
   Loader2,
   Stethoscope,
@@ -109,19 +105,10 @@ export default function ProfileHubPage() {
   const updateDoctorMutation = useUpdateDoctorProfile();
 
   // ── Avatar upload handlers ────────────────────────────────────────────────
-  // ProfileHeader calls onAvatarUpdate(url) for optimistic UI on both roles.
-  // After a successful upload it also calls onDoctorFileUploaded(fileId, url)
-  // so we can PATCH the integer file PK to the backend (patient & doctor both).
-  const handleAvatarUpdate = (newUrl: string) => {
-    // Optimistic: update local cache immediately so the avatar renders at once.
-    // The real persistence is done in handleFileUploaded via the file ID.
-  };
-
-  // Called by ProfileHeader after a successful upload — works for BOTH roles.
   const handleFileUploaded = (fileId: number, fileUrl: string) => {
     if (role === "patient") {
       updatePatientMutation.mutate(
-        { imageId: fileId },
+        { imageId: fileId, avatar: fileUrl },
         {
           onError: (err) =>
             toast.error(err.message || "Failed to save profile photo."),
@@ -129,12 +116,18 @@ export default function ProfileHubPage() {
       );
     } else {
       updateDoctorMutation.mutate(
-        { imageId: fileId },
+        { imageId: fileId, photo: fileUrl },
         {
           onError: (err) =>
             toast.error(err.message || "Failed to save profile photo."),
         },
       );
+    }
+  };
+
+  const handleAvatarUpdate = (newUrl: string, fileId?: number) => {
+    if (fileId) {
+      handleFileUploaded(fileId, newUrl);
     }
   };
 
@@ -181,39 +174,6 @@ export default function ProfileHubPage() {
         />
       ),
       icon: Calendar,
-    },
-    {
-      id: "records",
-      label: (
-        <T
-          en="Medical Records"
-          ar="السجلات الطبية"
-          de="Medizinische Akten"
-          es="Registros médicos"
-          fr="Dossiers médicaux"
-          it="Cartelle cliniche"
-          tr="Tıbbi Kayıtlar"
-          ru="Медицинские карты"
-        />
-      ),
-      icon: FileText,
-      badge: patient?.totalDocuments,
-    },
-    {
-      id: "settings",
-      label: (
-        <T
-          en="Settings"
-          ar="الإعدادات"
-          de="Einstellungen"
-          es="Configuración"
-          fr="Paramètres"
-          it="Impostazioni"
-          tr="Ayarlar"
-          ru="Настройки"
-        />
-      ),
-      icon: Settings,
     },
   ];
 
@@ -313,6 +273,7 @@ export default function ProfileHubPage() {
             badge="Premier Health Patient"
             onEditClick={() => setIsEditModalOpen(true)}
             onAvatarUpdate={handleAvatarUpdate}
+            onFileUploaded={handleFileUploaded}
             onDoctorFileUploaded={handleFileUploaded}
           />
         )}
@@ -323,12 +284,13 @@ export default function ProfileHubPage() {
             email={doctor.email}
             phone={doctor.phone || ""}
             location={doctor.branches?.[0] || ""}
-            avatar={doctor.photo}
+            avatar={doctor.photo || ""}
             badge={doctor.position || doctor.specialty}
             rating={doctor.rating}
             patientsCount={doctor.patientsTreated}
             onEditClick={() => setIsEditModalOpen(true)}
             onAvatarUpdate={handleAvatarUpdate}
+            onFileUploaded={handleFileUploaded}
             onDoctorFileUploaded={handleFileUploaded}
           />
         )}
@@ -351,7 +313,7 @@ export default function ProfileHubPage() {
               patientsTreated: doctor.patientsTreated,
               rating: doctor.rating,
               experienceYears: doctor.experienceYears,
-              availabilitySlots: doctor.availability?.length || 5,
+              availabilitySlots: doctor.availability?.length ?? 0,
             }}
           />
         )}
@@ -371,8 +333,6 @@ export default function ProfileHubPage() {
                 <PatientOverview patient={patient} />
               )}
               {activeTab === "appointments" && <PatientAppointments />}
-              {activeTab === "records" && <PatientRecords />}
-              {activeTab === "settings" && <ProfileSettings />}
             </>
           )}
 

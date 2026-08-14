@@ -104,13 +104,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"
         />
-        <link
-          rel="preload"
-          as="image"
-          href="/hero/hero1.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
       </head>
       <body className="bg-white flex min-h-screen flex-col font-sans selection:bg-accent-light selection:text-primary">
         <GoogleTagManagerNoScript />

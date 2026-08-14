@@ -19,11 +19,13 @@ interface ProfileHeaderProps {
   rating?: number;
   patientsCount?: number;
   onEditClick?: () => void;
-  onAvatarUpdate: (newUrl: string) => void;
+  onAvatarUpdate?: (newUrl: string, fileId?: number) => void;
   /**
-   * Doctor-only: called after a successful file upload with the File's integer PK
-   * and URL so the parent can PATCH `image_id` to the backend.
+   * Called after a successful file upload with the File's integer PK
+   * and URL so the parent can PATCH `image_id` / `image` to the backend.
    */
+  onFileUploaded?: (fileId: number, fileUrl: string) => void;
+  /** Doctor-only legacy alias */
   onDoctorFileUploaded?: (fileId: number, fileUrl: string) => void;
 }
 
@@ -40,6 +42,7 @@ export function ProfileHeader({
   rating,
   onEditClick,
   onAvatarUpdate,
+  onFileUploaded,
   onDoctorFileUploaded,
 }: ProfileHeaderProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -55,10 +58,13 @@ export function ProfileHeader({
   const fileUploadMutation = useFileUpload({
     onSuccess: (data) => {
       // Always update the UI immediately via the URL
-      onAvatarUpdate(data.url);
+      onAvatarUpdate?.(data.url, data.id);
       setUploadProgress(null);
 
       // Persist the File FK to backend (patient & doctor)
+      if (onFileUploaded) {
+        onFileUploaded(data.id, data.url);
+      }
       if (onDoctorFileUploaded) {
         onDoctorFileUploaded(data.id, data.url);
       }

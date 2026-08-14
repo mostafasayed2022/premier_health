@@ -5,12 +5,10 @@ import { usePatientProfile, useUpdatePatientProfile } from "@/lib/api/hooks";
 import { ProfileHeader } from "@/components/profile/shared/ProfileHeader";
 import { ProfileStats } from "@/components/profile/shared/ProfileStats";
 import { ProfileTabs, TabItem } from "@/components/profile/shared/ProfileTabs";
-import { ProfileSettings } from "@/components/profile/shared/ProfileSettings";
 import { PatientOverview } from "@/components/profile/patient/PatientOverview";
 import { PatientAppointments } from "@/components/profile/patient/PatientAppointments";
-import { PatientRecords } from "@/components/profile/patient/PatientRecords";
 import { EditPatientModal } from "@/components/profile/patient/EditPatientModal";
-import { User, Calendar, FileText, Settings, Loader2 } from "lucide-react";
+import { User, Calendar, Loader2 } from "lucide-react";
 
 export default function PatientProfilePage() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -19,15 +17,19 @@ export default function PatientProfilePage() {
   const { data: patient, isLoading } = usePatientProfile();
   const updatePatientMutation = useUpdatePatientProfile();
 
-  const handleAvatarUpdate = (newUrl: string) => {
-    updatePatientMutation.mutate({ avatar: newUrl });
+  const handleFileUploaded = (fileId: number, fileUrl: string) => {
+    updatePatientMutation.mutate({ imageId: fileId, avatar: fileUrl });
+  };
+
+  const handleAvatarUpdate = (newUrl: string, fileId?: number) => {
+    if (fileId) {
+      handleFileUploaded(fileId, newUrl);
+    }
   };
 
   const tabs: TabItem[] = [
     { id: "overview", label: "Overview", icon: User },
     { id: "appointments", label: "Appointments", icon: Calendar },
-    // { id: "records", label: "Medical Records", icon: FileText, badge: patient?.totalDocuments },
-    // { id: "settings", label: "Account Settings", icon: Settings },
   ];
 
   if (isLoading || !patient) {
@@ -51,6 +53,7 @@ export default function PatientProfilePage() {
           badge="Premier Health Elite Patient"
           onEditClick={() => setIsEditModalOpen(true)}
           onAvatarUpdate={handleAvatarUpdate}
+          onFileUploaded={handleFileUploaded}
         />
 
         <ProfileStats
@@ -58,7 +61,6 @@ export default function PatientProfilePage() {
           stats={{
             totalAppointments: patient.totalAppointments,
             completedVisits: patient.completedVisits,
-            totalDocuments: patient.totalDocuments,
           }}
         />
 
@@ -67,8 +69,6 @@ export default function PatientProfilePage() {
 
           {activeTab === "overview" && <PatientOverview patient={patient} />}
           {activeTab === "appointments" && <PatientAppointments />}
-          {activeTab === "records" && <PatientRecords />}
-          {activeTab === "settings" && <ProfileSettings />}
         </div>
 
         <EditPatientModal

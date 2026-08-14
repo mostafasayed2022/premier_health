@@ -47,28 +47,33 @@ export function EditDoctorModal({ isOpen, onClose, doctor }: EditDoctorModalProp
   };
 
   const inputCls =
-    "w-full px-4 py-2.5 rounded-xl bg-background border border-input text-sm text-foreground outline-none focus:ring-2 focus:ring-[#c8a96b]/40";
+    "w-full px-4 py-2.5 rounded-xl bg-white border border-[#e8e0d5] text-sm text-[#1e293b] placeholder-[#959ead] font-medium outline-none focus:ring-2 focus:ring-[#385366]/30 focus:border-[#385366] transition-all";
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="w-full max-w-xl bg-card rounded-3xl border border-border p-6 shadow-md space-y-6 my-8 animate-in fade-in zoom-in duration-200">
+    <div className="fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-4 overflow-y-auto">
+      <div className="w-full max-w-xl bg-white rounded-3xl border border-[#e8e0d5] p-6 sm:p-7 shadow-2xl space-y-5 my-8 animate-in fade-in zoom-in-95 duration-200">
 
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-border">
-          <div>
-            <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
-              <Stethoscope className="w-5 h-5" style={{ color: "#c8a96b" }} />
-              Edit Doctor Profile
-            </h3>
-            <p className="text-xs text-muted-foreground mt-0.5">
-              Update your professional information
-            </p>
+        <div className="flex items-center justify-between pb-4 border-b border-[#e8e0d5]">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-[#fff8ee] text-[#a38448] flex items-center justify-center shadow-2xs">
+              <Stethoscope className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-[#1e293b]">
+                Edit Doctor Profile
+              </h3>
+              <p className="text-xs text-[#959ead]">
+                Update your professional credentials & information
+              </p>
+            </div>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="text-muted-foreground hover:text-foreground text-sm font-semibold cursor-pointer"
+            className="w-8 h-8 rounded-xl bg-[#f7f2ea] text-[#959ead] hover:text-[#1e293b] hover:bg-[#e8e0d5] flex items-center justify-center transition-colors cursor-pointer"
           >
-            &#x2715;
+            ✕
           </button>
         </div>
 
@@ -160,24 +165,24 @@ export function EditDoctorModal({ isOpen, onClose, doctor }: EditDoctorModalProp
           </div>
 
           {/* Photo hint */}
-          <p className="text-[11px] text-muted-foreground bg-muted/40 rounded-xl px-3 py-2 border border-border">
+          <p className="text-[11px] text-[#959ead] bg-[#f7f2ea] rounded-xl px-3.5 py-2.5 border border-[#e8e0d5]">
             To update your profile photo, use the <strong>camera button</strong> on
             your profile picture above.
           </p>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#e8e0d5]">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs font-semibold text-muted-foreground hover:text-foreground cursor-pointer"
+              className="px-5 py-2.5 rounded-xl text-xs font-bold text-[#4a5568] hover:bg-[#f7f2ea] transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={updateMutation.isPending}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-medium text-xs shadow-md cursor-pointer disabled:opacity-50 transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-white font-bold text-xs shadow-md cursor-pointer disabled:opacity-50 transition-opacity hover:opacity-90"
               style={{ backgroundColor: "#385366" }}
             >
               {updateMutation.isPending ? (

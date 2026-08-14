@@ -13,9 +13,9 @@ export function AppointmentsFilterBar({ filter, setFilter }: AppointmentsFilterB
   const tabs = ["all", "Confirmed", "Completed"] as const;
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-card border border-border">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white border border-[#e8e0d5] shadow-xs">
       <div>
-        <h3 className="text-base font-bold text-foreground">
+        <h3 className="text-base font-bold text-[#1e293b]">
           <T
             en="Patient Appointments & Bookings"
             ar="حجوزات ومواعيد المرضى"
@@ -27,7 +27,7 @@ export function AppointmentsFilterBar({ filter, setFilter }: AppointmentsFilterB
             ru="Записи и бронирования пациентов"
           />
         </h3>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-[#959ead]">
           <T
             en="Manage patients scheduled for your clinical sessions"
             ar="إدارة قائمة المرضى المحجوزين لجلساتك الطبية"
@@ -41,15 +41,15 @@ export function AppointmentsFilterBar({ filter, setFilter }: AppointmentsFilterB
         </p>
       </div>
 
-      <div className="flex items-center gap-1.5 bg-muted/60 p-1 rounded-xl border border-border/50">
+      <div className="flex items-center gap-1.5 bg-[#f7f2ea] p-1 rounded-xl border border-[#e8e0d5]">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setFilter(tab)}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all cursor-pointer ${
               filter === tab
-                ? "bg-card text-foreground shadow-xs"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-white text-[#1e293b] shadow-xs border border-[#e8e0d5]"
+                : "text-[#959ead] hover:text-[#1e293b]"
             }`}
           >
             {tab === "all" ? (

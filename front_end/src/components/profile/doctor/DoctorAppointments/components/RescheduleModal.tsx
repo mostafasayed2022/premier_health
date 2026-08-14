@@ -32,10 +32,10 @@ export function RescheduleModal({
   if (!selectedBooking) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-card rounded-3xl border border-border p-6 shadow-md space-y-5 animate-in fade-in zoom-in duration-200">
-        <div className="flex items-center justify-between pb-3 border-b border-border">
-          <h3 className="text-lg font-bold text-foreground">
+    <div className="fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white rounded-3xl border border-[#e8e0d5] p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
+        <div className="flex items-center justify-between pb-3 border-b border-[#e8e0d5]">
+          <h3 className="text-base sm:text-lg font-bold text-[#1e293b]">
             <T
               en="Reschedule Appointment"
               ar="إعادة جدولة الموعد"
@@ -49,13 +49,13 @@ export function RescheduleModal({
           </h3>
           <button
             onClick={() => setSelectedBooking(null)}
-            className="text-muted-foreground hover:text-foreground text-sm font-semibold cursor-pointer"
+            className="w-8 h-8 rounded-xl bg-[#f7f2ea] text-[#959ead] hover:text-[#1e293b] hover:bg-[#e8e0d5] flex items-center justify-center transition-colors cursor-pointer"
           >
             ✕
           </button>
         </div>
 
-        <div className="text-xs text-muted-foreground space-y-1 p-3 bg-muted/40 rounded-2xl border border-border/50">
+        <div className="text-xs text-[#4a5568] space-y-1.5 p-3.5 bg-[#f7f2ea] rounded-2xl border border-[#e8e0d5]">
           <p>
             <span className="font-bold text-foreground/80">
               <T
@@ -162,13 +162,13 @@ export function RescheduleModal({
               required
               value={rescheduleDate}
               onChange={(e) => setRescheduleDate(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-background border border-input text-sm text-foreground focus:ring-2 focus:ring-emerald-500/40"
+              className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#e8e0d5] text-sm text-[#1e293b] placeholder-[#959ead] font-medium outline-none focus:ring-2 focus:ring-[#385366]/30 focus:border-[#385366] transition-all"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-foreground/80 mb-1">
+              <label className="block text-xs font-bold text-[#1e293b] mb-1">
                 <T
                   en="Start Time"
                   ar="وقت البدء"
@@ -185,12 +185,12 @@ export function RescheduleModal({
                 required
                 value={rescheduleStartTime}
                 onChange={(e) => setRescheduleStartTime(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-background border border-input text-sm text-foreground focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2 rounded-xl bg-white border border-[#e8e0d5] text-sm text-[#1e293b] placeholder-[#959ead] font-medium outline-none focus:ring-2 focus:ring-[#385366]/30 focus:border-[#385366] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground/80 mb-1">
+              <label className="block text-xs font-bold text-[#1e293b] mb-1">
                 <T
                   en="End Time"
                   ar="وقت الانتهاء"
@@ -207,16 +207,16 @@ export function RescheduleModal({
                 required
                 value={rescheduleEndTime}
                 onChange={(e) => setRescheduleEndTime(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-background border border-input text-sm text-foreground focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2 rounded-xl bg-white border border-[#e8e0d5] text-sm text-[#1e293b] placeholder-[#959ead] font-medium outline-none focus:ring-2 focus:ring-[#385366]/30 focus:border-[#385366] transition-all"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-border">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#e8e0d5]">
             <button
               type="button"
               onClick={() => setSelectedBooking(null)}
-              className="px-4 py-2 rounded-xl text-xs font-semibold text-muted-foreground hover:text-foreground cursor-pointer"
+              className="px-5 py-2.5 rounded-xl text-xs font-bold text-[#4a5568] hover:bg-[#f7f2ea] transition-colors cursor-pointer"
               disabled={rescheduleMutation.isPending}
             >
               <T
@@ -232,7 +232,7 @@ export function RescheduleModal({
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs shadow-md cursor-pointer flex items-center gap-1.5"
+              className="px-6 py-2.5 rounded-xl bg-[#385366] hover:bg-[#2A3F50] text-white font-bold text-xs shadow-md cursor-pointer flex items-center gap-1.5 transition-all"
               disabled={rescheduleMutation.isPending}
             >
               {rescheduleMutation.isPending ? (
