@@ -4,7 +4,7 @@ import { createNavigation } from "next-intl/navigation";
 
 export const routing = defineRouting({
   // ✅ جميع اللغات المدعومة
-  locales: ["en", "ar", "fr", "de", "es", "it", "tr"],
+  locales: ["en", "ar", "fr", "de", "es", "it", "tr", "ru"],
 
   // ✅ اللغة الافتراضية
   defaultLocale: "en",

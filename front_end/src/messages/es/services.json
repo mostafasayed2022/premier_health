@@ -14,5 +14,7 @@
   "activeFormula": "Fórmula Activa",
   "pricing": "Precios",
   "premiumTreatments": "Tratamientos Premium",
-  "noResults": "Ningún tratamiento coincide con su búsqueda."
+  "noResults": "Ningún tratamiento coincide con su búsqueda.",
+  "heroFeature1": "Protocolos Clínicos Premium",
+  "heroFeature2": "Planes de Atención Personalizados"
 }

@@ -1,12 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { Link, usePathname } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
 import { ChevronDown, User, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { usePatientAuth } from "@/context/PatientAuthContext";
-import { useNavItems } from "./NavbarConstants";
+import { useNavItems, LANGUAGES } from "./NavbarConstants";
 import { getUserRole, type UserRole } from "@/lib/api/auth";
 
 interface NavMobileMenuProps {
@@ -24,7 +24,14 @@ export function NavMobileMenu({
   const [role, setRole] = React.useState<UserRole | null>(null);
   const t = useTranslations("Nav");
   const pathname = usePathname();
+  const currentLocale = useLocale();
+  const router = useRouter();
   const navItems = useNavItems();
+
+  const handleLanguageChange = (newLocale: string) => {
+    setIsOpen(false);
+    router.replace(pathname, { locale: newLocale });
+  };
 
   const {
     patientUser,
@@ -213,6 +220,30 @@ export function NavMobileMenu({
               {t("portal")}
             </a>
           )}
+
+          {/* Language Switcher */}
+          <div className="border-t border-slate-100 pt-4 mt-2">
+            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Language</p>
+            <div className="grid grid-cols-4 gap-1.5">
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => handleLanguageChange(lang.code)}
+                  className={`flex flex-col items-center gap-0.5 rounded-lg py-2 px-1 text-[10px] font-bold transition-all border ${
+                    currentLocale === lang.code
+                      ? "bg-primary/10 border-primary/30 text-primary"
+                      : "border-slate-100 text-slate-500 hover:bg-slate-50 hover:border-slate-200"
+                  }`}
+                >
+                  <span
+                    className={`fi fi-${lang.flag} rounded-sm shadow-sm`}
+                    style={{ width: "1.5rem", height: "1.1rem", display: "inline-block" }}
+                  />
+                  <span className="uppercase">{lang.code}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
           <Button
             asChild

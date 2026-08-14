@@ -5,7 +5,6 @@ import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
 import {
   PhoneCall,
-  Globe,
   ChevronDown,
   Check,
   Mail,
@@ -95,7 +94,10 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
               onClick={() => setLangOpen(!langOpen)}
               className="flex items-center gap-1.5 hover:text-white transition-colors py-2 focus:outline-none"
             >
-              <Globe size={13} className="text-[#C8A96B]" />
+              <span
+                className={`fi fi-${LANGUAGES.find((l) => l.code === currentLocale)?.flag ?? "un"} text-lg rounded-sm shadow-sm`}
+                style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+              />
               <span className="uppercase font-bold">{currentLocale}</span>
               <ChevronDown
                 size={11}
@@ -103,16 +105,22 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
               />
             </button>
             {langOpen && (
-              <div className="absolute right-0 top-full mt-0 w-36 rounded-b-xl border border-slate-200 bg-white p-1.5 shadow-md animate-fade-in focus:outline-none z-50">
+              <div className="absolute right-0 top-full mt-0 w-44 rounded-b-xl border border-slate-200 bg-white p-1.5 shadow-md animate-fade-in focus:outline-none z-50">
                 {LANGUAGES.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-[11px] font-bold text-slate-600 hover:bg-slate-50 hover:text-primary transition-colors"
+                    className="flex w-full items-center gap-2 justify-between rounded-md px-3 py-2 text-left text-[11px] font-bold text-slate-600 hover:bg-slate-50 hover:text-primary transition-colors"
                   >
-                    <span>{lang.label}</span>
+                    <span className="flex items-center gap-2">
+                      <span
+                        className={`fi fi-${lang.flag} rounded-sm shadow-sm flex-shrink-0`}
+                        style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                      />
+                      <span>{lang.label}</span>
+                    </span>
                     {currentLocale === lang.code && (
-                      <Check size={12} className="text-primary" />
+                      <Check size={12} className="text-primary flex-shrink-0" />
                     )}
                   </button>
                 ))}

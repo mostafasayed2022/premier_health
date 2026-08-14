@@ -1,13 +1,14 @@
 import { useTranslations } from "next-intl";
 
 export const LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "ar", label: "العربية" },
-  { code: "fr", label: "Français" },
-  { code: "de", label: "Deutsch" },
-  { code: "es", label: "Español" },
-  { code: "it", label: "Italiano" },
-  { code: "tr", label: "Türkçe" },
+  { code: "en", label: "English",  flag: "gb" },
+  { code: "ar", label: "العربية",  flag: "sa" },
+  { code: "fr", label: "Français", flag: "fr" },
+  { code: "de", label: "Deutsch",  flag: "de" },
+  { code: "es", label: "Español",  flag: "es" },
+  { code: "it", label: "Italiano", flag: "it" },
+  { code: "tr", label: "Türkçe",   flag: "tr" },
+  { code: "ru", label: "Русский",  flag: "ru" },
 ];
 
 export function useNavItems() {

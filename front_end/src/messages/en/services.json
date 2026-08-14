@@ -14,5 +14,7 @@
   "activeFormula": "Active Formula",
   "pricing": "Pricing",
   "premiumTreatments": "Premium Treatments",
-  "noResults": "No treatments match your search."
+  "noResults": "No treatments match your search.",
+  "heroFeature1": "Premium Clinical Protocols",
+  "heroFeature2": "Personalized Care Plans"
 }

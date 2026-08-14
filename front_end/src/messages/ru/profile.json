@@ -1,0 +1,15 @@
+{
+  "title": "Профиль пациента",
+  "subtitle": "Управляйте личной информацией и медицинскими записями",
+  "personalInfo": "Личная информация",
+  "myBookings": "Мои записи",
+  "medicalHistory": "История болезни",
+  "updateProfile": "Обновить профиль",
+  "saving": "Сохранение...",
+  "saveSuccess": "Профиль успешно обновлён!",
+  "noAppointments": "Предыдущих записей не найдено.",
+  "statusConfirmed": "Подтверждено",
+  "statusPending": "Ожидается",
+  "statusCompleted": "Завершено",
+  "statusCancelled": "Отменено"
+}
