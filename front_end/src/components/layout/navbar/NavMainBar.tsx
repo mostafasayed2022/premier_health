@@ -35,13 +35,14 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
           aria-label="Premier Health Homepage"
           className="flex items-center gap-3 group focus:outline-none shrink-0"
         >
-          <div className="relative overflow-hidden border-2 border-slate-100 p-0.5 bg-white transition-colors w-12 h-12 lg:w-16 lg:h-16">
+          <div className="relative w-12 h-12 lg:w-14 lg:h-14 shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/logo/logo1.webp"
+              src="/logo/logo.webp"
               alt="Premier Health"
               fill
-              sizes="(max-width: 1024px) 48px, 64px"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              priority
+              sizes="(max-width: 1024px) 48px, 56px"
+              className="object-contain"
             />
           </div>
           <div className="flex flex-col justify-center">
@@ -155,9 +156,15 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
               >
                 <span
                   className={`fi fi-${LANGUAGES.find((l) => l.code === currentLocale)?.flag ?? "un"} rounded-sm shadow-sm shrink-0`}
-                  style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                  style={{
+                    width: "1.25rem",
+                    height: "0.9rem",
+                    display: "inline-block",
+                  }}
                 />
-                <span className="uppercase font-bold text-[11px]">{currentLocale}</span>
+                <span className="uppercase font-bold text-[11px]">
+                  {currentLocale}
+                </span>
                 <ChevronDown
                   size={12}
                   className={`opacity-70 transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}
@@ -185,7 +192,11 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
                         <span className="flex items-center gap-2.5">
                           <span
                             className={`fi fi-${lang.flag} rounded-sm shadow-sm shrink-0`}
-                            style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                            style={{
+                              width: "1.25rem",
+                              height: "0.9rem",
+                              display: "inline-block",
+                            }}
                           />
                           <span>{lang.label}</span>
                         </span>

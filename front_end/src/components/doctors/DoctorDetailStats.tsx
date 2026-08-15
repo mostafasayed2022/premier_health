@@ -10,22 +10,28 @@ interface DoctorDetailStatsProps {
 
 export function DoctorDetailStats({ doctor }: DoctorDetailStatsProps) {
   const t = useTranslations();
-
+  const getLanguagesCount = () => {
+    if (Array.isArray(doctor.languages)) return doctor.languages.length;
+    if (typeof doctor.languages === "string" && (doctor.languages as string).trim() !== "") {
+      return (doctor.languages as string).split(",").filter((s) => s.trim().length > 0).length;
+    }
+    return 2;
+  };
   const stats = [
     {
       icon: Award,
       label: t("Doctors.yearsExp"),
-      value: `${doctor.experience || 10}+`,
+      value: `${doctor.experience ?? 10}+`,
     },
     {
       icon: Calendar,
       label: t("Doctors.patients"),
-      value: doctor.patients ? `${doctor.patients}+` : "500+",
+      value: `${doctor.patients ?? 500}+`,
     },
     {
       icon: Languages,
       label: t("Doctors.languages"),
-      value: (doctor.languages?.length || 2).toString(),
+      value: getLanguagesCount().toString(),
     },
   ];
 

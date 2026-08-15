@@ -12,8 +12,8 @@ export function JsonLd({ locale }: JsonLdProps) {
     "@id": `${SITE_URL}/#organization`,
     name: "Premier Health Clinic",
     url: `${SITE_URL}/${locale}`,
-    logo: `${SITE_URL}/logo/logo1.webp`,
-    image: `${SITE_URL}/logo/logo1.webp`,
+    logo: `${SITE_URL}/logo/logo.webp`,
+    image: `${SITE_URL}/logo/logo.webp`,
     description:
       "Leading luxury wellness clinic offering advanced IV drip therapy, dermatology, and bespoke aesthetic care.",
     telephone: "+201200644663",

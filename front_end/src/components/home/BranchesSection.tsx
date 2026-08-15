@@ -41,7 +41,6 @@ export default function BranchesSection() {
         src="/backgrounds/background2.webp"
         alt="Branches Background"
         fill
-        priority
         sizes="100vw"
         className="object-cover object-center z-0 pointer-events-none"
       />

@@ -96,10 +96,14 @@ export function useImagePicker({
   const [libraryLoading, setLibraryLoading] = useState(false);
   const [librarySearch, setLibrarySearch] = useState("");
 
-  // ── Sync preview when initialImageUrl changes ──────────────────
+  // ── Sync preview when value or initialImageUrl changes ──────────────────
   useEffect(() => {
-    setPreviewUrl(initialImageUrl || null);
-  }, [initialImageUrl]);
+    if (!value) {
+      setPreviewUrl(null);
+    } else if (initialImageUrl) {
+      setPreviewUrl(initialImageUrl);
+    }
+  }, [value, initialImageUrl]);
 
   // ── Upload single file with progress ──────────────────────────
   const uploadSingleFile = useCallback(
@@ -224,8 +228,11 @@ export function useImagePicker({
 
   // ── Remove current image ───────────────────────────────────────
   const handleRemove = useCallback(() => {
-    onChange(null);
+    onChange(null, undefined);
     setPreviewUrl(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
     toast.success("File removed");
   }, [onChange]);
 

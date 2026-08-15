@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Check, ShieldCheck, Banknote, CreditCard, Building2, Smartphone } from "lucide-react";
+import { Check, ShieldCheck, Banknote, CreditCard } from "lucide-react";
 
 interface Step6PaymentProps {
   selected: string;
@@ -18,25 +18,17 @@ export function Step6Payment({ selected, onSelect }: Step6PaymentProps) {
       id: "cash",
       icon: Banknote,
       label: t("payCash"),
-      subtitle: isAr ? "ادفع مباشرة عند وصولك للعيادة" : "Pay at reception upon arrival",
-    },
-    {
-      id: "card",
-      icon: CreditCard,
-      label: t("payCard"),
-      subtitle: isAr ? "دفع آمن بالبطاقة البنكية" : "Secure card payment at clinic",
-    },
-    {
-      id: "insurance",
-      icon: Building2,
-      label: t("payInsurance"),
-      subtitle: isAr ? "تغطية كاملة أو جزئية بالتأمين" : "Coverage via supported providers",
+      subtitle: isAr
+        ? "ادفع مباشرة عند وصولك للعيادة نقداً أو بالبطاقة البنكية"
+        : "Pay upon arrival at the clinic via cash, credit, or debit card",
     },
     {
       id: "paymob",
-      icon: Smartphone,
+      icon: CreditCard,
       label: t("payOnline"),
-      subtitle: isAr ? "دفع إلكتروني فوري عبر بوابة Paymob" : "Instant online payment via Paymob",
+      subtitle: isAr
+        ? "دفع إلكتروني فوري وآمن ببطاقات فيزا وماستركارد"
+        : "Instant & secure online payment via Visa, MasterCard & cards",
     },
   ];
 

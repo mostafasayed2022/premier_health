@@ -32,13 +32,14 @@ export default function ForgotPasswordPage() {
 
         {/* Logo and Header */}
         <div className="flex flex-col items-center text-center gap-2.5 mt-2 mb-6">
-          <div className="relative overflow-hidden rounded-full border border-accent/15 p-0.5 bg-beige/50 shadow-sm">
+          <div className="relative w-14 h-14 flex items-center justify-center">
             <Image
-              src="/logo/logo1.webp"
+              src="/logo/logo.webp"
               alt="Premier Health"
-              width={55}
-              height={55}
-              className="rounded-full object-contain"
+              width={56}
+              height={56}
+              priority
+              className="object-contain"
             />
           </div>
           <h2 className="text-lg font-bold tracking-wider text-primary font-serif">

@@ -141,7 +141,6 @@ export default function DepartmentsSection() {
                     alt={activeName}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 60vw"
-                    priority
                     className="object-cover object-center"
                   />
 

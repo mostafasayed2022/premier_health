@@ -130,10 +130,8 @@ export function useStep7Confirm({ booking, onEmailChange, onPhoneChange }: UseSt
   );
 
   const getPaymentLabel = (method: string) => {
-    if (method === "cash") return t("payCash");
-    if (method === "card") return t("payCard");
-    if (method === "insurance") return t("payInsurance");
-    if (method === "paymob") return t("payOnline");
+    if (method === "cash" || method === "card") return t("payCash");
+    if (method === "paymob" || method === "online") return t("payOnline");
     return method;
   };
 

@@ -27,6 +27,7 @@ const arapey = Arapey({
   weight: ["400"],
   variable: "--font-arapey",
   display: "swap",
+  preload: false,
 });
 
 const fontSans = Plus_Jakarta_Sans({
@@ -39,6 +40,7 @@ const fontArabic = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-cairo",
   display: "swap",
+  preload: false,
 });
 
 type Props = {
@@ -87,12 +89,12 @@ export default async function LocaleLayout({ children, params }: Props) {
         <GoogleTagManagerScript />
         <link
           rel="icon"
-          href="/logo/logo1.webp"
+          href="/logo/logo.webp"
           type="image/webp"
           sizes="any"
         />
-        <link rel="shortcut icon" href="/logo/logo1.webp" type="image/webp" />
-        <link rel="apple-touch-icon" href="/logo/logo1.webp" />
+        <link rel="shortcut icon" href="/logo/logo.webp" type="image/webp" />
+        <link rel="apple-touch-icon" href="/logo/logo.webp" />
         <link
           rel="preconnect"
           href="https://res.cloudinary.com"

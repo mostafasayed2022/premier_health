@@ -60,8 +60,16 @@ export function DynamicForm({
             relationOptions={relationOptions[f.name] || []}
             initialImageUrl={
               f.name === "video_id"
-                ? ((initial?.["video_file_url"] as string) ?? null)
-                : ((initial?.["image_url"] as string) ?? null)
+                ? (values["video_file_url"] !== undefined
+                    ? (values["video_file_url"] as string | null)
+                    : values[f.name]
+                    ? ((initial?.["video_file_url"] as string) ?? null)
+                    : null)
+                : (values["image_url"] !== undefined
+                    ? (values["image_url"] as string | null)
+                    : values[f.name]
+                    ? ((initial?.["image_url"] as string) ?? null)
+                    : null)
             }
             isEditMode={!!initial}
             onChange={set}

@@ -59,10 +59,8 @@ export function FieldRenderer({
         initialImageUrl={initialUrl}
         isVideoField={isVideoField}
         onChange={(fileId, previewUrl) => {
-          onChange(field.name, fileId);
-          if (previewUrl) {
-            onChange(previewUrlKey, previewUrl);
-          }
+          onChange(field.name, fileId ?? null);
+          onChange(previewUrlKey, previewUrl ?? null);
         }}
         onSelectMultiple={onSelectMultipleFiles}
       />

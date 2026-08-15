@@ -62,13 +62,14 @@ export default function PatientRegisterPage() {
 
         {/* Logo and Header */}
         <div className="flex flex-col items-center text-center gap-2.5 mt-6">
-          <div className="relative overflow-hidden rounded-full border border-accent/15 p-0.5 bg-beige/50 shadow-sm">
+          <div className="relative w-16 h-16 flex items-center justify-center">
             <Image
-              src="/logo/logo1.webp"
+              src="/logo/logo.webp"
               alt="Premier Health"
-              width={65}
-              height={65}
-              className="rounded-full object-contain"
+              width={64}
+              height={64}
+              priority
+              className="object-contain"
             />
           </div>
           <h2 className="text-xl font-bold tracking-wider text-primary font-serif">

@@ -62,8 +62,18 @@ export function FooterBottom() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="mt-16 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-      <p suppressHydrationWarning>© {currentYear} Premier Health Clinic. All rights reserved.</p>
+    <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-400">
+      <div className="flex flex-col gap-1 text-center md:text-left rtl:md:text-right">
+        <p suppressHydrationWarning className="font-medium text-slate-300">
+          © {currentYear} CodeVerse. All rights reserved.
+        </p>
+        <p className="text-[11px] text-slate-400">
+          Designed &amp; Developed by:{" "}
+          <span className="text-accent font-semibold">Mostafa Sayed</span> ·{" "}
+          <span className="text-accent font-semibold">Mohamed Hossam</span> ·{" "}
+          <span className="text-accent font-semibold">Mohamed Salah</span>
+        </p>
+      </div>
       <div className="flex gap-3 flex-wrap">
         <a
           href="https://wa.me/201200644663"

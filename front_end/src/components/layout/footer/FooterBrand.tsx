@@ -9,13 +9,13 @@ export function FooterBrand() {
     <div className="flex flex-col gap-5">
       {/* White-styled logo header */}
       <div className="flex items-center gap-3">
-        <div className="rounded-full bg-white/10 p-0.5 border border-accent/20">
+        <div className="w-12 h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm shrink-0">
           <Image
-            src="/logo/logo1.webp"
+            src="/logo/logo.webp"
             alt="Logo"
-            width={55}
-            height={55}
-            className="rounded-full"
+            width={38}
+            height={38}
+            className="object-contain"
           />
         </div>
         <div className="flex items-center font-sans text-lg md:text-xl tracking-wider select-none">

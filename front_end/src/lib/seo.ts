@@ -890,14 +890,16 @@ export function getSeoMetadata(
     metadataBase: new URL(SITE_URL),
     icons: {
       icon: [
-        { url: "/logo/logo1.webp", type: "image/webp" },
-        { url: "/logo/logo1.webp", sizes: "32x32", type: "image/webp" },
-        { url: "/logo/logo1.webp", sizes: "16x16", type: "image/webp" },
+        { url: "/logo/logo.webp", type: "image/webp" },
+        { url: "/logo/logo.webp", sizes: "32x32", type: "image/webp" },
+        { url: "/logo/logo.webp", sizes: "16x16", type: "image/webp" },
+        {
+          url: "/logo/logo.webp",
+          sizes: "180x180",
+          type: "image/webp",
+        },
       ],
-      apple: [
-        { url: "/logo/logo1.webp", sizes: "180x180", type: "image/webp" },
-      ],
-      shortcut: ["/logo/logo1.webp"],
+      shortcut: ["/logo/logo.webp"],
     },
     alternates: {
       canonical: canonicalUrl,

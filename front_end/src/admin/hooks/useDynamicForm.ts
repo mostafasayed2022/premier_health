@@ -107,9 +107,9 @@ export function useDynamicForm({
       editableFields.forEach((f) => {
         let v = values[f.name];
 
-        // Skip empty values for non-nullable fields to avoid null constraint violations
+        // Handle empty/null values: include null for nullable/optional/relation fields so backend clears them
         if (v === "" || v == null) {
-          if (f.nullable) {
+          if (f.nullable || !f.required || f.type === "relation") {
             payload[f.name] = null;
           }
           return;
