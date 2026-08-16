@@ -6,7 +6,7 @@ import type { Metadata } from "next";
  * Guarantees no trailing slashes.
  */
 const getSiteUrl = (): string => {
-  let url = "https://premier-health-delta.vercel.app";
+  let url = "https://www.premierhealthclinics.com";
 
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     url = process.env.NEXT_PUBLIC_SITE_URL;

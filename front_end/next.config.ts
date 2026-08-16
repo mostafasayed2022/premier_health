@@ -30,6 +30,14 @@ const nextConfig: NextConfig = {
         hostname: "cdn.simpleicons.org",
       },
       {
+        protocol: "https",
+        hostname: "api.premierhealthclinics.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.premierhealthclinics.com",
+      },
+      {
         protocol: "http",
         hostname: "127.0.0.1",
       },

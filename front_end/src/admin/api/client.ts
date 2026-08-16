@@ -13,7 +13,7 @@
 const RAW_BASE = (
   (typeof process !== "undefined"
     ? process.env?.NEXT_PUBLIC_API_URL || process.env?.NEXT_PUBLIC_API_BASE_URL
-    : undefined) || "http://92.205.178.100:8000/api"
+    : undefined) || "https://api.premierhealthclinics.com/api"
 ).trim().replace(/\/+$/, "");
 
 /**
