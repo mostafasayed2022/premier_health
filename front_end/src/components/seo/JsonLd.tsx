@@ -16,8 +16,8 @@ export function JsonLd({ locale }: JsonLdProps) {
     image: `${SITE_URL}/logo/logo.webp`,
     description:
       "Leading luxury wellness clinic offering advanced IV drip therapy, dermatology, and bespoke aesthetic care.",
-    telephone: "+201200644663",
-    email: "info@premierhealth.com",
+    telephone: "+201111977705",
+    email: "info@premierhealthclinics.com",
     priceRange: "$$$",
     medicalSpecialty: [
       "Dermatology",

@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 export default function SettingsDashboardPage() {
   const [clinicName, setClinicName] = useState("PremierCare Medical & Aesthetics");
-  const [email, setEmail] = useState("info@premierhealth.com");
+  const [email, setEmail] = useState("info@premierhealthclinics.com");
   const [phone, setPhone] = useState("+971 4 800 9988");
   const [notifications, setNotifications] = useState(true);
 

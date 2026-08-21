@@ -21,6 +21,8 @@ import {
   GoogleTagManagerScript,
   GoogleTagManagerNoScript,
 } from "@/components/analytics/GoogleTagManager";
+import { GTMProvider } from "@/components/analytics/GTMProvider";
+import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 
 const arapey = Arapey({
   subsets: ["latin"],
@@ -87,12 +89,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <head>
         <GoogleTagManagerScript />
-        <link
-          rel="icon"
-          href="/logo/logo.webp"
-          type="image/webp"
-          sizes="any"
-        />
+        <link rel="icon" href="/logo/logo.webp" type="image/webp" sizes="any" />
         <link rel="shortcut icon" href="/logo/logo.webp" type="image/webp" />
         <link rel="apple-touch-icon" href="/logo/logo.webp" />
         <link
@@ -114,6 +111,8 @@ export default async function LocaleLayout({ children, params }: Props) {
           <HydrationBoundary state={dehydrate(queryClient)}>
             <NextIntlClientProvider messages={messages} locale={locale}>
               <PatientAuthProvider>
+                {/* Attribution capture — no UI, fires on every page load */}
+                <GTMProvider />
                 <PageLoader />
                 <Toaster richColors position="top-center" />
                 <div className="flex min-h-screen flex-col">
@@ -123,6 +122,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                   </main>
                   <Footer />
                 </div>
+                {/* Global mobile sticky CTA — mounted once, hidden on desktop */}
+                <StickyMobileCTA />
               </PatientAuthProvider>
             </NextIntlClientProvider>
           </HydrationBoundary>

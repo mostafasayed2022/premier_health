@@ -18,9 +18,7 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
   const t = useTranslations("Branches");
 
   const imageUrl =
-    branch.image_url ||
-    branch.photo ||
-    "/AboutPreview/about.webp";
+    branch.image_url || branch.photo || "/AboutPreview/about.webp";
 
   const branchServices: string[] = Array.isArray(branch.services)
     ? branch.services.map((s: any) =>

@@ -63,38 +63,57 @@ export function ContactInfo() {
   const t = useTranslations("Contact");
   const locale = useLocale();
   const isAr = locale === "ar";
-  
+
   const staticBranches = [
     {
       id: "fairmont",
-      name: isAr ? "بريمير هيلث فيرمونت" : "Premier Health Fairmont",
+      name: isAr ? "فرع فيرمونت نايل سيتي" : "Premier Health Fairmont Nile City",
+      phone: "+20 11 11977705",
+      phoneRaw: "+201111977705",
       address: t("fairmontAddress") || "Fairmont Nile City, Cairo",
-      mapEmbed: "https://maps.google.com/maps?q=30.0719202,31.2275839&z=15&output=embed",
-      link: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z/data=!3m1!4b1!4m6!3m5!1s0x1458413b92031a19:0xe4dfaac55744481b!8m2!3d30.0719202!4d31.2275839"
+      mapEmbed:
+        "https://maps.google.com/maps?q=30.0719202,31.2275839&z=15&output=embed",
+      link: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z/data=!3m1!4b1!4m6!3m5!1s0x1458413b92031a19:0xe4dfaac55744481b!8m2!3d30.0719202!4d31.2275839",
     },
     {
       id: "arkan",
-      name: isAr ? "أركان بلازا" : "Arkan Plaza",
+      name: isAr ? "فرع أركان بلازا (الشيخ زايد)" : "Arkan Plaza (Sheikh Zayed)",
+      phone: "+20 11 11977713",
+      phoneRaw: "+201111977713",
       address: t("arkanAddress") || "Arkan Plaza, Sheikh Zayed",
-      mapEmbed: "https://maps.google.com/maps?q=30.0194029,31.0045291&z=15&output=embed",
-      link: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z/data=!3m1!4b1!4m6!3m5!1s0x14585b0525c31285:0xe916bcf3ee2db2ad!8m2!3d30.0194029!4d31.0045291"
+      mapEmbed:
+        "https://maps.google.com/maps?q=30.0194029,31.0045291&z=15&output=embed",
+      link: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z/data=!3m1!4b1!4m6!3m5!1s0x14585b0525c31285:0xe916bcf3ee2db2ad!8m2!3d30.0194029!4d31.0045291",
     },
     {
       id: "sodic",
-      name: isAr ? "سوديك EDNC" : "EDNC Sodic",
+      name: isAr ? "فرع سوديك EDNC (التجمع الخامس)" : "EDNC Sodic (New Cairo)",
+      phone: "+20 11 11977712",
+      phoneRaw: "+201111977712",
       address: t("sodicAddress") || "EDNC Sodic, Fifth Settlement",
-      mapEmbed: "https://maps.google.com/maps?q=2G87%2B5RC,%20Eastown,%20New%20Cairo%201&z=15&output=embed",
-      link: "https://www.google.com/maps?q=2G87+5RC+D+solutions,+Eastown,+New+Cairo+1,+Cairo+Governorate"
-    }
+      mapEmbed:
+        "https://maps.google.com/maps?q=2G87%2B5RC,%20Eastown,%20New%20Cairo%201&z=15&output=embed",
+      link: "https://www.google.com/maps?q=2G87+5RC+D+solutions,+Eastown,+New+Cairo+1,+Cairo+Governorate",
+    },
   ];
 
   const topCards = [
     {
       icon: Phone,
-      title: t("formPhone") || "Phone Number",
+      title: t("formPhone") || "Phone Numbers",
       lines: [
-        { text: "01200644663", link: "tel:01200644663" },
-        { text: "+971 50 120 0313", link: "tel:+971501200313" }
+        {
+          text: isAr ? "فيرمونت نايل سيتي: +20 11 11977705" : "Fairmont Nile City: +20 11 11977705",
+          link: "tel:+201111977705",
+        },
+        {
+          text: isAr ? "أركان بلازا (الشيخ زايد): +20 11 11977713" : "Arkan Plaza (Sheikh Zayed): +20 11 11977713",
+          link: "tel:+201111977713",
+        },
+        {
+          text: isAr ? "سوديك EDNC (التجمع الخامس): +20 11 11977712" : "EDNC Sodic (New Cairo): +20 11 11977712",
+          link: "tel:+201111977712",
+        },
       ],
       color: "border-accent/20 bg-accent/5 text-accent",
     },
@@ -102,10 +121,13 @@ export function ContactInfo() {
       icon: Mail,
       title: t("email") || "Email",
       lines: [
-        { text: "info@premierhealthclinic.com", link: "mailto:info@premierhealthclinic.com" }
+        {
+          text: "info@premierhealthclinics.com",
+          link: "mailto:info@premierhealthclinics.com",
+        },
       ],
       color: "border-primary/20 bg-primary/5 text-primary",
-    }
+    },
   ];
 
   return (
@@ -118,7 +140,9 @@ export function ContactInfo() {
               key={i}
               className="group flex flex-col gap-3 p-6 rounded-3xl bg-white border border-accent/15 shadow-sm hover:shadow-md hover:shadow-accent/5 hover:border-accent/40 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className={`w-12 h-12 flex items-center justify-center rounded-2xl border transition-colors duration-300 ${c.color} group-hover:bg-accent group-hover:text-white group-hover:border-accent shadow-sm`}>
+              <div
+                className={`w-12 h-12 flex items-center justify-center rounded-2xl border transition-colors duration-300 ${c.color} group-hover:bg-accent group-hover:text-white group-hover:border-accent shadow-sm`}
+              >
                 <IconComponent className="w-5 h-5" />
               </div>
               <div className="flex-1">
@@ -148,16 +172,28 @@ export function ContactInfo() {
           <MapPin className="text-accent w-5 h-5" />
           {t("locations") || "Locations"}
         </h3>
-        
+
         <div className="grid gap-4">
           {staticBranches.map((b) => (
-            <div key={b.id} className="p-5 rounded-3xl bg-white border border-accent/15 shadow-sm hover:border-accent/40 transition-colors">
-              <h4 className="font-bold text-primary text-base mb-1">
-                {b.name}
-              </h4>
-              <a 
-                href={b.link} 
-                target="_blank" 
+            <div
+              key={b.id}
+              className="p-5 rounded-3xl bg-white border border-accent/15 shadow-sm hover:border-accent/40 transition-colors"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <h4 className="font-bold text-primary text-base">
+                  {b.name}
+                </h4>
+                <a
+                  href={`tel:${b.phoneRaw}`}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-accent hover:underline"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>{b.phone}</span>
+                </a>
+              </div>
+              <a
+                href={b.link}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block text-sm text-foreground/70 mb-4 font-medium hover:text-accent transition-colors"
               >
@@ -189,14 +225,16 @@ export function ContactInfo() {
               {isAr ? "تابعنا على" : "Connect With Us"}
             </h4>
             <p className="text-sm text-foreground/70 font-medium mt-0.5">
-              {isAr ? "منصات التواصل الاجتماعي الرسمية" : "Official Social Media Channels"}
+              {isAr
+                ? "منصات التواصل الاجتماعي الرسمية"
+                : "Official Social Media Channels"}
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <a
-            href="https://wa.me/201200644663"
+            href="https://wa.me/201111977705"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs text-primary hover:text-accent font-bold transition-all duration-300 flex items-center justify-center gap-2 border border-accent/10 rounded-xl p-3.5 bg-beige/30 hover:bg-beige hover:border-accent/30 active:scale-95"

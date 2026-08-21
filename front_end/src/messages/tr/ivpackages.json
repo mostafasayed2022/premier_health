@@ -1,0 +1,146 @@
+{
+  "heroBadge": "Premier Sağlık Protokolleri",
+  "heroTitle": "IV Terapi Paketleri",
+  "heroSubtitle": "Hidrasyon, enerji, toparlanma, güzellik ve genel zindeliği desteklemek üzere tasarlanmış kişiselleştirilmiş IV terapi.",
+  "heroCta": "Paketinizi WhatsApp'tan Ayırtın",
+  "heroMsg": "Merhaba, bir IV Terapi paketi ayırtmak istiyorum.",
+  "whyBadge": "Hücresel Canlılık",
+  "whyTitle": "Neden Premier IV Terapisi?",
+  "whySubtitle": "Doğrudan damar yoluyla uygulama sindirim sistemini atlayarak %100 biyoyararlanım ve anında canlılık sağlar.",
+  "whyCards": {
+    "bioavailability": {
+      "title": "%100 Biyoyararlanım",
+      "desc": "Doğrudan infüzyon, sindirim kaybı olmaksızın aktif mikro besinlerin anında emilmesini garanti eder."
+    },
+    "medicalSupervision": {
+      "title": "Klinik Gözetim",
+      "desc": "Kişiselleştirilmiş değerlendirme sonrasında uzman hekimlerin doğrudan gözetiminde uygulanır."
+    },
+    "premiumFormulations": {
+      "title": "Tıbbi Standartta Formüller",
+      "desc": "Uluslararası klinik standartlara uygun en yüksek saflıkta vitaminler, mineraller ve antioksidanlar."
+    },
+    "rapidRecovery": {
+      "title": "Hızlı Toparlanma",
+      "desc": "Özel süitinizdeki seansın ardından birkaç saat içinde canlanmış ve enerji dolu hissedin."
+    }
+  },
+  "packagesBadge": "Özel Formülasyonlar",
+  "packagesTitle": "Sağlık Paketinizi Seçin",
+  "packagesSubtitle": "Sağlık, güzellik ve toparlanma hedefleriniz için özel olarak geliştirilmiş üç hedefli protokol.",
+  "bestFor": "En Uygun",
+  "keyBenefits": "Temel Faydalar",
+  "coreNutrients": "Temel Besinler",
+  "bookViaWhatsApp": "WhatsApp'tan Randevu Al",
+  "popularBadge": "En Çok Tercih Edilen",
+  "ultimateBadge": "İmza Premium Paket",
+  "pkg1": {
+    "name": "Essential Reset",
+    "price": "30K",
+    "bestFor": "Günlük zindelik, hidrasyon ve temel destek",
+    "benefits": [
+      "Enerjiyi artırır ve yorgunlukla savaşır",
+      "Bağışıklığı ve hidrasyonu destekler",
+      "Odaklanmayı ve sinir sistemi dengesini güçlendirir",
+      "Saç, cilt ve tırnak sağlığını destekler",
+      "Temel vitamin ve mineralleri yeniler"
+    ],
+    "nutrients": [
+      "B-Kompleks (B1, B2, B3, B5, B6, B12)",
+      "C Vitamini",
+      "Magnezyum",
+      "Çinko",
+      "Elektrolitler",
+      "Biotin"
+    ],
+    "cta": "Essential Reset Ayırt",
+    "waMsg": "Merhaba, Essential Reset IV Terapi paketini ayırtmak istiyorum."
+  },
+  "pkg2": {
+    "name": "Advanced Recharge",
+    "price": "50K",
+    "bestFor": "Güzellik, metabolizma, detoks ve gelişmiş toparlanma",
+    "benefits": [
+      "Dayanıklılığı ve metabolizmayı artırır",
+      "Cilt ışıltısını ve tırnak gücünü destekler",
+      "Detoksifikasyon ve antioksidan koruma sağlar",
+      "Stresi ve sinirsel yorgunluğu azaltmaya yardımcı olur",
+      "Hidrasyon ve mineral dengesini geri kazandırır"
+    ],
+    "nutrients": [
+      "B-Kompleks",
+      "C Vitamini",
+      "Biotin",
+      "Magnezyum",
+      "Çinko",
+      "Glutatyon",
+      "Alfa Lipoik Asit (ALA)",
+      "Amino Asitler",
+      "Elektrolitler"
+    ],
+    "cta": "Advanced Recharge Ayırt",
+    "waMsg": "Merhaba, Advanced Recharge IV Terapi paketini ayırtmak istiyorum."
+  },
+  "pkg3": {
+    "name": "Ultimate Restore",
+    "price": "80K",
+    "bestFor": "Tüm vücut yenilenmesi, güzellik, detoks ve üstün performans",
+    "benefits": [
+      "Maksimum enerji ve gelişmiş toparlanma",
+      "Güçlü detoks ve karaciğer desteği",
+      "Derin sinir sistemi ve beyin fonksiyonu desteği",
+      "Üst düzey cilt ve güzellik desteği",
+      "Bağışıklığı, hidrasyonu ve genel vücut sağlığını güçlendirir"
+    ],
+    "nutrients": [
+      "Yüksek Doz B-Kompleks",
+      "C Vitamini",
+      "Biotin",
+      "Magnezyum",
+      "Çinko",
+      "Glutatyon",
+      "ALA",
+      "NAC (N-Asetilsistein)",
+      "L-Karnitin",
+      "Amino Asitler",
+      "Elektrolitler",
+      "Eser Mineraller"
+    ],
+    "cta": "Ultimate Restore Ayırt",
+    "waMsg": "Merhaba, Ultimate Restore IV Terapi paketini ayırtmak istiyorum."
+  },
+  "addonsBadge": "Hedefli Güçlendiriciler",
+  "addonsTitle": "Opsiyonel Premium Ekstralar",
+  "addonsSubtitle": "Seansınızı uzman doktorunuz tarafından önerilen özel takviyelerle zenginleştirin.",
+  "addonsCta": "Ekstralar Hakkında Bilgi Alın",
+  "addonsMsg": "Merhaba, premium IV Terapi ekstraları hakkında bilgi almak istiyorum.",
+  "addons": [
+    {
+      "name": "D Vitamini",
+      "desc": "Kemik yoğunluğu, ruh hali düzenlemesi ve bağışıklık"
+    },
+    {
+      "name": "L-Karnitin",
+      "desc": "Hücresel yağ metabolizması, dayanıklılık ve kas toparlanması"
+    },
+    {
+      "name": "NAD+",
+      "desc": "Hücresel DNA onarımı, nörolojik koruma ve uzun ömür"
+    },
+    {
+      "name": "Kolajen Desteği",
+      "desc": "Cilt elastikiyeti, eklem esnekliği ve dermal yenilenme"
+    },
+    {
+      "name": "Immune Boost Formülü",
+      "desc": "Yüksek etkili antioksidan savunması ve mevsimsel direnç"
+    }
+  ],
+  "conciergeBadge": "Özel Süitler ve Bireysel İlgi",
+  "conciergeTitle": "Premier IV Terapisini Deneyimlemeye Hazır mısınız?",
+  "conciergeSubtitle": "Medikal ekibimiz ve Concierge servisimiz, Kahire'deki 3 lüks kliniğimizde randevunuzu planlamak için hazırdır.",
+  "consultationNotice": "Tıbbi Değerlendirme Dahildir",
+  "consultationNoticeDesc": "Her seans yaşamsal kontroller ve kişiselleştirilmiş doktor incelemesi ile başlar.",
+  "disclaimerTitle": "Tıbbi Sorumluluk Reddi ve Danışmanlık",
+  "disclaimerText": "IV terapi, uygun bir tıbbi değerlendirmenin ardından yetkili bir sağlık uzmanının gözetiminde uygulanmalıdır. Paket uygunluğu kişisel ihtiyaçlara ve tıbbi geçmişe göre değişebilir."
+}

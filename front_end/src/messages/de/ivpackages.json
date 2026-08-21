@@ -1,0 +1,146 @@
+{
+  "heroBadge": "Premier Wellness-Protokolle",
+  "heroTitle": "IV-Therapie-Pakete",
+  "heroSubtitle": "Personalisierte Infusionstherapie zur Unterstützung von Hydratation, Energie, Regeneration, Schönheit und allgemeinem Wohlbefinden.",
+  "heroCta": "Paket über WhatsApp buchen",
+  "heroMsg": "Hallo, ich möchte ein IV-Therapie-Paket buchen.",
+  "whyBadge": "Zelluläre Vitalität",
+  "whyTitle": "Warum Premier IV-Therapie?",
+  "whySubtitle": "Die direkte intravenöse Verabreichung umgeht das Verdauungssystem für 100 % Bioverfügbarkeit und spürbare Vitalität.",
+  "whyCards": {
+    "bioavailability": {
+      "title": "100 % Bioverfügbarkeit",
+      "desc": "Direkte Infusion sorgt für sofortige Aufnahme der Mikronährstoffe ohne Verluste im Magen-Darm-Trakt."
+    },
+    "medicalSupervision": {
+      "title": "Ärztliche Aufsicht",
+      "desc": "Verabreicht unter Aufsicht zertifizierter Fachärzte nach einer individuellen medizinischen Beurteilung."
+    },
+    "premiumFormulations": {
+      "title": "Medizinische Rezepturen",
+      "desc": "Höchste Reinheit an Vitaminen, Mineralstoffen und Aminosäuren nach strengen klinischen Standards."
+    },
+    "rapidRecovery": {
+      "title": "Schnelle Regeneration",
+      "desc": "Fühlen Sie sich bereits wenige Stunden nach Ihrer privaten Sitzung revitalisiert und voller Energie."
+    }
+  },
+  "packagesBadge": "Individuelle Formeln",
+  "packagesTitle": "Wählen Sie Ihr Wellness-Paket",
+  "packagesSubtitle": "Drei gezielte therapeutische Protokolle für Ihre spezifischen Gesundheits-, Schönheits- und Regenerationsziele.",
+  "bestFor": "Ideal für",
+  "keyBenefits": "Hauptvorteile",
+  "coreNutrients": "Kernnährstoffe",
+  "bookViaWhatsApp": "Über WhatsApp buchen",
+  "popularBadge": "Sehr beliebt",
+  "ultimateBadge": "Signature Premium-Paket",
+  "pkg1": {
+    "name": "Essential Reset",
+    "price": "30K",
+    "bestFor": "Tägliches Wohlbefinden, Hydratation und grundlegende Vitalität",
+    "benefits": [
+      "Steigert die Energie und bekämpft Müdigkeit",
+      "Unterstützt Immunsystem und Hydratation",
+      "Fördert Konzentration und Nervenbalance",
+      "Unterstützt gesunde Haare, Haut und Nägel",
+      "Füllt essenzielle Vitamine und Mineralien auf"
+    ],
+    "nutrients": [
+      "B-Komplex (B1, B2, B3, B5, B6, B12)",
+      "Vitamin C",
+      "Magnesium",
+      "Zink",
+      "Elektrolyte",
+      "Biotin"
+    ],
+    "cta": "Essential Reset buchen",
+    "waMsg": "Hallo, ich möchte das Essential Reset IV-Therapie-Paket buchen."
+  },
+  "pkg2": {
+    "name": "Advanced Recharge",
+    "price": "50K",
+    "bestFor": "Schönheit, Stoffwechsel, Detox und erweiterte Erholung",
+    "benefits": [
+      "Verbessert Ausdauer und Stoffwechsel",
+      "Fördert Hautstrahlen und Nagelstärke",
+      "Unterstützt Entgiftung und Antioxidantien-Schutz",
+      "Hilft bei Stressabbau und Nervenerschöpfung",
+      "Stellt Hydratation und Mineralstoffbalance wieder her"
+    ],
+    "nutrients": [
+      "B-Komplex",
+      "Vitamin C",
+      "Biotin",
+      "Magnesium",
+      "Zink",
+      "Glutathion",
+      "Alpha-Liponsäure (ALA)",
+      "Aminosäuren",
+      "Elektrolyte"
+    ],
+    "cta": "Advanced Recharge buchen",
+    "waMsg": "Hallo, ich möchte das Advanced Recharge IV-Therapie-Paket buchen."
+  },
+  "pkg3": {
+    "name": "Ultimate Restore",
+    "price": "80K",
+    "bestFor": "Ganzkörperregeneration, Schönheit, Detox und Höchstleistung",
+    "benefits": [
+      "Maximale Energie und tiefgreifende Erholung",
+      "Starke Entgiftung und Leberunterstützung",
+      "Tiefenwirksame Unterstützung von Gehirn und Nervensystem",
+      "Intensive Schönheits- und Hautverjüngung",
+      "Stärkt Immunität, Hydratation und Gesamtbefinden"
+    ],
+    "nutrients": [
+      "Hochdosierter B-Komplex",
+      "Vitamin C",
+      "Biotin",
+      "Magnesium",
+      "Zink",
+      "Glutathion",
+      "ALA",
+      "NAC (N-Acetylcystein)",
+      "L-Carnitin",
+      "Aminosäuren",
+      "Elektrolyte",
+      "Spurenelemente"
+    ],
+    "cta": "Ultimate Restore buchen",
+    "waMsg": "Hallo, ich möchte das Ultimate Restore IV-Therapie-Paket buchen."
+  },
+  "addonsBadge": "Gezielte Booster",
+  "addonsTitle": "Optionale Premium-Zusätze",
+  "addonsSubtitle": "Erweitern Sie Ihre Sitzung mit gezielten therapeutischen Zusätzen nach ärztlicher Beratung.",
+  "addonsCta": "Nach Premium-Zusätzen fragen",
+  "addonsMsg": "Hallo, ich möchte mehr über die Premium-Zusätze für die IV-Therapie erfahren.",
+  "addons": [
+    {
+      "name": "Vitamin D",
+      "desc": "Knochendichte, Stimmungsregulation und Immunstärkung"
+    },
+    {
+      "name": "L-Carnitin",
+      "desc": "Fettstoffwechsel, Ausdauer und Muskelregeneration"
+    },
+    {
+      "name": "NAD+",
+      "desc": "Zelluläre DNA-Reparatur, Neuroschutz und Langlebigkeit"
+    },
+    {
+      "name": "Kollagen-Support",
+      "desc": "Hautelastizität, Gelenkbeweglichkeit und Geweberegeneration"
+    },
+    {
+      "name": "Immun-Boost-Formel",
+      "desc": "Kraftvolle Antioxidantien und saisonale Widerstandskraft"
+    }
+  ],
+  "conciergeBadge": "Private Suiten und exklusive Betreuung",
+  "conciergeTitle": "Bereit für Premier IV-Therapie?",
+  "conciergeSubtitle": "Unser medizinisches Team und Concierge-Service helfen Ihnen gerne bei der Auswahl der idealen Rezeptur in unseren 3 Kliniken in Kairo.",
+  "consultationNotice": "Medizinische Untersuchung inklusive",
+  "consultationNoticeDesc": "Jede Sitzung beginnt mit Vitalwertmessungen und ärztlicher Beratung.",
+  "disclaimerTitle": "Medizinischer Hinweis & Beratung",
+  "disclaimerText": "Die IV-Therapie sollte unter Aufsicht einer qualifizierten medizinischen Fachkraft nach einer entsprechenden Untersuchung durchgeführt werden. Die Eignung der Pakete kann je nach individuellem Gesundheitszustand variieren."
+}

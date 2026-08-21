@@ -1,20 +1,21 @@
-import { 
-  Heart, 
-  ShieldCheck, 
-  Accessibility, 
-  Stethoscope, 
-  Activity, 
-  FlaskConical, 
-  Home, 
-  Users, 
-  Calendar, 
-  TrendingUp, 
-  CheckCircle2
+import {
+  Heart,
+  ShieldCheck,
+  Accessibility,
+  Stethoscope,
+  Activity,
+  FlaskConical,
+  Home,
+  Users,
+  Calendar,
+  TrendingUp,
+  CheckCircle2,
 } from "lucide-react";
 
 export const SITE_CONFIG = {
   name: "PremierCare Sanctuary",
-  description: "Clinical excellence delivered with the warmth of digital hospitality. We bridge the gap between hospital-grade care and personal comfort.",
+  description:
+    "Clinical excellence delivered with the warmth of digital hospitality. We bridge the gap between hospital-grade care and personal comfort.",
   contact: {
     phone: "1-800-PREMIER",
     email: "care@premiercare.com",
@@ -25,7 +26,7 @@ export const SITE_CONFIG = {
     weekdays: "08:00 AM - 08:00 PM",
     saturday: "09:00 AM - 05:00 PM",
     sunday: "Emergency Only",
-  }
+  },
 };
 
 export const NAV_LINKS = [
@@ -37,19 +38,22 @@ export const NAV_LINKS = [
 export const CORE_VALUES = [
   {
     title: "Compassion",
-    description: "We treat every home as a sanctuary. Care is delivered with empathy, dignity, and a deep respect for personal boundaries.",
+    description:
+      "We treat every home as a sanctuary. Care is delivered with empathy, dignity, and a deep respect for personal boundaries.",
     icon: Heart,
     color: "bg-teal-100 text-teal-600",
   },
   {
     title: "Excellence",
-    description: "Rigorous clinical standards meet artisanal service. We refuse to compromise on the surgical precision of our medical protocols.",
+    description:
+      "Rigorous clinical standards meet artisanal service. We refuse to compromise on the surgical precision of our medical protocols.",
     icon: ShieldCheck,
     color: "bg-blue-100 text-blue-600",
   },
   {
     title: "Accessibility",
-    description: "Top-tier healthcare should not be a luxury. We strive to make professional home-care available to diverse communities through smart tech.",
+    description:
+      "Top-tier healthcare should not be a luxury. We strive to make professional home-care available to diverse communities through smart tech.",
     icon: Accessibility,
     color: "bg-orange-100 text-orange-600",
   },
@@ -62,7 +66,7 @@ export const SERVICES = [
     description: "Professional registered nurses providing 24/7 care...",
     price: "120",
     icon: Stethoscope,
-    category: "Home Care"
+    category: "Home Care",
   },
   {
     id: "physical-therapy",
@@ -70,7 +74,7 @@ export const SERVICES = [
     description: "Personalized rehabilitation programs to restore...",
     price: "85",
     icon: Activity,
-    category: "Therapy"
+    category: "Therapy",
   },
   {
     id: "lab-tests",
@@ -78,7 +82,7 @@ export const SERVICES = [
     description: "Quick, painless sample collection and accurate...",
     price: "45",
     icon: FlaskConical,
-    category: "Diagnostics"
+    category: "Diagnostics",
   },
   {
     id: "doctor-visit",
@@ -86,7 +90,7 @@ export const SERVICES = [
     description: "General practitioners and specialists available for...",
     price: "150",
     icon: Users,
-    category: "Home Care"
+    category: "Home Care",
   },
   {
     id: "post-surgery",
@@ -94,7 +98,7 @@ export const SERVICES = [
     description: "Comprehensive recovery support including...",
     price: "200",
     icon: CheckCircle2,
-    category: "Home Care"
+    category: "Home Care",
   },
   {
     id: "elderly-care",
@@ -102,7 +106,7 @@ export const SERVICES = [
     description: "Dignified support for seniors focusing on...",
     price: "90",
     icon: Calendar,
-    category: "Home Care"
+    category: "Home Care",
   },
   {
     id: "medical-equipment",
@@ -110,7 +114,7 @@ export const SERVICES = [
     description: "Rental of high-grade hospital beds, oxygen...",
     price: "30/day",
     icon: Home,
-    category: "Diagnostics"
+    category: "Diagnostics",
   },
   {
     id: "mental-health",
@@ -118,8 +122,8 @@ export const SERVICES = [
     description: "Confidential counseling and therapy sessions with...",
     price: "110",
     icon: TrendingUp,
-    category: "Therapy"
-  }
+    category: "Therapy",
+  },
 ];
 
 export const TEAM = [
@@ -146,8 +150,28 @@ export const TEAM = [
 ];
 
 export const TIMELINE = [
-  { year: "2018", title: "Founded in Seattle", label: "Premier Care launched with a small team of 5 dedicated nurses focusing on post-surgical recovery." },
-  { year: "2019", title: "First 1000 Patients", label: "Reached a milestone in patient success stories, maintaining a 90% satisfaction rating." },
-  { year: "2021", title: "Expanded Nationwide", label: "Opened clinical hubs in 15 major states, streamlining home-healthcare logistics through proprietary tech." },
-  { year: "Today", title: "Global Standard", label: "Managing over 50,000 active patient profiles with a network of 2,000+ certified specialists." },
+  {
+    year: "2018",
+    title: "Founded in Seattle",
+    label:
+      "Premier Care launched with a small team of 5 dedicated nurses focusing on post-surgical recovery.",
+  },
+  {
+    year: "2019",
+    title: "First 1000 Patients",
+    label:
+      "Reached a milestone in patient success stories, maintaining a 90% satisfaction rating.",
+  },
+  {
+    year: "2021",
+    title: "Expanded Nationwide",
+    label:
+      "Opened clinical hubs in 15 major states, streamlining home-healthcare logistics through proprietary tech.",
+  },
+  {
+    year: "Today",
+    title: "Global Standard",
+    label:
+      "Managing over 50,000 active patient profiles with a network of 2,000+ certified specialists.",
+  },
 ];

@@ -194,10 +194,16 @@ export const PAGE_META: Record<
       title: "Premier Health Clinic | Luxury Wellness & Aesthetic Medicine",
       description:
         "Experience world-class IV therapy, aesthetic dermatology, and bespoke longevity treatments at Premier Health Clinic.",
-      keywords: ["Luxury Wellness Clinic", "IV Therapy Clinic", "Aesthetic Medicine", "Premier Health"],
+      keywords: [
+        "Luxury Wellness Clinic",
+        "IV Therapy Clinic",
+        "Aesthetic Medicine",
+        "Premier Health",
+      ],
     },
     fr: {
-      title: "Clinique Premier Health | Médecine Esthétique & Bien-être de Luxe",
+      title:
+        "Clinique Premier Health | Médecine Esthétique & Bien-être de Luxe",
       description:
         "Découvrez des perfusions IV de pointe, la dermatologie esthétique et des soins de longévité sur mesure.",
       keywords: ["Clinique Bien-être", "Perfusion IV", "Médecine Esthétique"],
@@ -212,13 +218,21 @@ export const PAGE_META: Record<
       title: "Clínica Premier Health | Bienestar de Lujo y Medicina Estética",
       description:
         "Experimente sueroterapia IV de clase mundial, dermatología estética y tratamientos de longevidad personalizados.",
-      keywords: ["Clínica Bienestar de Lujo", "Sueroterapia IV", "Medicina Estética"],
+      keywords: [
+        "Clínica Bienestar de Lujo",
+        "Sueroterapia IV",
+        "Medicina Estética",
+      ],
     },
     it: {
       title: "Clinica Premier Health | Benessere di Lusso e Medicina Estetica",
       description:
         "Scopri terapie IV di livello mondiale, dermatologia estetica e trattamenti di longevità personalizzati.",
-      keywords: ["Clinica Benessere", "Terapia Endovenosa", "Medicina Estetica"],
+      keywords: [
+        "Clinica Benessere",
+        "Terapia Endovenosa",
+        "Medicina Estetica",
+      ],
     },
     tr: {
       title: "Premier Health Kliniği | Lüks Sağlık ve Estetik Tıp",
@@ -227,10 +241,116 @@ export const PAGE_META: Record<
       keywords: ["Lüks Sağlık Kliniği", "IV Terapi", "Estetik Dermatoloji"],
     },
     ru: {
-      title: "Клиника Premier Health | Премиальное оздоровление и эстетическая медицина",
+      title:
+        "Клиника Premier Health | Премиальное оздоровление и эстетическая медицина",
       description:
         "Откройте для себя передовую IV-терапию, эстетическую дерматологию и индивидуальные протоколы долголетия в Premier Health.",
-      keywords: ["Премиальная клиника", "IV-терапия", "Эстетическая дерматология", "Premier Health"],
+      keywords: [
+        "Премиальная клиника",
+        "IV-терапия",
+        "Эстетическая дерматология",
+        "Premier Health",
+      ],
+    },
+  },
+  "iv-packages": {
+    ar: {
+      title: "باقات العلاج الوريدي | عيادة بريمير هيلث",
+      description:
+        "استكشف باقات العلاج الوريدي IV Therapy المصممة لدعم الترطيب، استعادة الطاقة، التعافي، والجمال. احجز باقتك عبر الواتساب.",
+      keywords: ["باقات العلاج الوريدي", "باقات IV Therapy", "دربات فيتامينات القاهرة", "بريمير هيلث"],
+    },
+    en: {
+      title: "IV Therapy Packages | Premier Health Clinics",
+      description:
+        "Explore our IV Therapy packages designed to support hydration, energy, recovery, beauty and overall wellness. Choose your package and book via WhatsApp.",
+      keywords: ["IV Therapy Packages", "IV Drip Packages", "Premier Health IV", "Wellness Drips"],
+    },
+    fr: {
+      title: "Forfaits de Thérapie IV | Clinique Premier Health",
+      description:
+        "Découvrez nos forfaits de thérapie IV conçus pour favoriser l'hydratation, l'énergie, la récupération et la beauté. Réservez sur WhatsApp.",
+      keywords: ["Forfaits Thérapie IV", "Perfusion IV", "Bien-être IV"],
+    },
+    de: {
+      title: "IV-Therapie-Pakete | Premier Health Klinik",
+      description:
+        "Entdecken Sie unsere IV-Therapie-Pakete für Hydratation, Energie, Regeneration und Schönheit. Buchen Sie direkt über WhatsApp.",
+      keywords: ["IV-Therapie-Pakete", "Infusionstherapie Pakete", "Wellness Infusion"],
+    },
+    es: {
+      title: "Paquetes de Terapia IV | Clínica Premier Health",
+      description:
+        "Explore nuestros paquetes de Terapia IV diseñados para favorecer la hidratación, energía, recuperación y belleza. Reserve por WhatsApp.",
+      keywords: ["Paquetes Terapia IV", "Sueroterapia Paquetes", "Bienestar IV"],
+    },
+    it: {
+      title: "Pacchetti di Terapia IV | Clinica Premier Health",
+      description:
+        "Scopri i nostri pacchetti di Terapia IV per idratazione, energia, recupero e bellezza. Prenota su WhatsApp.",
+      keywords: ["Pacchetti Terapia IV", "Terapia Endovenosa Pacchetti", "Benessere IV"],
+    },
+    tr: {
+      title: "IV Terapi Paketleri | Premier Health Kliniği",
+      description:
+        "Hidrasyon, enerji, toparlanma ve güzelliği destekleyen IV Terapi paketlerimizi keşfedin. WhatsApp üzerinden randevu alın.",
+      keywords: ["IV Terapi Paketleri", "Serum Tedavisi Paketleri", "Premier Health IV"],
+    },
+    ru: {
+      title: "Пакеты IV-Терапии | Клиника Premier Health",
+      description:
+        "Ознакомьтесь с нашими пакетами IV-терапии для гидратации, энергии, восстановления и красоты. Забронируйте через WhatsApp.",
+      keywords: ["Пакеты IV-терапии", "Капельницы здоровья", "Premier Health IV"],
+    },
+  },
+  "iv-therapy-packages": {
+    ar: {
+      title: "باقات العلاج الوريدي | عيادة بريمير هيلث",
+      description:
+        "استكشف باقات العلاج الوريدي IV Therapy المصممة لدعم الترطيب، استعادة الطاقة، التعافي، والجمال. احجز باقتك عبر الواتساب.",
+      keywords: ["باقات العلاج الوريدي", "باقات IV Therapy", "دربات فيتامينات القاهرة", "بريمير هيلث"],
+    },
+    en: {
+      title: "IV Therapy Packages | Premier Health Clinics",
+      description:
+        "Explore our IV Therapy packages designed to support hydration, energy, recovery, beauty and overall wellness. Choose your package and book via WhatsApp.",
+      keywords: ["IV Therapy Packages", "IV Drip Packages", "Premier Health IV", "Wellness Drips"],
+    },
+    fr: {
+      title: "Forfaits de Thérapie IV | Clinique Premier Health",
+      description:
+        "Découvrez nos forfaits de thérapie IV conçus pour favoriser l'hydratation, l'énergie, la récupération et la beauté. Réservez sur WhatsApp.",
+      keywords: ["Forfaits Thérapie IV", "Perfusion IV", "Bien-être IV"],
+    },
+    de: {
+      title: "IV-Therapie-Pakete | Premier Health Klinik",
+      description:
+        "Entdecken Sie unsere IV-Therapie-Pakete für Hydratation, Energie, Regeneration und Schönheit. Buchen Sie direkt über WhatsApp.",
+      keywords: ["IV-Therapie-Pakete", "Infusionstherapie Pakete", "Wellness Infusion"],
+    },
+    es: {
+      title: "Paquetes de Terapia IV | Clínica Premier Health",
+      description:
+        "Explore nuestros paquetes de Terapia IV diseñados para favorecer la hidratación, energía, recuperación y belleza. Reserve por WhatsApp.",
+      keywords: ["Paquetes Terapia IV", "Sueroterapia Paquetes", "Bienestar IV"],
+    },
+    it: {
+      title: "Pacchetti di Terapia IV | Clinica Premier Health",
+      description:
+        "Scopri i nostri pacchetti di Terapia IV per idratazione, energia, recupero e bellezza. Prenota su WhatsApp.",
+      keywords: ["Pacchetti Terapia IV", "Terapia Endovenosa Pacchetti", "Benessere IV"],
+    },
+    tr: {
+      title: "IV Terapi Paketleri | Premier Health Kliniği",
+      description:
+        "Hidrasyon, enerji, toparlanma ve güzelliği destekleyen IV Terapi paketlerimizi keşfedin. WhatsApp üzerinden randevu alın.",
+      keywords: ["IV Terapi Paketleri", "Serum Tedavisi Paketleri", "Premier Health IV"],
+    },
+    ru: {
+      title: "Пакеты IV-Терапии | Клиника Premier Health",
+      description:
+        "Ознакомьтесь с нашими пакетами IV-терапии для гидратации, энергии, восстановления и красоты. Забронируйте через WhatsApp.",
+      keywords: ["Пакеты IV-терапии", "Капельницы здоровья", "Premier Health IV"],
     },
   },
   about: {
@@ -244,7 +364,11 @@ export const PAGE_META: Record<
       title: "About Us | Premier Health Clinic",
       description:
         "Learn about Premier Health Clinic's heritage, medical team, and vision for luxury medical care.",
-      keywords: ["About Premier Health", "Medical Heritage", "Luxury Healthcare Team"],
+      keywords: [
+        "About Premier Health",
+        "Medical Heritage",
+        "Luxury Healthcare Team",
+      ],
     },
     fr: {
       title: "À Propos | Clinique Premier Health",
@@ -256,7 +380,11 @@ export const PAGE_META: Record<
       title: "Über Uns | Premier Health Klinik",
       description:
         "Erfahren Sie mehr über die Geschichte von Premier Health und unsere medizinische Spitzenversorgung.",
-      keywords: ["Über Premier Health", "Medizinische Exzellenz", "Luxuspflege"],
+      keywords: [
+        "Über Premier Health",
+        "Medizinische Exzellenz",
+        "Luxuspflege",
+      ],
     },
     es: {
       title: "Sobre Nosotros | Clínica Premier Health",
@@ -274,7 +402,11 @@ export const PAGE_META: Record<
       title: "Hakkımızda | Premier Health Kliniği",
       description:
         "Premier Health Kliniği'nin hikayesini ve lüks sağlık hizmetlerindeki uzmanlığımızı keşfedin.",
-      keywords: ["Hakkımızda", "Premier Health Tarihçesi", "Uzman Sağlık Kadrosu"],
+      keywords: [
+        "Hakkımızda",
+        "Premier Health Tarihçesi",
+        "Uzman Sağlık Kadrosu",
+      ],
     },
     ru: {
       title: "О нас | Клиника Premier Health",
@@ -288,19 +420,33 @@ export const PAGE_META: Record<
       title: "أطباؤنا واستشاريونا | عيادة بريمير هيلث",
       description:
         "تعرف على نخبة من أفضل الأطباء والاستشاريين المعتمدين دولياً في التجميل والعلاج الوريدي والجلدية.",
-      keywords: ["أطباء بريمير هيلث", "استشاريو جلدية", "أطباء تجميل", "خبراء العلاج الوريدي"],
+      keywords: [
+        "أطباء بريمير هيلث",
+        "استشاريو جلدية",
+        "أطباء تجميل",
+        "خبراء العلاج الوريدي",
+      ],
     },
     en: {
       title: "Our Medical Specialists | Premier Health Clinic",
       description:
         "Meet our world-class medical consultants and specialists in dermatology, aesthetics, and wellness.",
-      keywords: ["Specialist Doctors", "Dermatology Consultants", "Aesthetic Physicians", "Premier Health Doctors"],
+      keywords: [
+        "Specialist Doctors",
+        "Dermatology Consultants",
+        "Aesthetic Physicians",
+        "Premier Health Doctors",
+      ],
     },
     fr: {
       title: "Nos Médecins Spécialistes | Clinique Premier Health",
       description:
         "Rencontrez nos consultants médicaux et spécialistes de renommée mondiale.",
-      keywords: ["Médecins Spécialistes", "Dermatologues", "Consultants Médicaux"],
+      keywords: [
+        "Médecins Spécialistes",
+        "Dermatologues",
+        "Consultants Médicaux",
+      ],
     },
     de: {
       title: "Unsere Fachärzte | Premier Health Klinik",
@@ -324,13 +470,22 @@ export const PAGE_META: Record<
       title: "Uzman Doktorlarımız | Premier Health Kliniği",
       description:
         "Dermatoloji, estetik ve bütüncül sağlık alanındaki uzman doktor kadromuzla tanışın.",
-      keywords: ["Uzman Doktorlar", "Dermatoloji Uzmanları", "Estetik Doktorları"],
+      keywords: [
+        "Uzman Doktorlar",
+        "Dermatoloji Uzmanları",
+        "Estetik Doktorları",
+      ],
     },
     ru: {
       title: "Наши врачи и специалисты | Клиника Premier Health",
       description:
         "Познакомьтесь с нашими сертифицированными врачами-экспертами в области дерматологии, косметологии и антивозрастной медицины.",
-      keywords: ["Врачи клиники", "Дерматологи", "Косметологи", "Специалисты Premier Health"],
+      keywords: [
+        "Врачи клиники",
+        "Дерматологи",
+        "Косметологи",
+        "Специалисты Premier Health",
+      ],
     },
   },
   departments: {
@@ -344,13 +499,22 @@ export const PAGE_META: Record<
       title: "Clinical Departments | Premier Health Clinic",
       description:
         "Explore our specialized medical departments including IV Drips, Dermatology, and Anti-Aging Aesthetics.",
-      keywords: ["Medical Departments", "IV Drip Department", "Dermatology Department", "Aesthetics Clinic"],
+      keywords: [
+        "Medical Departments",
+        "IV Drip Department",
+        "Dermatology Department",
+        "Aesthetics Clinic",
+      ],
     },
     fr: {
       title: "Départements Médicaux | Clinique Premier Health",
       description:
         "Explorez nos départements spécialisés: perfusions IV, dermatologie et esthétique anti-âge.",
-      keywords: ["Départements Médicaux", "Service Perfusion IV", "Dermatologie"],
+      keywords: [
+        "Départements Médicaux",
+        "Service Perfusion IV",
+        "Dermatologie",
+      ],
     },
     de: {
       title: "Medizinische Abteilungen | Premier Health Klinik",
@@ -380,7 +544,11 @@ export const PAGE_META: Record<
       title: "Медицинские отделения | Клиника Premier Health",
       description:
         "Ознакомьтесь с нашими специализированными отделениями: IV-инфузии, дерматология, эстетическая и антивозрастная медицина.",
-      keywords: ["Медицинские отделения", "Отделение IV терапии", "Отделение дерматологии"],
+      keywords: [
+        "Медицинские отделения",
+        "Отделение IV терапии",
+        "Отделение дерматологии",
+      ],
     },
   },
   services: {
@@ -388,31 +556,54 @@ export const PAGE_META: Record<
       title: "الخدمات والعلاجات الطبية | عيادة بريمير هيلث",
       description:
         "تصفح قائمة خدماتنا الطبية والعلاجية المصممة بعناية لتجديد حيويتك وتعزيز صحتك ونضارتك.",
-      keywords: ["خدمات طبية", "جلسات نضارة", "محلول مايرز", "إنزيم NAD", "علاجات البشرة"],
+      keywords: [
+        "خدمات طبية",
+        "جلسات نضارة",
+        "محلول مايرز",
+        "إنزيم NAD",
+        "علاجات البشرة",
+      ],
     },
     en: {
       title: "Medical & Aesthetic Services | Premier Health Clinic",
       description:
         "Browse our comprehensive clinical and cosmetic wellness services tailored to your exact needs.",
-      keywords: ["Clinical Services", "IV Infusion Menu", "Skin Care Treatments", "Aesthetic Procedures"],
+      keywords: [
+        "Clinical Services",
+        "IV Infusion Menu",
+        "Skin Care Treatments",
+        "Aesthetic Procedures",
+      ],
     },
     fr: {
       title: "Services & Traitements Médicaux | Clinique Premier Health",
       description:
         "Consultez l'ensemble de nos services médicaux et esthétiques personnalisés.",
-      keywords: ["Services Médicaux", "Traitements Esthétiques", "Perfusion Bien-être"],
+      keywords: [
+        "Services Médicaux",
+        "Traitements Esthétiques",
+        "Perfusion Bien-être",
+      ],
     },
     de: {
       title: "Medizinische Dienstleistungen | Premier Health Klinik",
       description:
         "Überblicken Sie unsere maßgeschneiderten medizinischen und ästhetischen Behandlungen.",
-      keywords: ["Medizinische Behandlungen", "Ästhetische Pflege", "IV-Drip-Services"],
+      keywords: [
+        "Medizinische Behandlungen",
+        "Ästhetische Pflege",
+        "IV-Drip-Services",
+      ],
     },
     es: {
       title: "Servicios y Tratamientos Médicos | Clínica Premier Health",
       description:
         "Consulte nuestros servicios médicos y estéticos personalizados de alta gama.",
-      keywords: ["Servicios Médicos", "Tratamientos Estéticos", "Sueros Vitaminados"],
+      keywords: [
+        "Servicios Médicos",
+        "Tratamientos Estéticos",
+        "Sueros Vitaminados",
+      ],
     },
     it: {
       title: "Servizi e Trattamenti Medici | Clinica Premier Health",
@@ -430,7 +621,12 @@ export const PAGE_META: Record<
       title: "Медицинские и эстетические услуги | Клиника Premier Health",
       description:
         "Полный перечень медицинских, косметологических и инфузионных услуг, разработанных для восстановления энергии и сияния кожи.",
-      keywords: ["Медицинские услуги", "Косметологические процедуры", "Капельницы NAD", "Уход за кожей"],
+      keywords: [
+        "Медицинские услуги",
+        "Косметологические процедуры",
+        "Капельницы NAD",
+        "Уход за кожей",
+      ],
     },
   },
   branches: {
@@ -438,19 +634,33 @@ export const PAGE_META: Record<
       title: "فروعنا ومواقع العيادات | عيادة بريمير هيلث",
       description:
         "تواصل مع فروعنا الفاخرة في القاهرة والإمارات وتعرف على مواقعنا وأوقات العمل.",
-      keywords: ["فروع بريمير هيلث", "عيادة القاهرة", "عيادة دبي", "فيرمونت نايل سيتي"],
+      keywords: [
+        "فروع بريمير هيلث",
+        "عيادة القاهرة",
+        "عيادة دبي",
+        "فيرمونت نايل سيتي",
+      ],
     },
     en: {
       title: "Clinic Locations & Branches | Premier Health Clinic",
       description:
         "Locate our prime clinic locations in Cairo and UAE. Experience luxury healthcare near you.",
-      keywords: ["Clinic Branches", "Cairo Clinic", "Dubai Clinic", "Fairmont Nile City Branch"],
+      keywords: [
+        "Clinic Branches",
+        "Cairo Clinic",
+        "Dubai Clinic",
+        "Fairmont Nile City Branch",
+      ],
     },
     fr: {
       title: "Nos Cliniques & Emplacements | Clinique Premier Health",
       description:
         "Trouvez nos cliniques de luxe situées au Caire et aux Émirats Arabes Unis.",
-      keywords: ["Cliniques Premier Health", "Clinique Le Caire", "Clinique Dubaï"],
+      keywords: [
+        "Cliniques Premier Health",
+        "Clinique Le Caire",
+        "Clinique Dubaï",
+      ],
     },
     de: {
       title: "Unsere Standorte & Kliniken | Premier Health Klinik",
@@ -480,7 +690,12 @@ export const PAGE_META: Record<
       title: "Филиалы и локации клиник | Premier Health Clinic",
       description:
         "Адреса и контакты наших премиальных клиник в Каире и ОАЭ. Запишитесь на прием в ближайший филиал.",
-      keywords: ["Филиалы клиники", "Клиника в Каире", "Клиника в Дубае", "Контакты локаций"],
+      keywords: [
+        "Филиалы клиники",
+        "Клиника в Каире",
+        "Клиника в Дубае",
+        "Контакты локаций",
+      ],
     },
   },
   contact: {
@@ -488,19 +703,33 @@ export const PAGE_META: Record<
       title: "تواصل معنا | عيادة بريمير هيلث",
       description:
         "تواصل مع فريق خدمة العملاء في بريمير هيلث للحجز والاستفسارات الطبية على مدار الساعة.",
-      keywords: ["تواصل مع بريمير هيلث", "رقم العيادة", "حجز استشارة", "خدمة المرضى"],
+      keywords: [
+        "تواصل مع بريمير هيلث",
+        "رقم العيادة",
+        "حجز استشارة",
+        "خدمة المرضى",
+      ],
     },
     en: {
       title: "Contact Us | Premier Health Clinic",
       description:
         "Get in touch with Premier Health Clinic for appointments, inquiries, and VIP health concierge.",
-      keywords: ["Contact Clinic", "Healthcare Concierge", "Book Consultation", "Patient Support"],
+      keywords: [
+        "Contact Clinic",
+        "Healthcare Concierge",
+        "Book Consultation",
+        "Patient Support",
+      ],
     },
     fr: {
       title: "Contactez-nous | Clinique Premier Health",
       description:
         "Contactez notre équipe pour prendre rendez-vous ou pour toute question médicale.",
-      keywords: ["Contactez Premier Health", "Prendre Rendez-vous", "Support Médical"],
+      keywords: [
+        "Contactez Premier Health",
+        "Prendre Rendez-vous",
+        "Support Médical",
+      ],
     },
     de: {
       title: "Kontakt | Premier Health Klinik",
@@ -512,13 +741,21 @@ export const PAGE_META: Record<
       title: "Contacto | Clínica Premier Health",
       description:
         "Póngase en contacto con nuestro equipo para reservas y consultas médicas.",
-      keywords: ["Contacto Clínica", "Reservar Consulta", "Atención al Paciente"],
+      keywords: [
+        "Contacto Clínica",
+        "Reservar Consulta",
+        "Atención al Paciente",
+      ],
     },
     it: {
       title: "Contattaci | Clinica Premier Health",
       description:
         "Contatta il nostro team per prenotazioni e consulenze mediche personalizzate.",
-      keywords: ["Contatti Clinica", "Prenotazione Visita", "Assistenza Clienti"],
+      keywords: [
+        "Contatti Clinica",
+        "Prenotazione Visita",
+        "Assistenza Clienti",
+      ],
     },
     tr: {
       title: "İletişim | Premier Health Kliniği",
@@ -530,7 +767,12 @@ export const PAGE_META: Record<
       title: "Контакты и запись | Клиника Premier Health",
       description:
         "Свяжитесь с нашей консьерж-службой для записи на консультацию, процедуру или получения медицинской справки.",
-      keywords: ["Контакты клиники", "Телефон клиники", "Запись на прием", "Медицинский консьерж"],
+      keywords: [
+        "Контакты клиники",
+        "Телефон клиники",
+        "Запись на прием",
+        "Медицинский консьерж",
+      ],
     },
   },
   "book-appointment": {
@@ -538,19 +780,33 @@ export const PAGE_META: Record<
       title: "حجز موعد طبي | عيادة بريمير هيلث",
       description:
         "احجز موعدك الطبي الآن بسهولة في عيادة بريمير هيلث واختر الطبيب والفرع والخدمة المناسبة لك.",
-      keywords: ["حجز موعد عيادة", "حجز تقطير وريدي", "حجز موعد جلدية", "حجز أونلاين"],
+      keywords: [
+        "حجز موعد عيادة",
+        "حجز تقطير وريدي",
+        "حجز موعد جلدية",
+        "حجز أونلاين",
+      ],
     },
     en: {
       title: "Book Appointment Online | Premier Health Clinic",
       description:
         "Schedule your medical or aesthetic consultation online with Premier Health Clinic in just a few steps.",
-      keywords: ["Book Appointment Online", "Schedule Doctor Visit", "IV Drip Booking", "Dermatology Appointment"],
+      keywords: [
+        "Book Appointment Online",
+        "Schedule Doctor Visit",
+        "IV Drip Booking",
+        "Dermatology Appointment",
+      ],
     },
     fr: {
       title: "Réserver un Rendez-vous en Ligne | Clinique Premier Health",
       description:
         "Réservez votre consultation médicale ou esthétique en ligne en quelques clics.",
-      keywords: ["Réserver Rendez-vous", "Consultation en Ligne", "Prise de Rendez-vous"],
+      keywords: [
+        "Réserver Rendez-vous",
+        "Consultation en Ligne",
+        "Prise de Rendez-vous",
+      ],
     },
     de: {
       title: "Termin Online Buchen | Premier Health Klinik",
@@ -562,25 +818,42 @@ export const PAGE_META: Record<
       title: "Reservar Cita Online | Clínica Premier Health",
       description:
         "Reserve su cita médica o estética en línea de forma rápida y sencilla.",
-      keywords: ["Reservar Cita Online", "Agendar Consulta", "Cita Dermatología"],
+      keywords: [
+        "Reservar Cita Online",
+        "Agendar Consulta",
+        "Cita Dermatología",
+      ],
     },
     it: {
       title: "Prenota Appuntamento Online | Clinica Premier Health",
       description:
         "Prenota online la tua visita medica o consulenza estetica con i nostri esperti.",
-      keywords: ["Prenota Visita Online", "Appuntamento Clinica", "Prenotazione Trattamento"],
+      keywords: [
+        "Prenota Visita Online",
+        "Appuntamento Clinica",
+        "Prenotazione Trattamento",
+      ],
     },
     tr: {
       title: "Online Randevu Al | Premier Health Kliniği",
       description:
         "Premier Health Kliniği'nden doktor ve tedavi randevunuzu online olarak hemen oluşturun.",
-      keywords: ["Online Randevu", "Doktor Randevusu Al", "Tedavi Rezervasyonu"],
+      keywords: [
+        "Online Randevu",
+        "Doktor Randevusu Al",
+        "Tedavi Rezervasyonu",
+      ],
     },
     ru: {
       title: "Онлайн-запись на прием | Клиника Premier Health",
       description:
         "Запишитесь на консультацию к врачу или процедуру IV-терапии онлайн за несколько простых шагов.",
-      keywords: ["Онлайн запись", "Записаться к врачу", "Запись на капельницу", "Запись в клинику"],
+      keywords: [
+        "Онлайн запись",
+        "Записаться к врачу",
+        "Запись на капельницу",
+        "Запись в клинику",
+      ],
     },
   },
   gallery: {
@@ -594,7 +867,11 @@ export const PAGE_META: Record<
       title: "Visual Gallery & Luxury Suites | Premier Health Clinic",
       description:
         "Explore our state-of-the-art clinic suites, advanced medical technology, and serene treatment spaces.",
-      keywords: ["Clinic Gallery", "Luxury Treatment Suites", "Medical Facility Photos"],
+      keywords: [
+        "Clinic Gallery",
+        "Luxury Treatment Suites",
+        "Medical Facility Photos",
+      ],
     },
     fr: {
       title: "Galerie & Espaces de Soins | Clinique Premier Health",
@@ -630,7 +907,12 @@ export const PAGE_META: Record<
       title: "Фотогалерея и интерьеры клиники | Premier Health",
       description:
         "Взгляните на премиальные процедурные сьюты, передовое медицинское оборудование и атмосферу уюта клиники Premier Health.",
-      keywords: ["Галерея клиники", "Интерьеры клиники", "Премиум кабинеты", "Фото Premier Health"],
+      keywords: [
+        "Галерея клиники",
+        "Интерьеры клиники",
+        "Премиум кабинеты",
+        "Фото Premier Health",
+      ],
     },
   },
   faq: {
@@ -644,7 +926,12 @@ export const PAGE_META: Record<
       title: "Frequently Asked Questions | Premier Health Clinic",
       description:
         "Find clear answers about our IV therapies, dermatology procedures, booking protocols, and clinical standards.",
-      keywords: ["FAQ", "IV Therapy Questions", "Dermatology FAQ", "Patient Inquiries"],
+      keywords: [
+        "FAQ",
+        "IV Therapy Questions",
+        "Dermatology FAQ",
+        "Patient Inquiries",
+      ],
     },
     fr: {
       title: "Foire Aux Questions | Clinique Premier Health",
@@ -680,7 +967,12 @@ export const PAGE_META: Record<
       title: "Часто задаваемые вопросы (FAQ) | Клиника Premier Health",
       description:
         "Ответы на популярные вопросы о процедурах IV-терапии, косметологии, безопасности и подготовке к приему.",
-      keywords: ["Частые вопросы", "FAQ капельницы", "Вопросы дерматологу", "Premier Health FAQ"],
+      keywords: [
+        "Частые вопросы",
+        "FAQ капельницы",
+        "Вопросы дерматологу",
+        "Premier Health FAQ",
+      ],
     },
   },
   testimonials: {
@@ -694,25 +986,41 @@ export const PAGE_META: Record<
       title: "Client Testimonials & Stories | Premier Health Clinic",
       description:
         "Read verified reviews and real wellness transformation stories from our esteemed clients.",
-      keywords: ["Patient Testimonials", "Clinic Reviews", "Real Patient Stories"],
+      keywords: [
+        "Patient Testimonials",
+        "Clinic Reviews",
+        "Real Patient Stories",
+      ],
     },
     fr: {
       title: "Témoignages & Avis Clients | Clinique Premier Health",
       description:
         "Découvrez les retours d'expérience authentiques et les avis de nos patients.",
-      keywords: ["Avis Patients", "Témoignages Clinique", "Retours d'Expérience"],
+      keywords: [
+        "Avis Patients",
+        "Témoignages Clinique",
+        "Retours d'Expérience",
+      ],
     },
     de: {
       title: "Erfahrungsberichte & Bewertungen | Premier Health Klinik",
       description:
         "Lesen Sie authentische Patientenbewertungen und Erfolgsgeschichten unserer Behandlungen.",
-      keywords: ["Erfahrungsberichte", "Patientenbewertungen", "Erfolgsgeschichten"],
+      keywords: [
+        "Erfahrungsberichte",
+        "Patientenbewertungen",
+        "Erfolgsgeschichten",
+      ],
     },
     es: {
       title: "Testimonios y Opiniones | Clínica Premier Health",
       description:
         "Lea opiniones verificadas e historias reales de pacientes en Premier Health.",
-      keywords: ["Testimonios Pacientes", "Opiniones Clínica", "Historias de Éxito"],
+      keywords: [
+        "Testimonios Pacientes",
+        "Opiniones Clínica",
+        "Historias de Éxito",
+      ],
     },
     it: {
       title: "Testimonianze e Recensioni | Clinica Premier Health",
@@ -724,13 +1032,22 @@ export const PAGE_META: Record<
       title: "Hasta Yorumları ve Deneyimleri | Premier Health Kliniği",
       description:
         "Değerli danışanlarımızın kliniğimizdeki tedavi ve bakım deneyimlerini inceleyin.",
-      keywords: ["Hasta Yorumları", "Klinik Değerlendirmeleri", "Gerçek Deneyimler"],
+      keywords: [
+        "Hasta Yorumları",
+        "Klinik Değerlendirmeleri",
+        "Gerçek Deneyimler",
+      ],
     },
     ru: {
       title: "Отзывы пациентов | Клиника Premier Health",
       description:
         "Реальные отзывы и истории пациентов о результатах IV-терапии, косметологических процедур и сервисе Premier Health.",
-      keywords: ["Отзывы пациентов", "Отзывы о клинике", "Истории лечения", "Premier Health отзывы"],
+      keywords: [
+        "Отзывы пациентов",
+        "Отзывы о клинике",
+        "Истории лечения",
+        "Premier Health отзывы",
+      ],
     },
   },
   "privacy-policy": {
@@ -834,7 +1151,7 @@ export interface SeoMetadataOptions {
 export function getSeoMetadata(
   locale: string,
   pageKey?: string,
-  options: SeoMetadataOptions = {}
+  options: SeoMetadataOptions = {},
 ): Metadata {
   const currentLocale = (
     LOCALES.includes(locale as SupportedLocale) ? locale : DEFAULT_LOCALE
@@ -880,7 +1197,7 @@ export function getSeoMetadata(
 
   const ogLocale = OG_LOCALE_MAP[currentLocale] || "en_US";
   const ogAlternateLocales = LOCALES.filter((l) => l !== currentLocale).map(
-    (l) => OG_LOCALE_MAP[l]
+    (l) => OG_LOCALE_MAP[l],
   );
 
   return {
@@ -959,7 +1276,7 @@ export function getSeoMetadata(
  */
 export function generatePageMetadata(
   pageName: string,
-  options: SeoMetadataOptions = {}
+  options: SeoMetadataOptions = {},
 ) {
   return async function generateMetadata({
     params,

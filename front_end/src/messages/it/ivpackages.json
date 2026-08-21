@@ -1,0 +1,146 @@
+{
+  "heroBadge": "Protocolli di Benessere Premier",
+  "heroTitle": "Pacchetti di Terapia IV",
+  "heroSubtitle": "Terapia endovenosa personalizzata studiata per favorire idratazione, energia, recupero, bellezza e benessere generale.",
+  "heroCta": "Prenota il tuo Pacchetto su WhatsApp",
+  "heroMsg": "Salve, vorrei prenotare un pacchetto di Terapia IV.",
+  "whyBadge": "Vitalità Cellulare",
+  "whyTitle": "Perché Scegliere la Terapia IV Premier?",
+  "whySubtitle": "La somministrazione endovenosa diretta aggira l'apparato digerente per una biodisponibilità del 100% e una vitalità immediata.",
+  "whyCards": {
+    "bioavailability": {
+      "title": "Biodisponibilità al 100%",
+      "desc": "L'infusione endovenosa diretta garantisce l'assorbimento immediato dei micronutrienti attivi senza dispersione digestiva."
+    },
+    "medicalSupervision": {
+      "title": "Supervisione Medica",
+      "desc": "Somministrato sotto la guida diretta di medici specialisti qualificati dopo una valutazione personalizzata."
+    },
+    "premiumFormulations": {
+      "title": "Formulazioni di Grado Medico",
+      "desc": "Nutrienti e antiossidanti della massima purezza formulati secondo rigorosi standard clinici internazionali."
+    },
+    "rapidRecovery": {
+      "title": "Recupero e Vitalità Rapidi",
+      "desc": "Sentiti rivitalizzato, idratato e pieno di energia poche ore dopo la tua sessione privata."
+    }
+  },
+  "packagesBadge": "Formulazioni su Misura",
+  "packagesTitle": "Seleziona il Tuo Pacchetto Benessere",
+  "packagesSubtitle": "Tre protocolli terapeutici mirati progettati per i tuoi obiettivi di salute, bellezza e recupero.",
+  "bestFor": "Ideale per",
+  "keyBenefits": "Vantaggi Principali",
+  "coreNutrients": "Nutrienti Fondamentali",
+  "bookViaWhatsApp": "Prenota su WhatsApp",
+  "popularBadge": "Più Richiesto",
+  "ultimateBadge": "Pacchetto Signature Premium",
+  "pkg1": {
+    "name": "Essential Reset",
+    "price": "30K",
+    "bestFor": "Benessere quotidiano, idratazione e supporto essenziale",
+    "benefits": [
+      "Aumenta l'energia e combatte la stanchezza",
+      "Supporta l'immunità e l'idratazione",
+      "Migliora concentrazione ed equilibrio nervoso",
+      "Favorisce la salute di capelli, pelle e unghie",
+      "Reintegra vitamine e minerali essenziali"
+    ],
+    "nutrients": [
+      "Complesso B (B1, B2, B3, B5, B6, B12)",
+      "Vitamina C",
+      "Magnesio",
+      "Zinco",
+      "Elettroliti",
+      "Biotina"
+    ],
+    "cta": "Prenota Essential Reset",
+    "waMsg": "Salve, vorrei prenotare il pacchetto Essential Reset di Terapia IV."
+  },
+  "pkg2": {
+    "name": "Advanced Recharge",
+    "price": "50K",
+    "bestFor": "Bellezza, metabolismo, detox e recupero avanzato",
+    "benefits": [
+      "Migliora resistenza e metabolismo",
+      "Favorisce luminosità della pelle e forza delle unghie",
+      "Favorisce la disintossicazione e la protezione antiossidante",
+      "Aiuta a ridurre lo stress e la fatica nervosa",
+      "Ripristina idratazione ed equilibrio minerale"
+    ],
+    "nutrients": [
+      "Complesso B",
+      "Vitamina C",
+      "Biotina",
+      "Magnesio",
+      "Zinco",
+      "Glutatione",
+      "Acido Alfa Lipoico (ALA)",
+      "Aminoacidi",
+      "Elettroliti"
+    ],
+    "cta": "Prenota Advanced Recharge",
+    "waMsg": "Salve, vorrei prenotare il pacchetto Advanced Recharge di Terapia IV."
+  },
+  "pkg3": {
+    "name": "Ultimate Restore",
+    "price": "80K",
+    "bestFor": "Recupero corporeo totale, bellezza, detox e massime prestazioni",
+    "benefits": [
+      "Massima energia e recupero avanzato",
+      "Potente detossinazione e supporto epatico",
+      "Supporto profondo al sistema nervoso e cerebrale",
+      "Miglioramento intensivo di pelle e bellezza",
+      "Rinforza immunità, idratazione e benessere totale"
+    ],
+    "nutrients": [
+      "Complesso B ad Alto Dosaggio",
+      "Vitamina C",
+      "Biotina",
+      "Magnesio",
+      "Zinco",
+      "Glutatione",
+      "ALA",
+      "NAC (N-Acetilcisteina)",
+      "L-Carnitina",
+      "Aminoacidi",
+      "Elettroliti",
+      "Oligoelementi"
+    ],
+    "cta": "Prenota Ultimate Restore",
+    "waMsg": "Salve, vorrei prenotare il pacchetto Ultimate Restore di Terapia IV."
+  },
+  "addonsBadge": "Booster Mirati",
+  "addonsTitle": "Supplementi Premium Opzionali",
+  "addonsSubtitle": "Arricchisci la tua sessione IV con booster terapeutici personalizzati dal tuo medico specialista.",
+  "addonsCta": "Richiedi Informazioni sui Supplementi",
+  "addonsMsg": "Salve, vorrei saperne di più sui supplementi premium di Terapia IV.",
+  "addons": [
+    {
+      "name": "Vitamina D",
+      "desc": "Densità ossea, regolazione dell'umore e difesa immunitaria"
+    },
+    {
+      "name": "L-Carnitina",
+      "desc": "Metabolismo dei grassi, resistenza e recupero muscolare"
+    },
+    {
+      "name": "NAD+",
+      "desc": "Riparazione del DNA cellulare, neuro-protezione e longevità"
+    },
+    {
+      "name": "Supporto al Collagene",
+      "desc": "Elasticità della pelle, flessibilità articolare e rigenerazione"
+    },
+    {
+      "name": "Formula Immune Boost",
+      "desc": "Potente difesa antiossidante e resilienza stagionale"
+    }
+  ],
+  "conciergeBadge": "Suite Private e Assistenza Esclusiva",
+  "conciergeTitle": "Pronto a Vivere la Terapia IV Premier?",
+  "conciergeSubtitle": "La nostra équipe medica e il servizio Concierge sono pronti ad assisterti nella scelta della formula ideale nelle nostre 3 cliniche di lusso al Cairo.",
+  "consultationNotice": "Valutazione Medica Inclusa",
+  "consultationNoticeDesc": "Ogni sessione inizia con il controllo dei parametri vitali e una visita specialistica.",
+  "disclaimerTitle": "Avviso Medico e Consulenza",
+  "disclaimerText": "La terapia IV deve essere somministrata sotto la supervisione di un professionista sanitario qualificato dopo un'adeguata valutazione medica. L'idoneità del pacchetto può variare in base alle esigenze individuali e all'anamnesi."
+}

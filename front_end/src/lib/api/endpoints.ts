@@ -1,5 +1,6 @@
 // lib/api/endpoints.ts
 import axios from "axios";
+import type { Attribution } from "@/lib/analytics/types";
 
 import type {
   Department,
@@ -133,6 +134,8 @@ export interface CreateBookingPayload {
   payment_method?: string;
   email?: string;
   phone?: string;
+  /** Attribution data for campaign tracking — Zero-PII, never contains patient info */
+  attribution?: Attribution;
 }
 
 export interface CreateBookingResult {
@@ -149,7 +152,8 @@ export interface BookingStatusResponse {
 // ─── File Upload ──────────────────────────────────────────────────
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.premierhealthclinics.com/api/";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://api.premierhealthclinics.com/api/";
 
 /** Upload a file to the backend /api/files/ to get a real DB integer PK. */
 export const uploadFile = async (
@@ -157,7 +161,8 @@ export const uploadFile = async (
   onProgress?: (percent: number) => void,
 ): Promise<FileUpload> => {
   const baseUrl = (
-    process.env.NEXT_PUBLIC_API_URL || "https://api.premierhealthclinics.com/api/"
+    process.env.NEXT_PUBLIC_API_URL ||
+    "https://api.premierhealthclinics.com/api/"
   )
     .replace(/\/api\/?$/, "")
     .replace(/\/+$/, "");
@@ -731,27 +736,40 @@ function mapDoctorProfile(raw: ApiDoctorProfile): DoctorProfileDetails {
     weekday: a.weekday_display || a.weekday || "",
     startTime: a.start_time || a.startTime || "",
     endTime: a.end_time || a.endTime || "",
-    slotDurationMinutes:
-      a.slot_duration_minutes ?? a.slotDurationMinutes ?? 30,
+    slotDurationMinutes: a.slot_duration_minutes ?? a.slotDurationMinutes ?? 30,
     branchName: a.branch_name || a.branchName,
     branchId: a.branchId ? String(a.branchId) : undefined,
   }));
 
   const rawExp = raw.experience_years ?? raw.experience;
-  const expYears = rawExp !== undefined && rawExp !== null ? Number(rawExp) : 14;
+  const expYears =
+    rawExp !== undefined && rawExp !== null ? Number(rawExp) : 14;
 
   const rawRating = raw.rating;
-  const ratingNum = rawRating !== undefined && rawRating !== null ? Number(rawRating) : 4.95;
+  const ratingNum =
+    rawRating !== undefined && rawRating !== null ? Number(rawRating) : 4.95;
 
-  const rawPatients = raw.patients_treated ?? raw.patients_count ?? raw.patients ?? raw.total_patients;
-  const patientsCount = rawPatients !== undefined && rawPatients !== null ? Number(rawPatients) : (bookings.length > 0 ? bookings.length : 3000);
+  const rawPatients =
+    raw.patients_treated ??
+    raw.patients_count ??
+    raw.patients ??
+    raw.total_patients;
+  const patientsCount =
+    rawPatients !== undefined && rawPatients !== null
+      ? Number(rawPatients)
+      : bookings.length > 0
+        ? bookings.length
+        : 3000;
 
   return {
     id: String(raw.id),
     userId: String(raw.id),
     firstName: raw.first_name || "",
     lastName: raw.last_name || "",
-    name: raw.name || `${raw.first_name || ""} ${raw.last_name || ""}`.trim() || "Doctor",
+    name:
+      raw.name ||
+      `${raw.first_name || ""} ${raw.last_name || ""}`.trim() ||
+      "Doctor",
     email: raw.email || "",
     phone: raw.phone || raw.phone_number || "",
     specialization: raw.specialization || raw.specialty || "",

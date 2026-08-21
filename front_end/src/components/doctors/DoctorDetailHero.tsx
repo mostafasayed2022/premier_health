@@ -27,7 +27,10 @@ export function DoctorDetailHero({ doctor, children }: DoctorDetailHeroProps) {
       <div className="luxury-container relative z-10">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-[11px] sm:text-xs text-foreground/50 mb-6 sm:mb-8">
-          <Link href="/doctors" className="hover:text-accent transition-colors font-medium">
+          <Link
+            href="/doctors"
+            className="hover:text-accent transition-colors font-medium"
+          >
             {t("Doctors.ourSpecialists")}
           </Link>
           <span>/</span>

@@ -16,6 +16,7 @@ import {
   Headphones,
   CheckCircle2,
   CalendarPlus,
+  PhoneCall,
 } from "lucide-react";
 import { T } from "@/i18n/T";
 
@@ -35,7 +36,13 @@ interface InfoItemProps {
   badge?: React.ReactNode;
 }
 
-function InfoItem({ icon: Icon, label, value, iconColor = "#c8a96b", badge }: InfoItemProps) {
+function InfoItem({
+  icon: Icon,
+  label,
+  value,
+  iconColor = "#c8a96b",
+  badge,
+}: InfoItemProps) {
   return (
     <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#f7f2ea]/60 border border-[#e8e0d5]/60 hover:bg-[#f7f2ea] transition-colors">
       <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center shrink-0 border border-[#e8e0d5]/80 shadow-2xs">
@@ -106,7 +113,6 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-      
       {/* ── Left Column: Personal & Account Profile Details ── */}
       <div className="lg:col-span-6 space-y-5">
         <div className="bg-white border border-[#e8e0d5] rounded-3xl p-6 sm:p-7 shadow-xs">
@@ -223,7 +229,12 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
                   ru="Пол"
                 />
               }
-              value={patient.gender ? patient.gender.charAt(0).toUpperCase() + patient.gender.slice(1) : "—"}
+              value={
+                patient.gender
+                  ? patient.gender.charAt(0).toUpperCase() +
+                    patient.gender.slice(1)
+                  : "—"
+              }
             />
 
             <InfoItem
@@ -263,7 +274,6 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
 
       {/* ── Right Column: Dynamic Upcoming Visit & VIP Support ── */}
       <div className="lg:col-span-6 space-y-5">
-        
         {/* 1. Next Upcoming Visit Card */}
         <div className="bg-white border border-[#e8e0d5] rounded-3xl p-6 sm:p-7 shadow-xs">
           <SectionHeader
@@ -311,7 +321,16 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
               <div className="flex items-center gap-2 text-xs font-semibold text-[#385366]">
                 <Stethoscope className="w-4 h-4 text-[#c8a96b]" />
                 <span>
-                  <T en="Doctor:" ar="الطبيب:" de="Arzt:" es="Médico:" fr="Médecin:" it="Medico:" tr="Doktor:" ru="Врач:" />{" "}
+                  <T
+                    en="Doctor:"
+                    ar="الطبيب:"
+                    de="Arzt:"
+                    es="Médico:"
+                    fr="Médecin:"
+                    it="Medico:"
+                    tr="Doktor:"
+                    ru="Врач:"
+                  />{" "}
                   <strong>{upcomingAppointment.doctor}</strong>
                 </span>
               </div>
@@ -319,18 +338,24 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
               <div className="grid grid-cols-2 gap-2 text-xs text-[#4a5568] pt-1">
                 <div className="flex items-center gap-1.5 bg-white/70 p-2 rounded-xl border border-[#e8d5a8]/40">
                   <Calendar className="w-3.5 h-3.5 text-[#c8a96b]" />
-                  <span className="font-medium">{upcomingAppointment.date}</span>
+                  <span className="font-medium">
+                    {upcomingAppointment.date}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-white/70 p-2 rounded-xl border border-[#e8d5a8]/40">
                   <Clock className="w-3.5 h-3.5 text-[#c8a96b]" />
-                  <span className="font-medium">{upcomingAppointment.time}</span>
+                  <span className="font-medium">
+                    {upcomingAppointment.time}
+                  </span>
                 </div>
               </div>
 
               {upcomingAppointment.branch && (
                 <div className="flex items-center gap-1.5 text-xs text-[#4a5568] bg-white/70 p-2 rounded-xl border border-[#e8d5a8]/40">
                   <MapPin className="w-3.5 h-3.5 text-[#c8a96b]" />
-                  <span className="font-medium truncate">{upcomingAppointment.branch}</span>
+                  <span className="font-medium truncate">
+                    {upcomingAppointment.branch}
+                  </span>
                 </div>
               )}
             </div>
@@ -421,25 +446,37 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             {/* Phone hotline */}
             <a
-              href="tel:+201200644663"
+              href="tel:+201111977705"
               className="flex items-center gap-3 p-3 rounded-2xl bg-[#f7f2ea]/60 border border-[#e8e0d5]/60 hover:bg-[#f7f2ea] transition-all group"
             >
               <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#c8a96b] border border-[#e8e0d5]/80 group-hover:scale-105 transition-transform shrink-0">
-                <Phone className="w-4 h-4" />
+                <PhoneCall className="w-4 h-4" />
               </div>
-              <div className="min-w-0">
+              <div>
                 <span className="text-[10px] text-[#959ead] font-medium block">
-                  <T en="VIP Hotline" ar="الخط الساخن" de="Hotline" es="Línea Directa" fr="Ligne Directe" it="Linea Diretta" tr="Yardım Hattı" ru="Горячая линия" />
+                  <T
+                    en="VIP Concierge Call"
+                    ar="الاتصال الهاتفي"
+                    de="VIP-Anruf"
+                    es="Llamada VIP"
+                    fr="Appel VIP"
+                    it="Chiamata VIP"
+                    tr="VIP Arama"
+                    ru="VIP звонок"
+                  />
                 </span>
-                <span className="font-bold text-[#1e293b] group-hover:text-[#385366] transition-colors" dir="ltr">
-                  +20 120 064 4663
+                <span
+                  className="font-bold text-[#1e293b] group-hover:text-[#385366] transition-colors"
+                  dir="ltr"
+                >
+                  +20 11 11977705
                 </span>
               </div>
             </a>
 
             {/* Email Support */}
             <a
-              href="mailto:info@premierhealth.com"
+              href="mailto:info@premierhealthclinics.com"
               className="flex items-center gap-3 p-3 rounded-2xl bg-[#f7f2ea]/60 border border-[#e8e0d5]/60 hover:bg-[#f7f2ea] transition-all group"
             >
               <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#c8a96b] border border-[#e8e0d5]/80 group-hover:scale-105 transition-transform shrink-0">
@@ -447,10 +484,19 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
               </div>
               <div className="min-w-0">
                 <span className="text-[10px] text-[#959ead] font-medium block">
-                  <T en="Email Concierge" ar="البريد الإلكتروني" de="E-Mail" es="Correo" fr="Email" it="Email" tr="E-posta" ru="Эл. почта" />
+                  <T
+                    en="Email Concierge"
+                    ar="البريد الإلكتروني"
+                    de="E-Mail"
+                    es="Correo"
+                    fr="Email"
+                    it="Email"
+                    tr="E-posta"
+                    ru="Эл. почта"
+                  />
                 </span>
                 <span className="font-bold text-[#1e293b] group-hover:text-[#385366] transition-colors truncate block">
-                  info@premierhealth.com
+                  info@premierhealthclinics.com
                 </span>
               </div>
             </a>
@@ -479,7 +525,16 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
               href="/doctors"
               className="font-semibold text-[#385366] hover:text-[#c8a96b] transition-colors inline-flex items-center gap-1"
             >
-              <T en="Explore Doctors" ar="تصفح الأطباء" de="Ärzte entdecken" es="Ver médicos" fr="Explorer les médecins" it="Esplora medici" tr="Doktorları İncele" ru="Наши врачи" />
+              <T
+                en="Explore Doctors"
+                ar="تصفح الأطباء"
+                de="Ärzte entdecken"
+                es="Ver médicos"
+                fr="Explorer les médecins"
+                it="Esplora medici"
+                tr="Doktorları İncele"
+                ru="Наши врачи"
+              />
               <ArrowRight className="w-3 h-3" />
             </Link>
 
@@ -487,14 +542,21 @@ export function PatientOverview({ patient }: PatientOverviewProps) {
               href="/departments"
               className="font-semibold text-[#385366] hover:text-[#c8a96b] transition-colors inline-flex items-center gap-1"
             >
-              <T en="Medical Departments" ar="الأقسام الطبية" de="Abteilungen" es="Departamentos" fr="Départements" it="Dipartimenti" tr="Tıbbi Bölümler" ru="Отделения" />
+              <T
+                en="Medical Departments"
+                ar="الأقسام الطبية"
+                de="Abteilungen"
+                es="Departamentos"
+                fr="Départements"
+                it="Dipartimenti"
+                tr="Tıbbi Bölümler"
+                ru="Отделения"
+              />
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>
-
       </div>
     </div>
   );
 }
-

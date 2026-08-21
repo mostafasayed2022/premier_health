@@ -31,7 +31,7 @@ export function Step2Service({
   useEffect(() => {
     Promise.all([
       getDepartments(),
-      deptId ? getServicesByDepartment(Number(deptId)) : Promise.resolve([])
+      deptId ? getServicesByDepartment(Number(deptId)) : Promise.resolve([]),
     ]).then(([depts, svcs]) => {
       if (depts) setDepartments(depts);
       if (svcs) setServices(svcs);
@@ -55,9 +55,7 @@ export function Step2Service({
   if (filteredServices.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-foreground/70 font-medium">
-          {t("noServices")}
-        </p>
+        <p className="text-foreground/70 font-medium">{t("noServices")}</p>
       </div>
     );
   }
@@ -91,7 +89,9 @@ export function Step2Service({
               ) : (
                 <div
                   className={`w-full h-full flex items-center justify-center text-xl sm:text-2xl transition-colors ${
-                    isSelected ? "bg-accent text-white" : "bg-primary/10 text-primary"
+                    isSelected
+                      ? "bg-accent text-white"
+                      : "bg-primary/10 text-primary"
                   }`}
                 >
                   <Sparkles size={20} className="sm:hidden" />
@@ -108,7 +108,7 @@ export function Step2Service({
               <p className="text-[11px] sm:text-xs text-foreground/75 mt-0.5 sm:mt-1 line-clamp-2 leading-relaxed">
                 {svc.description}
               </p>
-              
+
               <div className="flex items-center gap-2 sm:gap-3 mt-2 sm:mt-3 flex-wrap">
                 {svc.price != null && (
                   <span className="inline-block px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-bold text-[10px] sm:text-xs">
@@ -132,8 +132,12 @@ export function Step2Service({
                   : "border-2 border-accent/30 bg-transparent group-hover:border-accent"
               }`}
             >
-              {isSelected && <Check size={12} strokeWidth={3} className="sm:hidden" />}
-              {isSelected && <Check size={14} strokeWidth={3} className="hidden sm:block" />}
+              {isSelected && (
+                <Check size={12} strokeWidth={3} className="sm:hidden" />
+              )}
+              {isSelected && (
+                <Check size={14} strokeWidth={3} className="hidden sm:block" />
+              )}
             </div>
           </button>
         );

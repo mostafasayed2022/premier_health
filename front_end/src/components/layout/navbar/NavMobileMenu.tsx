@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { ChevronDown, User, ShieldCheck } from "lucide-react";
+import { ChevronDown, User, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { usePatientAuth } from "@/context/PatientAuthContext";
 import { useNavItems } from "./NavbarConstants";
@@ -43,6 +43,15 @@ export function NavMobileMenu({
     patient: { label: "Patient", color: "#C8A96B" },
   };
 
+  const [openDropdowns, setOpenDropdowns] = React.useState<Record<string, boolean>>({});
+
+  const toggleDropdown = (href: string) => {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [href]: !prev[href],
+    }));
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -54,10 +63,12 @@ export function NavMobileMenu({
               const isAnySubActive = item.subItems?.some(
                 (sub) => pathname === sub.href,
               );
+              const isDropdownOpen = !!openDropdowns[item.href];
+
               return (
                 <div key={item.href} className="flex flex-col">
                   <button
-                    onClick={() => setMobileBranchesOpen(!mobileBranchesOpen)}
+                    onClick={() => toggleDropdown(item.href)}
                     className={`flex items-center justify-between text-[13px] font-bold uppercase tracking-wider py-3 px-4 rounded-md text-left w-full ${
                       isAnySubActive
                         ? "bg-[#F8F9FA] text-primary border-l-4 border-accent"
@@ -67,10 +78,10 @@ export function NavMobileMenu({
                     <span>{item.label}</span>
                     <ChevronDown
                       size={14}
-                      className={`transform transition-transform ${mobileBranchesOpen ? "rotate-180" : ""}`}
+                      className={`transform transition-transform ${isDropdownOpen ? "rotate-180" : ""}`}
                     />
                   </button>
-                  {mobileBranchesOpen && (
+                  {isDropdownOpen && (
                     <div className="flex flex-col pl-4 pr-4 border-l border-slate-100 ml-6 gap-1 mt-1 mb-2">
                       {item.subItems?.map((sub) => {
                         const isSubActive = pathname === sub.href;
@@ -113,6 +124,26 @@ export function NavMobileMenu({
               </Link>
             );
           })}
+
+          {/* GCC IV Therapy Link — standalone route, uses <a> not next-intl Link */}
+          <a
+            href="/gcc/iv-theropy/ar"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 text-[13px] font-bold uppercase tracking-wider py-3 px-4 rounded-md text-amber-700 bg-amber-50 border border-amber-200 hover:bg-amber-100 transition-colors"
+          >
+            <Sparkles size={15} className="text-amber-600 shrink-0" />
+            <span className="flex-1">{t("gcc")}</span>
+            <span
+              className="text-[9px] font-black px-1.5 py-0.5 rounded"
+              style={{
+                backgroundColor: "#C8A96B22",
+                color: "#92650a",
+                border: "1px solid #C8A96B55",
+              }}
+            >
+              {t("gccBadge")}
+            </span>
+          </a>
         </div>
 
         <div className="flex flex-col gap-3 border-t border-slate-100 mt-4 pt-4">

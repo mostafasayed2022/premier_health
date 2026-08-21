@@ -1,0 +1,146 @@
+{
+  "heroBadge": "Protocoles de Bien-Être Premier",
+  "heroTitle": "Forfaits de Thérapie IV",
+  "heroSubtitle": "Thérapie IV personnalisée conçue pour favoriser l'hydratation, l'énergie, la récupération, la beauté et le bien-être général.",
+  "heroCta": "Réserver Votre Forfait sur WhatsApp",
+  "heroMsg": "Bonjour, je souhaite réserver un forfait de thérapie IV.",
+  "whyBadge": "Vitalité Cellulaire",
+  "whyTitle": "Pourquoi Choisir la Thérapie IV Premier ?",
+  "whySubtitle": "L'administration intraveineuse directe contourne le système digestif pour une biodisponibilité de 100 % et une vitalité immédiate.",
+  "whyCards": {
+    "bioavailability": {
+      "title": "Biodisponibilité 100 %",
+      "desc": "L'infusion intraveineuse directe garantit une absorption immédiate des micronutriments actifs sans dégradation digestive."
+    },
+    "medicalSupervision": {
+      "title": "Surveillance Médicale",
+      "desc": "Administré sous la supervision directe de médecins spécialistes après une évaluation personnalisée."
+    },
+    "premiumFormulations": {
+      "title": "Formules de Qualité Médicale",
+      "desc": "Vitamines, minéraux et antioxydants de la plus haute pureté répondant aux normes cliniques strictes."
+    },
+    "rapidRecovery": {
+      "title": "Vitalité et Récupération Rapide",
+      "desc": "Ressentez un regain d'énergie et une hydratation optimale quelques heures après votre séance privée."
+    }
+  },
+  "packagesBadge": "Formulations Personnalisées",
+  "packagesTitle": "Sélectionnez Votre Forfait de Bien-Être",
+  "packagesSubtitle": "Trois protocoles ciblés conçus pour vos objectifs spécifiques de santé, de beauté et de récupération.",
+  "bestFor": "Idéal pour",
+  "keyBenefits": "Principaux Avantages",
+  "coreNutrients": "Nutriments Essentiels",
+  "bookViaWhatsApp": "Réserver sur WhatsApp",
+  "popularBadge": "Le Plus Populaire",
+  "ultimateBadge": "Forfait Signature Premium",
+  "pkg1": {
+    "name": "Essential Reset",
+    "price": "30K",
+    "bestFor": "Bien-être quotidien, hydratation et soutien fondamental",
+    "benefits": [
+      "Augmente l'énergie et combat la fatigue",
+      "Soutient l'immunité et l'hydratation",
+      "Améliore la concentration et l'équilibre nerveux",
+      "Favorise la santé des cheveux, de la peau et des ongles",
+      "Reconstitue les vitamines et minéraux essentiels"
+    ],
+    "nutrients": [
+      "Complexe B (B1, B2, B3, B5, B6, B12)",
+      "Vitamine C",
+      "Magnésium",
+      "Zinc",
+      "Électrolytes",
+      "Biotine"
+    ],
+    "cta": "Réserver Essential Reset",
+    "waMsg": "Bonjour, je souhaite réserver le forfait Essential Reset IV Therapy."
+  },
+  "pkg2": {
+    "name": "Advanced Recharge",
+    "price": "50K",
+    "bestFor": "Beauté, métabolisme, détox et récupération avancée",
+    "benefits": [
+      "Améliore l'endurance et le métabolisme",
+      "Favorise l'éclat de la peau et la force des ongles",
+      "Favorise la détoxification et la protection antioxydante",
+      "Aide à réduire le stress et la fatigue nerveuse",
+      "Restaure l'hydratation et l'équilibre minéral"
+    ],
+    "nutrients": [
+      "Complexe B",
+      "Vitamine C",
+      "Biotine",
+      "Magnésium",
+      "Zinc",
+      "Glutathion",
+      "Acide Alpha Lipoïque (ALA)",
+      "Acides Aminés",
+      "Électrolytes"
+    ],
+    "cta": "Réserver Advanced Recharge",
+    "waMsg": "Bonjour, je souhaite réserver le forfait Advanced Recharge IV Therapy."
+  },
+  "pkg3": {
+    "name": "Ultimate Restore",
+    "price": "80K",
+    "bestFor": "Récupération corporelle totale, beauté, détox et performance",
+    "benefits": [
+      "Énergie maximale et récupération avancée",
+      "Détoxification puissante et soutien hépatique",
+      "Soutien cérébral et nerveux en profondeur",
+      "Amélioration intense de la peau et de la beauté",
+      "Renforce l'immunité, l'hydratation et le bien-être total"
+    ],
+    "nutrients": [
+      "Complexe B Hautement Dosé",
+      "Vitamine C",
+      "Biotine",
+      "Magnésium",
+      "Zinc",
+      "Glutathion",
+      "ALA",
+      "NAC (N-Acétylcystéine)",
+      "L-Carnitine",
+      "Acides Aminés",
+      "Électrolytes",
+      "Oligo-éléments"
+    ],
+    "cta": "Réserver Ultimate Restore",
+    "waMsg": "Bonjour, je souhaite réserver le forfait Ultimate Restore IV Therapy."
+  },
+  "addonsBadge": "Boosters Ciblés",
+  "addonsTitle": "Suppléments Premium Optionnels",
+  "addonsSubtitle": "Enrichissez votre séance IV avec des boosters thérapeutiques ciblés personnalisés par votre médecin.",
+  "addonsCta": "Demander des Renseignements",
+  "addonsMsg": "Bonjour, je souhaite en savoir plus sur les suppléments premium IV Therapy.",
+  "addons": [
+    {
+      "name": "Vitamine D",
+      "desc": "Densité osseuse, régulation de l'humeur et renforcement immunitaire"
+    },
+    {
+      "name": "L-Carnitine",
+      "desc": "Métabolisme des graisses, endurance et récupération musculaire"
+    },
+    {
+      "name": "NAD+",
+      "desc": "Réparation de l'ADN cellulaire, neuro-protection et longévité"
+    },
+    {
+      "name": "Soutien au Collagène",
+      "desc": "Élasticité de la peau, souplesse articulaire et éclat dermique"
+    },
+    {
+      "name": "Formule Boost Immunitaire",
+      "desc": "Défense antioxydante puissante et résilience saisonnière"
+    }
+  ],
+  "conciergeBadge": "Suites Privées et Soins Personnalisés",
+  "conciergeTitle": "Prêt à Découvrir la Thérapie IV Premier ?",
+  "conciergeSubtitle": "Notre équipe médicale et notre service Concierge sont à votre disposition pour vous aider à choisir la formule idéale dans nos 3 cliniques de luxe au Caire.",
+  "consultationNotice": "Évaluation Médicale Incluse",
+  "consultationNoticeDesc": "Chaque séance commence par des contrôles des signes vitaux et un examen médical personnalisé.",
+  "disclaimerTitle": "Avis Médical et Consultation",
+  "disclaimerText": "La thérapie IV doit être administrée sous la supervision d'un professionnel de santé qualifié après une évaluation médicale appropriée. L'adéquation du forfait peut varier selon les besoins individuels et les antécédents médicaux."
+}

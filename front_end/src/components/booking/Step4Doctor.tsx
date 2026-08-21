@@ -140,8 +140,12 @@ export function Step4Doctor({
                   : "border-2 border-accent/30 bg-transparent group-hover:border-accent"
               }`}
             >
-              {isSelected && <Check size={12} strokeWidth={3} className="sm:hidden" />}
-              {isSelected && <Check size={14} strokeWidth={3} className="hidden sm:block" />}
+              {isSelected && (
+                <Check size={12} strokeWidth={3} className="sm:hidden" />
+              )}
+              {isSelected && (
+                <Check size={14} strokeWidth={3} className="hidden sm:block" />
+              )}
             </div>
           </button>
         );

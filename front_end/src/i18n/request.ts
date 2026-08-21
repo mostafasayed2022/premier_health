@@ -9,45 +9,75 @@ import { cache } from "react";
  */
 export const loadLocaleMessages = cache(async (locale: string) => {
   const namespaces = [
-    "Nav", "Home", "About", "Departments", "Doctors", "Services", "Branches",
-    "Contact", "Booking", "Common", "DripsIntro", "DermaIntro", "WhyChooseUs",
-    "DeptComparison", "DoctorProfile", "ServiceCta", "Faqs", "Footer", "FAQPage",
-    "Auth", "Policy", "Gallery", "Testimonials", "Welcome", "Profile"
+    "Nav",
+    "Home",
+    "About",
+    "Departments",
+    "Doctors",
+    "Services",
+    "Branches",
+    "Contact",
+    "Booking",
+    "Common",
+    "DripsIntro",
+    "DermaIntro",
+    "WhyChooseUs",
+    "DeptComparison",
+    "DoctorProfile",
+    "ServiceCta",
+    "Faqs",
+    "Footer",
+    "FAQPage",
+    "Auth",
+    "Policy",
+    "Gallery",
+    "Testimonials",
+    "Welcome",
+    "Profile",
+    "IVPackages",
   ];
-  
+
   const messages: Record<string, any> = {};
-  
+
   for (const ns of namespaces) {
     const fileName = ns.toLowerCase();
     try {
-      messages[ns] = (await import(`../messages/${locale}/${fileName}.json`)).default;
+      messages[ns] = (
+        await import(`../messages/${locale}/${fileName}.json`)
+      ).default;
     } catch (err) {
-      console.warn(`[i18n] Failed to load ${ns} for ${locale}, falling back to ar`);
+      console.warn(
+        `[i18n] Failed to load ${ns} for ${locale}, falling back to ar`,
+      );
       try {
-        messages[ns] = (await import(`../messages/ar/${fileName}.json`)).default;
+        messages[ns] = (
+          await import(`../messages/ar/${fileName}.json`)
+        ).default;
       } catch (fallbackErr) {
         messages[ns] = {};
       }
     }
   }
-  
+
   return messages;
 });
 
 /**
  * React request memoized loader for individual page namespaces.
  */
-export const loadNamespaceMessages = cache(async (locale: string, namespace: string) => {
-  try {
-    return (await import(`../messages/${locale}/${namespace}.json`)).default;
-  } catch {
+export const loadNamespaceMessages = cache(
+  async (locale: string, namespace: string) => {
     try {
-      return (await import(`../messages/ar/${namespace}.json`)).default;
+      return (await import(`../messages/${locale}/${namespace}.json`)).default;
     } catch {
-      return {};
+      try {
+        return (await import(`../messages/ar/${namespace}.json`)).default;
+      } catch {
+        return {};
+      }
     }
-  }
-});
+  },
+);
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;

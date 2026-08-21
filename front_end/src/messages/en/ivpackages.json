@@ -1,0 +1,146 @@
+{
+  "heroBadge": "Premier Wellness Protocols",
+  "heroTitle": "IV Therapy Packages",
+  "heroSubtitle": "Personalized IV therapy designed to support hydration, energy, recovery, beauty, and overall wellness.",
+  "heroCta": "Book Your Package on WhatsApp",
+  "heroMsg": "Hello, I would like to book an IV Therapy package.",
+  "whyBadge": "Cellular Vitality",
+  "whyTitle": "Why Choose Premier IV Therapy?",
+  "whySubtitle": "Direct bloodstream delivery bypasses digestion for 100% bioavailability, rapid cellular replenishment, and noticeable vitality.",
+  "whyCards": {
+    "bioavailability": {
+      "title": "100% Bioavailability",
+      "desc": "Direct intravenous infusion ensures immediate absorption of active micronutrients without digestive degradation."
+    },
+    "medicalSupervision": {
+      "title": "Clinical Supervision",
+      "desc": "Administered under the direct oversight of board-certified clinical specialists following personalized assessments."
+    },
+    "premiumFormulations": {
+      "title": "Medical-Grade Formulas",
+      "desc": "Highest purity vitamins, minerals, amino acids, and master antioxidants sourced to exacting clinical standards."
+    },
+    "rapidRecovery": {
+      "title": "Fast-Acting Vitality",
+      "desc": "Feel revitalized, rehydrated, and energized within hours of your relaxed private session."
+    }
+  },
+  "packagesBadge": "Customized Formulations",
+  "packagesTitle": "Select Your Wellness Package",
+  "packagesSubtitle": "Three targeted therapeutic protocols engineered for your specific health, beauty, and recovery goals.",
+  "bestFor": "Best For",
+  "keyBenefits": "Key Benefits",
+  "coreNutrients": "Core Nutrients",
+  "bookViaWhatsApp": "Book on WhatsApp",
+  "popularBadge": "Most Popular",
+  "ultimateBadge": "Signature Premium",
+  "pkg1": {
+    "name": "Essential Reset",
+    "price": "30K",
+    "bestFor": "Daily wellness, hydration & foundational support",
+    "benefits": [
+      "Boosts energy & fights fatigue",
+      "Supports immunity & hydration",
+      "Enhances focus & nervous system balance",
+      "Supports healthy hair, skin & nails",
+      "Replenishes essential vitamins & minerals"
+    ],
+    "nutrients": [
+      "B-Complex (B1, B2, B3, B5, B6, B12)",
+      "Vitamin C",
+      "Magnesium",
+      "Zinc",
+      "Electrolytes",
+      "Biotin"
+    ],
+    "cta": "Book Essential Reset",
+    "waMsg": "Hello, I would like to book the Essential Reset IV Therapy package."
+  },
+  "pkg2": {
+    "name": "Advanced Recharge",
+    "price": "50K",
+    "bestFor": "Beauty, metabolism, detox & enhanced recovery",
+    "benefits": [
+      "Enhances stamina & metabolism",
+      "Supports hair growth, skin glow & nail strength",
+      "Promotes detoxification & antioxidant protection",
+      "Helps reduce stress & nerve fatigue",
+      "Restores hydration & mineral balance"
+    ],
+    "nutrients": [
+      "B-Complex",
+      "Vitamin C",
+      "Biotin",
+      "Magnesium",
+      "Zinc",
+      "Glutathione",
+      "Alpha Lipoic Acid (ALA)",
+      "Amino Acids",
+      "Electrolytes"
+    ],
+    "cta": "Book Advanced Recharge",
+    "waMsg": "Hello, I would like to book the Advanced Recharge IV Therapy package."
+  },
+  "pkg3": {
+    "name": "Ultimate Restore",
+    "price": "80K",
+    "bestFor": "Full-body recovery, beauty, detox & premium performance",
+    "benefits": [
+      "Maximum energy & advanced recovery",
+      "Powerful detox & liver support",
+      "Deep nervous system & brain support",
+      "Premium hair, skin & beauty enhancement",
+      "Strengthens immunity, hydration & total body wellness"
+    ],
+    "nutrients": [
+      "High-Dose B-Complex",
+      "Vitamin C",
+      "Biotin",
+      "Magnesium",
+      "Zinc",
+      "Glutathione",
+      "ALA",
+      "NAC (N-Acetyl Cysteine)",
+      "L-Carnitine",
+      "Amino Acids",
+      "Electrolytes",
+      "Trace Minerals"
+    ],
+    "cta": "Book Ultimate Restore",
+    "waMsg": "Hello, I would like to book the Ultimate Restore IV Therapy package."
+  },
+  "addonsBadge": "Targeted Boosters",
+  "addonsTitle": "Optional Premium Add-Ons",
+  "addonsSubtitle": "Enhance your IV session with targeted therapeutic boosters customized by your medical specialist.",
+  "addonsCta": "Ask About Premium Add-Ons",
+  "addonsMsg": "Hello, I would like to know more about the premium IV Therapy add-ons.",
+  "addons": [
+    {
+      "name": "Vitamin D",
+      "desc": "Bone density, mood regulation & immune reinforcement"
+    },
+    {
+      "name": "L-Carnitine",
+      "desc": "Cellular fat metabolism, endurance & muscle recovery"
+    },
+    {
+      "name": "NAD+",
+      "desc": "Cellular DNA repair, neuro-protection & longevity activation"
+    },
+    {
+      "name": "Collagen Support",
+      "desc": "Skin elasticity, joint flexibility & dermal rejuvenation"
+    },
+    {
+      "name": "Immune Boost Formula",
+      "desc": "High-potency antioxidant defense & seasonal resilience"
+    }
+  ],
+  "conciergeBadge": "Private Suites & Personalized Care",
+  "conciergeTitle": "Ready to Experience Premier IV Therapy?",
+  "conciergeSubtitle": "Our medical team and Concierge are ready to assist you in selecting the ideal formulation and scheduling your private appointment across our 3 luxury clinic locations in Cairo.",
+  "consultationNotice": "Medical Assessment Included",
+  "consultationNoticeDesc": "Every session begins with vital checks and personalized clinical review.",
+  "disclaimerTitle": "Medical Disclaimer & Consultation Notice",
+  "disclaimerText": "IV therapy should be administered under the supervision of a qualified healthcare professional following an appropriate medical assessment. Package suitability may vary depending on individual needs and medical history."
+}

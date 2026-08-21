@@ -13,7 +13,9 @@ interface DoctorCardProps {
 
 import React from "react";
 
-export const DoctorCard = React.memo(function DoctorCard({ doctor }: DoctorCardProps) {
+export const DoctorCard = React.memo(function DoctorCard({
+  doctor,
+}: DoctorCardProps) {
   const t = useTranslations();
 
   const optimizedPhoto = getOptimizedImageUrl(doctor.photo, 600, 75);

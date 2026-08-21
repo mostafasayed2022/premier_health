@@ -68,16 +68,23 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // ── /gcc/* — standalone landing pages, bypass next-intl entirely ───────────
+  // These pages have their own layout with lang="ar" dir="rtl" and do not
+  // use next-intl providers. Do not add a locale prefix to these routes.
+  if (pathname.startsWith("/gcc/")) {
+    return NextResponse.next();
+  }
+
   // ── Everything else → next-intl adds locale prefix ─────────────────────────
   return intlMiddleware(request);
 }
 
 export const config = {
-  // IMPORTANT: /admin and /dashboard are deliberately excluded from the
+  // IMPORTANT: /admin, /dashboard, and /gcc are deliberately excluded from the
   // catch-all so next-intl never tries to locale-prefix them.
   matcher: [
     "/",
     "/(en|ar|fr|de|es|it|tr)/:path*",
-    "/((?!api|_next|_vercel|admin|dashboard|.*\\..*).*)",
+    "/((?!api|_next|_vercel|admin|dashboard|gcc|.*\\..*).*)",
   ],
 };

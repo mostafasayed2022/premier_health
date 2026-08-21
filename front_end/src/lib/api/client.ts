@@ -3,7 +3,8 @@
 import axios from "axios";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.premierhealthclinics.com/api/";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://api.premierhealthclinics.com/api/";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -32,7 +33,9 @@ function getActiveLocale(): string {
 api.interceptors.request.use((config) => {
   // 1. Prevent duplicate /api/ in URL when baseURL already ends with /api
   if (config.url) {
-    const rawBase = (config.baseURL || API_BASE_URL || "").trim().replace(/\/+$/, "");
+    const rawBase = (config.baseURL || API_BASE_URL || "")
+      .trim()
+      .replace(/\/+$/, "");
     let cleanUrl = config.url.replace(/^\/+/, "");
     if (rawBase.endsWith("/api") && cleanUrl.startsWith("api/")) {
       config.url = cleanUrl.substring(4);

@@ -13,28 +13,61 @@ export function FooterContact() {
         <div className="flex items-start gap-2.5">
           <MapPin size={16} className="text-accent shrink-0 mt-0.5" />
           <div className="flex flex-col gap-1.5">
-            <a href="https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z/data=!3m1!4b1!4m6!3m5!1s0x1458413b92031a19:0xe4dfaac55744481b!8m2!3d30.0719202!4d31.2275839" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            <a
+              href="https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z/data=!3m1!4b1!4m6!3m5!1s0x1458413b92031a19:0xe4dfaac55744481b!8m2!3d30.0719202!4d31.2275839"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
               {t("Contact.fairmontAddress") || "Fairmont Nile City, Cairo"}
             </a>
-            <a href="https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z/data=!3m1!4b1!4m6!3m5!1s0x14585b0525c31285:0xe916bcf3ee2db2ad!8m2!3d30.0194029!4d31.0045291" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            <a
+              href="https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z/data=!3m1!4b1!4m6!3m5!1s0x14585b0525c31285:0xe916bcf3ee2db2ad!8m2!3d30.0194029!4d31.0045291"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
               {t("Contact.arkanAddress") || "Arkan Plaza, Sheikh Zayed"}
             </a>
-            <a href="https://www.google.com/maps?q=2G87+5RC+D+solutions,+Eastown,+New+Cairo+1,+Cairo+Governorate" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            <a
+              href="https://www.google.com/maps?q=2G87+5RC+D+solutions,+Eastown,+New+Cairo+1,+Cairo+Governorate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
               {t("Contact.sodicAddress") || "EDNC Sodic, Fifth Settlement"}
             </a>
           </div>
         </div>
-        <div className="flex items-center gap-2.5">
-          <Phone size={16} className="text-accent shrink-0" />
-          <span>+20 120 064 4663 / +971 50 120 0313</span>
+        <div className="flex flex-col gap-2 pt-1 border-t border-white/10">
+          <div className="flex items-start gap-2.5">
+            <Phone size={15} className="text-accent shrink-0 mt-0.5" />
+            <div className="flex flex-col gap-1 text-[11px]">
+              <a href="tel:+201111977705" className="hover:text-accent transition-colors">
+                <span className="text-white/60">فيرمونت نايل سيتي: </span>
+                <span dir="ltr" className="font-bold text-white">+20 11 11977705</span>
+              </a>
+              <a href="tel:+201111977713" className="hover:text-accent transition-colors">
+                <span className="text-white/60">أركان بلازا (الشيخ زايد): </span>
+                <span dir="ltr" className="font-bold text-white">+20 11 11977713</span>
+              </a>
+              <a href="tel:+201111977712" className="hover:text-accent transition-colors">
+                <span className="text-white/60">سوديك EDNC (التجمع): </span>
+                <span dir="ltr" className="font-bold text-white">+20 11 11977712</span>
+              </a>
+            </div>
+          </div>
         </div>
+
         <div className="flex items-center gap-2.5">
-          <Mail size={16} className="text-accent shrink-0" />
-          <span>concierge@premierhealthclinic.com</span>
+          <Mail size={15} className="text-accent shrink-0" />
+          <a href="mailto:info@premierhealthclinics.com" className="hover:text-accent transition-colors">
+            info@premierhealthclinics.com
+          </a>
         </div>
 
         <a
-          href="https://wa.me/201200644663"
+          href="https://wa.me/201111977705"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white py-2 text-xs font-bold transition-all duration-300 shadow-md"

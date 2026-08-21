@@ -14,6 +14,7 @@ import {
   UserPlus,
   ShieldCheck,
   Stethoscope,
+  Sparkles,
 } from "lucide-react";
 import { usePatientAuth } from "@/context/PatientAuthContext";
 import { LANGUAGES } from "./NavbarConstants";
@@ -68,22 +69,79 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
   return (
     <div className="hidden lg:block bg-[#2A3F50] text-white/90 border-b border-[#1A2A38]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8 h-10 flex items-center justify-between text-[11px] font-medium tracking-wide">
-        {/* Left Side: Contact Info */}
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer">
-            <PhoneCall size={13} className="text-[#C8A96B]" />
-            <span dir="ltr" className="font-bold">
-              +20 120 064 4663
+        {/* Left Side: Contact Info (Branch Numbers & Email) + GCC Landing Link */}
+        <div className="flex items-center gap-4 xl:gap-5">
+          {/* Branch Phone Numbers */}
+          <div className="flex items-center gap-3 text-[10px] xl:text-[11px]">
+            <a
+              href="tel:+201111977705"
+              className="flex items-center gap-1.5 hover:text-amber-300 transition-colors"
+              title={currentLocale === "ar" ? "فرع فيرمونت نايل سيتي" : "Fairmont Nile City Branch"}
+            >
+              <PhoneCall size={12} className="text-[#C8A96B] shrink-0" />
+              <span>{currentLocale === "ar" ? "فيرمونت:" : "Fairmont:"}</span>
+              <span dir="ltr" className="font-bold">+20 11 11977705</span>
+            </a>
+
+            <span className="text-white/30">•</span>
+
+            <a
+              href="tel:+201111977713"
+              className="flex items-center gap-1.5 hover:text-amber-300 transition-colors"
+              title={currentLocale === "ar" ? "فرع أركان بلازا" : "Arkan Plaza Branch"}
+            >
+              <span>{currentLocale === "ar" ? "أركان:" : "Arkan:"}</span>
+              <span dir="ltr" className="font-bold">+20 11 11977713</span>
+            </a>
+
+            <span className="text-white/30">•</span>
+
+            <a
+              href="tel:+201111977712"
+              className="flex items-center gap-1.5 hover:text-amber-300 transition-colors"
+              title={currentLocale === "ar" ? "فرع سوديك EDNC" : "EDNC Sodic Branch"}
+            >
+              <span>{currentLocale === "ar" ? "سوديك:" : "Sodic:"}</span>
+              <span dir="ltr" className="font-bold">+20 11 11977712</span>
+            </a>
+          </div>
+
+          <span className="w-[1px] h-3.5 bg-white/20" />
+
+          {/* Email */}
+          <a
+            href="mailto:info@premierhealthclinics.com"
+            className="flex items-center gap-1.5 hover:text-white transition-colors"
+          >
+            <Mail size={12} className="text-[#C8A96B]" />
+            <span>info@premierhealthclinics.com</span>
+          </a>
+
+          {/* Separator */}
+          <span className="w-[1px] h-3.5 bg-white/20" />
+
+          {/* GCC IV Therapy Landing Page Link */}
+          <a
+            href="/gcc/iv-theropy/ar"
+            className="group flex items-center gap-1.5 hover:text-white transition-colors"
+            title={t("gcc")}
+          >
+            <Sparkles
+              size={13}
+              className="text-[#C8A96B] group-hover:text-amber-300 transition-colors"
+            />
+            <span className="font-bold">{t("gcc")}</span>
+            <span
+              className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-black tracking-widest"
+              style={{
+                backgroundColor: "#C8A96B22",
+                color: "#C8A96B",
+                border: "1px solid #C8A96B44",
+              }}
+            >
+              {t("gccBadge")}
             </span>
-          </div>
-          <div className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer">
-            <Mail size={13} className="text-[#C8A96B]" />
-            <span>info@premierhealth.com</span>
-          </div>
-          <div className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer">
-            <Clock size={13} className="text-[#C8A96B]" />
-            <span>{t("workingHours")}</span>
-          </div>
+          </a>
         </div>
 
         {/* Right Side: Lang, Auth, Portal */}
@@ -96,7 +154,11 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
             >
               <span
                 className={`fi fi-${LANGUAGES.find((l) => l.code === currentLocale)?.flag ?? "un"} text-lg rounded-sm shadow-sm`}
-                style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                style={{
+                  width: "1.25rem",
+                  height: "0.9rem",
+                  display: "inline-block",
+                }}
               />
               <span className="uppercase font-bold">{currentLocale}</span>
               <ChevronDown
@@ -115,7 +177,11 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
                     <span className="flex items-center gap-2">
                       <span
                         className={`fi fi-${lang.flag} rounded-sm shadow-sm flex-shrink-0`}
-                        style={{ width: "1.25rem", height: "0.9rem", display: "inline-block" }}
+                        style={{
+                          width: "1.25rem",
+                          height: "0.9rem",
+                          display: "inline-block",
+                        }}
                       />
                       <span>{lang.label}</span>
                     </span>

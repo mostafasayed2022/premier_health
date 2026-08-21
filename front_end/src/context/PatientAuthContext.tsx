@@ -40,7 +40,8 @@ const PatientAuthContext = createContext<PatientAuthContextValue | null>(null);
 
 function getApiUrl(path: string): string {
   const raw = (
-    process.env.NEXT_PUBLIC_API_URL || "https://api.premierhealthclinics.com/api"
+    process.env.NEXT_PUBLIC_API_URL ||
+    "https://api.premierhealthclinics.com/api"
   )
     .trim()
     .replace(/\/+$/, "");

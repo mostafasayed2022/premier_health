@@ -46,9 +46,7 @@ export function Step3Branch({
   if (branches.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-foreground/70 font-medium">
-          {t("noBranches")}
-        </p>
+        <p className="text-foreground/70 font-medium">{t("noBranches")}</p>
       </div>
     );
   }
@@ -83,7 +81,9 @@ export function Step3Branch({
               ) : (
                 <div
                   className={`w-full h-full flex items-center justify-center transition-colors ${
-                    isSelected ? "bg-accent text-white" : "bg-primary/10 text-primary"
+                    isSelected
+                      ? "bg-accent text-white"
+                      : "bg-primary/10 text-primary"
                   }`}
                 >
                   <MapPin size={20} className="sm:hidden" />
@@ -99,7 +99,9 @@ export function Step3Branch({
               </h3>
               <div className="flex items-start gap-1 sm:gap-1.5 mt-1 sm:mt-1.5 text-[11px] sm:text-xs text-foreground/75">
                 <MapPin size={12} className="text-accent shrink-0 mt-0.5" />
-                <span className="line-clamp-2 leading-relaxed">{branch.address}</span>
+                <span className="line-clamp-2 leading-relaxed">
+                  {branch.address}
+                </span>
               </div>
               {branch.phone && (
                 <div className="flex items-center gap-1 sm:gap-1.5 mt-1.5 sm:mt-2 text-[10px] sm:text-[11px] text-foreground/60 font-mono">
@@ -117,8 +119,12 @@ export function Step3Branch({
                   : "border-2 border-accent/30 bg-transparent group-hover:border-accent"
               }`}
             >
-              {isSelected && <Check size={12} strokeWidth={3} className="sm:hidden" />}
-              {isSelected && <Check size={14} strokeWidth={3} className="hidden sm:block" />}
+              {isSelected && (
+                <Check size={12} strokeWidth={3} className="sm:hidden" />
+              )}
+              {isSelected && (
+                <Check size={14} strokeWidth={3} className="hidden sm:block" />
+              )}
             </div>
           </button>
         );
