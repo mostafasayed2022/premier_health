@@ -67,5 +67,6 @@
   "completeCurrentStep": "Please complete the current step first.",
   "noDepartments": "No departments available right now.",
   "noServices": "No services available in this department right now.",
-  "noBranches": "No branches available for this service right now."
+  "noBranches": "No branches available for this service right now.",
+  "guestNote": "Book without an account — we'll use your email and phone to confirm your appointment."
 }

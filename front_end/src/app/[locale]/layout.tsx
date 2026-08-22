@@ -23,6 +23,7 @@ import {
 } from "@/components/analytics/GoogleTagManager";
 import { GTMProvider } from "@/components/analytics/GTMProvider";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
+import { FloatingWhatsAppCTA } from "@/components/layout/FloatingWhatsAppCTA";
 
 const arapey = Arapey({
   subsets: ["latin"],
@@ -122,6 +123,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                   </main>
                   <Footer />
                 </div>
+                {/* Global floating WhatsApp button on all pages */}
+                <FloatingWhatsAppCTA />
                 {/* Global mobile sticky CTA — mounted once, hidden on desktop */}
                 <StickyMobileCTA />
               </PatientAuthProvider>

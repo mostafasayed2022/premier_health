@@ -194,6 +194,12 @@ export function useBookingState() {
       case 6:
         return !!booking.payment;
       case 7: {
+        // Authenticated users: contact details are auto-synced from profile
+        // by useStep7Confirm's effect. Check localStorage as a zero-coupling
+        // proxy so we don't block the button before the sync fires.
+        const isAuthd =
+          typeof window !== "undefined" && !!localStorage.getItem("patient_access");
+        if (isAuthd) return true;
         const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(booking.email);
         const phoneValid = booking.phone.replace(/\D/g, "").length >= 10;
         return emailValid && phoneValid;

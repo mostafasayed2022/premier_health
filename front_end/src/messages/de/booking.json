@@ -67,5 +67,6 @@
   "completeCurrentStep": "Bitte schließen Sie zuerst den aktuellen Schritt ab.",
   "noDepartments": "Derzeit sind keine Abteilungen verfügbar.",
   "noServices": "Derzeit sind keine Dienste in dieser Abteilung verfügbar.",
-  "noBranches": "Derzeit sind keine Filialen für diesen Dienst verfügbar."
+  "noBranches": "Derzeit sind keine Filialen für diesen Dienst verfügbar.",
+  "guestNote": "Buchen Sie ohne Konto — wir verwenden Ihre E-Mail und Telefonnummer zur Bestätigung Ihres Termins."
 }

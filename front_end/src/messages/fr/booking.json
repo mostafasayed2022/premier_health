@@ -67,5 +67,6 @@
   "completeCurrentStep": "Veuillez d'abord compléter l'étape actuelle.",
   "noDepartments": "Aucun département disponible pour le moment.",
   "noServices": "Aucun service disponible dans ce département pour le moment.",
-  "noBranches": "Aucune clinique disponible pour ce service pour le moment."
+  "noBranches": "Aucune clinique disponible pour ce service pour le moment.",
+  "guestNote": "Réservez sans compte — nous utiliserons votre email et téléphone pour confirmer votre rendez-vous."
 }

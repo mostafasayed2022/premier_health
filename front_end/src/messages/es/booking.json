@@ -67,5 +67,6 @@
   "completeCurrentStep": "Por favor complete el paso actual primero.",
   "noDepartments": "No hay departamentos disponibles en este momento.",
   "noServices": "No hay servicios disponibles en este departamento en este momento.",
-  "noBranches": "No hay clínicas disponibles para este servicio en este momento."
+  "noBranches": "No hay clínicas disponibles para este servicio en este momento.",
+  "guestNote": "Reserve sin cuenta — usaremos su correo y teléfono para confirmar su cita."
 }

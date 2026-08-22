@@ -120,41 +120,48 @@ export function Step7Confirm({
       <div className="bg-white rounded-2xl border border-accent/15 p-6 flex flex-col gap-4">
         {/* Tab Header if NOT logged in */}
         {!isAuthenticated ? (
-          <div className="flex border-b border-accent/10 pb-2 mb-2 gap-4">
-            <button
-              type="button"
-              onClick={() => setAuthMode("guest")}
-              className={`text-xs font-bold uppercase tracking-wider pb-1 transition-all ${
-                authMode === "guest"
-                  ? "text-primary border-b-2 border-accent"
-                  : "text-slate-400 hover:text-slate-600"
-              }`}
-            >
-              {t("bookAsGuest")}
-            </button>
-            <button
-              type="button"
-              onClick={() => setAuthMode("login")}
-              className={`text-xs font-bold uppercase tracking-wider pb-1 transition-all ${
-                authMode === "login"
-                  ? "text-primary border-b-2 border-accent"
-                  : "text-slate-400 hover:text-slate-600"
-              }`}
-            >
-              {tAuth("login")}
-            </button>
-            <button
-              type="button"
-              onClick={() => setAuthMode("register")}
-              className={`text-xs font-bold uppercase tracking-wider pb-1 transition-all ${
-                authMode === "register"
-                  ? "text-primary border-b-2 border-accent"
-                  : "text-slate-400 hover:text-slate-600"
-              }`}
-            >
-              {tAuth("createAccount")}
-            </button>
-          </div>
+          <>
+            <div className="flex border-b border-accent/10 pb-2 mb-2 gap-4">
+              <button
+                type="button"
+                onClick={() => setAuthMode("guest")}
+                className={`text-xs font-bold uppercase tracking-wider pb-1 transition-all ${
+                  authMode === "guest"
+                    ? "text-primary border-b-2 border-accent"
+                    : "text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                {t("bookAsGuest")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setAuthMode("login")}
+                className={`text-xs font-bold uppercase tracking-wider pb-1 transition-all ${
+                  authMode === "login"
+                    ? "text-primary border-b-2 border-accent"
+                    : "text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                {tAuth("login")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setAuthMode("register")}
+                className={`text-xs font-bold uppercase tracking-wider pb-1 transition-all ${
+                  authMode === "register"
+                    ? "text-primary border-b-2 border-accent"
+                    : "text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                {tAuth("createAccount")}
+              </button>
+            </div>
+            {authMode === "guest" && (
+              <p className="text-[10px] text-slate-400 leading-relaxed -mt-1 mb-1">
+                {t("guestNote")}
+              </p>
+            )}
+          </>
         ) : (
           /* Logged-in User Info */
           <div className="flex items-center justify-between border-b border-accent/10 pb-3 mb-2">

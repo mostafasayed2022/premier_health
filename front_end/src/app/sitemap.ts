@@ -7,6 +7,8 @@ const PUBLIC_ROUTES = [
   "doctors",
   "departments",
   "services",
+  "iv-packages",
+  "iv-therapy-packages",
   "branches",
   "contact",
   "book-appointment",
@@ -44,10 +46,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (route === "") {
         priority = 1.0;
         changeFrequency = "daily";
-      } else if (route === "book-appointment" || route === "services") {
-        priority = 0.9;
+      } else if (
+        route === "book-appointment" ||
+        route === "services" ||
+        route === "iv-packages" ||
+        route === "iv-therapy-packages"
+      ) {
+        priority = 0.95;
         changeFrequency = "weekly";
-      } else if (route === "doctors" || route === "departments") {
+      } else if (route === "doctors" || route === "departments" || route === "branches") {
         priority = 0.85;
         changeFrequency = "weekly";
       } else if (

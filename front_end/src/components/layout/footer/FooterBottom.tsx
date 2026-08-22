@@ -5,7 +5,7 @@ import React from "react";
 function WhatsappIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.486 1.333 5.002L2 22l5.176-1.334a9.98 9.98 0 004.834 1.251h.004c5.505 0 9.988-4.478 9.989-9.985.001-2.666-1.033-5.174-2.915-7.057A9.914 9.914 0 0012.012 2zm5.82 14.28c-.247.694-1.226 1.293-1.985 1.345-.518.035-1.196.177-3.906-.948-3.468-1.439-5.702-4.965-5.874-5.195-.172-.23-1.405-1.874-1.405-3.57 0-1.696.883-2.53 1.198-2.875.315-.345.69-.431.918-.431.23 0 .46.002.66.012.213.01.496-.081.776.592.287.69.976 2.385 1.062 2.557.086.172.144.373.029.604-.115.23-.172.373-.344.575-.172.201-.363.449-.517.603-.172.172-.352.36-.151.705.201.345.897 1.48 1.923 2.395 1.32 1.176 2.433 1.54 2.778 1.712.345.172.546.144.747-.086.201-.23.862-1.005 1.091-1.35.23-.345.46-.287.776-.172.316.115 2.01.948 2.355 1.12.345.172.574.259.66.402.086.144.086.833-.161 1.527z" />
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
   );
 }
@@ -28,8 +28,8 @@ function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 function ThreadsIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.186 24.007c-3.328 0-6.104-1.127-8.252-3.35C1.802 18.448.74 15.485.78 11.857.822 8.016 2.012 4.957 4.316 2.766 6.574.62 9.612-.27 13.376-.08c3.55.18 6.442 1.38 8.59 3.56 2.083 2.11 3.197 5.01 3.31 8.62.115 3.73-.89 6.84-2.99 9.24-2.07 2.37-4.99 3.66-8.67 3.66zm-.05-2.22c2.97 0 5.3-1.02 6.93-3.02 1.6-1.96 2.38-4.52 2.3-7.62-.08-2.98-.98-5.35-2.67-7.06-1.74-1.76-4.09-2.74-7.01-2.9-3.06-.15-5.52.57-7.32 2.14-1.84 1.6-2.8 3.99-2.85 7.1-.03 2.97.8 5.38 2.47 7.17 1.7 1.83 3.96 2.76 6.7 2.76z" />
+    <svg className={className} viewBox="0 0 192 192" fill="currentColor">
+      <path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C56.954 24.425 74.204 17.11 97.013 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.036 9.607 125.202.195 97.07 0h-.113C68.882.195 47.292 9.643 32.788 28.08 19.882 44.485 13.224 67.315 13.001 96c.223 28.685 6.88 51.515 19.788 67.92 14.504 18.437 36.094 27.885 64.184 28.08h.113c24.96-.173 42.554-6.708 57.048-21.053 18.937-18.81 18.392-42.213 12.142-56.695-4.567-10.646-13.228-19.232-24.739-24.264Zm-43.099 43.051c-10.422.588-21.258-4.099-21.808-14.082-.38-7.017 4.96-14.832 21.253-15.76 1.86-.107 3.687-.16 5.48-.16 6.47 0 12.542.617 18.013 1.779-2.05 25.613-12.564 27.686-22.938 28.223Z" />
     </svg>
   );
 }
@@ -45,7 +45,7 @@ function TiktokIcon({ className = "w-4 h-4" }: { className?: string }) {
 function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.028 1.525c-4.14 0-6.907 2.92-6.907 6.467 0 1.05.28 2.06.77 2.93.07.13.06.29-.02.4-.33.45-1.18 1.14-2.24 1.25-.39.04-.63.43-.48.79.46 1.12 1.63 1.83 2.76 1.83.27 0 .54-.04.81-.13.19-.06.39.02.48.2.53 1.04 1.94 1.77 4.83 1.77 2.89 0 4.3-1.04 4.83-1.77.09-.18.29-.26.48-.2.27.09.54.13.81.13 1.13 0 2.3-.71 2.76-1.83.15-.36-.09-.75-.48-.79-1.06-.11-1.91-.8-2.24-1.25-.08-.11-.09-.27-.02-.4.49-.87.77-1.88.77-2.93 0-3.547-2.767-6.467-6.907-6.467z" />
+      <path d="M12.065.001C8.71-.026 5.563 1.67 3.857 4.408 2.97 5.832 2.56 7.473 2.602 9.13c-.001.84.09 1.68.275 2.5-.317.15-.647.265-.985.344-.36.09-.726.15-1.095.179a1.39 1.39 0 0 0-.489.1.834.834 0 0 0-.5.76c.018.386.277.72.645.836.132.04.266.072.401.096.586.118 1.155.311 1.69.573.247.14.462.33.633.558.048.083.072.177.069.271a.637.637 0 0 1-.072.242c-.37.805-.827 1.566-1.362 2.268-.524.668-1.14 1.26-1.829 1.757C-.18 19.849-.12 20.558.376 20.93c.208.155.46.236.717.232.196 0 .39-.04.571-.118.483-.194.973-.373 1.472-.517a7.2 7.2 0 0 1 1.674-.252c.269 0 .534.024.797.072.558.12 1.08.37 1.521.726.73.556 1.59.938 2.5 1.117.336.06.677.088 1.018.086.338.001.676-.03 1.009-.09a6.49 6.49 0 0 0 2.499-1.11c.443-.36.966-.61 1.526-.73.263-.048.53-.072.797-.073a7.204 7.204 0 0 1 1.674.253c.499.144.99.323 1.472.517.514.218 1.11.034 1.42-.44.305-.48.208-1.116-.226-1.481a10.26 10.26 0 0 1-1.828-1.757 12.47 12.47 0 0 1-1.363-2.268.578.578 0 0 1-.07-.242.454.454 0 0 1 .07-.271 2.25 2.25 0 0 1 .634-.558 6.777 6.777 0 0 1 1.69-.573c.134-.024.269-.055.4-.096a1.023 1.023 0 0 0 .646-.836.835.835 0 0 0-.5-.76 1.378 1.378 0 0 0-.489-.1 7.64 7.64 0 0 1-1.095-.178 4.515 4.515 0 0 1-.985-.345c.184-.82.276-1.659.274-2.5.006-1.674-.384-3.327-1.137-4.822C17.178 1.56 14.7.02 12.065.001Z" />
     </svg>
   );
 }
@@ -58,8 +58,59 @@ function GoogleIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function LinktreeIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.891.647 1.458 1.54 1.458H11v4.58c0 .243 0 .405.081.567.162.648.81 1.052 1.458.97.648-.082 1.134-.648 1.134-1.296v-4.82h1.62c.891 0 1.54-.567 1.62-1.377v-.243c0-.162-.081-.324-.081-.486L13.9 8.977l2.754-2.916c.567-.567.567-1.458 0-2.025-.243-.243-.567-.405-.89-.405-.324 0-.648.162-.892.405L12 6.952l-2.835-2.92c-.243-.242-.567-.404-.89-.404-.325 0-.649.162-.892.405-.567.567-.567 1.458 0 2.025l2.754 2.916-3.184 6.092z" />
+    </svg>
+  );
+}
+
 export function FooterBottom() {
   const currentYear = new Date().getFullYear();
+
+  const socials = [
+    {
+      href: "https://wa.me/201200644663",
+      icon: WhatsappIcon,
+      label: "WhatsApp",
+    },
+    {
+      href: "https://www.instagram.com/premierhealth.clinics",
+      icon: InstagramIcon,
+      label: "Instagram",
+    },
+    {
+      href: "https://www.facebook.com/premierecareclinics",
+      icon: FacebookIcon,
+      label: "Facebook",
+    },
+    {
+      href: "https://www.threads.net/@premierhealth.clinics",
+      icon: ThreadsIcon,
+      label: "Threads",
+    },
+    {
+      href: "https://www.tiktok.com/@premierhealthclinics",
+      icon: TiktokIcon,
+      label: "TikTok",
+    },
+    {
+      href: "https://www.snapchat.com/@premier.health?share_id=inVm7XArR_w&locale=en-GB",
+      icon: SnapchatIcon,
+      label: "Snapchat",
+    },
+    {
+      href: "https://www.google.com/search?client=safari&hl=en-eg&sxsrf=ALiCzsYe7w__J5YT0kbjpTX0pf9lCL6qpw:1656257145699&q=Premier+Care&ludocid=16492088125003417627",
+      icon: GoogleIcon,
+      label: "Google Listing",
+    },
+    {
+      href: "https://linktr.ee/premierhealthclinic",
+      icon: LinktreeIcon,
+      label: "Linktree",
+    },
+  ];
 
   return (
     <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-400">
@@ -74,87 +125,21 @@ export function FooterBottom() {
           <span className="text-accent font-semibold">Mohamed Salah</span>
         </p>
       </div>
-      <div className="flex gap-3 flex-wrap">
-        <a
-          href="https://wa.me/201200644663"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="WhatsApp"
-          aria-label="WhatsApp"
-        >
-          <WhatsappIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://www.instagram.com/premierhealth.clinics"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="Instagram"
-          aria-label="Instagram"
-        >
-          <InstagramIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://www.facebook.com/premierecareclinics"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="Facebook"
-          aria-label="Facebook"
-        >
-          <FacebookIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://www.threads.net/@premierhealth.clinics"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="Threads"
-          aria-label="Threads"
-        >
-          <ThreadsIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://www.tiktok.com/@premierhealthclinics"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="TikTok"
-          aria-label="TikTok"
-        >
-          <TiktokIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://www.snapchat.com/@premier.health?share_id=inVm7XArR_w&locale=en-GB"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="Snapchat"
-          aria-label="Snapchat"
-        >
-          <SnapchatIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://www.google.com/search?client=safari&hl=en-eg&sxsrf=ALiCzsYe7w__J5YT0kbjpTX0pf9lCL6qpw:1656257145699&q=Premier+Care&ludocid=16492088125003417627&gsas=1&client=safari&lsig=AB86z5VbyTY4DN7nfpzAGrbJfjP1&kgs=09e54351cf095e2e&shndl=-1&source=sh/x/kp/local/3&entrypoint=sh/x/kp/local"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent"
-          title="Google Listing"
-          aria-label="Google Listing"
-        >
-          <GoogleIcon className="w-4 h-4 fill-current" />
-        </a>
-        <a
-          href="https://linktr.ee/premierhealthclinic"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent font-bold text-xs"
-          title="Linktree Portal"
-          aria-label="Linktree Portal"
-        >
-          LT
-        </a>
+
+      <div className="flex gap-3 flex-wrap justify-center">
+        {socials.map(({ href, icon: Icon, label }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={label}
+            aria-label={label}
+            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center border border-white/10 text-white hover:text-accent hover:scale-110 hover:border-accent/30 duration-200"
+          >
+            <Icon className="w-4 h-4 fill-current" />
+          </a>
+        ))}
       </div>
     </div>
   );

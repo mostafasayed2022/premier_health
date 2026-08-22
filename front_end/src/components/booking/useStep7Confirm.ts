@@ -67,17 +67,13 @@ export function useStep7Confirm({ booking, onEmailChange, onPhoneChange }: UseSt
     }
   }, [booking.department, booking.service, booking.branch]);
 
-  // Sync logged in user details to booking state
   useEffect(() => {
     if (isAuthenticated && patientUser) {
-      if (booking.email !== patientUser.email) {
-        onEmailChange(patientUser.email);
-      }
-      if (booking.phone !== patientUser.phone_number) {
-        onPhoneChange(patientUser.phone_number);
-      }
+      onEmailChange(patientUser.email ?? "");
+      onPhoneChange(patientUser.phone_number ?? "");
     }
-  }, [isAuthenticated, patientUser, booking.email, booking.phone, onEmailChange, onPhoneChange]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, patientUser]);
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

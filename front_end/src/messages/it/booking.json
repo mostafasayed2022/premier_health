@@ -67,5 +67,6 @@
   "completeCurrentStep": "Completa prima il passaggio corrente.",
   "noDepartments": "Nessun reparto disponibile al momento.",
   "noServices": "Nessun servizio disponibile in questo reparto al momento.",
-  "noBranches": "Nessuna clinica disponibile per questo servizio al momento."
+  "noBranches": "Nessuna clinica disponibile per questo servizio al momento.",
+  "guestNote": "Prenota senza account — useremo la tua email e il telefono per confermare il tuo appuntamento."
 }

@@ -9,6 +9,7 @@ import {
 } from "@/components/analytics/GoogleTagManager";
 import { GTMProvider } from "@/components/analytics/GTMProvider";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
+import { FloatingWhatsAppCTA } from "@/components/layout/FloatingWhatsAppCTA";
 import type { Metadata } from "next";
 
 const cairo = Cairo({
@@ -96,6 +97,8 @@ export default function GccLayout({ children }: { children: ReactNode }) {
         {/* Attribution capture — no UI rendered */}
         <GTMProvider />
         {children}
+        {/* Floating WhatsApp CTA */}
+        <FloatingWhatsAppCTA />
         {/* Persistent Mobile Sticky CTA for WhatsApp, Call & Booking */}
         <StickyMobileCTA />
       </body>

@@ -67,5 +67,6 @@
   "completeCurrentStep": "Lütfen önce mevcut adımı tamamlayın.",
   "noDepartments": "şu anda müsait departman yok.",
   "noServices": "Bu departmanda şu anda müsait hizmet yok.",
-  "noBranches": "Bu hizmet için şu anda müsait klinik yok."
+  "noBranches": "Bu hizmet için şu anda müsait klinik yok.",
+  "guestNote": "Hesap olmadan rezervasyon yapın — randevunuzu onaylamak için e-posta ve telefonunuzu kullanacağız."
 }
