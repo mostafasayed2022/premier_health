@@ -88,8 +88,10 @@ export function DepartmentServicesGrid({
                           {t("Services.startingFrom")}
                         </p>
                         <p className="text-2xl font-serif font-bold text-primary">
-                          <span className="text-accent text-base font-sans mr-0.5">$</span>
                           {service.price}
+                          <span className="text-accent text-sm font-sans font-bold ml-1 rtl:ml-0 rtl:mr-1">
+                            EGY
+                          </span>
                         </p>
                       </div>
                       <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">

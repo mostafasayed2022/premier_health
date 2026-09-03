@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Check, ShieldCheck, Banknote, CreditCard } from "lucide-react";
+import { Check, ShieldCheck, Banknote /* CreditCard */ } from "lucide-react";
 
 interface Step6PaymentProps {
   selected: string;
@@ -13,15 +14,23 @@ export function Step6Payment({ selected, onSelect }: Step6PaymentProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
 
+  // Auto-select cash if not already selected
+  useEffect(() => {
+    if (selected !== "cash") {
+      onSelect("cash");
+    }
+  }, [selected, onSelect]);
+
   const methods = [
     {
       id: "cash",
       icon: Banknote,
-      label: t("payCash"),
+      label: isAr ? "الدفع في العيادة" : t("payCash"),
       subtitle: isAr
-        ? "ادفع مباشرة عند وصولك للعيادة نقداً أو بالبطاقة البنكية"
+        ? "ادفع مباشرة عند حضورك لمقر العيادة (نقداً أو بالبطاقة البنكية)"
         : "Pay upon arrival at the clinic via cash, credit, or debit card",
     },
+    /*
     {
       id: "paymob",
       icon: CreditCard,
@@ -30,11 +39,12 @@ export function Step6Payment({ selected, onSelect }: Step6PaymentProps) {
         ? "دفع إلكتروني فوري وآمن ببطاقات فيزا وماستركارد"
         : "Instant & secure online payment via Visa, MasterCard & cards",
     },
+    */
   ];
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
+    <div className="flex flex-col gap-6 max-w-xl mx-auto w-full">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1">
         {methods.map((m) => {
           const isSelected = selected === m.id;
           const MethodIcon = m.icon;
@@ -89,12 +99,12 @@ export function Step6Payment({ selected, onSelect }: Step6PaymentProps) {
       </div>
 
       {/* Trust Security Banner */}
-      <div className="flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-amber-50/60 border border-amber-200/60 text-amber-900 text-xs font-medium">
+      <div className="flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-amber-50/60 border border-amber-200/60 text-amber-900 text-xs font-medium text-center">
         <ShieldCheck size={16} className="text-accent shrink-0" />
         <span>
           {isAr
-            ? "دفع آمن ومحمي بأعلى معايير التشفير • تأكيد فوري للموعد"
-            : "Encrypted 256-bit secure transaction • Instant appointment confirmation"}
+            ? "تأكيد فوري للحجز • الدفع عند الحضور لمقر العيادة (نقداً أو بالبطاقة)"
+            : "Instant appointment confirmation • Direct payment upon clinic visit (Cash or Card)"}
         </span>
       </div>
     </div>

@@ -1,8 +1,18 @@
 {
-  "q1": "IV Serum (Drip) Tedavisi Nedir?",
-  "a1": "Vitamin, mineral ve antioksidanların sindirim sistemini atlayarak doğrudan kan dolaşımına verilmesidir. Bu sayede %100 hücresel emilim ve hızlı wellness sonuçları elde edilir.",
+  "q1": "IV Serum Tedavisi (IV Drip) Nedir?",
+  "a1": "Vitamin, mineral ve antioksidanların doğrudan kan dolaşımına verilmesi yöntemidir; sindirim sistemini atlayarak %100 hücresel emilim ve hızlı sonuçlar sağlar.",
   "q2": "Bir seans ne kadar sürer?",
-  "a2": "Standart vitamin infüzyonları 45 ila 60 dakika sürer. NAD+ gibi gelişmiş hücresel tedaviler konforlu, rahat bir ortamda 90 ila 120 dakika arasında sürer.",
+  "a2": "Standart vitamin serumları 45 ila 60 dakika sürer. NAD+ gibi hücresel yenileme terapileri ise 90 ila 120 dakika arasında rahat bir ortamda uygulanır.",
   "q3": "Klinik hizmetleriniz tıbbi olarak onaylı mıdır?",
-  "a3": "Kesinlikle. Tüm tedaviler uzman danışman hekimler tarafından tasarlanıp denetlenir. En üst kalite tıbbi malzemeler ve tamamen steril hastane standartları kullanılır."
+  "a3": "Kesinlikle. Tüm tedavilerimiz sertifikalı uzman doktorlar gözetiminde, birinci sınıf steril standartlarda uygulanır.",
+  "q4": "IV terapi seanslarını ne sıklıkla almalıyım?",
+  "a4": "Sıklık sağlık hedeflerinize bağlıdır. Genel canlılık ve bağışıklık için iki haftada bir veya ayda bir seans önerilir.",
+  "q5": "IV serumlar güvenli midir ve yan etkisi var mıdır?",
+  "a5": "Evet, lisanslı sağlık ekibimiz tarafından uygulandığında son derece güvenlidir. Her seanstan önce sağlık geçmişi ve yaşamsal bulgular kontrol edilir.",
+  "q6": "Randevumdan önce doktor konsültasyonu gerekli mi?",
+  "a6": "İlk ziyaretinizde vücudunuza en uygun formülü belirlemek için ücretsiz bir klinik ön değerlendirme dahildir.",
+  "q7": "Eve veya otele özel hizmet talep edebilir miyim?",
+  "a7": "Evet, Premier Health VIP mobil sağlık hizmeti sunmaktadır. Sertifikalı hemşirelerimiz evinize veya otelinize tam donanımlı olarak gelir.",
+  "q8": "Sonuçları ne kadar sürede fark ederim?",
+  "a8": "Çoğu danışanımız seanstan sonraki ilk birkaç saat içinde yüksek enerji, zihinsel berraklık ve canlılık hisseder."
 }

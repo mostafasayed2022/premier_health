@@ -1,8 +1,18 @@
 {
-  "q1": "Qu'est-ce que la thérapie par perfusion IV ?",
-  "a1": "Il s'agit de l'administration directe de vitamines, de minéraux et d'antioxydants dans la circulation sanguine, contournant le système digestif pour une absorption cellulaire à 100 % et des résultats de bien-être rapides.",
+  "q1": "Qu'est-ce que la thérapie par perfusion intraveineuse (IV Drip) ?",
+  "a1": "C'est l'administration directe de vitamines, minéraux et antioxydants dans la circulation sanguine, contournant le système digestif pour une absorption cellulaire à 100 % et des résultats rapides.",
   "q2": "Combien de temps dure une séance ?",
-  "a2": "Les perfusions de vitamines standard durent entre 45 et 60 minutes. Les thérapies cellulaires avancées comme les perfusions de NAD+ durent entre 90 et 120 minutes de perfusion confortable et détendue.",
-  "q3": "Vos services cliniques sont-ils accrédités médicalement ?",
-  "a3": "Absolument. Tous les traitements sont conçus et supervisés par des médecins consultants certifiés, utilisant des ingrédients de qualité supérieure et des environnements stériles aux normes hospitalières."
+  "a2": "Les perfusions vitaminiques standard durent entre 45 et 60 minutes. Les thérapies cellulaires avancées comme le NAD+ durent de 90 à 120 minutes dans un confort total.",
+  "q3": "Vos services cliniques sont-ils accrédités ?",
+  "a3": "Absolument. Tous les soins sont conçus et supervisés par des médecins certifiés, avec des ingrédients de qualité supérieure et un environnement stérile répondant aux normes hospitalières.",
+  "q4": "À quelle fréquence dois-je recevoir des séances de thérapie IV ?",
+  "a4": "La fréquence dépend de vos objectifs de santé. Pour l'énergie et l'immunité, une séance toutes les deux semaines ou chaque mois est idéale. Pour la récupération, un protocole personnalisé de 3 à 6 séances est recommandé.",
+  "q5": "Les perfusions IV sont-elles sûres et y a-t-il des effets secondaires ?",
+  "a5": "Oui, la thérapie IV est très sûre lorsqu'elle est administrée par des professionnels de santé agréés. Nous vérifions les antécédents médicaux et les signes vitaux avant chaque perfusion.",
+  "q6": "Dois-je consulter un médecin avant mon rendez-vous ?",
+  "a6": "Une évaluation médicale initiale est incluse lors de votre première visite pour recommander la formule exactement adaptée à votre organisme.",
+  "q7": "Puis-je réserver un service de conciergerie à domicile ou à l'hôtel ?",
+  "a7": "Oui, Premier Health propose des services VIP mobiles. Nos infirmiers certifiés interviennent à votre domicile, bureau ou hôtel en toute confidentialité.",
+  "q8": "À quelle vitesse vais-je ressentir les résultats ?",
+  "a8": "La plupart des clients ressentent un regain d'énergie, de clarté mentale et une hydratation profonde dans les heures suivant la séance, avec des bénéfices durables."
 }

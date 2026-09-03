@@ -9,6 +9,8 @@ import {
   badgeYellow,
   badgeRed,
   badgeGray,
+  badgeBlue,
+  badgePurple,
   actionBtnStyle,
   containerStyle,
   searchBarStyle,
@@ -27,8 +29,6 @@ interface BookingsTableProps {
   onEdit?: (row: any) => void;
   onDelete?: (row: any) => void;
 }
-
-
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export const BookingsTable = React.memo(function BookingsTable({ bookings, onEdit, onDelete }: BookingsTableProps) {
@@ -69,6 +69,62 @@ export const BookingsTable = React.memo(function BookingsTable({ bookings, onEdi
         accessorKey: "start_time",
         header: "Time",
         cell: (info) => String(info.getValue()).substring(0, 5),
+      },
+      {
+        id: "source",
+        header: "Source / Campaign",
+        cell: (info) => {
+          const row = info.row.original;
+          const utmSource = row.utm_source || row.attribution?.utm_source;
+          const utmCampaign = row.utm_campaign || row.attribution?.utm_campaign;
+          const gclid = row.gclid || row.attribution?.gclid;
+          const fbclid = row.fbclid || row.attribution?.fbclid;
+          const ttclid = row.ttclid || row.attribution?.ttclid;
+          const sc_click_id = row.sc_click_id || row.attribution?.sc_click_id || row.scclid;
+
+          let label = "Direct / Organic";
+          let style = badgeGray;
+
+          if (gclid || (utmSource && /google/i.test(utmSource))) {
+            label = utmCampaign ? `Google: ${utmCampaign}` : "Google Ads";
+            style = badgeBlue;
+          } else if (fbclid || (utmSource && /facebook|meta|instagram|ig/i.test(utmSource))) {
+            label = utmCampaign ? `Meta: ${utmCampaign}` : "Meta / FB Ads";
+            style = badgePurple;
+          } else if (ttclid || (utmSource && /tiktok/i.test(utmSource))) {
+            label = utmCampaign ? `TikTok: ${utmCampaign}` : "TikTok Ads";
+            style = badgeYellow;
+          } else if (sc_click_id || (utmSource && /snap/i.test(utmSource))) {
+            label = utmCampaign ? `Snap: ${utmCampaign}` : "Snapchat Ads";
+            style = badgeYellow;
+          } else if (utmSource) {
+            label = utmCampaign ? `${utmSource} (${utmCampaign})` : utmSource;
+            style = badgeBlue;
+          }
+
+          const tooltipDetails = [
+            utmSource && `Source: ${utmSource}`,
+            row.utm_medium && `Medium: ${row.utm_medium}`,
+            utmCampaign && `Campaign: ${utmCampaign}`,
+            row.utm_content && `Content: ${row.utm_content}`,
+            row.utm_term && `Term: ${row.utm_term}`,
+            gclid && `GCLID: ${gclid}`,
+            fbclid && `FBCLID: ${fbclid}`,
+            ttclid && `TTCLID: ${ttclid}`,
+            sc_click_id && `Snap Click ID: ${sc_click_id}`,
+            row.landing_page && `Landing: ${row.landing_page}`,
+            row.referrer && `Referrer: ${row.referrer}`,
+          ].filter(Boolean).join("\n");
+
+          return (
+            <span
+              style={{ ...style, cursor: tooltipDetails ? "help" : "default", maxWidth: 160, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+              title={tooltipDetails || "Direct visit"}
+            >
+              {label}
+            </span>
+          );
+        },
       },
       {
         accessorKey: "status",

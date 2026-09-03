@@ -1,8 +1,9 @@
 import { AboutHeroSection } from "@/components/about/AboutHeroSection";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutMissionVision } from "@/components/about/AboutMissionVision";
+import { AboutCoreValues } from "@/components/about/AboutCoreValues";
 import { AboutWhyChooseUs } from "@/components/about/AboutWhyChooseUs";
-import { DepartmentComparison } from "@/components/departments";
+import { DepartmentComparison, DepartmentDermaIntro } from "@/components/departments";
 import { generatePageMetadata } from "@/lib/seo";
 
 export const generateMetadata = generatePageMetadata("about");
@@ -14,8 +15,11 @@ export default function AboutPage() {
       <AboutHeroSection />
       <AboutTimeline />
       <AboutMissionVision />
+      <AboutCoreValues />
+      <DepartmentDermaIntro />
       <DepartmentComparison />
       <AboutWhyChooseUs />
     </div>
   );
 }
+

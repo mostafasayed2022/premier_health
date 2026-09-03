@@ -20,6 +20,8 @@ const PII_KEYS = new Set([
   "diagnosis",
   "medical_history",
   "medical_notes",
+  "appointment_notes",
+  "notes",
   "password",
   "ssn",
   "national_id",

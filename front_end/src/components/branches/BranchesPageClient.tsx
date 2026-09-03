@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { useBranches, useDepartments, useBranchGallery } from "@/lib/api";
+import type { Branch } from "@/lib/types";
 import dynamic from "next/dynamic";
 import {
   BranchesHero,
@@ -19,11 +20,21 @@ const BranchLightboxModal = dynamic(() =>
   ),
 );
 
-export function BranchesPageClient() {
+interface BranchesPageClientProps {
+  /** SSR-prefetched branch data passed from the Server Component */
+  initialBranches?: Branch[];
+}
+
+export function BranchesPageClient({
+  initialBranches = [],
+}: BranchesPageClientProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
 
-  const { data: branches = [], isLoading: isBranchesLoading } = useBranches();
+  // initialData seeds the cache with SSR data — no loading spinner on first paint
+  const { data: branches = [], isLoading: isBranchesLoading } = useBranches({
+    initialData: initialBranches.length > 0 ? initialBranches : undefined,
+  });
   const { data: departments = [], isLoading: isDeptsLoading } =
     useDepartments();
 
@@ -153,6 +164,7 @@ export function BranchesPageClient() {
     <div className="flex flex-col bg-background min-h-screen">
       {/* 1. Hero Banner */}
       <BranchesHero />
+
 
       {/* 2. Main Branch Cards Grid */}
       <section className="luxury-container py-16">

@@ -21,7 +21,7 @@ import { AnalyticsCards } from "@/components/dashboard/analytics";
 const STATS = [
   {
     label: "Total Revenue",
-    value: "$45,280",
+    value: "45,280 EGY",
     trend: "+12.5%",
     trendUp: true,
     icon: DollarSign,
@@ -60,7 +60,7 @@ const RECENT_BOOKINGS = [
     service: "Home Nursing",
     date: "2024-04-12",
     status: "Confirm",
-    amount: "$120",
+    amount: "120 EGY",
     paid: true,
   },
   {
@@ -69,7 +69,7 @@ const RECENT_BOOKINGS = [
     service: "Physical Therapy",
     date: "2024-04-12",
     status: "Pending",
-    amount: "$85",
+    amount: "85 EGY",
     paid: false,
   },
   {
@@ -78,7 +78,7 @@ const RECENT_BOOKINGS = [
     service: "Lab Test",
     date: "2024-04-13",
     status: "Confirm",
-    amount: "$45",
+    amount: "45 EGY",
     paid: true,
   },
   {
@@ -87,7 +87,7 @@ const RECENT_BOOKINGS = [
     service: "Doctor Visit",
     date: "2024-04-13",
     status: "Confirm",
-    amount: "$150",
+    amount: "150 EGY",
     paid: true,
   },
   {
@@ -96,7 +96,7 @@ const RECENT_BOOKINGS = [
     service: "Elderly Care",
     date: "2024-04-14",
     status: "Failed",
-    amount: "$90",
+    amount: "90 EGY",
     paid: false,
   },
 ];

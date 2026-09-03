@@ -68,7 +68,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
             <div className="flex flex-col">
               {service.price ? (
                 <p className="text-xl font-serif font-bold text-primary">
-                  ${service.price}
+                  {service.price} <span className="text-xs font-sans font-bold text-accent">EGY</span>
                 </p>
               ) : (
                 <span className="text-xs font-bold text-accent tracking-wide uppercase">

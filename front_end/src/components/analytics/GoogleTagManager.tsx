@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const GTM_ID = "GTM-NHV29W2S";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-NHV29W2S";
 
 export function GoogleTagManagerScript() {
   return (

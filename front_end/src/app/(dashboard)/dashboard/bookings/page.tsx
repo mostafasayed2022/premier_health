@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 
 const ALL_BOOKINGS = [
-  { id: "PC-1024", customer: "Sarah Jenkins", phone: "+971 50 112 3344", doctor: "Dr. Elena Vance", service: "Home Nursing", date: "2026-05-12", time: "10:00 AM", status: "Confirmed", amount: "$120" },
-  { id: "PC-1025", customer: "Robert Chen", phone: "+971 50 889 1234", doctor: "Dr. Marcus Thorne", service: "Physical Therapy", date: "2026-05-12", time: "11:30 AM", status: "Pending", amount: "$85" },
-  { id: "PC-1026", customer: "Elena Miller", phone: "+971 50 334 9988", doctor: "Dr. Elena Vance", service: "Lab Test", date: "2026-05-13", time: "02:00 PM", status: "Confirmed", amount: "$45" },
-  { id: "PC-1027", customer: "Marcus Thorne", phone: "+971 50 445 1122", doctor: "Dr. Sarah Paul", service: "Doctor Visit", date: "2026-05-13", time: "04:15 PM", status: "Confirmed", amount: "$150" },
-  { id: "PC-1028", customer: "David Wilson", phone: "+971 50 998 4433", doctor: "Dr. Marcus Thorne", service: "Elderly Care", date: "2026-05-14", time: "09:00 AM", status: "Cancelled", amount: "$90" },
+  { id: "PC-1024", customer: "Sarah Jenkins", phone: "+971 50 112 3344", doctor: "Dr. Elena Vance", service: "Home Nursing", date: "2026-05-12", time: "10:00 AM", status: "Confirmed", amount: "120 EGY" },
+  { id: "PC-1025", customer: "Robert Chen", phone: "+971 50 889 1234", doctor: "Dr. Marcus Thorne", service: "Physical Therapy", date: "2026-05-12", time: "11:30 AM", status: "Pending", amount: "85 EGY" },
+  { id: "PC-1026", customer: "Elena Miller", phone: "+971 50 334 9988", doctor: "Dr. Elena Vance", service: "Lab Test", date: "2026-05-13", time: "02:00 PM", status: "Confirmed", amount: "45 EGY" },
+  { id: "PC-1027", customer: "Marcus Thorne", phone: "+971 50 445 1122", doctor: "Dr. Sarah Paul", service: "Doctor Visit", date: "2026-05-13", time: "04:15 PM", status: "Confirmed", amount: "150 EGY" },
+  { id: "PC-1028", customer: "David Wilson", phone: "+971 50 998 4433", doctor: "Dr. Marcus Thorne", service: "Elderly Care", date: "2026-05-14", time: "09:00 AM", status: "Cancelled", amount: "90 EGY" },
 ];
 
 export default function BookingsManagementPage() {

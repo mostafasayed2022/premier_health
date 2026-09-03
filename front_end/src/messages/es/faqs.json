@@ -1,8 +1,18 @@
 {
-  "q1": "¿Qué es la Terapia de Suero IV?",
-  "a1": "Es la administración directa de vitaminas, minerales y antioxidantes en el torrente sanguíneo, evitando el sistema digestivo para una absorción celular del 100% y resultados de bienestar rápidos.",
+  "q1": "¿Qué es la terapia de goteo intravenoso (IV Drip)?",
+  "a1": "Es la administración directa de vitaminas, minerales y antioxidantes en el torrente sanguíneo, optimizando la absorción celular al 100% y proporcionando resultados rápidos.",
   "q2": "¿Cuánto dura una sesión?",
-  "a2": "Las infusiones estándar de vitaminas duran de 45 a 60 minutos. Las terapias celulares avanzadas como los sueros de NAD+ duran entre 90 y 120 minutos en una infusión cómoda y relajada.",
-  "q3": "¿Están acreditados médicamente sus servicios clínicos?",
-  "a3": "Absolutamente. Todos los tratamientos son diseñados y supervisados por consultores certificados, utilizando ingredientes de primera calidad y entornos estériles estándar de hospital."
+  "a2": "Las infusiones estándar duran de 45 a 60 minutos. Terapias avanzadas como NAD+ requieren entre 90 y 120 minutos en un ambiente relajante.",
+  "q3": "¿Están acreditados médicamente sus servicios?",
+  "a3": "Absolutamente. Todos los tratamientos son supervisados por médicos certificados bajo los más estrictos estándares clínicos y de esterilidad.",
+  "q4": "¿Con qué frecuencia debo recibir las sesiones de IV?",
+  "a4": "Depende de sus metas de bienestar. Para energía e inmunidad general, se recomienda una sesión quincenal o mensual.",
+  "q5": "¿Son seguros los goteos IV y tienen efectos secundarios?",
+  "a5": "Sí, son altamente seguros administrados por nuestro equipo médico acreditado. Realizamos una evaluación médica previa en cada visita.",
+  "q6": "¿Necesito una consulta médica previa?",
+  "a6": "Se incluye una evaluación clínica inicial en su primera sesión para personalizar los componentes ideales para su cuerpo.",
+  "q7": "¿Puedo reservar servicios a domicilio o en hotel?",
+  "a7": "Sí, Premier Health ofrece servicio móvil VIP para atenderle en su casa, oficina u hotel con total privacidad y equipo esterilizado.",
+  "q8": "¿Qué tan rápido notaré los resultados?",
+  "a8": "La mayoría de los pacientes sienten un aumento de energía, claridad mental e hidratación profunda en pocas horas tras la sesión."
 }

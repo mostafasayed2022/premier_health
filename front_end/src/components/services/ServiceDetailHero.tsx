@@ -26,6 +26,9 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
         service_id: service.id,
         service_name: isAr ? service.name_ar : service.name,
         service_category: service.category,
+        price: service.price ? Number(service.price) : undefined,
+        value: service.price ? Number(service.price) : undefined,
+        currency: "EGP",
         locale,
       });
     }
@@ -95,7 +98,9 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                 {t("Services.startingFrom")}
               </p>
             </div>
-            <div className="text-4xl sm:text-5xl font-serif font-black text-accent">${service.price}</div>
+            <div className="text-4xl sm:text-5xl font-serif font-black text-accent">
+              {service.price} <span className="text-xl sm:text-2xl font-sans font-bold text-accent/80">EGY</span>
+            </div>
             {service.ingredients && (
               <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/15">
                 <p className="text-[9px] sm:text-[10px] text-white/60 uppercase tracking-wider mb-1.5 sm:mb-2 font-bold">

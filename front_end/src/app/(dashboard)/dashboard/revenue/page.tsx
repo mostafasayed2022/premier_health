@@ -40,7 +40,7 @@ export default function RevenuePage() {
         <Card className="bg-primary text-white border-none p-5 sm:p-8 relative overflow-hidden">
           <div className="relative z-10 space-y-3 sm:space-y-4">
             <p className="text-xs font-bold uppercase tracking-widest opacity-70">Payouts Balance</p>
-            <h3 className="text-3xl sm:text-4xl font-black">$12,450.80</h3>
+            <h3 className="text-3xl sm:text-4xl font-black">12,450.80 EGY</h3>
             <div className="flex flex-wrap gap-2 pt-2">
               <Button variant="outline" size="sm" className="bg-white/10 border-none text-white hover:bg-white/20 text-xs">
                 Withdraw
@@ -58,7 +58,7 @@ export default function RevenuePage() {
         <Card className="p-5 sm:p-8 border-none shadow-xs flex flex-col justify-between bg-white dark:bg-slate-900">
           <div className="space-y-1">
             <p className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">Monthly Revenue</p>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">$45,280</h3>
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">45,280 EGY</h3>
           </div>
           <div className="flex items-center gap-1.5 text-green-600 text-xs sm:text-sm font-bold mt-4">
             <ArrowUpRight size={16} /> 12.5% vs last month
@@ -68,7 +68,7 @@ export default function RevenuePage() {
         <Card className="p-5 sm:p-8 border-none shadow-xs flex flex-col justify-between bg-white dark:bg-slate-900">
           <div className="space-y-1">
             <p className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">Pending Transactions</p>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">$1,850</h3>
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">1,850 EGY</h3>
           </div>
           <div className="flex items-center gap-1.5 text-slate-400 text-xs sm:text-sm font-bold mt-4">
             <Calendar size={16} /> 14 payments waiting
@@ -133,7 +133,7 @@ export default function RevenuePage() {
                   <td className="px-4 sm:px-6 py-3.5 font-mono text-slate-500 text-xs whitespace-nowrap">{tx.id}</td>
                   <td className="px-4 sm:px-6 py-3.5 text-slate-500 text-xs whitespace-nowrap">{tx.date}</td>
                   <td className="px-4 sm:px-6 py-3.5 font-bold whitespace-nowrap">{tx.customer}</td>
-                  <td className="px-4 sm:px-6 py-3.5 font-black whitespace-nowrap">${tx.amount.toFixed(2)}</td>
+                  <td className="px-4 sm:px-6 py-3.5 font-black whitespace-nowrap">{tx.amount.toFixed(2)} EGY</td>
                   <td className="px-4 sm:px-6 py-3.5 whitespace-nowrap">
                     <div className="flex items-center gap-1.5 text-slate-500 text-xs">
                       {tx.method === 'Visa' ? <CreditCard size={14} /> : <Wallet size={14} />}

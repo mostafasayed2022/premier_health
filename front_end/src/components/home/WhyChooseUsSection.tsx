@@ -21,35 +21,30 @@ export default function WhyChooseUsSection() {
 
   const cards = [
     {
-      num: "01",
       title: t("Common.excellence"),
       description: t("WhyChooseUs.excellence"),
       icon: Sparkles,
       tag: t("Common.excellence") || "Excellence",
     },
     {
-      num: "02",
       title: t("Common.integrity"),
       description: t("WhyChooseUs.integrity"),
       icon: Shield,
       tag: t("Common.integrity") || "Integrity",
     },
     {
-      num: "03",
       title: t("Common.patientCentered"),
       description: t("WhyChooseUs.patientCentered"),
       icon: Heart,
       tag: t("Common.patientCentered") || "Patient Care",
     },
     {
-      num: "04",
       title: t("Common.compassion"),
       description: t("WhyChooseUs.compassion"),
       icon: Activity,
       tag: t("Common.compassion") || "Compassion",
     },
     {
-      num: "05",
       title: t("Common.innovation"),
       description: t("WhyChooseUs.innovation"),
       icon: CheckCircle,
@@ -149,7 +144,7 @@ export default function WhyChooseUsSection() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="text-accent text-[11px] font-bold tracking-widest uppercase">
-                  {cards[0].num} // {cards[0].tag}
+                  {cards[0].tag}
                 </span>
                 <div className="w-12 h-12 rounded-2xl bg-accent/15 border border-accent/30 flex items-center justify-center text-accent group-hover:rotate-12 transition-transform duration-500">
                   <Sparkles className="w-6 h-6" />
@@ -184,7 +179,7 @@ export default function WhyChooseUsSection() {
             <div>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-[#998675] text-[11px] font-bold tracking-widest uppercase">
-                  {cards[1].num} // {cards[1].tag}
+                  {cards[1].tag}
                 </span>
                 <div className="w-11 h-11 rounded-2xl bg-[#f7f2ea] text-primary border border-accent/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                   <Shield className="w-5 h-5" />
@@ -218,7 +213,7 @@ export default function WhyChooseUsSection() {
             <div>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-[#998675] text-[11px] font-bold tracking-widest uppercase">
-                  {cards[2].num} // {cards[2].tag}
+                  {cards[2].tag}
                 </span>
                 <div className="w-11 h-11 rounded-2xl bg-[#f7f2ea] text-primary border border-accent/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                   <Heart className="w-5 h-5" />
@@ -252,7 +247,7 @@ export default function WhyChooseUsSection() {
             <div>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-[#998675] text-[11px] font-bold tracking-widest uppercase">
-                  {cards[3].num} // {cards[3].tag}
+                  {cards[3].tag}
                 </span>
                 <div className="w-11 h-11 rounded-2xl bg-[#f7f2ea] text-primary border border-accent/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                   <Activity className="w-5 h-5" />
@@ -291,7 +286,7 @@ export default function WhyChooseUsSection() {
                 <div>
                   <div className="flex items-center gap-3 mb-1">
                     <span className="text-accent text-[11px] font-bold tracking-widest uppercase">
-                      {cards[4].num} // {cards[4].tag}
+                      {cards[4].tag}
                     </span>
                     <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">
                       State-of-the-Art

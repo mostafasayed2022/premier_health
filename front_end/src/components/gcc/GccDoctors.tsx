@@ -37,6 +37,8 @@ interface VerifiedDoctor {
   badges_ar: string[];
 }
 
+// ─── GCC Doctors Mock Data (COMMENTED OUT — Now using live dashboard data) ───────
+/*
 const REAL_VERIFIED_DOCTORS: VerifiedDoctor[] = [
   {
     id: 1,
@@ -47,7 +49,7 @@ const REAL_VERIFIED_DOCTORS: VerifiedDoctor[] = [
     experience_years: 10,
     patients_count: 340,
     bio_ar:
-      "استشارية متخصصة معتمدة تتمتع بخبرة تزيد عن 10 سنوات في تصميم بروتوكولات الحقن الوريدي IV Therapy والتقطير الخلوي والعلاجات الجلدية التجميلية المتطورة.",
+      "استشارية متخصصة تتمتع بخبرة تزيد عن 10 سنوات في تصميم بروتوكولات الحقن الوريدي IV Therapy والتقطير الخلوي والعلاجات الجلدية التجميلية المتطورة.",
     image_url:
       "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/bassant_rv6jda.jpg",
     badges_ar: ["إشراف مباشر", "بروتوكولات دقيقة", "خبرة 10+ سنوات"],
@@ -67,9 +69,11 @@ const REAL_VERIFIED_DOCTORS: VerifiedDoctor[] = [
     badges_ar: ["استشارات خاصة", "علاجات NAD+ المتقدمة", "خبرة 12+ سنة"],
   },
 ];
+*/
 
 export function GccDoctors() {
-  const [doctors, setDoctors] = useState<VerifiedDoctor[]>(REAL_VERIFIED_DOCTORS);
+  const [doctors, setDoctors] = useState<VerifiedDoctor[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -80,35 +84,6 @@ export function GccDoctors() {
 
         // Map every doctor returned from the backend/API
         const mappedList: VerifiedDoctor[] = apiDocs.map((apiDoc) => {
-          // Check if this doctor matches any of our curated profiles
-          const curated = REAL_VERIFIED_DOCTORS.find(
-            (c) =>
-              String(c.id) === String(apiDoc.id) ||
-              (apiDoc.name &&
-                c.name_en.toLowerCase().includes(apiDoc.name.toLowerCase())) ||
-              (apiDoc.name_ar && c.name_ar.includes(apiDoc.name_ar))
-          );
-
-          if (curated) {
-            return {
-              ...curated,
-              id: apiDoc.id,
-              name_ar: apiDoc.name_ar || curated.name_ar,
-              name_en: apiDoc.name || curated.name_en,
-              title_ar: apiDoc.position_ar || curated.title_ar,
-              specialty_ar: apiDoc.specialty_ar || curated.specialty_ar,
-              bio_ar: apiDoc.bio_ar || curated.bio_ar,
-              image_url:
-                apiDoc.photo ||
-                (apiDoc as any).image_url ||
-                curated.image_url,
-              experience_years:
-                apiDoc.experience || curated.experience_years,
-              patients_count: apiDoc.patients || curated.patients_count,
-            };
-          }
-
-          // Format newly added doctor from backend / admin
           const rawName = apiDoc.name_ar || apiDoc.name || "استشاري طبي";
           const formattedNameAr = rawName.startsWith("د.")
             ? rawName
@@ -126,7 +101,7 @@ export function GccDoctors() {
           const bio =
             apiDoc.bio_ar ||
             apiDoc.bio ||
-            "استشاري متخصص معتمد يقدم رعاية طبية فائقة وبروتوكولات علاجية مخصصة بأعلى معايير الجودة العالمية.";
+            "استشاري متخصص يقدم رعاية طبية فائقة وبروتوكولات علاجية مخصصة بأعلى معايير الجودة العالمية.";
           const photo =
             apiDoc.photo ||
             (apiDoc as any).image_url ||
@@ -150,29 +125,24 @@ export function GccDoctors() {
           };
         });
 
-        // Retain curated real doctors if not present in the API response
-        const missingCurated = REAL_VERIFIED_DOCTORS.filter(
-          (curated) =>
-            !mappedList.some(
-              (m) =>
-                String(m.id) === String(curated.id) ||
-                (m.name_en &&
-                  curated.name_en
-                    .toLowerCase()
-                    .includes(m.name_en.toLowerCase()))
-            )
-        );
-
-        setDoctors([...mappedList, ...missingCurated]);
+        setDoctors(mappedList);
       })
       .catch(() => {
-        // Fallback to verified real doctors
+        // Handled silently
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
       });
 
     return () => {
       isMounted = false;
     };
   }, []);
+
+  if (!isLoading && doctors.length === 0) {
+    return null;
+  }
+
 
   // Determine optimal responsive grid layout based on number of doctors
   const gridClasses =

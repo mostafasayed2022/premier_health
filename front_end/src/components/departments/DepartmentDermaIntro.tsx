@@ -44,10 +44,10 @@ export function DepartmentDermaIntro({
       ? customServices
       : defaultServices;
   return (
-    <div className="flex flex-col gap-16 py-12">
-      {/* Part A: Derma Header with background2.webp */}
-      <section className="py-16 rounded-[36px] border border-[#C8A96B]/25 relative overflow-hidden shadow-lg text-center bg-slate-950">
-        {/* Background Image: background2.webp - Fully Visible */}
+    <div className="w-full flex flex-col gap-16 my-8">
+      {/* Part A: Full-width Derma Header with background2.webp */}
+      <section className="w-full py-20 md:py-28 relative overflow-hidden text-center bg-slate-950 border-y border-[#C8A96B]/25 shadow-xl">
+        {/* Background Image: background2.webp - Fully Visible across 100vw */}
         <Image
           src="/backgrounds/background2.webp"
           alt="Derma Services Background"
@@ -59,11 +59,11 @@ export function DepartmentDermaIntro({
 
         {/* Ambient lighting glows */}
         <div className="absolute inset-0 pointer-events-none z-5 overflow-hidden">
-          <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-[#C8A96B]/15 blur-[100px]" />
-          <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-slate-900/30 blur-[100px]" />
+          <div className="absolute -top-20 -right-20 h-96 w-96 rounded-full bg-[#C8A96B]/15 blur-[120px]" />
+          <div className="absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-slate-900/40 blur-[120px]" />
         </div>
 
-        <div className="luxury-container text-center max-w-3xl mx-auto relative z-10">
+        <div className="luxury-container text-center max-w-3xl mx-auto relative z-10 px-4">
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#C8A96B]/40 text-[#C8A96B] text-[10px] uppercase tracking-widest font-bold mb-4 bg-black/40 backdrop-blur-md shadow-sm">
             <Sparkles size={11} className="text-[#C8A96B] animate-pulse" />
             {t("badge")}

@@ -157,9 +157,14 @@ export default function DashboardLayout({
             </p>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center sm:text-right">
               Designed &amp; Developed by:{" "}
-              <span className="font-semibold text-primary dark:text-accent">Mostafa Sayed</span> ·{" "}
-              <span className="font-semibold text-primary dark:text-accent">Mohamed Hossam</span> ·{" "}
-              <span className="font-semibold text-primary dark:text-accent">Mohamed Salah</span>
+              <span className="font-semibold text-primary dark:text-accent">CodeVerse</span> ·{" "}
+              <a
+                href="tel:+201111453894"
+                dir="ltr"
+                className="font-semibold text-primary dark:text-accent hover:underline"
+              >
+                +201111453894
+              </a>
             </p>
           </footer>
         </div>

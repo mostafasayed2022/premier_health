@@ -69,7 +69,7 @@ export default function StatsSection() {
       icon: Building2,
     },
     {
-      value: "+250,000",
+      value: "+50000",
       label: t("Home.statsPatientsLabel"),
       sublabel: t("Home.statsPatientsSublabel"),
       icon: Users,

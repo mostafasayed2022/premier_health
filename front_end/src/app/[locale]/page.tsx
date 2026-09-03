@@ -6,30 +6,25 @@ import DepartmentsSection from "@/components/home/DepartmentsSection";
 
 // Below-the-fold sections dynamically imported to reduce initial JS payload
 const WhyChooseUsSection = dynamic(
-  () => import("@/components/home/WhyChooseUsSection")
+  () => import("@/components/home/WhyChooseUsSection"),
 );
 const DepartmentDripsIntro = dynamic(() =>
   import("@/components/departments/DepartmentDripsIntro").then(
-    (mod) => mod.DepartmentDripsIntro
-  )
+    (mod) => mod.DepartmentDripsIntro,
+  ),
 );
 const FeaturedTreatmentsSection = dynamic(
-  () => import("@/components/home/FeaturedTreatmentsSection")
-);
-const DepartmentDermaIntro = dynamic(() =>
-  import("@/components/departments/DepartmentDermaIntro").then(
-    (mod) => mod.DepartmentDermaIntro
-  )
+  () => import("@/components/home/FeaturedTreatmentsSection"),
 );
 const TestimonialsSection = dynamic(
-  () => import("@/components/home/TestimonialsSection")
+  () => import("@/components/home/TestimonialsSection"),
 );
 const BranchesSection = dynamic(
-  () => import("@/components/home/BranchesSection")
+  () => import("@/components/home/BranchesSection"),
 );
 const FAQSection = dynamic(() => import("@/components/home/FAQSection"));
 const WelcomeToast = dynamic(() =>
-  import("@/components/shared/WelcomeToast").then((mod) => mod.WelcomeToast)
+  import("@/components/shared/WelcomeToast").then((mod) => mod.WelcomeToast),
 );
 
 import { generatePageMetadata } from "@/lib/seo";
@@ -62,9 +57,6 @@ export default function HomePage() {
 
       {/* 6. FEATURED TREATMENTS */}
       <FeaturedTreatmentsSection />
-
-      {/* 6.5 DERMA SERVICES */}
-      <DepartmentDermaIntro />
 
       {/* 7. TESTIMONIALS */}
       <TestimonialsSection />

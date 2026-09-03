@@ -1,8 +1,18 @@
 {
-  "q1": "Was ist eine IV-Infusionstherapie?",
-  "a1": "Es ist die direkte Verabreichung von Vitaminen, Mineralien und Antioxidantien in den Blutkreislauf, wodurch das Verdauungssystem umgangen wird, um eine 100%ige zelluläre Aufnahme und schnelle Wellness-Ergebnisse zu gewährleisten.",
+  "q1": "Was ist eine intravenöse Infusionstherapie (IV Drip)?",
+  "a1": "Es ist die direkte Verabreichung von Vitaminen, Mineralien und Antioxidantien in die Blutbahn, wodurch das Verdauungssystem umgangen und eine 100%ige Zellaufnahme gewährleistet wird.",
   "q2": "Wie lange dauert eine Sitzung?",
-  "a2": "Standard-Vitamininfusionen dauern 45 bis 60 Minuten. Fortschrittliche Zelltherapien wie NAD+-Infusionen dauern zwischen 90 und 120 Minuten in einer komfortablen, entspannten Atmosphäre.",
+  "a2": "Standard-Vitamininfusionen dauern 45 bis 60 Minuten. Erweiterte Zelltherapien wie NAD+ dauern zwischen 90 und 120 Minuten.",
   "q3": "Sind Ihre klinischen Dienstleistungen medizinisch akkreditiert?",
-  "a3": "Absolut. Alle Behandlungen werden von staatlich geprüften Fachärzten entwickelt und überwacht, unter Verwendung hochwertigster Inhaltsstoffe und in sterilen Umgebungen nach Krankenhausstandard."
+  "a3": "Absolut. Alle Behandlungen werden von zertifizierten Fachärzten unter Einhaltung höchster Krankenhaus- und Sterilitätsstandards durchgeführt.",
+  "q4": "Wie oft sollte ich eine IV-Therapie in Anspruch nehmen?",
+  "a4": "Die Häufigkeit hängt von Ihren individuellen Zielen ab. Für allgemeine Vitalität wird alle zwei Wochen oder monatlich eine Sitzung empfohlen.",
+  "q5": "Sind IV-Drips sicher und gibt es Nebenwirkungen?",
+  "a5": "Ja, die IV-Therapie ist unter Aufsicht unseres lizenzierten medizinischen Teams äußerst sicher. Vor jeder Sitzung werden Vitalwerte und Anamnese geprüft.",
+  "q6": "Benötige ich vorab eine ärztliche Konsultation?",
+  "a6": "Eine erste medizinische Beurteilung ist in Ihrem ersten Termin enthalten, um die perfekte Rezeptur für Ihren Körper zu bestimmen.",
+  "q7": "Kann ich Haus- oder Hotelbesuche buchen?",
+  "a7": "Ja, Premier Health bietet einen VIP-Mobilservice für Ihr Zuhause, Büro oder Hotel mit höchster Diskretion und steriler Ausrüstung.",
+  "q8": "Wie schnell spüre ich die Wirkung?",
+  "a8": "Viele Kunden spüren sofort oder innerhalb weniger Stunden mehr Energie, geistige Klarheit und tiefe Hydratation."
 }

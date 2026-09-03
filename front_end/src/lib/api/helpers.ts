@@ -39,6 +39,7 @@ interface ApiService {
   description_ar?: string;
   department_slug?: string;
   department_name?: string;
+  department_name_ar?: string;
   category?: string;
 }
 
@@ -53,6 +54,9 @@ interface ApiBranch {
   map_url?: string | null;
   name_ar?: string;
   address_ar?: string;
+  hours?: string;
+  hours_ar?: string;
+  services?: any[];
 }
 
 export interface ApiDoctor {
@@ -132,15 +136,13 @@ export function mergeSvc(s: ApiService): Service {
     id: String(s.id),
     category: deptSlug,
     department_name: s.department_name || deptSlug,
+    department_name_ar: s.department_name_ar || s.department_name || deptSlug,
     department_slug: deptSlug,
     price: s.default_fee ?? 150,
     duration: s.duration_minutes ?? 0,
     name_ar: s.name_ar || s.name,
     description_ar: s.description_ar || s.description,
-    photo: getOptimizedImageUrl(
-      s.image_url || "/Treatments/Detox.webp",
-      600,
-    ),
+    photo: getOptimizedImageUrl(s.image_url || "/Treatments/Detox.webp", 600),
     benefits: [],
     benefits_ar: [],
     process: [],
@@ -148,30 +150,99 @@ export function mergeSvc(s: ApiService): Service {
     faq: [],
   } as Service;
 }
+// ─── Default Curated Branches (Local SEO & SSR Fallback) ───────────────────
+export const DEFAULT_BRANCHES: Branch[] = [
+  {
+    id: "2",
+    name: "Fairmont Nile City",
+    name_ar: "فيرمونت نايل سيتي",
+    address: "Fairmont Nile City Hotel & Towers, Corniche El Nil, Cairo",
+    address_ar: "فندق فيرمونت نايل سيتي، أبراج نايل سيتي، كورنيش النيل، القاهرة",
+    phone: "+201200644663",
+    hours: "10:00 AM - 10:00 PM (Sat - Thu)",
+    hours_ar: "10:00 ص - 10:00 م (السبت - الخميس)",
+    mapEmbed: "",
+    mapUrl: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
+    map_url: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
+    url: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
+    photo: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04519_fyazrj.jpg",
+    image_url: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04519_fyazrj.jpg",
+    country: "Egypt",
+    services: ["IV Therapy", "Dermatology", "Longevity & Anti-Aging"],
+  },
+  {
+    id: "4",
+    name: "Arkan Plaza (Sheikh Zayed)",
+    name_ar: "أركان بلازا (الشيخ زايد)",
+    address: "Arkan Plaza, El-Bostan St, Sheikh Zayed City, Giza",
+    address_ar: "مجمع أركان بلازا الطبي، مدخل الشيخ زايد، 6 أكتوبر",
+    phone: "+201200644663",
+    hours: "10:00 AM - 10:00 PM (Sat - Thu)",
+    hours_ar: "10:00 ص - 10:00 م (السبت - الخميس)",
+    mapEmbed: "",
+    mapUrl: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
+    map_url: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
+    url: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
+    photo: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/hero1_qimiy7.jpg",
+    image_url: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/hero1_qimiy7.jpg",
+    country: "Egypt",
+    services: ["IV Therapy", "Athletic Recovery", "Hydrafacial"],
+  },
+  {
+    id: "3",
+    name: "EDNC Sodic (New Cairo)",
+    name_ar: "سوديك EDNC (التجمع الخامس)",
+    address: "EDNC Eastown District New Cairo, Sodic, Road 90, New Cairo",
+    address_ar: "مجمع EDNC التجاري، مشروع سوديك إيست تاون، شارع التسعين، التجمع الخامس",
+    phone: "+201200644663",
+    hours: "10:00 AM - 10:00 PM (Sat - Thu)",
+    hours_ar: "10:00 ص - 10:00 م (السبت - الخميس)",
+    mapEmbed: "",
+    mapUrl: "https://www.google.com/maps?q=30.0154326,31.5145233",
+    map_url: "https://www.google.com/maps?q=30.0154326,31.5145233",
+    url: "https://www.google.com/maps?q=30.0154326,31.5145233",
+    photo: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04539_pxbhlp.jpg",
+    image_url: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04539_pxbhlp.jpg",
+    country: "Egypt",
+    services: ["IV Therapy", "Detox & Glutathione", "VIP Suite"],
+  },
+];
+
 // ─── Branch Merge ─────────────────────────────────────────────────────────────
 
 export function mergeBranch(b: ApiBranch): Branch {
-  const finalMapUrl = b.url || b.map_url || "";
+  const match = DEFAULT_BRANCHES.find(
+    (d) =>
+      String(d.id) === String(b.id) ||
+      (b.name && d.name.toLowerCase().includes(b.name.toLowerCase())) ||
+      (b.name_ar && d.name_ar.includes(b.name_ar))
+  );
+
+  const finalMapUrl = b.url || b.map_url || match?.mapUrl || "";
 
   return {
     ...b,
     id: String(b.id),
-    name_ar: b.name_ar || b.name,
-    address_ar: b.address_ar || b.address,
+    name: b.name || match?.name || "Premier Health Branch",
+    name_ar: b.name_ar || match?.name_ar || b.name,
+    address: b.address || match?.address || "",
+    address_ar: b.address_ar || match?.address_ar || b.address,
+    phone: b.phone || match?.phone || "+201200644663",
     photo: getOptimizedImageUrl(
-      b.image_url || "/AboutPreview/about.webp",
-      800,
+      b.image_url || match?.photo || "/AboutPreview/about.webp",
+      800
     ),
-    hours: "",
-    hours_ar: "",
+    hours: match?.hours || "10:00 AM - 10:00 PM (Sat - Thu)",
+    hours_ar: match?.hours_ar || "10:00 ص - 10:00 م (السبت - الخميس)",
     mapEmbed: "",
     mapUrl: finalMapUrl,
     map_url: finalMapUrl,
     url: finalMapUrl,
-    country: "",
-    services: [],
+    country: "Egypt",
+    services: match?.services || ["IV Therapy", "Wellness", "Dermatology"],
   } as Branch;
 }
+
 // ─── Doctor Merge ─────────────────────────────────────────────────────────────
 
 export function mergeDoc(d: ApiDoctor): Doctor {

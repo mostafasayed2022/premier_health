@@ -120,9 +120,14 @@ export function FooterBottom() {
         </p>
         <p className="text-[11px] text-slate-400">
           Designed &amp; Developed by:{" "}
-          <span className="text-accent font-semibold">Mostafa Sayed</span> ·{" "}
-          <span className="text-accent font-semibold">Mohamed Hossam</span> ·{" "}
-          <span className="text-accent font-semibold">Mohamed Salah</span>
+          <span className="text-accent font-semibold">CodeVerse</span> ·{" "}
+          <a
+            href="tel:+201111453894"
+            dir="ltr"
+            className="text-accent font-semibold hover:underline"
+          >
+            +201111453894
+          </a>
         </p>
       </div>
 

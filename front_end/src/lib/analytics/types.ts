@@ -25,8 +25,7 @@ export interface Attribution {
   // Platform click IDs
   fbclid?: string;
   ttclid?: string;
-  scclid?: string;
-  sc_click_id?: string;
+  sc_click_id?: string; // Standardized Snapchat Click ID
 
   // Attribution meta
   landing_page?: string;
@@ -47,8 +46,11 @@ export interface StoredAttribution extends Attribution {
 
 export interface ViewServiceParams {
   service_id: string | number;
-  service_name: string;
+  service_name?: string;
   service_category?: string;
+  price?: number;
+  value?: number;
+  currency?: string;
   page_path?: string;
   locale?: string;
 }
@@ -56,8 +58,9 @@ export interface ViewServiceParams {
 export interface SelectBranchParams {
   branch_id: string | number;
   branch_name: string;
-  page_path?: string;
+  service_id?: string | number;
   service_name?: string;
+  page_path?: string;
   locale?: string;
 }
 
@@ -107,6 +110,8 @@ export interface StartBookingParams {
 }
 
 export interface SubmitLeadParams {
+  service_id?: string | number;
+  branch_id?: string | number;
   lead_type?: string;
   service_name?: string;
   branch_name?: string;
@@ -121,8 +126,10 @@ export interface BookingCompleteParams {
   service_name?: string;
   branch_id?: string | number;
   branch_name?: string;
+  price?: number;
   value?: number;
   currency?: string;
+  event_id?: string;
   page_path?: string;
   locale?: string;
 }
@@ -132,7 +139,9 @@ export interface AppointmentAttendedParams {
   service_id?: string | number;
   branch_id?: string | number;
   value?: number;
+  price?: number;
   currency?: string;
+  event_id?: string;
   page_path?: string;
   locale?: string;
 }
@@ -143,7 +152,9 @@ export interface PurchaseParams {
   service_name?: string;
   branch_name?: string;
   value: number;
+  price?: number;
   currency: string;
+  event_id?: string;
   page_path?: string;
   locale?: string;
 }

@@ -18,7 +18,7 @@ import { useTranslations } from "next-intl";
 const SCROLL_THRESHOLD = 450;
 
 export function BackToTop() {
-  const t = useTranslations("common");
+  const t = useTranslations("Common");
   const [visible, setVisible] = useState(false);
   const rafRef = useRef<number | null>(null);
 

@@ -63,7 +63,7 @@ export function Step7Confirm({
       icon: FlaskConical,
       label: t("step2"),
       value: svc
-        ? `${svc.name}${svc.price != null ? ` — $${svc.price}` : ""}`
+        ? `${svc.name}${svc.price != null ? ` — ${svc.price} EGY` : ""}`
         : booking.service || "-",
     },
     {

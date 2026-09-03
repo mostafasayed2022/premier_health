@@ -35,6 +35,8 @@ interface VerifiedTestimonial {
   branch_badge_ar: string;
 }
 
+// ─── GCC Testimonials Mock Data (COMMENTED OUT — Now using live dashboard data) ─────
+/*
 const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
   {
     id: 4,
@@ -59,7 +61,7 @@ const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
   {
     id: 2,
     name_ar: "نادين الصايغ",
-    role_ar: "استشارات النضارة ومكافحة الشيخوخة",
+    role_ar: "مهتمة بالصحة والعناية بالبشرة",
     treatment_ar: "بروتوكول Glow & Hydrafacial الشامل",
     rating: 5,
     branch_badge_ar: "فرع EDNC سوديك التجمع الخامس",
@@ -67,38 +69,62 @@ const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
       "قمت بزيارة العيادة لجلسات نضارة البشرة والتقطير الوريدي المصاحب. النتائج طبيعية ومبهرة للغاية، وتصميم العيادة أشبه بملاذ صحي فاخر بمعايير عالمية تضاهي أرقى العيادات في دبي ولندن.",
   },
 ];
+*/
 
 export function GccTestimonials() {
-  const [testimonials, setTestimonials] = useState<VerifiedTestimonial[]>(
-    REAL_VERIFIED_TESTIMONIALS,
-  );
+  const [testimonials, setTestimonials] = useState<VerifiedTestimonial[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getTestimonials()
       .then((apiData) => {
         if (apiData && apiData.length > 0) {
-          const mapped = apiData.slice(0, 3).map((item, idx) => {
-            const fallback =
-              REAL_VERIFIED_TESTIMONIALS[idx] || REAL_VERIFIED_TESTIMONIALS[0];
+          const mappedApiList: VerifiedTestimonial[] = apiData.map((item) => {
+            const rawTreatment =
+              (item as any).treatment_ar ||
+              (item as any).treatment ||
+              (item as any).service_name_ar ||
+              (item as any).service ||
+              "جلسة IV Therapy فاخرة";
+
+            const rawBranchBadge =
+              (item as any).branch_badge_ar ||
+              (item as any).branch_name_ar ||
+              (item as any).branch ||
+              "فرع القاهرة";
+
             return {
               id: item.id,
-              name_ar: item.name_ar || item.name || fallback.name_ar,
-              role_ar: item.role_ar || item.role || fallback.role_ar,
-              treatment_ar: fallback.treatment_ar,
-              rating: item.rating || 5,
-              text_ar: item.text_ar || item.text || fallback.text_ar,
-              branch_badge_ar: fallback.branch_badge_ar,
+              name_ar: item.name_ar || item.name || "عميل بريمير هيلث",
+              role_ar: item.role_ar || item.role || "عميل بريمير هيلث",
+              treatment_ar: rawTreatment,
+              rating: Number(item.rating || 5),
+              text_ar:
+                item.text_ar ||
+                item.text ||
+                (item as any).description_ar ||
+                (item as any).description ||
+                "",
+              branch_badge_ar: rawBranchBadge,
             };
           });
-          if (mapped.length > 0) {
-            setTestimonials(mapped);
-          }
+
+          setTestimonials(mappedApiList);
         }
       })
       .catch(() => {
-        // Fallback to verified real reviews
+        // Handled silently
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
+
+  if (!isLoading && testimonials.length === 0) {
+    return null;
+  }
+
+
 
   return (
     <section
@@ -116,7 +142,7 @@ export function GccTestimonials() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles size={13} className="text-amber-600" />
-            <span>آراء وتجارب موثقة</span>
+          <span>آراء وتجارب عملائنا</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d2235] mb-4">
             تجارب حقيقية لزوارنا الكرام
@@ -180,9 +206,8 @@ export function GccTestimonials() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">
-                  <ShieldCheck size={13} />
-                  <span>تقييم معتمد</span>
+                <div className="flex items-center gap-1 text-[11px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-lg">
+                  <span>عميل بريمير هيلث</span>
                 </div>
               </div>
             </div>

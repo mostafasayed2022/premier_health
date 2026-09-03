@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { CheckCircle2, FlaskConical, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getServices, Service } from "@/lib/api";
+import { getServices, getDepartments, Service, Department } from "@/lib/api";
 import Image from "next/image";
 
 export default function FeaturedTreatmentsSection() {
@@ -12,11 +12,17 @@ export default function FeaturedTreatmentsSection() {
   const locale = useLocale();
   const isAr = locale === "ar";
   const [services, setServices] = useState<Service[]>([]);
+  const [departments, setDepartments] = useState<Department[]>([]);
 
   useEffect(() => {
     getServices().then((data) => {
       if (data && data.length > 0) {
         setServices(data);
+      }
+    });
+    getDepartments().then((data) => {
+      if (data && data.length > 0) {
+        setDepartments(data);
       }
     });
   }, []);
@@ -78,7 +84,33 @@ export default function FeaturedTreatmentsSection() {
           {services.slice(0, 6).map((service, index) => {
             const benefitsList = isAr ? service.benefits_ar : service.benefits;
             const ingredientsText = isAr ? service.ingredients_ar : service.ingredients;
-            const categoryTitle = service.category ? service.category.toUpperCase() : "MEDICAL CARE";
+
+            // Resolve real department name instead of raw ID/number
+            const matchedDept = departments.find(
+              (d) =>
+                String(d.id) === String((service as any).department) ||
+                String(d.id) === String(service.category) ||
+                d.slug === service.department_slug ||
+                d.slug === service.category ||
+                (service.department_name &&
+                  d.name.toLowerCase() === service.department_name.toLowerCase())
+            );
+
+            const rawDeptName = matchedDept
+              ? (isAr ? matchedDept.name_ar : matchedDept.name)
+              : isAr
+              ? (service.department_name_ar || service.department_name)
+              : service.department_name;
+
+            const departmentTitle = (
+              rawDeptName && isNaN(Number(rawDeptName))
+                ? rawDeptName
+                : service.category && isNaN(Number(service.category))
+                ? service.category.replace(/-/g, " ")
+                : isAr
+                ? "العلاج بالتقطير الوريدي"
+                : "IV Drip Therapy"
+            ).toUpperCase();
 
             return (
               <motion.div
@@ -104,9 +136,9 @@ export default function FeaturedTreatmentsSection() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#243642]/60 via-transparent to-transparent" />
                     
-                    {/* Category Badge overlay on image */}
-                    <span className="absolute top-4 left-4 text-[9px] uppercase font-bold tracking-widest text-white bg-[#243642]/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 shadow-md">
-                      {categoryTitle}
+                    {/* Department Badge overlay on image */}
+                    <span className="absolute top-4 left-4 rtl:left-auto rtl:right-4 text-[9px] uppercase font-bold tracking-widest text-white bg-[#243642]/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 shadow-md">
+                      {departmentTitle}
                     </span>
                   </div>
 

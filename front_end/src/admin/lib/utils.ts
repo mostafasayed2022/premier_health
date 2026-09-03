@@ -50,6 +50,24 @@ export function formatFieldLabel(name: string, label: string): string {
     address: "Address",
     address_ar: "Address (Arabic)",
     phone: "Phone Number",
+    // ── Marketing & Attribution Tracking ──
+    utm_source: "UTM Source",
+    utm_medium: "UTM Medium",
+    utm_campaign: "UTM Campaign",
+    utm_content: "UTM Content",
+    utm_term: "UTM Term",
+    campaign_id: "Campaign ID",
+    adset_id: "AdSet ID",
+    ad_id: "Ad ID",
+    gclid: "Google Click ID (GCLID)",
+    gbraid: "GBRAID (iOS App)",
+    wbraid: "WBRAID (iOS Web)",
+    fbclid: "Facebook Click ID (FBCLID)",
+    ttclid: "TikTok Click ID (TTCLID)",
+    scclid: "Snapchat Click ID",
+    sc_click_id: "Snapchat Click ID",
+    landing_page: "Landing Page",
+    referrer: "Referrer URL",
   };
 
   const exactMatch = mapping[name];

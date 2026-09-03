@@ -1,4 +1,4 @@
-﻿import { Department, Doctor, Service, Branch } from "./types";
+import { Department, Doctor, Service, Branch } from "./types";
 
 // MOCK DATASETS (Fallback if Django API is offline)
 export const MOCK_DEPARTMENTS: Department[] = [
@@ -272,8 +272,8 @@ export const MOCK_SERVICES: Service[] = [
       {
         q: "How quickly will I feel the effects?",
         q_ar: "متى سأشعر بالنتائج؟",
-        a: "Most patients report increased energy, mental clarity, and refreshed wellness within 1 to 2 hours following the infusion.",
-        a_ar: "يشعر معظم عملائنا بارتفاع ملحوظ في مستويات الطاقة والصفاء الذهني خلال 1 إلى 2 ساعة بعد الجلسة مباشرة.",
+        a: "Many patients report increased energy and a sense of refreshed wellness within 1 to 2 hours following the infusion. Individual results may vary.",
+        a_ar: "يلاحظ كثير من عملائنا ارتفاعاً في مستويات الطاقة والشعور بالانتعاش خلال 1 إلى 2 ساعة بعد الجلسة. تتفاوت النتائج من شخص لآخر.",
       },
       {
         q: "Is the Myers' Cocktail safe for frequent administration?",
@@ -292,25 +292,25 @@ export const MOCK_SERVICES: Service[] = [
     price: 450,
     photo: "/Treatments/nad.webp",
     description:
-      "Medical-grade Nicotinamide Adenine Dinucleotide (NAD+) coenzyme infusion engineered to power mitochondrial repair, enhance brain function, and promote cellular longevity.",
+      "Medical-grade Nicotinamide Adenine Dinucleotide (NAD+) coenzyme infusion designed to support mitochondrial health, brain function, and cellular longevity at the molecular level.",
     description_ar:
-      "تسريب إنزيم NAD+ الخلوي النقي بتركيز طبي عالي لتحفيز إصلاح الميتوكوندريا، تجديد طاقة الخلايا، وتعزيز وظائف الدماغ والشباب الدائم.",
+      "تسريب إنزيم NAD+ الخلوي النقي بتركيز طبي عالي لدعم صحة الميتوكوندريا، وظائف الدماغ، وطاقة الخلايا في مراحل الشيخوخة.",
     ingredients:
       "Pure Coenzyme NAD+ (250mg - 500mg), Sterile Balanced Electrolyte Saline Carrier",
     ingredients_ar:
       "إنزيم NAD+ النقي عالي التركيز (250 - 500 ملغ)، محلول كهرلي معقم متوازن",
     category: "iv-therapy",
     benefits: [
-      "Elevates cellular ATP energy at the mitochondrial level",
-      "Enhances memory, cognitive clarity, and mental endurance",
-      "Activates Sirtuin longevity genes for anti-aging",
-      "Supports DNA repair and metabolic optimization",
+      "Supports cellular energy production at the mitochondrial level",
+      "May support cognitive clarity, mental focus, and sustained energy",
+      "Activates Sirtuin longevity pathways associated with healthy aging",
+      "Supports DNA repair mechanisms and metabolic balance",
     ],
     benefits_ar: [
-      "مضاعفة إنتاج طاقة ATP الخلوية في الميتوكوندريا",
-      "تعزيز التركيز والذاكرة والقدرة على التفكير بصفاء",
-      "تنشيط جينات السيرتوين المسؤولة عن إطالة عمر الخلايا",
-      "دعم إصلاح الحمض النووي (DNA) وتسريع التمثيل الغذائي",
+      "دعم إنتاج طاقة ATP الخلوية في الميتوكوندريا",
+      "قد يدعم التركيز والصفاء الذهني ومستويات الطاقة",
+      "تنشيط مسارات جينات السيرتوين المرتبطة بالشيخوخة الصحية",
+      "دعم آليات إصلاح الحمض النووي (DNA) والتوازن الأيضي",
     ],
     process: [
       "Comprehensive medical evaluation by attending physician",
@@ -351,16 +351,16 @@ export const MOCK_SERVICES: Service[] = [
       "جلوتاثيون صيدلاني نقي (2000 ملغ)، فيتامين سي عالي الجرعة (15 غرام)، حمض الألفا ليبويك، إن-أسيتيل سيستيين (NAC)",
     category: "iv-therapy",
     benefits: [
-      "Deep hepatic detoxification and heavy-metal binding",
-      "Visible reduction in skin pigmentation and dark spots",
-      "Neutralizes destructive free radicals systemic-wide",
-      "Enhances natural collagen synthesis and skin elasticity",
+      "Supports liver health and antioxidant defence",
+      "May help reduce visible skin pigmentation over a course of sessions",
+      "Neutralizes free radicals and supports cellular protection",
+      "Promotes natural collagen synthesis and skin radiance",
     ],
     benefits_ar: [
-      "تنقية عميقة لخلايا الكبد من السموم والشوائب المتراكمة",
-      "تفتيح وتوحيد لون البشرة وتقليل التصبغات والبقع الداكنة",
-      "تحييد الجذور الحرة الضارة وحماية الخلايا من التلف",
-      "تحفيز إنتاج الكولاجين الطبيعي وزيادة نضارة ومرونة الجلد",
+      "دعم صحة الكبد ومنظومة مضادات الأكسدة",
+      "قد يساعد في تقليل التصبغات وبقع البشرة الداكنة على مدار الجلسات",
+      "تحييد الجذور الحرة الضارة ودعم حماية الخلايا",
+      "تعزيز إنتاج الكولاجين الطبيعي ونضارة الجلد",
     ],
     process: [
       "Consultation and antioxidant requirement assessment",
@@ -401,16 +401,16 @@ export const MOCK_SERVICES: Service[] = [
       "فيتامين ب12 النشط، حمض الفوليك، حديد، زنك، مركب معادن نادرة، سوائل ترطيب معقمة",
     category: "iv-therapy",
     benefits: [
-      "Directly addresses acute post-bariatric nutritional deficits",
-      "Bypasses compromised gastrointestinal absorption",
-      "Protects hair from thinning and strengthens nail health",
-      "Sustains healthy metabolic and energy levels",
+      "Addresses post-bariatric nutritional deficits under physician guidance",
+      "Delivers nutrients intravenously, bypassing compromised GI absorption",
+      "Supports hair health and may reduce thinning associated with nutrient deficiency",
+      "Helps sustain healthy metabolic and energy levels",
     ],
     benefits_ar: [
-      "علاج فوري ومباشر لنقص الفيتامينات والمعادن بعد جراحات السمنة",
-      "تجاوز الجهاز الهضمي والامتصاص المباشر في مجرى الدم",
-      "حماية الشعر من التساقط وتقوية صحة الأظافر والجلد",
-      "الحفاظ على مستويات الطاقة والنشاط ومقاومة الخمول",
+      "معالجة نقص التغذية بعد جراحات السمنة بإشراف الطبيب المختص",
+      "توصيل المغذيات وريدياً متجاوزاً الجهاز الهضمي مباشرةً لمجرى الدم",
+      "دعم صحة الشعر وقد يقلل من التساقط المرتبط بنقص المغذيات",
+      "المساعدة في الحفاظ على مستويات الطاقة والنشاط الأيضي",
     ],
     process: [
       "Blood lab work review and physician assessment",

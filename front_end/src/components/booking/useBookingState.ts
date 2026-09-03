@@ -21,7 +21,7 @@ const initialBookingData: BookingData = {
   doctor: "",
   date: "",
   time: "",
-  payment: "",
+  payment: "cash",
   email: "",
   phone: "",
 };
@@ -52,14 +52,17 @@ export function useBookingState() {
       const bookingId = String(data?.booking?.id ?? "");
       if (bookingId && !firedBookingsRef.current.has(bookingId)) {
         firedBookingsRef.current.add(bookingId);
+        const bookingFee = data?.booking?.fee ? Number(data.booking.fee) : undefined;
         trackBookingComplete({
           booking_id: bookingId,
-          service_id: booking.service,
+          service_id: booking.service || undefined,
           service_name: undefined, // resolved server-side
-          branch_id: booking.branch,
+          branch_id: booking.branch || undefined,
           branch_name: undefined,
-          value: undefined,
+          price: bookingFee,
+          value: bookingFee,
           currency: "EGP",
+          event_id: `booking_${bookingId}`,
         });
       }
 
@@ -109,6 +112,7 @@ export function useBookingState() {
             booking_id: bookingId || undefined,
             value: 0,
             currency: "EGP",
+            event_id: `purchase_${txnId}`,
           });
         }
       }
@@ -225,6 +229,8 @@ export function useBookingState() {
       if (step === 1 && !firedStartBookingRef.current) {
         firedStartBookingRef.current = true;
         trackStartBooking({
+          service_id: booking.service || undefined,
+          branch_id: booking.branch || undefined,
           booking_source: "booking_wizard",
         });
       }
@@ -233,6 +239,8 @@ export function useBookingState() {
       if (step === 6 && !firedSubmitLeadRef.current) {
         firedSubmitLeadRef.current = true;
         trackSubmitLead({
+          service_id: booking.service || undefined,
+          branch_id: booking.branch || undefined,
           lead_type: "booking",
           source: "booking_wizard",
         });
@@ -266,7 +274,9 @@ export function useBookingState() {
         typeof window !== "undefined"
           ? localStorage.getItem("patient_access") || undefined
           : undefined,
-      // Attach attribution for campaign tracking (Zero-PII)
+      // Pass flattened attribution fields
+      ...(Object.keys(attribution).length > 0 ? attribution : {}),
+      // Also pass nested attribution object for serializers that expect an envelope
       attribution: Object.keys(attribution).length > 0 ? attribution : undefined,
     };
 

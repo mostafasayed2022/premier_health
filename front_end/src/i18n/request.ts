@@ -59,6 +59,14 @@ export const loadLocaleMessages = cache(async (locale: string) => {
     }
   }
 
+  // Ensure both PascalCase and lowercase namespaces work smoothly
+  for (const ns of namespaces) {
+    const lower = ns.toLowerCase();
+    if (!messages[lower] && messages[ns]) {
+      messages[lower] = messages[ns];
+    }
+  }
+
   return messages;
 });
 

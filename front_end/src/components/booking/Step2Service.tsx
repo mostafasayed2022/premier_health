@@ -120,7 +120,7 @@ export function Step2Service({
               <div className="flex items-center gap-2 sm:gap-3 mt-2 sm:mt-3 flex-wrap">
                 {svc.price != null && (
                   <span className="inline-block px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-bold text-[10px] sm:text-xs">
-                    ${svc.price}
+                    {svc.price} EGY
                   </span>
                 )}
                 {svc.duration && (

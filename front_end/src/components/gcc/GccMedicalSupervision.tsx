@@ -49,7 +49,7 @@ export function GccMedicalSupervision() {
             <div className="flex items-center gap-3 bg-amber-400/10 border border-amber-400/20 rounded-xl p-4">
               <Stethoscope size={20} className="text-amber-400 flex-shrink-0" />
               <p className="text-white/80 text-sm">
-                جميع الجلسات تحت إشراف <strong className="text-white">أطباء مرخصين</strong> ومتخصصين في الطب الداخلي
+                جميع الجلسات تحت إشراف <strong className="text-white">أطباء مرخصين</strong> متخصصين في العلاجات الوريدية والطب التجديدي
               </p>
             </div>
           </div>

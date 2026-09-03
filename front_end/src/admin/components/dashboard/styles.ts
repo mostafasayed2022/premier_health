@@ -15,6 +15,8 @@ export const badgeGreen: React.CSSProperties = { ...badgeBase, backgroundColor: 
 export const badgeYellow: React.CSSProperties = { ...badgeBase, backgroundColor: "#FEF9C3", color: "#A16207" };
 export const badgeRed: React.CSSProperties = { ...badgeBase, backgroundColor: "#FEE2E2", color: "#B91C1C" };
 export const badgeGray: React.CSSProperties = { ...badgeBase, backgroundColor: "#F1F5F9", color: "#475569" };
+export const badgeBlue: React.CSSProperties = { ...badgeBase, backgroundColor: "#E0F2FE", color: "#0369A1" };
+export const badgePurple: React.CSSProperties = { ...badgeBase, backgroundColor: "#F3E8FF", color: "#7E22CE" };
 export const actionBtnStyle: React.CSSProperties = {
   border: "none", background: "transparent", cursor: "pointer",
   padding: "4px 8px", fontSize: "11px", fontWeight: "bold",
