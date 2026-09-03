@@ -54,9 +54,6 @@ interface ApiBranch {
   map_url?: string | null;
   name_ar?: string;
   address_ar?: string;
-  hours?: string;
-  hours_ar?: string;
-  services?: any[];
 }
 
 export interface ApiDoctor {
@@ -73,10 +70,38 @@ export interface ApiDoctor {
   position_ar?: string;
   bio?: string;
   bio_ar?: string;
-  image_url?: string;
-  photo?: string;
+  image_url?: string | null;
+  photo?: string | null;
   effective_fee?: number;
   slug?: string;
+}
+
+
+export interface ApiAppointment {
+  id: number;
+  patient: number;
+  doctor: number;
+  service: number;
+  branch: number;
+  date: string;
+  start_time: string;
+  status: string;
+  fee: number;
+  doctor_name: string;
+  service_name: string;
+  branch_name: string;
+  created_at: string;
+}
+
+export interface ApiPayment {
+  id: number;
+  booking: number;
+  patient: number;
+  amount: number;
+  method: string;
+  status: string;
+  transaction_id: string;
+  paid_at: string;
 }
 
 interface ApiBooking {
@@ -106,12 +131,13 @@ interface ApiBooking {
 
 export function mergeDept(d: ApiDepartment): Department {
   const fallbackMock = MOCK_DEPARTMENTS.find(
-    (m) => m.slug === d.slug || String(m.id) === String(d.id),
+    (md) =>
+      md.slug === d.slug ||
+      String(md.id) === String(d.id) ||
+      md.name.toLowerCase() === d.name.toLowerCase()
   );
-  const rawCount =
-    (d as any).doctors_count ??
-    (d as any).doctorsCount ??
-    (Array.isArray((d as any).doctors) ? (d as any).doctors.length : 0);
+
+  const rawCount = (d as any).doctors_count ?? fallbackMock?.doctorsCount ?? 0;
 
   return {
     ...d,
@@ -120,7 +146,7 @@ export function mergeDept(d: ApiDepartment): Department {
     description_ar: d.description_ar || d.description,
     photo: getOptimizedImageUrl(
       d.image_url || fallbackMock?.photo || "/Departments/iv_theapy.webp",
-      800,
+      800
     ),
     doctorsCount: rawCount,
   } as Department;
@@ -150,98 +176,30 @@ export function mergeSvc(s: ApiService): Service {
     faq: [],
   } as Service;
 }
-// ─── Default Curated Branches (Local SEO & SSR Fallback) ───────────────────
-export const DEFAULT_BRANCHES: Branch[] = [
-  {
-    id: "2",
-    name: "Fairmont Nile City",
-    name_ar: "فيرمونت نايل سيتي",
-    address: "Fairmont Nile City Hotel & Towers, Corniche El Nil, Cairo",
-    address_ar: "فندق فيرمونت نايل سيتي، أبراج نايل سيتي، كورنيش النيل، القاهرة",
-    phone: "+201200644663",
-    hours: "10:00 AM - 10:00 PM (Sat - Thu)",
-    hours_ar: "10:00 ص - 10:00 م (السبت - الخميس)",
-    mapEmbed: "",
-    mapUrl: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
-    map_url: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
-    url: "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
-    photo: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04519_fyazrj.jpg",
-    image_url: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04519_fyazrj.jpg",
-    country: "Egypt",
-    services: ["IV Therapy", "Dermatology", "Longevity & Anti-Aging"],
-  },
-  {
-    id: "4",
-    name: "Arkan Plaza (Sheikh Zayed)",
-    name_ar: "أركان بلازا (الشيخ زايد)",
-    address: "Arkan Plaza, El-Bostan St, Sheikh Zayed City, Giza",
-    address_ar: "مجمع أركان بلازا الطبي، مدخل الشيخ زايد، 6 أكتوبر",
-    phone: "+201200644663",
-    hours: "10:00 AM - 10:00 PM (Sat - Thu)",
-    hours_ar: "10:00 ص - 10:00 م (السبت - الخميس)",
-    mapEmbed: "",
-    mapUrl: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
-    map_url: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
-    url: "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
-    photo: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/hero1_qimiy7.jpg",
-    image_url: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/hero1_qimiy7.jpg",
-    country: "Egypt",
-    services: ["IV Therapy", "Athletic Recovery", "Hydrafacial"],
-  },
-  {
-    id: "3",
-    name: "EDNC Sodic (New Cairo)",
-    name_ar: "سوديك EDNC (التجمع الخامس)",
-    address: "EDNC Eastown District New Cairo, Sodic, Road 90, New Cairo",
-    address_ar: "مجمع EDNC التجاري، مشروع سوديك إيست تاون، شارع التسعين، التجمع الخامس",
-    phone: "+201200644663",
-    hours: "10:00 AM - 10:00 PM (Sat - Thu)",
-    hours_ar: "10:00 ص - 10:00 م (السبت - الخميس)",
-    mapEmbed: "",
-    mapUrl: "https://www.google.com/maps?q=30.0154326,31.5145233",
-    map_url: "https://www.google.com/maps?q=30.0154326,31.5145233",
-    url: "https://www.google.com/maps?q=30.0154326,31.5145233",
-    photo: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04539_pxbhlp.jpg",
-    image_url: "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04539_pxbhlp.jpg",
-    country: "Egypt",
-    services: ["IV Therapy", "Detox & Glutathione", "VIP Suite"],
-  },
-];
 
 // ─── Branch Merge ─────────────────────────────────────────────────────────────
 
 export function mergeBranch(b: ApiBranch): Branch {
-  const match = DEFAULT_BRANCHES.find(
-    (d) =>
-      String(d.id) === String(b.id) ||
-      (b.name && d.name.toLowerCase().includes(b.name.toLowerCase())) ||
-      (b.name_ar && d.name_ar.includes(b.name_ar))
-  );
-
-  const finalMapUrl = b.url || b.map_url || match?.mapUrl || "";
-
   return {
     ...b,
     id: String(b.id),
-    name: b.name || match?.name || "Premier Health Branch",
-    name_ar: b.name_ar || match?.name_ar || b.name,
-    address: b.address || match?.address || "",
-    address_ar: b.address_ar || match?.address_ar || b.address,
-    phone: b.phone || match?.phone || "+201200644663",
+    name_ar: b.name_ar || b.name,
+    address_ar: b.address_ar || b.address,
     photo: getOptimizedImageUrl(
-      b.image_url || match?.photo || "/AboutPreview/about.webp",
-      800
+      b.image_url || "/AboutPreview/about.webp",
+      800,
     ),
-    hours: match?.hours || "10:00 AM - 10:00 PM (Sat - Thu)",
-    hours_ar: match?.hours_ar || "10:00 ص - 10:00 م (السبت - الخميس)",
+    hours: "",
+    hours_ar: "",
     mapEmbed: "",
-    mapUrl: finalMapUrl,
-    map_url: finalMapUrl,
-    url: finalMapUrl,
+    mapUrl: b.url || b.map_url || "",
+    map_url: b.url || b.map_url || "",
+    url: b.url || b.map_url || "",
     country: "Egypt",
-    services: match?.services || ["IV Therapy", "Wellness", "Dermatology"],
+    services: [],
   } as Branch;
 }
+
 
 // ─── Doctor Merge ─────────────────────────────────────────────────────────────
 

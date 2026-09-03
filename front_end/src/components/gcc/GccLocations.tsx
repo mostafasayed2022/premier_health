@@ -45,8 +45,6 @@ interface VerifiedBranch {
   services_ar: string[];
 }
 
-// ─── GCC Branches Mock Data (COMMENTED OUT — Now using live dashboard data) ───────
-/*
 const REAL_VERIFIED_BRANCHES: VerifiedBranch[] = [
   {
     id: 2,
@@ -115,11 +113,10 @@ const REAL_VERIFIED_BRANCHES: VerifiedBranch[] = [
     ],
   },
 ];
-*/
 
 export function GccLocations() {
-  const [branches, setBranches] = useState<VerifiedBranch[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [branches, setBranches] = useState<VerifiedBranch[]>(REAL_VERIFIED_BRANCHES);
+
 
   useEffect(() => {
     getBranches()
@@ -178,17 +175,12 @@ export function GccLocations() {
       })
       .catch(() => {
         // Handled silently
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   }, []);
 
-  if (!isLoading && branches.length === 0) {
-    return null;
-  }
 
   return (
+
     <section className="py-20 bg-[#0d2235] text-white relative overflow-hidden" id="gcc-branches">
       {/* Subtle background glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl pointer-events-none" />

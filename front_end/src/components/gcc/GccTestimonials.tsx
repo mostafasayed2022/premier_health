@@ -35,8 +35,6 @@ interface VerifiedTestimonial {
   branch_badge_ar: string;
 }
 
-// ─── GCC Testimonials Mock Data (COMMENTED OUT — Now using live dashboard data) ─────
-/*
 const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
   {
     id: 4,
@@ -69,11 +67,12 @@ const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
       "قمت بزيارة العيادة لجلسات نضارة البشرة والتقطير الوريدي المصاحب. النتائج طبيعية ومبهرة للغاية، وتصميم العيادة أشبه بملاذ صحي فاخر بمعايير عالمية تضاهي أرقى العيادات في دبي ولندن.",
   },
 ];
-*/
 
 export function GccTestimonials() {
-  const [testimonials, setTestimonials] = useState<VerifiedTestimonial[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [testimonials, setTestimonials] = useState<VerifiedTestimonial[]>(
+    REAL_VERIFIED_TESTIMONIALS,
+  );
+
 
   useEffect(() => {
     getTestimonials()
@@ -114,19 +113,12 @@ export function GccTestimonials() {
       })
       .catch(() => {
         // Handled silently
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   }, []);
 
-  if (!isLoading && testimonials.length === 0) {
-    return null;
-  }
-
-
 
   return (
+
     <section
       className="py-20 bg-white relative overflow-hidden"
       id="gcc-testimonials"

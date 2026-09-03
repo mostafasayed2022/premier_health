@@ -29,7 +29,6 @@ import {
   mergeBranch,
   mergeDoc,
   mapBooking,
-  DEFAULT_BRANCHES,
   type ApiDoctor,
 } from "./helpers";
 
@@ -271,14 +270,12 @@ export const getBranches = async (): Promise<Branch[]> => {
   try {
     const { data } = await api.get<ApiBranch[]>("wizard/branches/");
 
-    if (Array.isArray(data) && data.length > 0) {
-      return data.map(mergeBranch);
-    }
-    return DEFAULT_BRANCHES;
+    return data.map(mergeBranch);
   } catch {
-    return DEFAULT_BRANCHES;
+    return [];
   }
 };
+
 
 
 // Booking Wizard

@@ -20,23 +20,14 @@ const BranchLightboxModal = dynamic(() =>
   ),
 );
 
-interface BranchesPageClientProps {
-  /** SSR-prefetched branch data passed from the Server Component */
-  initialBranches?: Branch[];
-}
-
-export function BranchesPageClient({
-  initialBranches = [],
-}: BranchesPageClientProps) {
+export function BranchesPageClient() {
   const locale = useLocale();
   const isAr = locale === "ar";
 
-  // initialData seeds the cache with SSR data — no loading spinner on first paint
-  const { data: branches = [], isLoading: isBranchesLoading } = useBranches({
-    initialData: initialBranches.length > 0 ? initialBranches : undefined,
-  });
+  const { data: branches = [], isLoading: isBranchesLoading } = useBranches();
   const { data: departments = [], isLoading: isDeptsLoading } =
     useDepartments();
+
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>("all");
   const { data: rawBranchGalleryItems = [], isLoading: isGalleryLoading } =

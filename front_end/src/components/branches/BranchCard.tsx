@@ -27,24 +27,19 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
       )
     : [];
 
-  const hours =
-    branch.hours || (isAr ? "10:00 ص - 10:00 م (السبت - الخميس)" : "10:00 AM - 10:00 PM (Sat - Thu)");
-  const hoursAr =
-    branch.hours_ar || "10:00 ص - 10:00 م (السبت - الخميس)";
+  const hours = branch.hours;
+  const hoursAr = branch.hours_ar;
 
   return (
     <motion.div
-      initial={false}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       className="h-full"
     >
-      <article
-        itemScope
-        itemType="https://schema.org/MedicalClinic"
-        className="h-full bg-white rounded-3xl border border-accent/20 shadow-md hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden card-gold-accent group"
-      >
+      <div className="h-full bg-white rounded-3xl border border-accent/20 shadow-md hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden card-gold-accent group">
+
         {/* Photo Header */}
         <div
           onClick={() => {
@@ -205,8 +200,9 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
             );
           })()}
         </div>
-      </article>
+      </div>
     </motion.div>
   );
 }
+
 

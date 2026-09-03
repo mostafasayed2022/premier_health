@@ -37,8 +37,6 @@ interface VerifiedDoctor {
   badges_ar: string[];
 }
 
-// ─── GCC Doctors Mock Data (COMMENTED OUT — Now using live dashboard data) ───────
-/*
 const REAL_VERIFIED_DOCTORS: VerifiedDoctor[] = [
   {
     id: 1,
@@ -69,11 +67,10 @@ const REAL_VERIFIED_DOCTORS: VerifiedDoctor[] = [
     badges_ar: ["استشارات خاصة", "علاجات NAD+ المتقدمة", "خبرة 12+ سنة"],
   },
 ];
-*/
 
 export function GccDoctors() {
-  const [doctors, setDoctors] = useState<VerifiedDoctor[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [doctors, setDoctors] = useState<VerifiedDoctor[]>(REAL_VERIFIED_DOCTORS);
+
 
   useEffect(() => {
     let isMounted = true;
@@ -129,22 +126,16 @@ export function GccDoctors() {
       })
       .catch(() => {
         // Handled silently
-      })
-      .finally(() => {
-        if (isMounted) setIsLoading(false);
       });
+
 
     return () => {
       isMounted = false;
     };
   }, []);
 
-  if (!isLoading && doctors.length === 0) {
-    return null;
-  }
-
-
   // Determine optimal responsive grid layout based on number of doctors
+
   const gridClasses =
     doctors.length === 1
       ? "grid grid-cols-1 max-w-xl mx-auto gap-8"
