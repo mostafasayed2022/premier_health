@@ -22,14 +22,14 @@ export function Step6Payment({ selected, onSelect }: Step6PaymentProps) {
         ? "ادفع مباشرة عند وصولك للعيادة نقداً أو بالبطاقة البنكية"
         : "Pay upon arrival at the clinic via cash, credit, or debit card",
     },
-    {
-      id: "paymob",
-      icon: CreditCard,
-      label: t("payOnline"),
-      subtitle: isAr
-        ? "دفع إلكتروني فوري وآمن ببطاقات فيزا وماستركارد"
-        : "Instant & secure online payment via Visa, MasterCard & cards",
-    },
+    // {
+    //   id: "paymob",
+    //   icon: CreditCard,
+    //   label: t("payOnline"),
+    //   subtitle: isAr
+    //     ? "دفع إلكتروني فوري وآمن ببطاقات فيزا وماستركارد"
+    //     : "Instant & secure online payment via Visa, MasterCard & cards",
+    // },
   ];
 
   return (
