@@ -302,7 +302,6 @@ export default function WhyChooseUsSection() {
                   </p>
                 </div>
               </div>
-              {/*  */}
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <div className="px-4 py-2 rounded-xl bg-white border border-accent/20 text-xs font-bold text-primary flex items-center gap-2 shadow-sm">
                   <CheckCircle className="w-4 h-4 text-emerald-600" />
