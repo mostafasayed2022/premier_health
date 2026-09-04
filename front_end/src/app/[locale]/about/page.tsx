@@ -3,6 +3,7 @@ import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutMissionVision } from "@/components/about/AboutMissionVision";
 import { AboutWhyChooseUs } from "@/components/about/AboutWhyChooseUs";
 import { DepartmentComparison } from "@/components/departments";
+import { DepartmentDermaIntro } from "@/components/departments/DepartmentDermaIntro";
 import { generatePageMetadata } from "@/lib/seo";
 
 export const generateMetadata = generatePageMetadata("about");
@@ -14,6 +15,7 @@ export default function AboutPage() {
       <AboutHeroSection />
       <AboutTimeline />
       <AboutMissionVision />
+      <DepartmentDermaIntro />
       <DepartmentComparison />
       <AboutWhyChooseUs />
     </div>

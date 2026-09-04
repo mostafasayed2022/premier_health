@@ -16,11 +16,7 @@ const DepartmentDripsIntro = dynamic(() =>
 const FeaturedTreatmentsSection = dynamic(
   () => import("@/components/home/FeaturedTreatmentsSection")
 );
-const DepartmentDermaIntro = dynamic(() =>
-  import("@/components/departments/DepartmentDermaIntro").then(
-    (mod) => mod.DepartmentDermaIntro
-  )
-);
+
 const TestimonialsSection = dynamic(
   () => import("@/components/home/TestimonialsSection")
 );
@@ -63,8 +59,6 @@ export default function HomePage() {
       {/* 6. FEATURED TREATMENTS */}
       <FeaturedTreatmentsSection />
 
-      {/* 6.5 DERMA SERVICES */}
-      <DepartmentDermaIntro />
 
       {/* 7. TESTIMONIALS */}
       <TestimonialsSection />
