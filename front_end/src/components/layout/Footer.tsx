@@ -24,6 +24,7 @@ export function Footer() {
           <FooterSupport />
           <FooterContact />
         </div>
+        {/*  */}
         <FooterBottom />
       </div>
     </footer>
