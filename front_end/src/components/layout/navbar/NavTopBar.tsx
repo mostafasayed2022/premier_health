@@ -68,7 +68,7 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
   };
 
   return (
-    <div className="hidden lg:block bg-[#2A4D6B] text-white/90 border-b border-[#1A2A38]">
+    <div className="hidden lg:block bg-[#2B4D69] text-white/90 border-b border-[#1A2A38]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8 h-10 flex items-center justify-between text-[11px] font-medium tracking-wide">
         {/* Left Side: Contact Info (Branch Numbers & Email) + GCC Landing Link */}
         <div className="flex items-center gap-4 xl:gap-5">

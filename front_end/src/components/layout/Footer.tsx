@@ -12,7 +12,7 @@ const FooterBottom = dynamic(
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#2A4D6B] text-white border-t-2 border-accent/20 pt-16 pb-8">
+    <footer className="relative overflow-hidden bg-[#2B4D69] text-white border-t-2 border-accent/20 pt-16 pb-8">
       {/* Background visual graphics */}
       <div className="absolute top-0 right-0 h-64 w-64 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
       <div className="absolute bottom-0 left-0 h-80 w-80 bg-accent/5 rounded-full translate-y-1/3 -translate-x-1/3 blur-3xl" />
