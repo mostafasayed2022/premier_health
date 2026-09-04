@@ -11,7 +11,6 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-
 const valueKeys = [
   "excellence",
   "integrity",
@@ -20,7 +19,7 @@ const valueKeys = [
   "innovation",
 ] as const;
 const valueIcons = [Sparkles, Shield, Heart, Activity, CheckCircle];
-const valueLetters = ["A", "B", "C", "D", "E"];
+// const valueLetters = ["A", "B", "C", "D", "E"];
 
 export function AboutMissionVision() {
   const t = useTranslations();
@@ -119,7 +118,7 @@ export function AboutMissionVision() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {valueKeys.map((key, i) => {
             const Icon = valueIcons[i];
-            const letter = valueLetters[i];
+            // const letter = valueLetters[i];
             return (
               <motion.div
                 key={i}
@@ -129,9 +128,9 @@ export function AboutMissionVision() {
                 transition={{ delay: i * 0.08 }}
                 className="bg-white rounded-2xl border border-[#C8A96B]/10 p-7 text-center shadow-sm hover:-translate-y-2 transition-transform duration-300 card-gold-accent group"
               >
-                <div className="text-4xl font-serif font-black text-[#C8A96B]/15 group-hover:text-[#C8A96B]/25 transition-colors mb-4">
+                {/* <div className="text-4xl font-serif font-black text-[#C8A96B]/15 group-hover:text-[#C8A96B]/25 transition-colors mb-4">
                   {letter}
-                </div>
+                </div> */}
                 <div className="p-3 rounded-xl bg-[#1F3D5A]/5 text-[#1F3D5A] w-fit mx-auto mb-4">
                   <Icon size={22} />
                 </div>
