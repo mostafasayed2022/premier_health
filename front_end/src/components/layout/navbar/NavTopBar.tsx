@@ -68,7 +68,7 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
   };
 
   return (
-    <div className="hidden lg:block bg-[#274560] text-white/90 border-b border-[#1A2A38]">
+    <div className="hidden lg:block bg-[#2C4966] text-white/90 border-b border-[#1A2A38]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8 h-10 flex items-center justify-between text-[11px] font-medium tracking-wide">
         {/* Left Side: Contact Info (Branch Numbers & Email) + GCC Landing Link */}
         <div className="flex items-center gap-4 xl:gap-5">
@@ -86,7 +86,9 @@ export function NavTopBar({ mounted }: NavTopBarProps) {
           >
             <PhoneCall size={12} className="text-[#C8A96B] shrink-0" />
             <span>{currentLocale === "ar" ? "اتصل بنا:" : "Call Us:"}</span>
-            <span dir="ltr" className="font-bold">+20 12 0064 4663</span>
+            <span dir="ltr" className="font-bold">
+              +20 12 0064 4663
+            </span>
           </a>
 
           <span className="w-[1px] h-3.5 bg-white/20" />
