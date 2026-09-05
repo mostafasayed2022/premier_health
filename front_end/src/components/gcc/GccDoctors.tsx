@@ -224,7 +224,7 @@ export function GccDoctors() {
                   </div>
 
                   {/* Bio */}
-                  <p className="text-white/75 text-xs sm:text-sm leading-relaxed mb-6 bg-white/[0.02] p-4 rounded-2xl border border-white/5 line-clamp-4 group-hover:line-clamp-none transition-all">
+                  <p className="text-white/80 text-xs sm:text-sm leading-relaxed mb-6 bg-white/[0.03] p-4 rounded-2xl border border-white/10">
                     {doc.bio_ar}
                   </p>
 

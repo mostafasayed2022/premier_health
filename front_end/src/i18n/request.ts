@@ -42,19 +42,24 @@ export const loadLocaleMessages = cache(async (locale: string) => {
   for (const ns of namespaces) {
     const fileName = ns.toLowerCase();
     try {
-      messages[ns] = (
+      const data = (
         await import(`../messages/${locale}/${fileName}.json`)
       ).default;
+      messages[ns] = data;
+      messages[fileName] = data;
     } catch (err) {
       console.warn(
         `[i18n] Failed to load ${ns} for ${locale}, falling back to ar`,
       );
       try {
-        messages[ns] = (
+        const fallbackData = (
           await import(`../messages/ar/${fileName}.json`)
         ).default;
+        messages[ns] = fallbackData;
+        messages[fileName] = fallbackData;
       } catch (fallbackErr) {
         messages[ns] = {};
+        messages[fileName] = {};
       }
     }
   }

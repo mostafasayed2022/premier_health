@@ -91,7 +91,7 @@ export default function GccLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className={`${cairo.className} bg-white min-h-screen antialiased selection:bg-amber-100`}
+        className={`${cairo.className} bg-white min-h-screen antialiased selection:bg-amber-400 selection:text-[#0d2235]`}
         style={{ direction: "rtl" }}
       >
         <GoogleTagManagerNoScript />
