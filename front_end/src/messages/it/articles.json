@@ -1,0 +1,14 @@
+{
+  "pageTitle": "Articoli sulla Salute",
+  "pageSubtitle": "Approfondimenti di esperti e guide al benessere dal nostro team medico",
+  "allCategories": "Tutti",
+  "readMore": "Leggi l'articolo",
+  "readingTime": "{minutes} min di lettura",
+  "publishedOn": "Pubblicato il {date}",
+  "by": "Di",
+  "relatedTitle": "Articoli Correlati",
+  "backToArticles": "Torna agli articoli",
+  "loading": "Caricamento articoli…",
+  "notFound": "Articolo non trovato",
+  "noArticles": "Nessun articolo trovato"
+}

@@ -189,3 +189,6 @@ export function trackPurchase(params: PurchaseParams): void {
     locale: getClientLocale(params.locale),
   });
 }
+
+export { trackViewIVDrip, trackBookIVDrip, trackViewArticle } from "./iv-drip-articles-events";
+

@@ -35,6 +35,8 @@ export const loadLocaleMessages = cache(async (locale: string) => {
     "Welcome",
     "Profile",
     "IVPackages",
+    "IVDrip",    // ← NEW
+    "Articles",  // ← NEW
   ];
 
   const messages: Record<string, any> = {};
@@ -42,9 +44,8 @@ export const loadLocaleMessages = cache(async (locale: string) => {
   for (const ns of namespaces) {
     const fileName = ns.toLowerCase();
     try {
-      const data = (
-        await import(`../messages/${locale}/${fileName}.json`)
-      ).default;
+      const data = (await import(`../messages/${locale}/${fileName}.json`))
+        .default;
       messages[ns] = data;
       messages[fileName] = data;
     } catch (err) {
@@ -52,9 +53,8 @@ export const loadLocaleMessages = cache(async (locale: string) => {
         `[i18n] Failed to load ${ns} for ${locale}, falling back to ar`,
       );
       try {
-        const fallbackData = (
-          await import(`../messages/ar/${fileName}.json`)
-        ).default;
+        const fallbackData = (await import(`../messages/ar/${fileName}.json`))
+          .default;
         messages[ns] = fallbackData;
         messages[fileName] = fallbackData;
       } catch (fallbackErr) {

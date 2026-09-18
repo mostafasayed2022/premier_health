@@ -1,0 +1,14 @@
+{
+  "pageTitle": "Sağlık Makaleleri",
+  "pageSubtitle": "Medikal ekibimizden uzman görüşleri ve sağlık rehberleri",
+  "allCategories": "Tümü",
+  "readMore": "Makaleyi Oku",
+  "readingTime": "{minutes} dk okuma süresi",
+  "publishedOn": "Yayınlanma: {date}",
+  "by": "Yazan",
+  "relatedTitle": "İlgili Makaleler",
+  "backToArticles": "Makalelere Dön",
+  "loading": "Makaleler yükleniyor…",
+  "notFound": "Makale bulunamadı",
+  "noArticles": "Makale bulunamadı"
+}

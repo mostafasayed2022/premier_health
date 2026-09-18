@@ -25,6 +25,14 @@ export function FooterLinks() {
         <Link href="/services" className="hover:text-accent transition-colors">
           {t("Nav.services")}
         </Link>
+        {/* ── NEW ──────────────────────────────────────────────────────────── */}
+        <Link href="/iv-drip-therapy" className="hover:text-accent transition-colors">
+          {t("Nav.ivDrip") || "IV Drip Therapy"}
+        </Link>
+        <Link href="/articles" className="hover:text-accent transition-colors">
+          {t("Nav.articles") || "Articles"}
+        </Link>
+        {/* ───────────────────────────────────────────────────────────────── */}
         <Link href="/branches" className="hover:text-accent transition-colors">
           {t("Nav.branches")}
         </Link>

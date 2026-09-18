@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useDepartments } from "@/lib/api";
 import { ServiceData } from "./types";
 import { trackViewService } from "@/lib/analytics/events";
 
@@ -18,6 +19,63 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
   const hasTrackedRef = useRef(false);
+  const { data: departments = [] } = useDepartments();
+
+  const getDepartmentLabel = () => {
+    if (
+      isAr &&
+      service.department_name_ar &&
+      !/^\d+$/.test(service.department_name_ar)
+    ) {
+      return service.department_name_ar;
+    }
+    if (
+      !isAr &&
+      service.department_name &&
+      !/^\d+$/.test(service.department_name)
+    ) {
+      return service.department_name;
+    }
+
+    const rawDept =
+      (service as any).department_id ||
+      (service as any).department ||
+      service.department_slug ||
+      service.category;
+    const rawStr = String(rawDept || "").toLowerCase();
+
+    const found = departments.find(
+      (d) =>
+        String(d.id).toLowerCase() === rawStr ||
+        d.id.toLowerCase() === `dep${rawStr}` ||
+        d.slug.toLowerCase() === rawStr ||
+        d.name.toLowerCase() === rawStr,
+    );
+    if (found) {
+      return isAr ? found.name_ar || found.name : found.name;
+    }
+
+    if (rawStr === "1" || rawStr === "iv-therapy" || rawStr === "dep1") {
+      return isAr ? "العلاج بالتقطير الوريدي" : "IV Drip Therapy";
+    }
+    if (rawStr === "2" || rawStr === "dermatology" || rawStr === "dep2") {
+      return isAr ? "الجلدية والعناية بالبشرة" : "Dermatology";
+    }
+    if (rawStr === "3" || rawStr === "aesthetics" || rawStr === "dep3") {
+      return isAr ? "الطب التجميلي" : "Aesthetics";
+    }
+    if (rawStr === "4" || rawStr === "body-contouring" || rawStr === "dep4") {
+      return isAr ? "نحت القوام والعناية الطبية" : "Body & Medical";
+    }
+
+    if (service.department_name && !/^\d+$/.test(service.department_name)) {
+      return service.department_name;
+    }
+    if (service.category && !/^\d+$/.test(service.category)) {
+      return service.category.replace("-", " ");
+    }
+    return isAr ? "الرعاية الطبية" : "Medical Care";
+  };
 
   useEffect(() => {
     if (!hasTrackedRef.current && service) {
@@ -53,11 +111,16 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
       <div className="luxury-container relative z-20 w-full">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-[11px] sm:text-xs text-white/60 mb-4 sm:mb-8">
-          <Link href="/services" className="hover:text-accent transition-colors">
+          <Link
+            href="/services"
+            className="hover:text-accent transition-colors"
+          >
             {t("Nav.services")}
           </Link>
           <span>/</span>
-          <span className="text-white font-medium line-clamp-1">{isAr ? service.name_ar : service.name}</span>
+          <span className="text-white font-medium line-clamp-1">
+            {isAr ? service.name_ar : service.name}
+          </span>
         </div>
 
         <motion.div
@@ -68,7 +131,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
           {/* Details column */}
           <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-4 text-white text-left rtl:text-right">
             <span className="inline-block w-fit px-3.5 sm:px-4 py-1 rounded-full bg-accent/20 border border-accent/30 text-accent text-[9px] sm:text-[10px] uppercase tracking-widest font-bold">
-              {service.category.replace("-", " ")}
+              {getDepartmentLabel()}
             </span>
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white leading-tight">
               {isAr ? service.name_ar : service.name}
@@ -95,7 +158,9 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                 {t("Services.startingFrom")}
               </p>
             </div>
-            <div className="text-4xl sm:text-5xl font-serif font-black text-accent">${service.price}</div>
+            <div className="text-4xl sm:text-5xl font-serif font-black text-accent">
+              ${service.price}
+            </div>
             {service.ingredients && (
               <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/15">
                 <p className="text-[9px] sm:text-[10px] text-white/60 uppercase tracking-wider mb-1.5 sm:mb-2 font-bold">

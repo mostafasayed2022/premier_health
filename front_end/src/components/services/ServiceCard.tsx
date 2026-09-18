@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { getOptimizedImageUrl } from "@/lib/utils/image";
+import { useDepartments } from "@/lib/api";
 import { ServiceData } from "./types";
 
 interface ServiceCardProps {
@@ -15,6 +16,63 @@ export function ServiceCard({ service }: ServiceCardProps) {
   const t = useTranslations();
   const locale = useLocale();
   const isAr = locale === "ar";
+  const { data: departments = [] } = useDepartments();
+
+  const getDepartmentLabel = () => {
+    if (
+      isAr &&
+      service.department_name_ar &&
+      !/^\d+$/.test(service.department_name_ar)
+    ) {
+      return service.department_name_ar;
+    }
+    if (
+      !isAr &&
+      service.department_name &&
+      !/^\d+$/.test(service.department_name)
+    ) {
+      return service.department_name;
+    }
+
+    const rawDept =
+      (service as any).department_id ||
+      (service as any).department ||
+      service.department_slug ||
+      service.category;
+    const rawStr = String(rawDept || "").toLowerCase();
+
+    const found = departments.find(
+      (d) =>
+        String(d.id).toLowerCase() === rawStr ||
+        d.id.toLowerCase() === `dep${rawStr}` ||
+        d.slug.toLowerCase() === rawStr ||
+        d.name.toLowerCase() === rawStr,
+    );
+    if (found) {
+      return isAr ? found.name_ar || found.name : found.name;
+    }
+
+    if (rawStr === "1" || rawStr === "iv-therapy" || rawStr === "dep1") {
+      return isAr ? "العلاج بالتقطير الوريدي" : "IV Drip Therapy";
+    }
+    if (rawStr === "2" || rawStr === "dermatology" || rawStr === "dep2") {
+      return isAr ? "الجلدية والعناية بالبشرة" : "Dermatology";
+    }
+    if (rawStr === "3" || rawStr === "aesthetics" || rawStr === "dep3") {
+      return isAr ? "الطب التجميلي" : "Aesthetics";
+    }
+    if (rawStr === "4" || rawStr === "body-contouring" || rawStr === "dep4") {
+      return isAr ? "نحت القوام والعناية الطبية" : "Body & Medical";
+    }
+
+    if (service.department_name && !/^\d+$/.test(service.department_name)) {
+      return service.department_name;
+    }
+    if (service.category && !/^\d+$/.test(service.category)) {
+      return service.category.replace("-", " ");
+    }
+    return isAr ? "الرعاية الطبية" : "Medical Care";
+  };
 
   const defaultPhoto = "/Treatments/Detox.webp";
   const isVideo =
@@ -40,9 +98,9 @@ export function ServiceCard({ service }: ServiceCardProps) {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent" />
-          <div className="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 flex items-center gap-1.5 bg-primary/70 backdrop-blur-sm rounded-full px-3.5 py-1.5 border border-white/10 shadow-md">
-            <span className="text-xs text-white font-medium capitalize">
-              {(service.category || "general").replace("-", " ")}
+          <div className="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 flex items-center gap-1.5 bg-primary/80 backdrop-blur-sm rounded-full px-3.5 py-1.5 border border-white/10 shadow-md">
+            <span className="text-xs text-white font-medium">
+              {getDepartmentLabel()}
             </span>
           </div>
         </div>

@@ -56,6 +56,7 @@ export interface Service {
   ingredients_ar?: string;
   category: string;
   department_name?: string;
+  department_name_ar?: string;
   department_slug?: string;
   benefits: string[];
   benefits_ar: string[];
@@ -172,3 +173,6 @@ export * from "./booking";
 export * from "./profile";
 export { uploadFile } from "../api/endpoints";
 export { useFileUpload } from "../api/hooks";
+export * from "./iv-drip";
+export * from "./articles";
+

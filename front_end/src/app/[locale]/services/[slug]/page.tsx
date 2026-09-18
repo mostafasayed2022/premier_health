@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { use, useEffect } from "react";
 import { notFound } from "next/navigation";
 import { useServiceBySlug } from "@/lib/api";
 import { Loader2 } from "lucide-react";
@@ -9,6 +9,10 @@ import {
   ServiceFaq,
   ServiceCta,
 } from "@/components/services";
+import {
+  fbTrackViewContent,
+  snapTrackViewContent,
+} from "@/lib/analytics/pixels";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -18,6 +22,16 @@ export default function ServiceDetailPage({ params }: Props) {
   const { slug } = use(params);
 
   const { data: service, isLoading } = useServiceBySlug(slug);
+
+  // Fire ViewContent pixel events once service data is loaded
+  useEffect(() => {
+    if (!service) return;
+    const name = (service as { name?: string; name_en?: string }).name ||
+      (service as { name_en?: string }).name_en ||
+      slug;
+    fbTrackViewContent(name, "Healthcare Service");
+    snapTrackViewContent(name);
+  }, [service, slug]);
 
   if (isLoading) {
     return (

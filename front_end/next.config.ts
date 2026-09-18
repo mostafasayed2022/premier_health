@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     formats: ["image/avif", "image/webp"],
+    qualities: [65, 70, 75],
     minimumCacheTTL: 31536000,
     remotePatterns: [
       {

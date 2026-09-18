@@ -5,6 +5,7 @@ import { getBranches, Branch } from "@/lib/api";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { ContactFormData } from "./types";
 import { useLocale, useTranslations } from "next-intl";
+import { fbTrackLead } from "@/lib/analytics/pixels";
 
 export function ContactForm() {
   const locale = useLocale();
@@ -37,6 +38,8 @@ export function ContactForm() {
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     setSubmitted(true);
+    // Fire Meta Pixel Lead event
+    fbTrackLead("Contact Form Submission");
   };
 
   if (submitted) {

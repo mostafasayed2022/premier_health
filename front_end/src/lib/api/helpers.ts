@@ -125,13 +125,47 @@ export function mergeDept(d: ApiDepartment): Department {
 // ─── Service Merge ────────────────────────────────────────────────────────────
 
 export function mergeSvc(s: ApiService): Service {
-  const deptSlug = s.department_slug || s.category || "general";
+  const rawDept =
+    (s as any).department_id ||
+    (s as any).department ||
+    s.department_slug ||
+    s.category ||
+    "general";
+  const rawDeptStr = String(rawDept).toLowerCase();
+
+  const foundDept = MOCK_DEPARTMENTS.find(
+    (d) =>
+      String(d.id).toLowerCase() === rawDeptStr ||
+      d.id.toLowerCase() === `dep${rawDeptStr}` ||
+      d.slug.toLowerCase() === rawDeptStr ||
+      d.name.toLowerCase() === rawDeptStr,
+  );
+
+  const deptSlug =
+    foundDept?.slug ||
+    (s.department_slug && !/^\d+$/.test(s.department_slug)
+      ? s.department_slug
+      : s.category && !/^\d+$/.test(s.category)
+        ? s.category
+        : "general");
+
+  const deptName =
+    foundDept?.name ||
+    (s.department_name && !/^\d+$/.test(s.department_name)
+      ? s.department_name
+      : deptSlug);
+
+  const deptNameAr =
+    foundDept?.name_ar ||
+    (s as any).department_name_ar ||
+    deptName;
 
   return {
     ...s,
     id: String(s.id),
     category: deptSlug,
-    department_name: s.department_name || deptSlug,
+    department_name: deptName,
+    department_name_ar: deptNameAr,
     department_slug: deptSlug,
     price: s.default_fee ?? 150,
     duration: s.duration_minutes ?? 0,

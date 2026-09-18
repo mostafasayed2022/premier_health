@@ -1,0 +1,14 @@
+{
+  "pageTitle": "Health Articles",
+  "pageSubtitle": "Expert insights and wellness guides from our medical team",
+  "allCategories": "All",
+  "readMore": "Read Article",
+  "readingTime": "{minutes} min read",
+  "publishedOn": "Published {date}",
+  "by": "By",
+  "relatedTitle": "Related Articles",
+  "backToArticles": "Back to Articles",
+  "loading": "Loading articles…",
+  "notFound": "Article not found",
+  "noArticles": "No articles found"
+}

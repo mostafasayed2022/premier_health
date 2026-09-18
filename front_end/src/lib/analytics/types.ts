@@ -148,6 +148,41 @@ export interface PurchaseParams {
   locale?: string;
 }
 
+export interface ViewIVDripParams {
+  drip_id: string | number;
+  drip_name: string;
+  drip_slug: string;
+  price?: string;
+  page_path?: string;
+  locale?: string;
+}
+
+export interface BookIVDripParams {
+  drip_id: string | number;
+  drip_name: string;
+  drip_slug: string;
+  price?: string;
+  booking_source?: "iv_drip_detail" | "iv_drip_main";
+  // Attribution fields (filled by useAttribution hook on the client)
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  page_path?: string;
+  locale?: string;
+}
+
+export interface ViewArticleParams {
+  article_id: string | number;
+  article_title: string;
+  article_slug: string;
+  article_category?: string;
+  reading_time?: number;
+  page_path?: string;
+  locale?: string;
+}
+
 // ─── DataLayer Event ──────────────────────────────────────────────────────────
 
 export type AnalyticsEventName =
@@ -161,7 +196,10 @@ export type AnalyticsEventName =
   | "submit_lead"
   | "booking_complete"
   | "appointment_attended"
-  | "purchase";
+  | "purchase"
+  | "view_iv_drip"
+  | "book_iv_drip"
+  | "view_article";
 
 export interface DataLayerEvent {
   event: AnalyticsEventName | string;

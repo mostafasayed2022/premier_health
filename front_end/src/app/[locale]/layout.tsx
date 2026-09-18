@@ -22,6 +22,8 @@ import {
   GoogleTagManagerNoScript,
 } from "@/components/analytics/GoogleTagManager";
 import { GTMProvider } from "@/components/analytics/GTMProvider";
+import { MetaPixelScript } from "@/components/analytics/MetaPixel";
+import { SnapPixelScript } from "@/components/analytics/SnapPixel";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { FloatingWhatsAppCTA } from "@/components/layout/FloatingWhatsAppCTA";
 import { BackToTop } from "@/components/common/BackToTop";
@@ -72,16 +74,25 @@ export default async function LocaleLayout({ children, params }: Props) {
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   const queryClient = getQueryClient();
-  await Promise.all([
-    queryClient.prefetchQuery({
-      queryKey: queryKeys.departments.all,
-      queryFn: getDepartments,
-    }),
-    queryClient.prefetchQuery({
-      queryKey: queryKeys.services.all,
-      queryFn: getServices,
-    }),
-  ]);
+
+  // In dev: skip SSR prefetch so the page opens instantly.
+  // In production: race against 1.5 s — if the backend is fast we ship SSR
+  // data; if it's slow / offline the page still opens and client hooks fetch.
+  if (process.env.NODE_ENV === "production") {
+    await Promise.race([
+      Promise.allSettled([
+        queryClient.prefetchQuery({
+          queryKey: queryKeys.departments.all,
+          queryFn: getDepartments,
+        }),
+        queryClient.prefetchQuery({
+          queryKey: queryKeys.services.all,
+          queryFn: getServices,
+        }),
+      ]),
+      new Promise<void>((resolve) => setTimeout(resolve, 1500)),
+    ]);
+  }
 
   return (
     <html
@@ -91,6 +102,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <head>
         <GoogleTagManagerScript />
+        <MetaPixelScript />
+        <SnapPixelScript />
         <link rel="icon" href="/logo/logo.webp" type="image/webp" sizes="any" />
         <link rel="shortcut icon" href="/logo/logo.webp" type="image/webp" />
         <link rel="apple-touch-icon" href="/logo/logo.webp" />

@@ -14,31 +14,41 @@ export function DepartmentDripsIntro() {
     {
       num: "01",
       title: t("step1Title") || "Cellular Hydration",
-      desc: t("step1Desc") || "Direct intravenous delivery ensures 100% bioavailability for immediate cellular absorption.",
+      desc:
+        t("step1Desc") ||
+        "Direct intravenous delivery ensures 100% bioavailability for immediate cellular absorption.",
       photo: "/drip/History.webp",
     },
     {
       num: "02",
       title: t("step2Title") || "Bespoke Formulations",
-      desc: t("step2Desc") || "Tailored nutrient blends targeting immunity, energy, anti-aging, and athletic recovery.",
+      desc:
+        t("step2Desc") ||
+        "Tailored nutrient blends targeting immunity, energy, anti-aging, and athletic recovery.",
       photo: "/drip/Individual.webp",
     },
     {
       num: "03",
       title: t("step3Title") || "Physician Guided",
-      desc: t("step3Desc") || "Administered in luxury private suites under continuous medical supervision.",
+      desc:
+        t("step3Desc") ||
+        "Administered in luxury private suites under continuous medical supervision.",
       photo: "/drip/Lab.webp",
     },
     {
       num: "04",
       title: t("step4Title") || "Instant Vitality",
-      desc: t("step4Desc") || "Rapidly restores electrolyte balance, detoxifies the liver, and clears mental fatigue.",
+      desc:
+        t("step4Desc") ||
+        "Rapidly restores electrolyte balance, detoxifies the liver, and clears mental fatigue.",
       photo: "/drip/Medications.webp",
     },
     {
       num: "05",
       title: t("step5Title") || "Lasting Wellness",
-      desc: t("step5Desc") || "Sustained physiological benefits that boost overall metabolic health and immunity.",
+      desc:
+        t("step5Desc") ||
+        "Sustained physiological benefits that boost overall metabolic health and immunity.",
       photo: "/drip/Concerns.webp",
     },
   ];
@@ -72,13 +82,13 @@ export function DepartmentDripsIntro() {
           </h2>
 
           <p className="text-xs md:text-sm text-foreground/80 leading-relaxed font-medium">
-            {t("subtitle") || "Experience molecular-level rejuvenation designed to restore cellular vitality and peak physical energy."}
+            {t("subtitle") ||
+              "Experience molecular-level rejuvenation designed to restore cellular vitality and peak physical energy."}
           </p>
         </div>
 
         {/* Compact Slider Card Layout */}
         <div className="bg-white border border-[#e8e0d5] rounded-3xl p-5 md:p-7 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center max-w-6xl mx-auto">
-          
           {/* Left Column: Step Pills & Dynamic Info */}
           <div className="lg:col-span-6 flex flex-col gap-5">
             {/* Step Navigation Pills */}
@@ -95,7 +105,9 @@ export function DepartmentDripsIntro() {
                         : "bg-[#f7f2ea] text-primary/70 hover:bg-accent/15 hover:text-primary border border-transparent"
                     }`}
                   >
-                    <span className={`text-[10px] ${isActive ? "text-accent font-serif" : "text-primary/50"}`}>
+                    <span
+                      className={`text-[10px] ${isActive ? "text-accent font-serif" : "text-primary/50"}`}
+                    >
                       {pt.num}
                     </span>
                     <span>Step {pt.num}</span>
@@ -193,10 +205,8 @@ export function DepartmentDripsIntro() {
               </AnimatePresence>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
-

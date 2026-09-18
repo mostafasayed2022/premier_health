@@ -938,3 +938,6 @@ export const addPatientRecord = async (
   MOCK_PATIENT_RECORDS = [data, ...MOCK_PATIENT_RECORDS];
   return data;
 };
+
+export * from "./iv-drip-articles";
+

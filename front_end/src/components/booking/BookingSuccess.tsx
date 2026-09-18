@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, Calendar, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { fbTrackSchedule, snapTrack } from "@/lib/analytics/pixels";
 
 interface BookingSuccessProps {
   onReset: () => void;
@@ -11,6 +13,13 @@ interface BookingSuccessProps {
 
 export function BookingSuccess({ onReset }: BookingSuccessProps) {
   const t = useTranslations("Booking");
+
+  useEffect(() => {
+    // Fire Meta Pixel Schedule event
+    fbTrackSchedule("Appointment Booking");
+    // Fire Snap Pixel VIEW_CONTENT for booking confirmation
+    snapTrack("VIEW_CONTENT", { item_category: "Appointment Booking" });
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50/60 flex items-center justify-center p-4 py-16">

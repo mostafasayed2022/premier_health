@@ -26,6 +26,8 @@ export function useNavItems() {
       subItems: [
         { label: t("services"), href: "/services" },
         { label: t("ivPackages") || "IV Packages", href: "/iv-packages" },
+        // ── NEW ──────────────────────────────────────────────────────────────
+        { label: t("ivDrip") || "IV Drip Therapy", href: "/iv-drip-therapy" },
       ],
     },
     {
@@ -38,6 +40,8 @@ export function useNavItems() {
         { label: t("testimonials"), href: "/testimonials" },
       ],
     },
+    // ── NEW ──────────────────────────────────────────────────────────────────
+    { label: t("articles") || "Articles", href: "/articles" },
     { label: t("contact"), href: "/contact" },
   ];
 }
