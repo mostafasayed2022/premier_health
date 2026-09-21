@@ -9,10 +9,10 @@ import {
   Star,
   Quote,
   Sparkles,
-  ShieldCheck,
   MessageCircle,
   Phone,
   CalendarCheck,
+  Loader2,
 } from "lucide-react";
 import { getTestimonials } from "@/lib/api";
 import { CONTACT } from "@/lib/config/contact";
@@ -35,90 +35,69 @@ interface VerifiedTestimonial {
   branch_badge_ar: string;
 }
 
-const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
-  {
-    id: 4,
-    name_ar: "جو تالا",
-    role_ar: "رجل أعمال وزائر دائم للقاهرة",
-    treatment_ar: "جلسة NAD+ Cell Rejuvenation Drip",
-    rating: 5,
-    branch_badge_ar: "فرع فيرمونت نايل سيتي",
-    text_ar:
-      "جلسات تقطير NAD+ الوريدي في بريمير هيلث فرع فيرمونت نايل سيتي استثنائية بكل المقاييس. شعرت بصفاء ذهني وطاقة متجددة فورية بعد رحلة سفر طويلة. الأجنحة الفاخرة والخصوصية التامة تمنحك شعوراً بالراحة والاطمئنان.",
-  },
-  {
-    id: 3,
-    name_ar: "كريم حجازي",
-    role_ar: "رياضي محترف",
-    treatment_ar: "جلسة L-Premier Post-Training Recovery",
-    rating: 5,
-    branch_badge_ar: "فرع أركان بلازا الشيخ زايد",
-    text_ar:
-      "للتعافي السريع واستعادة الحيوية بعد المجهود البدني والتمارين الشاقة، جلسة تقطير L-Premier الوريدية هي خياري الأساسي دائماً. الامتصاص المباشر يمنح العضلات استشفاءً سريعاً وبمعايير طبية تفوق التوقعات.",
-  },
-  {
-    id: 2,
-    name_ar: "نادين الصايغ",
-    role_ar: "مهتمة بالصحة والعناية بالبشرة",
-    treatment_ar: "بروتوكول Glow & Hydrafacial الشامل",
-    rating: 5,
-    branch_badge_ar: "فرع EDNC سوديك التجمع الخامس",
-    text_ar:
-      "قمت بزيارة العيادة لجلسات نضارة البشرة والتقطير الوريدي المصاحب. النتائج طبيعية ومبهرة للغاية، وتصميم العيادة أشبه بملاذ صحي فاخر بمعايير عالمية تضاهي أرقى العيادات في دبي ولندن.",
-  },
-];
+// ─── MOCK DATA (commented out — بيانات placeholder غير حقيقية) ───────────────
+// const REAL_VERIFIED_TESTIMONIALS: VerifiedTestimonial[] = [
+//   {
+//     id: 4,
+//     name_ar: "جو تالا",
+//     role_ar: "رجل أعمال وزائر دائم للقاهرة",
+//     treatment_ar: "جلسة NAD+ Cell Rejuvenation Drip",
+//     rating: 5,
+//     branch_badge_ar: "فرع فيرمونت نايل سيتي",
+//     text_ar:
+//       "جلسات تقطير NAD+ الوريدي في بريمير هيلث فرع فيرمونت نايل سيتي استثنائية بكل المقاييس. شعرت بصفاء ذهني وطاقة متجددة فورية بعد رحلة سفر طويلة. الأجنحة الفاخرة والخصوصية التامة تمنحك شعوراً بالراحة والاطمئنان.",
+//   },
+//   {
+//     id: 3,
+//     name_ar: "كريم حجازي",
+//     role_ar: "رياضي محترف",
+//     treatment_ar: "جلسة L-Premier Post-Training Recovery",
+//     rating: 5,
+//     branch_badge_ar: "فرع أركان بلازا الشيخ زايد",
+//     text_ar:
+//       "للتعافي السريع واستعادة الحيوية بعد المجهود البدني والتمارين الشاقة، جلسة تقطير L-Premier الوريدية هي خياري الأساسي دائماً. الامتصاص المباشر يمنح العضلات استشفاءً سريعاً وبمعايير طبية تفوق التوقعات.",
+//   },
+//   {
+//     id: 2,
+//     name_ar: "نادين الصايغ",
+//     role_ar: "استشارات النضارة ومكافحة الشيخوخة", // ← وصف خدمة مش وصف شخص
+//     treatment_ar: "بروتوكول Glow & Hydrafacial الشامل",
+//     rating: 5,
+//     branch_badge_ar: "فرع EDNC سوديك التجمع الخامس",
+//     text_ar:
+//       "قمت بزيارة العيادة لجلسات نضارة البشرة والتقطير الوريدي المصاحب. النتائج طبيعية ومبهرة للغاية، وتصميم العيادة أشبه بملاذ صحي فاخر بمعايير عالمية تضاهي أرقى العيادات في دبي ولندن.",
+//   },
+// ];
+// ─────────────────────────────────────────────────────────────────────────────
 
 export function GccTestimonials() {
-  const [testimonials, setTestimonials] = useState<VerifiedTestimonial[]>(
-    REAL_VERIFIED_TESTIMONIALS,
-  );
-
+  const [testimonials, setTestimonials] = useState<VerifiedTestimonial[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getTestimonials()
       .then((apiData) => {
         if (apiData && apiData.length > 0) {
-          const mappedApiList: VerifiedTestimonial[] = apiData.map((item) => {
-            const rawTreatment =
-              (item as any).treatment_ar ||
-              (item as any).treatment ||
-              (item as any).service_name_ar ||
-              (item as any).service ||
-              "جلسة IV Therapy فاخرة";
-
-            const rawBranchBadge =
-              (item as any).branch_badge_ar ||
-              (item as any).branch_name_ar ||
-              (item as any).branch ||
-              "فرع القاهرة";
-
-            return {
-              id: item.id,
-              name_ar: item.name_ar || item.name || "عميل بريمير هيلث",
-              role_ar: item.role_ar || item.role || "عميل بريمير هيلث",
-              treatment_ar: rawTreatment,
-              rating: Number(item.rating || 5),
-              text_ar:
-                item.text_ar ||
-                item.text ||
-                (item as any).description_ar ||
-                (item as any).description ||
-                "",
-              branch_badge_ar: rawBranchBadge,
-            };
-          });
-
-          setTestimonials(mappedApiList);
+          const mapped = apiData.slice(0, 3).map((item) => ({
+            id: item.id,
+            name_ar: item.name_ar || item.name || "",
+            role_ar: item.role_ar || item.role || "",
+            treatment_ar: item.description_ar || item.description || "",
+            rating: item.rating || 5,
+            text_ar: item.text_ar || item.text || "",
+            branch_badge_ar: "",
+          }));
+          setTestimonials(mapped);
         }
       })
       .catch(() => {
-        // Handled silently
-      });
+        // No fallback to mock data — يجب أن تأتي التقييمات من الأدمن دشبورد فقط
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-
   return (
-
     <section
       className="py-20 bg-white relative overflow-hidden"
       id="gcc-testimonials"
@@ -134,7 +113,7 @@ export function GccTestimonials() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles size={13} className="text-amber-600" />
-          <span>آراء وتجارب عملائنا</span>
+            <span>آراء وتجارب موثقة</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d2235] mb-4">
             تجارب حقيقية لزوارنا الكرام
@@ -145,27 +124,36 @@ export function GccTestimonials() {
           </p>
         </div>
 
+        {/* Loading State */}
+        {loading && (
+          <div className="flex items-center justify-center py-16 mb-12">
+            <Loader2 size={32} className="animate-spin text-amber-400" />
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!loading && testimonials.length === 0 && (
+          <div className="text-center py-16 mb-12 text-slate-400 text-sm">
+            لا توجد تقييمات متاحة حالياً.
+          </div>
+        )}
+
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {testimonials.map((t) => (
-            <div
-              key={t.id}
-              className="bg-slate-50/70 border border-slate-200/80 hover:border-amber-400/50 rounded-3xl p-7 lg:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/5 hover:-translate-y-1 relative group"
-            >
-              {/* Quote icon */}
-              <div className="absolute top-6 left-6 text-amber-200/50 group-hover:text-amber-300/60 transition-colors pointer-events-none">
-                <Quote size={48} />
-              </div>
+        {!loading && testimonials.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+            {testimonials.map((t) => (
+              <div
+                key={t.id}
+                className="bg-slate-50/70 border border-slate-200/80 hover:border-amber-400/50 rounded-3xl p-7 lg:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/5 hover:-translate-y-1 relative group"
+              >
+                {/* Quote icon */}
+                <div className="absolute top-6 left-6 text-amber-200/50 group-hover:text-amber-300/60 transition-colors pointer-events-none">
+                  <Quote size={48} />
+                </div>
 
-              <div>
-                {/* Branch Badge */}
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-block text-[11px] font-bold px-3 py-1 rounded-full bg-amber-100/80 text-amber-900 border border-amber-200">
-                    {t.branch_badge_ar}
-                  </span>
-
-                  {/* 5 Stars */}
-                  <div className="flex gap-0.5">
+                <div>
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-4">
                     {[...Array(t.rating)].map((_, i) => (
                       <Star
                         key={i}
@@ -174,37 +162,33 @@ export function GccTestimonials() {
                       />
                     ))}
                   </div>
+
+                  {/* Review text */}
+                  <blockquote className="text-[#1a2d3d] text-sm sm:text-base leading-relaxed mb-6 italic relative z-10">
+                    "{t.text_ar}"
+                  </blockquote>
                 </div>
 
-                {/* Treatment Tag */}
-                <span className="text-[11px] font-semibold text-slate-500 block mb-3">
-                  {t.treatment_ar}
-                </span>
-
-                {/* Review text */}
-                <blockquote className="text-[#1a2d3d] text-sm sm:text-base leading-relaxed mb-6 italic relative z-10">
-                  "{t.text_ar}"
-                </blockquote>
-              </div>
-
-              {/* Author info */}
-              <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-                <div>
-                  <h3 className="font-bold text-[#0d2235] text-sm sm:text-base">
-                    {t.name_ar}
-                  </h3>
-                  <p className="text-amber-700 text-xs font-medium">
-                    {t.role_ar}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-1 text-[11px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-lg">
-                  <span>عميل بريمير هيلث</span>
+                {/* Author info */}
+                <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between gap-2">
+                  <div>
+                    <h3 className="font-bold text-[#0d2235] text-sm sm:text-base">
+                      {t.name_ar}
+                    </h3>
+                    {t.role_ar && (
+                      <p className="text-amber-700 text-xs font-medium mt-0.5">
+                        {t.role_ar}
+                      </p>
+                    )}
+                  </div>
+                  <span className="shrink-0 text-[11px] font-bold text-[#1F3D5A] bg-[#1F3D5A]/8 border border-[#1F3D5A]/20 px-2.5 py-1 rounded-lg">
+                    عميل بريمير هيلث
+                  </span>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Interactive Concierge Banner with WhatsApp & Call */}
         <div className="bg-gradient-to-r from-[#0d2235] via-[#1a3a50] to-[#0d2235] rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-[#0d2235]/15 border border-amber-400/20">

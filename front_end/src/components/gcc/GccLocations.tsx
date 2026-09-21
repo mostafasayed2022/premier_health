@@ -1,12 +1,11 @@
 "use client";
 
 // ─── GccLocations.tsx ─────────────────────────────────────────────────────────
-// Premier Health Clinic Locations for GCC Visitors
-// Cairo Sanctuaries: Fairmont Nile City, Arkan Plaza (Sheikh Zayed), EDNC Sodic (New Cairo)
+// Real Premier Health Branches for GCC Visitors
+// Actual locations: Fairmont Nile City, Arkan Plaza (Sheikh Zayed), EDNC Sodic (New Cairo)
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   MapPin,
   Phone,
@@ -14,8 +13,6 @@ import {
   Navigation,
   Sparkles,
   CheckCircle2,
-  Clock,
-  CalendarCheck,
 } from "lucide-react";
 import { CONTACT } from "@/lib/config/contact";
 import {
@@ -23,9 +20,7 @@ import {
   trackClickMap,
   trackClickWhatsApp,
   trackClickCall,
-  trackStartBooking,
 } from "@/lib/analytics/events";
-import { getBranches } from "@/lib/api";
 
 const PAGE_PATH = "/gcc/iv-therapy/ar";
 
@@ -36,152 +31,85 @@ interface VerifiedBranch {
   badge: string;
   badgeColor: string;
   address_ar: string;
-  hours_ar: string;
   phone: string;
   image_url: string;
   map_url: string;
-  booking_url: string;
   highlight_ar: string;
   services_ar: string[];
 }
 
-const REAL_VERIFIED_BRANCHES: VerifiedBranch[] = [
+const BRANCHES: VerifiedBranch[] = [
   {
     id: 2,
-    name_ar: "فرع فيرمونت نايل سيتي",
+    name_ar: "فيرمونت نايل سيتي",
     name_en: "Fairmont Nile City",
-    badge: "وسط القاهرة · كورنيش النيل",
+    badge: "قلب القاهرة · على النيل",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-400/30",
-    address_ar: "فندق فيرمونت نايل سيتي، أبراج نايل سيتي، كورنيش النيل، القاهرة",
-    hours_ar: "10:00 ص – 10:00 م (يومياً)",
+    address_ar: "فندق فيرمونت نايل سيتي، كورنيش النيل، القاهرة",
     phone: "+20 12 0064 4663",
     image_url:
       "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04519_fyazrj.jpg",
     map_url:
-      "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z",
-    booking_url: "/ar/book-appointment?branch=2",
+      "https://www.google.com/maps/place/Premier+Health/@30.0719202,31.2275839,17z/data=!3m1!4b1!4m6!3m5!1s0x1458413b92031a19:0xe4dfaac55744481b!8m2!3d30.0719202!4d31.2275839!16s%2Fg%2F11fjy46mpx?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D",
     highlight_ar:
-      "موقع مركزي فاخر داخل فندق فيرمونت، مع أجنحة علاجية خاصة بإطلالة نيلية كاملة، مثالية لزوار الفنادق ووسط العاصمة.",
+      "موقع مركزي فاخر داخل فندق فيرمونت نايل سيتي، مناسب لزوار الفنادق الكبرى ووسط القاهرة.",
     services_ar: [
-      "بروتوكولات NAD+ لتجديد الخلايا والطاقة",
-      "جلسات الترطيب واستعادة النشاط والمناعة",
-      "أجنحة VIP خاصة واستقبال فندقي راقٍ",
+      "علاجات NAD+ لتجديد الخلايا",
+      "جلسات الترطيب والطاقة والمناعة",
+      "أجنحة علاجية خاصة بإطلالة نيلية",
     ],
   },
   {
     id: 4,
-    name_ar: "فرع أركان بلازا (الشيخ زايد)",
+    name_ar: "أركان بلازا – الشيخ زايد",
     name_en: "Arkan Plaza – Sheikh Zayed",
     badge: "غرب القاهرة · الشيخ زايد",
     badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-400/30",
     address_ar: "مجمع أركان بلازا الطبي، مدخل الشيخ زايد، 6 أكتوبر",
-    hours_ar: "10:00 ص – 10:00 م (يومياً)",
     phone: "+20 12 0064 4663",
     image_url:
       "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/hero1_qimiy7.jpg",
     map_url:
-      "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z",
-    booking_url: "/ar/book-appointment?branch=4",
+      "https://www.google.com/maps/place/Arkan+Plaza/@30.0194029,31.0045291,17z/data=!3m1!4b1!4m6!3m5!1s0x14585b0525c31285:0xe916bcf3ee2db2ad!8m2!3d30.0194029!4d31.0045291!16s%2Fg%2F11n074b_4l!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D",
     highlight_ar:
-      "في أرقى مجمعات الشيخ زايد، عيادة مجهزة بأحدث تقنيات الحقن الوريدي والتجميل الطبي المتطور بأعلى معايير الخصوصية.",
+      "في أرقى مجمعات الشيخ زايد، ملاذ صحي مجهز بأحدث تقنيات الحقن الوريدي والتجميل الطبي.",
     services_ar: [
-      "بروتوكولات الاستشفاء البدني والنشاط",
-      "علاجات الجلوتاثيون وتوحيد لون البشرة",
-      "جلسات Hydrafacial الطبية المتطورة",
+      "بروتوكولات التعافي الرياضي والنشاط",
+      "علاجات الجلوتاثيون والنضارة",
+      "جلسات Hydrafacial الطبية المتقدمة",
     ],
   },
   {
     id: 3,
-    name_ar: "فرع سوديك EDNC (التجمع الخامس)",
+    name_ar: "EDNC سوديك – التجمع الخامس",
     name_en: "EDNC Sodic – New Cairo",
     badge: "شرق القاهرة · التجمع الخامس",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-400/30",
-    address_ar: "مجمع EDNC التجاري، مشروع سوديك إيست تاون، شارع التسعين، التجمع الخامس",
-    hours_ar: "10:00 ص – 10:00 م (يومياً)",
+    address_ar:
+      "مجمع EDNC التجاري، سوديك إيست تاون، التجمع الخامس، القاهرة الجديدة",
     phone: "+20 12 0064 4663",
     image_url:
       "https://res.cloudinary.com/u3q5mcfx/image/upload/v1/uploads/1/DSC04539_pxbhlp.jpg",
     map_url:
-      "https://www.google.com/maps?q=30.0154326,31.5145233",
-    booking_url: "/ar/book-appointment?branch=3",
+      "https://www.google.com/maps?q=2G87+5RC+D+solutions,+Eastown,+New+Cairo+1,+Cairo+Governorate+4728114&ftid=0x1458230004fbc3e3:0x98b9fb5e4bf6a4f4&entry=gps&shh=CAE&lucs=,94297699,94275415,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjAzLjEuODU1MjUwMDQwMBgAIIgnKkgsOTQyOTc2OTksOTQyNzU0MTUsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAkVH&skid=f7e4aece-800e-42dc-9b0c-031178891e80&g_st=ic",
     highlight_ar:
-      "عيادة متطورة في قلب القاهرة الجديدة بالقرب من الجامعة الأمريكية ومناطق التسوق الراقية مع سرعة إنهاء الإجراءات.",
+      "عيادة متطورة في قلب القاهرة الجديدة، بالقرب من الجامعة الأمريكية ومناطق التسوق الراقية.",
     services_ar: [
-      "جلسات الديتوكس ومكافحة الإرهاق",
+      "مغذيات الديتوكس ومكافحة الإجهاد",
       "بروتوكولات الـ Wellness الشاملة",
-      "خدمة VIP وأجنحة استرخاء هادئة",
+      "خدمة VIP وسرعة إنهاء الإجراءات",
     ],
   },
 ];
 
 export function GccLocations() {
-  const [branches, setBranches] = useState<VerifiedBranch[]>(REAL_VERIFIED_BRANCHES);
-
-
-  useEffect(() => {
-    getBranches()
-      .then((apiBranches) => {
-        if (apiBranches && apiBranches.length > 0) {
-          const mappedApiList: VerifiedBranch[] = apiBranches.map((apiBranch) => {
-            const rawAddr = (apiBranch.address_ar || apiBranch.address || "").toLowerCase();
-            const inferredBadge =
-              rawAddr.includes("أكتوبر") || rawAddr.includes("zayed") || rawAddr.includes("زايد")
-                ? "غرب القاهرة · الشيخ زايد"
-                : rawAddr.includes("التجمع") || rawAddr.includes("cairo") || rawAddr.includes("سوديك")
-                ? "شرق القاهرة · التجمع الخامس"
-                : "قلب القاهرة · على النيل";
-
-            const inferredBadgeColor = "bg-amber-500/20 text-amber-300 border-amber-400/30";
-
-            const services =
-              Array.isArray(apiBranch.services) && apiBranch.services.length > 0
-                ? apiBranch.services.map((s: any) =>
-                    typeof s === "string" ? s : s.name || s.name_ar || String(s),
-                  )
-                : [
-                    "جلسات IV Therapy المتقدمة",
-                    "بروتوكولات الـ Wellness",
-                    "أجنحة خاصة واستقبال راقٍ",
-                  ];
-
-            return {
-              id: apiBranch.id,
-              name_ar: apiBranch.name_ar || apiBranch.name || "فرع عيادات بريمير هيلث",
-              name_en: apiBranch.name || "Premier Health Branch",
-              badge: inferredBadge,
-              badgeColor: inferredBadgeColor,
-              address_ar: apiBranch.address_ar || apiBranch.address || "القاهرة، مصر",
-              hours_ar: apiBranch.hours_ar || apiBranch.hours || "10:00 ص – 10:00 م (يومياً)",
-              phone: apiBranch.phone || "+20 12 0064 4663",
-              image_url:
-                apiBranch.photo ||
-                apiBranch.image_url ||
-                (apiBranch as any).image ||
-                "/AboutPreview/about.webp",
-              map_url:
-                apiBranch.mapUrl ||
-                apiBranch.map_url ||
-                apiBranch.url ||
-                "https://maps.google.com",
-              booking_url: `/ar/book-appointment?branch=${apiBranch.id}`,
-              highlight_ar:
-                "عيادة مجهزة بأحدث تقنيات الحقن الوريدي والتجميل الطبي مع أجنحة علاجية خاصة واستقبال فندقي راقٍ.",
-              services_ar: services,
-            };
-          });
-
-          setBranches(mappedApiList);
-        }
-      })
-      .catch(() => {
-        // Handled silently
-      });
-  }, []);
-
+  const branches = BRANCHES;
 
   return (
-
-    <section className="py-20 bg-[#0d2235] text-white relative overflow-hidden" id="gcc-branches">
+    <section
+      className="py-20 bg-[#0d2235] text-white relative overflow-hidden"
+      id="gcc-branches"
+    >
       {/* Subtle background glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -191,25 +119,22 @@ export function GccLocations() {
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles size={13} className="text-amber-400" />
-            <span>فروع عياداتنا في القاهرة</span>
+            <span>فروعنا الحقيقية المعتمدة</span>
           </div>
-
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            فروعنا الراقية في القاهرة
+            3 فروع راقية في أرقى أحياء القاهرة
           </h2>
           <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            اختر الفرع الأنسب لإقامتك أثناء زيارتك للقاهرة، مع إمكانية التنسيق المسبق مع فريق الـ Concierge لضمان راحتك.
+            اختر الفرع الأقرب إلى إقامتك أو تنقلاتك أثناء زيارتك للقاهرة، مع
+            إمكانية التنسيق المسبق مع فريق الـ Concierge.
           </p>
         </div>
 
-
-        {/* 3 Branches Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+        {/* Branches Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {branches.map((loc) => (
-            <article
+            <div
               key={loc.id}
-              itemScope
-              itemType="https://schema.org/MedicalClinic"
               onClick={() =>
                 trackSelectBranch({
                   branch_id: loc.id,
@@ -221,13 +146,12 @@ export function GccLocations() {
             >
               <div>
                 {/* Branch Cover Image */}
-                <div className="relative h-56 w-full overflow-hidden bg-slate-900">
+                <div className="relative h-52 w-full overflow-hidden bg-slate-900">
                   <Image
                     src={loc.image_url}
                     alt={loc.name_ar}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    itemProp="image"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d2235] via-[#0d2235]/30 to-transparent" />
@@ -242,56 +166,36 @@ export function GccLocations() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3
-                    itemProp="name"
-                    className="font-bold text-xl text-white mb-3 group-hover:text-amber-300 transition-colors"
-                  >
+                  <h3 className="font-bold text-xl text-white mb-2 group-hover:text-amber-300 transition-colors">
                     {loc.name_ar}
                   </h3>
 
-                  {/* Address */}
-                  <div
-                    itemProp="address"
-                    itemScope
-                    itemType="https://schema.org/PostalAddress"
-                    className="flex items-start gap-2.5 text-white/70 text-xs mb-3 leading-relaxed"
-                  >
-                    <MapPin size={15} className="text-amber-400 shrink-0 mt-0.5" />
-                    <span itemProp="streetAddress">{loc.address_ar}</span>
+                  <div className="flex items-start gap-2 text-white/60 text-xs mb-4 leading-relaxed">
+                    <MapPin
+                      size={15}
+                      className="text-amber-400 shrink-0 mt-0.5"
+                    />
+                    <span>{loc.address_ar}</span>
                   </div>
 
-                  {/* Working Hours */}
-                  <div className="flex items-center gap-2.5 text-white/70 text-xs mb-3">
-                    <Clock size={15} className="text-amber-400 shrink-0" />
-                    <span>مواعيد العمل: {loc.hours_ar}</span>
-                    <meta itemProp="openingHours" content="Sa-Th 10:00-22:00" />
-                  </div>
-
-                  {/* Phone */}
-                  <div className="flex items-center gap-2.5 text-white/70 text-xs mb-4">
-                    <Phone size={15} className="text-amber-400 shrink-0" />
-                    <a
-                      href={`tel:${loc.phone.replace(/\s+/g, "")}`}
-                      itemProp="telephone"
-                      className="font-mono hover:text-amber-300 transition-colors"
-                    >
-                      {loc.phone}
-                    </a>
-                  </div>
-
-                  {/* Highlight */}
-                  <p className="text-white/80 text-xs sm:text-sm mb-5 leading-relaxed bg-white/[0.03] p-3.5 rounded-2xl border border-white/5">
+                  <p className="text-white/80 text-xs sm:text-sm mb-5 leading-relaxed bg-white/[0.03] p-3 rounded-xl border border-white/5">
                     {loc.highlight_ar}
                   </p>
 
                   {/* Services Available */}
-                  <div className="space-y-2 mb-2">
-                    <span className="text-[11px] font-bold text-amber-400/90 block mb-1">
+                  <div className="space-y-2 mb-6">
+                    <span className="text-[11px] font-bold text-amber-400/90 block">
                       الخدمات المتوفرة بالفرع:
                     </span>
                     {loc.services_ar.map((svc, sIdx) => (
-                      <div key={sIdx} className="flex items-center gap-2 text-white/75 text-xs">
-                        <CheckCircle2 size={13} className="text-amber-400 shrink-0" />
+                      <div
+                        key={sIdx}
+                        className="flex items-center gap-2 text-white/75 text-xs"
+                      >
+                        <CheckCircle2
+                          size={13}
+                          className="text-amber-400 shrink-0"
+                        />
                         <span>{svc}</span>
                       </div>
                     ))}
@@ -300,29 +204,12 @@ export function GccLocations() {
               </div>
 
               {/* Action Buttons */}
-              <div className="p-6 pt-0 space-y-2.5">
-                {/* Primary Booking CTA */}
-                <Link
-                  href={loc.booking_url}
-                  onClick={() =>
-                    trackStartBooking({
-                      branch_id: loc.id,
-                      branch_name: loc.name_ar,
-                      booking_source: "gcc_location_card",
-                    })
-                  }
-                  className="w-full flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-[#0d2235] font-bold text-xs sm:text-sm py-3 px-4 rounded-xl transition-all shadow-md shadow-amber-400/20 hover:-translate-y-0.5"
-                >
-                  <CalendarCheck size={16} />
-                  <span>احجز جلستك في هذا الفرع</span>
-                </Link>
-
+              <div className="p-6 pt-0 space-y-2">
                 {/* Google Maps Link */}
                 <a
                   href={loc.map_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  itemProp="hasMap"
                   onClick={() =>
                     trackClickMap({
                       branch_id: loc.id,
@@ -337,11 +224,11 @@ export function GccLocations() {
                   <span>الاتجاهات على خرائط Google</span>
                 </a>
 
-                {/* WhatsApp & Call CTAs */}
                 <div className="grid grid-cols-2 gap-2">
+                  {/* WhatsApp CTA */}
                   <a
                     href={`${CONTACT.whatsapp_url_eg}?text=${encodeURIComponent(
-                      `مرحباً، أود الاستفسار وحجز جلسة IV Therapy في فرع ${loc.name_ar} [Ref: gcc_branch_${loc.id}]`
+                      `مرحباً، أود حجز جلسة IV Therapy في فرع ${loc.name_ar} [Ref: gcc_branch_${loc.id}]`,
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -357,9 +244,10 @@ export function GccLocations() {
                     className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs py-2.5 px-3 rounded-xl transition-all shadow-md shadow-green-600/20"
                   >
                     <MessageCircle size={14} />
-                    <span>واتساب الفرع</span>
+                    <span>واتساب</span>
                   </a>
 
+                  {/* Direct Call CTA */}
                   <a
                     href={CONTACT.tel_eg}
                     onClick={() =>
@@ -371,49 +259,17 @@ export function GccLocations() {
                         phone_type: "EG",
                       })
                     }
-                    className="flex items-center justify-center gap-1.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs py-2.5 px-3 rounded-xl border border-white/10 transition-colors"
+                    className="flex items-center justify-center gap-1.5 bg-amber-400 hover:bg-amber-500 text-[#0d2235] font-bold text-xs py-2.5 px-3 rounded-xl transition-all shadow-md shadow-amber-400/20"
                   >
-                    <Phone size={14} className="text-amber-400" />
-                    <span>اتصال مباشر</span>
+                    <Phone size={14} />
+                    <span>اتصال</span>
                   </a>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
-        </div>
-
-        {/* Concierge Transfer Assistance Banner */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-right">
-          <div>
-            <h4 className="text-base sm:text-lg font-bold text-white mb-1">
-              تحتاج إلى تنسيق مسبق أو ترتيب استقبال خاص في الفندق؟
-            </h4>
-            <p className="text-white/60 text-xs sm:text-sm">
-              فريق الـ Concierge جاهز لتحديد الفرع الأقرب لمقر إقامتك وتأكيد موعدك قبل وصولك إلى القاهرة.
-            </p>
-          </div>
-          <a
-            href={`${CONTACT.whatsapp_url_eg}?text=${encodeURIComponent(
-              "مرحباً، أود استشارة فريق Concierge بخصوص فروع عيادات Premier Health واختيار الفرع الأنسب لمقر إقامتي بالقاهرة"
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() =>
-              trackClickWhatsApp({
-                location: PAGE_PATH,
-                page_path: PAGE_PATH,
-                cta_position: "gcc_locations_concierge_footer",
-                phone_type: "EG",
-              })
-            }
-            className="flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-[#0d2235] font-bold text-xs sm:text-sm py-3 px-5 rounded-xl transition-all shrink-0 shadow-md shadow-amber-400/20"
-          >
-            <MessageCircle size={16} />
-            <span>تنسيق مع الـ Concierge</span>
-          </a>
         </div>
       </div>
     </section>
   );
 }
-

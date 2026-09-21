@@ -1,10 +1,9 @@
 // ─── events.ts ────────────────────────────────────────────────────────────────
 // Typed analytics event functions for Premier Health Clinics
-// All events push to dataLayer — Zero-PII guaranteed by sanitizer layer.
-// Event deduplication supported via consistent event_id on conversion events.
+// All events use pushDataLayer — Zero-PII guaranteed by sanitizer layer.
 
+import { fbTrack, snapTrack } from "./pixels";
 import { pushDataLayer } from "./dataLayer";
-import { trackEvent } from "./gtm";
 import type {
   ViewServiceParams,
   SelectBranchParams,
@@ -34,36 +33,31 @@ function getClientPathname(override?: string): string | undefined {
 }
 
 // ─── 1. view_service ──────────────────────────────────────────────────────────
-/** Fire when a service detail page or service view is triggered. */
+/** Fire when a service detail page is viewed (NOT on card mount). */
 export function trackViewService(params: ViewServiceParams): void {
-  const priceVal = params.price ?? params.value;
   pushDataLayer("view_service", {
     service_id: params.service_id,
     service_name: params.service_name,
     service_category: params.service_category,
-    price: priceVal,
-    value: priceVal,
-    currency: params.currency ?? "EGP",
     page_path: getClientPathname(params.page_path),
     locale: getClientLocale(params.locale),
   });
 }
 
 // ─── 2. select_branch ────────────────────────────────────────────────────────
-/** Fire when a user selects a branch (booking wizard step 3 or branch selector). */
+/** Fire when a user selects a branch (booking wizard step 3 or branch page). */
 export function trackSelectBranch(params: SelectBranchParams): void {
   pushDataLayer("select_branch", {
     branch_id: params.branch_id,
     branch_name: params.branch_name,
-    service_id: params.service_id,
-    service_name: params.service_name,
     page_path: getClientPathname(params.page_path),
+    service_name: params.service_name,
     locale: getClientLocale(params.locale),
   });
 }
 
 // ─── 3. view_branch ──────────────────────────────────────────────────────────
-/** Fire when a branch detail page or view is triggered. */
+/** Fire when a branch detail page is viewed (NOT on card mount). */
 export function trackViewBranch(params: ViewBranchParams): void {
   pushDataLayer("view_branch", {
     branch_id: params.branch_id,
@@ -88,6 +82,7 @@ export function trackClickMap(params: ClickMapParams): void {
 // ─── 5. click_whatsapp ───────────────────────────────────────────────────────
 /** Fire when a user clicks any WhatsApp CTA. NEVER include phone numbers. */
 export function trackClickWhatsApp(params: ClickWhatsAppParams): void {
+  fbTrack("Contact");
   pushDataLayer("click_whatsapp", {
     location: params.location ?? getClientPathname(params.page_path),
     page_path: getClientPathname(params.page_path),
@@ -102,6 +97,7 @@ export function trackClickWhatsApp(params: ClickWhatsAppParams): void {
 // ─── 6. click_call ───────────────────────────────────────────────────────────
 /** Fire when a user clicks any phone/call CTA. NEVER include phone numbers. */
 export function trackClickCall(params: ClickCallParams): void {
+  fbTrack("Contact");
   pushDataLayer("click_call", {
     location: params.location ?? getClientPathname(params.page_path),
     page_path: getClientPathname(params.page_path),
@@ -134,8 +130,6 @@ export function trackStartBooking(params: StartBookingParams = {}): void {
  */
 export function trackSubmitLead(params: SubmitLeadParams): void {
   pushDataLayer("submit_lead", {
-    service_id: params.service_id,
-    branch_id: params.branch_id,
     lead_type: params.lead_type ?? "booking",
     service_name: params.service_name,
     branch_name: params.branch_name,
@@ -148,22 +142,19 @@ export function trackSubmitLead(params: SubmitLeadParams): void {
 // ─── 9. booking_complete ─────────────────────────────────────────────────────
 /**
  * Fire ONLY after confirmed successful booking API response (201).
- * Deduplicated with backend using deterministic event_id: "booking_{booking_id}".
+ * Never fire on API failure.
  */
 export function trackBookingComplete(params: BookingCompleteParams): void {
-  const priceVal = params.price ?? params.value;
-  const eventId = params.event_id ?? `booking_${params.booking_id}`;
-
+  fbTrack("Schedule");
+  snapTrack("SIGN_UP");
   pushDataLayer("booking_complete", {
     booking_id: params.booking_id,
     service_id: params.service_id,
     service_name: params.service_name,
     branch_id: params.branch_id,
     branch_name: params.branch_name,
-    price: priceVal,
-    value: priceVal,
+    value: params.value,
     currency: params.currency ?? "EGP",
-    event_id: eventId,
     page_path: getClientPathname(params.page_path),
     locale: getClientLocale(params.locale),
   });
@@ -175,17 +166,12 @@ export function trackBookingComplete(params: BookingCompleteParams): void {
  * Fire only when patient physically attended — NOT when booking is created/confirmed.
  */
 export function trackAppointmentAttended(params: AppointmentAttendedParams): void {
-  const priceVal = params.price ?? params.value;
-  const eventId = params.event_id ?? `attended_${params.booking_id}`;
-
   pushDataLayer("appointment_attended", {
     booking_id: params.booking_id,
     service_id: params.service_id,
     branch_id: params.branch_id,
-    price: priceVal,
-    value: priceVal,
+    value: params.value,
     currency: params.currency ?? "EGP",
-    event_id: eventId,
     page_path: getClientPathname(params.page_path),
     locale: getClientLocale(params.locale),
   });
@@ -194,28 +180,22 @@ export function trackAppointmentAttended(params: AppointmentAttendedParams): voi
 // ─── 11. purchase ────────────────────────────────────────────────────────────
 /**
  * Fire only after confirmed payment success (Paymob webhook → backend → frontend).
- * Deduplicated with stable event_id: "purchase_{transaction_id}".
+ * Deduplicated with stable transaction_id / booking_id.
  */
 export function trackPurchase(params: PurchaseParams): void {
-  const priceVal = params.price ?? params.value;
-  const eventId =
-    params.event_id ??
-    (params.transaction_id
-      ? `purchase_${params.transaction_id}`
-      : `booking_${params.booking_id}`);
-
+  fbTrack("Purchase", { value: params.value, currency: params.currency });
+  snapTrack("PURCHASE", { price: params.value, currency: params.currency, transaction_id: params.transaction_id });
   pushDataLayer("purchase", {
     transaction_id: params.transaction_id,
     booking_id: params.booking_id,
     service_name: params.service_name,
     branch_name: params.branch_name,
-    price: priceVal,
-    value: priceVal,
+    value: params.value,
     currency: params.currency,
-    event_id: eventId,
     page_path: getClientPathname(params.page_path),
     locale: getClientLocale(params.locale),
   });
 }
 
-export { trackEvent };
+export { trackViewIVDrip, trackBookIVDrip, trackViewArticle } from "./iv-drip-articles-events";
+

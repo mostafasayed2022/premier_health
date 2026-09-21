@@ -1,90 +1,89 @@
-import createMiddleware from "next-intl/middleware";
-import { routing } from "./i18n/routing";
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { routing } from "@/i18n/routing";
 
-// ─── i18n middleware (handles locale prefixes) ────────────────────────────────
-const intlMiddleware = createMiddleware(routing);
+// next-intl middleware handles locale detection + prefix routing
+const intlMiddleware = createIntlMiddleware(routing);
 
-// ─── Cookie keys (must match auth.ts COOKIE_KEYS) ────────────────────────────
-const COOKIE_PATIENT = "patient_access";
-const COOKIE_ADMIN = "admin_access";
+// Supported locales (must match routing.ts)
+const LOCALES = ["en", "ar", "fr", "de", "es", "it", "tr", "ru"];
 
-// ─── Edge-safe JWT role decoder ───────────────────────────────────────────────
-function decodeRole(token: string): string | null {
-  try {
-    const parts = token.split(".");
-    if (parts.length !== 3) return null;
-    const payload = JSON.parse(atob(parts[1]));
-    if (payload.exp && Date.now() / 1000 > payload.exp) return null;
-    const role = (payload.role as string | undefined)?.toLowerCase();
-    if (role === "admin" || role === "doctor" || role === "patient")
-      return role;
-    return null;
-  } catch {
-    return null;
+// Routes that need slug-redirect checks
+const SLUG_REDIRECT_PATTERNS = [
+  {
+    // /[locale]/iv-drip-therapy/[slug]
+    regex: /^\/([a-z]{2})\/iv-drip-therapy\/([^/]+)$/,
+    contentType: "ivdripproduct" as const,
+    basePath: "iv-drip-therapy",
+  },
+  {
+    // /[locale]/articles/[slug]
+    regex: /^\/([a-z]{2})\/articles\/([^/]+)$/,
+    contentType: "article" as const,
+    basePath: "articles",
+  },
+];
+
+export async function proxy(request: NextRequest) {
+  const { pathname, search } = request.nextUrl;
+
+  const localizedAdmin = pathname.match(/^\/(en|ar|fr|de|es|it|tr|ru)(\/admin(?:\/.*)?)$/);
+  if (localizedAdmin) {
+    const url = request.nextUrl.clone();
+    url.pathname = localizedAdmin[2];
+    return NextResponse.redirect(url);
   }
-}
+  if (/^\/(admin|dashboard|api|gcc)(\/|$)/.test(pathname)) return NextResponse.next();
 
-function getRoleFromCookies(request: NextRequest): string | null {
-  const adminToken = request.cookies.get(COOKIE_ADMIN)?.value;
-  if (adminToken) {
-    const r = decodeRole(adminToken);
-    if (r) return r;
-  }
-  const patientToken = request.cookies.get(COOKIE_PATIENT)?.value;
-  if (patientToken) {
-    const r = decodeRole(patientToken);
-    if (r) return r;
-  }
-  return null;
-}
+  // ── Slug redirect check ────────────────────────────────────────────────────
+  for (const pattern of SLUG_REDIRECT_PATTERNS) {
+    const match = pathname.match(pattern.regex);
+    if (!match) continue;
 
-// ─── Middleware ───────────────────────────────────────────────────────────────
+    const [, locale, slug] = match;
+    if (!LOCALES.includes(locale)) continue;
 
-export default function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+    try {
+      const apiBase =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://api.premierhealthclinics.com/api/";
 
-  // Redirect localized admin and dashboard routes to non-localized ones
-  const localePrefixRegex = /^\/(en|ar|fr|de|es|it|tr)(\/(admin|dashboard).*)$/;
-  const match = pathname.match(localePrefixRegex);
-  if (match) {
-    return NextResponse.redirect(new URL(match[2], request.url));
-  }
+      const res = await fetch(
+        `${apiBase}slug-redirect/?old_slug=${encodeURIComponent(slug)}&content_type=${pattern.contentType}`,
+        {
+          headers: { "Accept-Language": locale },
+          signal: AbortSignal.timeout(2000),
+          next: { revalidate: 3600 }, // cache redirect lookups for 1h
+        }
+      );
 
-  // ── /admin/* — completely outside next-intl (no locale prefix) ─────────────
-  if (pathname.startsWith("/admin")) {
-    // /admin/login is always public
-    if (pathname.startsWith("/admin/login")) return NextResponse.next();
-
-    const role = getRoleFromCookies(request);
-    if (role !== "admin") {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
+      if (res.ok) {
+        const data = await res.json();
+        if (data?.newSlug && data.newSlug !== slug) {
+          // Build redirect URL, preserving all query params (UTM etc.)
+          const redirectUrl = new URL(
+            `/${locale}/${pattern.basePath}/${data.newSlug}${search}`,
+            request.url
+          );
+          return NextResponse.redirect(redirectUrl, { status: 301 });
+        }
+      }
+    } catch {
+      // Network/parse error → proceed normally, don't crash
     }
-    return NextResponse.next();
+    break; // Only one pattern can match
   }
 
-  // ── /dashboard/* — outside next-intl (no locale prefix) ─────────────
-  if (pathname.startsWith("/dashboard")) {
-    return NextResponse.next();
-  }
-
-  // ── /gcc/* — standalone landing pages, bypass next-intl entirely ───────────
-  // These pages have their own layout with lang="ar" dir="rtl" and do not
-  // use next-intl providers. Do not add a locale prefix to these routes.
-  if (pathname.startsWith("/gcc/")) {
-    return NextResponse.next();
-  }
-
-  // ── Everything else → next-intl adds locale prefix ─────────────────────────
+  // ── next-intl handles everything else (locale detection, prefix) ───────────
   return intlMiddleware(request);
 }
 
+
+
 export const config = {
-  // IMPORTANT: /admin, /dashboard, and /gcc are deliberately excluded from the
-  // catch-all so next-intl never tries to locale-prefix them.
   matcher: [
-    "/",
-    "/(en|ar|fr|de|es|it|tr)/:path*",
-    "/((?!api|_next|_vercel|admin|dashboard|gcc|.*\\..*).*)",
+    // Match all paths except Next.js internals and static files
+    "/((?!_next|_vercel|.*\\..*).*)",
   ],
 };

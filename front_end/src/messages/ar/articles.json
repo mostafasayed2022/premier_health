@@ -1,0 +1,14 @@
+{
+  "pageTitle": "المقالات الصحية",
+  "pageSubtitle": "رؤى متخصصة وأدلة عافية من فريقنا الطبي",
+  "allCategories": "الكل",
+  "readMore": "اقرأ المقال",
+  "readingTime": "{minutes} دقائق قراءة",
+  "publishedOn": "نُشر {date}",
+  "by": "بقلم",
+  "relatedTitle": "مقالات ذات صلة",
+  "backToArticles": "العودة إلى المقالات",
+  "loading": "جارٍ تحميل المقالات…",
+  "notFound": "لم يتم العثور على المقال",
+  "noArticles": "لا توجد مقالات"
+}

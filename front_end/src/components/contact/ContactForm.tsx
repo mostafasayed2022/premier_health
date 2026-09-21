@@ -5,6 +5,10 @@ import { getBranches, Branch } from "@/lib/api";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { ContactFormData } from "./types";
 import { useLocale, useTranslations } from "next-intl";
+import { api } from "@/lib/api/client";
+import { toast } from "sonner";
+import { trackSubmitLead } from "@/lib/analytics/events";
+import { fbTrackLead } from "@/lib/analytics/pixels";
 
 export function ContactForm() {
   const locale = useLocale();
@@ -34,9 +38,16 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1500));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      await api.post("contact/", formData);
+      setSubmitted(true);
+      trackSubmitLead({ lead_type: "contact", source: "contact_form" });
+      fbTrackLead("Contact Form Submission");
+    } catch {
+      toast.error(isAr ? "تعذر إرسال الرسالة. حاول مرة أخرى." : "Could not send the message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {

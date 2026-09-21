@@ -21,7 +21,7 @@ const initialBookingData: BookingData = {
   doctor: "",
   date: "",
   time: "",
-  payment: "cash",
+  payment: "",
   email: "",
   phone: "",
 };
@@ -52,17 +52,14 @@ export function useBookingState() {
       const bookingId = String(data?.booking?.id ?? "");
       if (bookingId && !firedBookingsRef.current.has(bookingId)) {
         firedBookingsRef.current.add(bookingId);
-        const bookingFee = data?.booking?.fee ? Number(data.booking.fee) : undefined;
         trackBookingComplete({
           booking_id: bookingId,
-          service_id: booking.service || undefined,
+          service_id: booking.service,
           service_name: undefined, // resolved server-side
-          branch_id: booking.branch || undefined,
+          branch_id: booking.branch,
           branch_name: undefined,
-          price: bookingFee,
-          value: bookingFee,
+          value: undefined,
           currency: "EGP",
-          event_id: `booking_${bookingId}`,
         });
       }
 
@@ -97,35 +94,13 @@ export function useBookingState() {
 
     window.history.replaceState({}, document.title, window.location.pathname);
 
-    if (paymentStatus === "success") {
-      setConfirmed(true);
-      toast.success(t("paymentSuccess"));
-
-      // ── purchase: fire on confirmed successful payment using real transaction/booking ID ──
-      const txnId = params.get("txn_id") || params.get("transaction_id") || bookingId;
-      if (txnId) {
-        const storageKey = `premier_purchased_${txnId}`;
-        if (!sessionStorage.getItem(storageKey)) {
-          sessionStorage.setItem(storageKey, "1");
-          trackPurchase({
-            transaction_id: txnId,
-            booking_id: bookingId || undefined,
-            value: 0,
-            currency: "EGP",
-            event_id: `purchase_${txnId}`,
-          });
-        }
-      }
-      return;
-    }
-
     if (paymentStatus === "failed") {
       toast.error(t("paymentFailed"));
       setStep(6);
       return;
     }
 
-    if (paymentStatus === "processing" && bookingId) {
+    if ((paymentStatus === "processing" || paymentStatus === "success") && bookingId) {
       setIsPolling(true);
       const toastId = toast.loading(t("verifyingPayment"));
       let attempts = 0;
@@ -136,7 +111,13 @@ export function useBookingState() {
         try {
           const data = await getBookingStatus(bookingId);
 
-          if (data.status === "confirmed") {
+          if (data.payment_status === "paid") {
+            const txnId = data.transaction_id || bookingId;
+            const storageKey = `premier_purchased_${txnId}`;
+            if (!sessionStorage.getItem(storageKey)) {
+              trackPurchase({ transaction_id: txnId, booking_id: bookingId, value: Number(data.amount || 0), currency: data.currency || "EGP" });
+              sessionStorage.setItem(storageKey, "1");
+            }
             clearInterval(poll);
             setIsPolling(false);
             toast.dismiss(toastId);
@@ -229,8 +210,6 @@ export function useBookingState() {
       if (step === 1 && !firedStartBookingRef.current) {
         firedStartBookingRef.current = true;
         trackStartBooking({
-          service_id: booking.service || undefined,
-          branch_id: booking.branch || undefined,
           booking_source: "booking_wizard",
         });
       }
@@ -239,8 +218,6 @@ export function useBookingState() {
       if (step === 6 && !firedSubmitLeadRef.current) {
         firedSubmitLeadRef.current = true;
         trackSubmitLead({
-          service_id: booking.service || undefined,
-          branch_id: booking.branch || undefined,
           lead_type: "booking",
           source: "booking_wizard",
         });
@@ -274,9 +251,7 @@ export function useBookingState() {
         typeof window !== "undefined"
           ? localStorage.getItem("patient_access") || undefined
           : undefined,
-      // Pass flattened attribution fields
-      ...(Object.keys(attribution).length > 0 ? attribution : {}),
-      // Also pass nested attribution object for serializers that expect an envelope
+      // Attach attribution for campaign tracking (Zero-PII)
       attribution: Object.keys(attribution).length > 0 ? attribution : undefined,
     };
 

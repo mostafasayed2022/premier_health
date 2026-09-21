@@ -12,6 +12,9 @@ export interface ServiceData {
   name_ar: string;
   slug: string;
   category: string;
+  department_name?: string;
+  department_name_ar?: string;
+  department_slug?: string;
   description: string;
   description_ar: string;
   ingredients?: string;

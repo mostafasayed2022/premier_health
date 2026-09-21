@@ -35,6 +35,8 @@ export const loadLocaleMessages = cache(async (locale: string) => {
     "Welcome",
     "Profile",
     "IVPackages",
+    "IVDrip",    // ← NEW
+    "Articles",  // ← NEW
   ];
 
   const messages: Record<string, any> = {};
@@ -42,28 +44,23 @@ export const loadLocaleMessages = cache(async (locale: string) => {
   for (const ns of namespaces) {
     const fileName = ns.toLowerCase();
     try {
-      messages[ns] = (
-        await import(`../messages/${locale}/${fileName}.json`)
-      ).default;
+      const data = (await import(`../messages/${locale}/${fileName}.json`))
+        .default;
+      messages[ns] = data;
+      messages[fileName] = data;
     } catch (err) {
       console.warn(
         `[i18n] Failed to load ${ns} for ${locale}, falling back to ar`,
       );
       try {
-        messages[ns] = (
-          await import(`../messages/ar/${fileName}.json`)
-        ).default;
+        const fallbackData = (await import(`../messages/ar/${fileName}.json`))
+          .default;
+        messages[ns] = fallbackData;
+        messages[fileName] = fallbackData;
       } catch (fallbackErr) {
         messages[ns] = {};
+        messages[fileName] = {};
       }
-    }
-  }
-
-  // Ensure both PascalCase and lowercase namespaces work smoothly
-  for (const ns of namespaces) {
-    const lower = ns.toLowerCase();
-    if (!messages[lower] && messages[ns]) {
-      messages[lower] = messages[ns];
     }
   }
 

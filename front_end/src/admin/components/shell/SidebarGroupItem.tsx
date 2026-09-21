@@ -34,6 +34,8 @@ export function SidebarGroupItem({
       {/* Group Accordion Header */}
       <button
         type="button"
+        aria-expanded={isOpen}
+        aria-controls={`sidebar-group-${group.id}`}
         style={{
           ...S.navItem,
           color: hasActiveChild ? "#C8A96B" : "#e2e8f0",
@@ -59,6 +61,7 @@ export function SidebarGroupItem({
       {/* Group Dropdown Sub-Items */}
       {isOpen && (
         <div
+          id={`sidebar-group-${group.id}`}
           style={{
             display: "flex",
             flexDirection: "column",

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { useBranches, useDepartments, useBranchGallery } from "@/lib/api";
-import type { Branch } from "@/lib/types";
 import dynamic from "next/dynamic";
 import {
   BranchesHero,
@@ -27,7 +26,6 @@ export function BranchesPageClient() {
   const { data: branches = [], isLoading: isBranchesLoading } = useBranches();
   const { data: departments = [], isLoading: isDeptsLoading } =
     useDepartments();
-
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>("all");
   const { data: rawBranchGalleryItems = [], isLoading: isGalleryLoading } =
@@ -155,7 +153,6 @@ export function BranchesPageClient() {
     <div className="flex flex-col bg-background min-h-screen">
       {/* 1. Hero Banner */}
       <BranchesHero />
-
 
       {/* 2. Main Branch Cards Grid */}
       <section className="luxury-container py-16">

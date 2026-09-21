@@ -39,7 +39,6 @@ interface ApiService {
   description_ar?: string;
   department_slug?: string;
   department_name?: string;
-  department_name_ar?: string;
   category?: string;
 }
 
@@ -70,38 +69,10 @@ export interface ApiDoctor {
   position_ar?: string;
   bio?: string;
   bio_ar?: string;
-  image_url?: string | null;
-  photo?: string | null;
+  image_url?: string;
+  photo?: string;
   effective_fee?: number;
   slug?: string;
-}
-
-
-export interface ApiAppointment {
-  id: number;
-  patient: number;
-  doctor: number;
-  service: number;
-  branch: number;
-  date: string;
-  start_time: string;
-  status: string;
-  fee: number;
-  doctor_name: string;
-  service_name: string;
-  branch_name: string;
-  created_at: string;
-}
-
-export interface ApiPayment {
-  id: number;
-  booking: number;
-  patient: number;
-  amount: number;
-  method: string;
-  status: string;
-  transaction_id: string;
-  paid_at: string;
 }
 
 interface ApiBooking {
@@ -131,13 +102,12 @@ interface ApiBooking {
 
 export function mergeDept(d: ApiDepartment): Department {
   const fallbackMock = MOCK_DEPARTMENTS.find(
-    (md) =>
-      md.slug === d.slug ||
-      String(md.id) === String(d.id) ||
-      md.name.toLowerCase() === d.name.toLowerCase()
+    (m) => m.slug === d.slug || String(m.id) === String(d.id),
   );
-
-  const rawCount = (d as any).doctors_count ?? fallbackMock?.doctorsCount ?? 0;
+  const rawCount =
+    (d as any).doctors_count ??
+    (d as any).doctorsCount ??
+    (Array.isArray((d as any).doctors) ? (d as any).doctors.length : 0);
 
   return {
     ...d,
@@ -146,7 +116,7 @@ export function mergeDept(d: ApiDepartment): Department {
     description_ar: d.description_ar || d.description,
     photo: getOptimizedImageUrl(
       d.image_url || fallbackMock?.photo || "/Departments/iv_theapy.webp",
-      800
+      800,
     ),
     doctorsCount: rawCount,
   } as Department;
@@ -155,20 +125,55 @@ export function mergeDept(d: ApiDepartment): Department {
 // ─── Service Merge ────────────────────────────────────────────────────────────
 
 export function mergeSvc(s: ApiService): Service {
-  const deptSlug = s.department_slug || s.category || "general";
+  const rawDept =
+    (s as any).department_id ||
+    (s as any).department ||
+    s.department_slug ||
+    s.category ||
+    "general";
+  const rawDeptStr = String(rawDept).toLowerCase();
+
+  const foundDept = MOCK_DEPARTMENTS.find(
+    (d) =>
+      String(d.id).toLowerCase() === rawDeptStr ||
+      d.id.toLowerCase() === `dep${rawDeptStr}` ||
+      d.slug.toLowerCase() === rawDeptStr ||
+      d.name.toLowerCase() === rawDeptStr,
+  );
+
+  const deptSlug =
+    foundDept?.slug ||
+    (s.department_slug && !/^\d+$/.test(s.department_slug)
+      ? s.department_slug
+      : s.category && !/^\d+$/.test(s.category)
+        ? s.category
+        : "general");
+
+  const deptName =
+    (s.department_name && !/^\d+$/.test(s.department_name)
+      ? s.department_name
+      : foundDept?.name || deptSlug);
+
+  const deptNameAr =
+    (s as any).department_name_ar ||
+    foundDept?.name_ar ||
+    deptName;
 
   return {
     ...s,
     id: String(s.id),
     category: deptSlug,
-    department_name: s.department_name || deptSlug,
-    department_name_ar: s.department_name_ar || s.department_name || deptSlug,
+    department_name: deptName,
+    department_name_ar: deptNameAr,
     department_slug: deptSlug,
     price: s.default_fee ?? 150,
     duration: s.duration_minutes ?? 0,
     name_ar: s.name_ar || s.name,
     description_ar: s.description_ar || s.description,
-    photo: getOptimizedImageUrl(s.image_url || "/Treatments/Detox.webp", 600),
+    photo: getOptimizedImageUrl(
+      s.image_url || "/Treatments/Detox.webp",
+      600,
+    ),
     benefits: [],
     benefits_ar: [],
     process: [],
@@ -176,10 +181,11 @@ export function mergeSvc(s: ApiService): Service {
     faq: [],
   } as Service;
 }
-
 // ─── Branch Merge ─────────────────────────────────────────────────────────────
 
 export function mergeBranch(b: ApiBranch): Branch {
+  const finalMapUrl = b.url || b.map_url || "";
+
   return {
     ...b,
     id: String(b.id),
@@ -192,15 +198,13 @@ export function mergeBranch(b: ApiBranch): Branch {
     hours: "",
     hours_ar: "",
     mapEmbed: "",
-    mapUrl: b.url || b.map_url || "",
-    map_url: b.url || b.map_url || "",
-    url: b.url || b.map_url || "",
-    country: "Egypt",
+    mapUrl: finalMapUrl,
+    map_url: finalMapUrl,
+    url: finalMapUrl,
+    country: "",
     services: [],
   } as Branch;
 }
-
-
 // ─── Doctor Merge ─────────────────────────────────────────────────────────────
 
 export function mergeDoc(d: ApiDoctor): Doctor {

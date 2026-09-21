@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+
+import "flag-icons/css/flag-icons.min.css";
 import "./globals.css";
 
 type Props = {
@@ -6,5 +8,9 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  return children;
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }

@@ -2,7 +2,6 @@
 // Standalone layout — no next-intl, Arabic-only, RTL
 
 import type { ReactNode } from "react";
-import { Cairo, Arapey } from "next/font/google";
 import {
   GoogleTagManagerScript,
   GoogleTagManagerNoScript,
@@ -13,19 +12,7 @@ import { FloatingWhatsAppCTA } from "@/components/layout/FloatingWhatsAppCTA";
 import { GccFloatingHomeButton } from "@/components/gcc/GccFloatingHomeButton";
 import type { Metadata } from "next";
 
-const cairo = Cairo({
-  subsets: ["arabic", "latin"],
-  variable: "--font-cairo",
-  display: "swap",
-});
 
-const arapey = Arapey({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-arapey",
-  display: "swap",
-  preload: false,
-});
 
 export const metadata: Metadata = {
   title: "IV Therapy in Cairo | Premier Health Clinics | علاج IV في القاهرة",
@@ -74,12 +61,8 @@ export const metadata: Metadata = {
 
 export default function GccLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="ar"
-      dir="rtl"
-      className={`${cairo.variable} ${arapey.variable}`}
-    >
-      <head>
+    <div lang={"ar"} dir={"rtl"}>
+      <>
         <GoogleTagManagerScript />
         <link rel="icon" href="/logo/logo.webp" type="image/webp" sizes="any" />
         <link
@@ -89,9 +72,9 @@ export default function GccLayout({ children }: { children: ReactNode }) {
         />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body
-        className={`${cairo.className} bg-white min-h-screen antialiased selection:bg-amber-100`}
+      </>
+      <div
+        className={`bg-white min-h-screen antialiased selection:bg-amber-400 selection:text-[#0d2235]`}
         style={{ direction: "rtl" }}
       >
         <GoogleTagManagerNoScript />
@@ -104,7 +87,7 @@ export default function GccLayout({ children }: { children: ReactNode }) {
         <FloatingWhatsAppCTA />
         {/* Persistent Mobile Sticky CTA for WhatsApp, Call & Booking */}
         <StickyMobileCTA />
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }

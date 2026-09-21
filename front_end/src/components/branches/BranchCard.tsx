@@ -27,9 +27,6 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
       )
     : [];
 
-  const hours = branch.hours;
-  const hoursAr = branch.hours_ar;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 25 }}
@@ -39,7 +36,6 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
       className="h-full"
     >
       <div className="h-full bg-white rounded-3xl border border-accent/20 shadow-md hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden card-gold-accent group">
-
         {/* Photo Header */}
         <div
           onClick={() => {
@@ -62,7 +58,6 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
             alt={isAr ? branch.name_ar || branch.name : branch.name}
             width={400}
             height={250}
-            itemProp="image"
             className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent" />
@@ -95,27 +90,16 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
               <p className="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">
                 {t("branchLabel")}
               </p>
-              <h2
-                itemProp="name"
-                className="text-xl font-serif font-bold text-primary group-hover:text-accent transition-colors"
-              >
+              <h3 className="text-xl font-serif font-bold text-primary group-hover:text-accent transition-colors">
                 {isAr ? branch.name_ar || branch.name : branch.name}
-              </h2>
+              </h3>
             </div>
 
             <div className="flex flex-col gap-3">
               {branch.address && (
-                <div
-                  className="flex items-start gap-3"
-                  itemProp="address"
-                  itemScope
-                  itemType="https://schema.org/PostalAddress"
-                >
+                <div className="flex items-start gap-3">
                   <MapPin size={14} className="text-accent mt-0.5 shrink-0" />
-                  <p
-                    itemProp="streetAddress"
-                    className="text-xs text-foreground/75 leading-relaxed font-medium"
-                  >
+                  <p className="text-xs text-foreground/75 leading-relaxed font-medium">
                     {isAr
                       ? branch.address_ar || branch.address
                       : branch.address}
@@ -125,22 +109,19 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
               {branch.phone && (
                 <div className="flex items-center gap-3">
                   <Phone size={14} className="text-accent shrink-0" />
-                  <a
-                    href={`tel:${branch.phone}`}
-                    itemProp="telephone"
-                    className="text-xs text-foreground/75 font-mono font-medium hover:text-accent transition-colors"
-                  >
+                  <p className="text-xs text-foreground/75 font-mono font-medium">
                     {branch.phone}
-                  </a>
+                  </p>
                 </div>
               )}
-              <div className="flex items-center gap-3">
-                <Clock size={14} className="text-accent shrink-0" />
-                <p className="text-xs text-foreground/75 font-medium">
-                  {isAr ? hoursAr : hours}
-                </p>
-                <meta itemProp="openingHours" content="Sa-Th 10:00-22:00" />
-              </div>
+              {branch.hours && (
+                <div className="flex items-center gap-3">
+                  <Clock size={14} className="text-accent shrink-0" />
+                  <p className="text-xs text-foreground/75 font-medium">
+                    {isAr ? branch.hours_ar || branch.hours : branch.hours}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Services available in this branch */}
@@ -173,7 +154,6 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
                     href={finalMapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    itemProp="hasMap"
                     onClick={() =>
                       trackClickMap({
                         branch_id: branch.id,
@@ -204,5 +184,3 @@ export function BranchCard({ branch, index, onImageClick }: BranchCardProps) {
     </motion.div>
   );
 }
-
-

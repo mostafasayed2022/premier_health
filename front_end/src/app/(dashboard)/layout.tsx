@@ -157,11 +157,12 @@ export default function DashboardLayout({
             </p>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center sm:text-right">
               Designed &amp; Developed by:{" "}
-              <span className="font-semibold text-primary dark:text-accent">CodeVerse</span> ·{" "}
+              <span className="font-semibold text-primary dark:text-accent">CodeVerse</span>
+              {" · "}
               <a
                 href="tel:+201111453894"
+                className="hover:underline font-medium inline-block"
                 dir="ltr"
-                className="font-semibold text-primary dark:text-accent hover:underline"
               >
                 +201111453894
               </a>

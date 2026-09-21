@@ -12,6 +12,7 @@ interface BookingSuccessProps {
 export function BookingSuccess({ onReset }: BookingSuccessProps) {
   const t = useTranslations("Booking");
 
+
   return (
     <div className="min-h-screen bg-slate-50/60 flex items-center justify-center p-4 py-16">
       <motion.div

@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { CheckCircle2, FlaskConical, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getServices, getDepartments, Service, Department } from "@/lib/api";
+import { getServices, Service } from "@/lib/api";
 import Image from "next/image";
 
 export default function FeaturedTreatmentsSection() {
@@ -12,17 +12,11 @@ export default function FeaturedTreatmentsSection() {
   const locale = useLocale();
   const isAr = locale === "ar";
   const [services, setServices] = useState<Service[]>([]);
-  const [departments, setDepartments] = useState<Department[]>([]);
 
   useEffect(() => {
     getServices().then((data) => {
       if (data && data.length > 0) {
         setServices(data);
-      }
-    });
-    getDepartments().then((data) => {
-      if (data && data.length > 0) {
-        setDepartments(data);
       }
     });
   }, []);
@@ -83,34 +77,12 @@ export default function FeaturedTreatmentsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.slice(0, 6).map((service, index) => {
             const benefitsList = isAr ? service.benefits_ar : service.benefits;
-            const ingredientsText = isAr ? service.ingredients_ar : service.ingredients;
-
-            // Resolve real department name instead of raw ID/number
-            const matchedDept = departments.find(
-              (d) =>
-                String(d.id) === String((service as any).department) ||
-                String(d.id) === String(service.category) ||
-                d.slug === service.department_slug ||
-                d.slug === service.category ||
-                (service.department_name &&
-                  d.name.toLowerCase() === service.department_name.toLowerCase())
-            );
-
-            const rawDeptName = matchedDept
-              ? (isAr ? matchedDept.name_ar : matchedDept.name)
-              : isAr
-              ? (service.department_name_ar || service.department_name)
-              : service.department_name;
-
-            const departmentTitle = (
-              rawDeptName && isNaN(Number(rawDeptName))
-                ? rawDeptName
-                : service.category && isNaN(Number(service.category))
-                ? service.category.replace(/-/g, " ")
-                : isAr
-                ? "العلاج بالتقطير الوريدي"
-                : "IV Drip Therapy"
-            ).toUpperCase();
+            const ingredientsText = isAr
+              ? service.ingredients_ar
+              : service.ingredients;
+            const categoryTitle = service.category
+              ? service.category.toUpperCase()
+              : "MEDICAL CARE";
 
             return (
               <motion.div
@@ -135,10 +107,10 @@ export default function FeaturedTreatmentsSection() {
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#243642]/60 via-transparent to-transparent" />
-                    
-                    {/* Department Badge overlay on image */}
-                    <span className="absolute top-4 left-4 rtl:left-auto rtl:right-4 text-[9px] uppercase font-bold tracking-widest text-white bg-[#243642]/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 shadow-md">
-                      {departmentTitle}
+
+                    {/* Category Badge overlay on image */}
+                    <span className="absolute top-4 left-4 text-[9px] uppercase font-bold tracking-widest text-white bg-[#243642]/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 shadow-md">
+                      {categoryTitle}
                     </span>
                   </div>
 
@@ -157,8 +129,14 @@ export default function FeaturedTreatmentsSection() {
                     <div className="mb-5 pt-3 border-t border-accent/10">
                       <div className="flex flex-col gap-2">
                         {benefitsList.map((benefit, bIdx) => (
-                          <div key={bIdx} className="flex items-center gap-2 text-xs font-semibold text-primary">
-                            <CheckCircle2 size={14} className="text-accent shrink-0" />
+                          <div
+                            key={bIdx}
+                            className="flex items-center gap-2 text-xs font-semibold text-primary"
+                          >
+                            <CheckCircle2
+                              size={14}
+                              className="text-accent shrink-0"
+                            />
                             <span className="line-clamp-1">{benefit}</span>
                           </div>
                         ))}
@@ -169,7 +147,10 @@ export default function FeaturedTreatmentsSection() {
                   {/* Ingredients Section */}
                   {ingredientsText && (
                     <div className="bg-[#f7f2ea]/60 rounded-2xl p-3.5 border border-accent/15 flex items-start gap-2.5">
-                      <FlaskConical size={16} className="text-accent shrink-0 mt-0.5" />
+                      <FlaskConical
+                        size={16}
+                        className="text-accent shrink-0 mt-0.5"
+                      />
                       <div>
                         <span className="block text-[9px] uppercase tracking-wider text-accent font-black mb-0.5">
                           {t("Services.activeFormula") || "Active Formula"}
@@ -197,4 +178,3 @@ export default function FeaturedTreatmentsSection() {
     </section>
   );
 }
-

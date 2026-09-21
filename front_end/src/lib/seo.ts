@@ -96,7 +96,8 @@ export const DEFAULT_META: Record<
     ],
   },
   en: {
-    title: "Premier Health Clinics | #1 Luxury IV Therapy, Dermatology & Aesthetics in Egypt",
+    title:
+      "Premier Health Clinics | #1 Luxury IV Therapy, Dermatology & Aesthetics in Egypt",
     description:
       "Premier Health Clinics is Egypt's premier luxury medical clinic offering advanced IV drip therapy, medical dermatology, NAD+ infusions, and bespoke aesthetics in Cairo, Sheikh Zayed & New Cairo.",
     keywords: [
@@ -215,7 +216,8 @@ export const PAGE_META: Record<
 > = {
   home: {
     ar: {
-      title: "عيادات بريمير هيلث | الرعاية الصحية الفاخرة والتقطير الوريدي والتجميل",
+      title:
+        "عيادات بريمير هيلث | الرعاية الصحية الفاخرة والتقطير الوريدي والتجميل",
       description:
         "احجز موعدك في عيادات بريمير هيلث. رواد العلاج الوريدي IV Therapy، تجميل ونضارة البشرة، والجلدية في القاهرة، أركان بلازا الشيخ زايد، وسوديك EDNC التجمع.",
       keywords: [
@@ -232,7 +234,8 @@ export const PAGE_META: Record<
       ],
     },
     en: {
-      title: "Premier Health Clinics | Luxury Wellness, IV Therapy & Aesthetic Medicine",
+      title:
+        "Premier Health Clinics | Luxury Wellness, IV Therapy & Aesthetic Medicine",
       description:
         "Experience bespoke medical excellence at Premier Health Clinics. World-class IV drip therapy, aesthetic dermatology, and longevity care across Cairo & Sheikh Zayed.",
       keywords: [
@@ -302,13 +305,23 @@ export const PAGE_META: Record<
       title: "باقات العلاج الوريدي | عيادة بريمير هيلث",
       description:
         "استكشف باقات العلاج الوريدي IV Therapy المصممة لدعم الترطيب، استعادة الطاقة، التعافي، والجمال. احجز باقتك عبر الواتساب.",
-      keywords: ["باقات العلاج الوريدي", "باقات IV Therapy", "دربات فيتامينات القاهرة", "بريمير هيلث"],
+      keywords: [
+        "باقات العلاج الوريدي",
+        "باقات IV Therapy",
+        "دربات فيتامينات القاهرة",
+        "بريمير هيلث",
+      ],
     },
     en: {
       title: "IV Therapy Packages | Premier Health Clinics",
       description:
         "Explore our IV Therapy packages designed to support hydration, energy, recovery, beauty and overall wellness. Choose your package and book via WhatsApp.",
-      keywords: ["IV Therapy Packages", "IV Drip Packages", "Premier Health IV", "Wellness Drips"],
+      keywords: [
+        "IV Therapy Packages",
+        "IV Drip Packages",
+        "Premier Health IV",
+        "Wellness Drips",
+      ],
     },
     fr: {
       title: "Forfaits de Thérapie IV | Clinique Premier Health",
@@ -320,31 +333,51 @@ export const PAGE_META: Record<
       title: "IV-Therapie-Pakete | Premier Health Klinik",
       description:
         "Entdecken Sie unsere IV-Therapie-Pakete für Hydratation, Energie, Regeneration und Schönheit. Buchen Sie direkt über WhatsApp.",
-      keywords: ["IV-Therapie-Pakete", "Infusionstherapie Pakete", "Wellness Infusion"],
+      keywords: [
+        "IV-Therapie-Pakete",
+        "Infusionstherapie Pakete",
+        "Wellness Infusion",
+      ],
     },
     es: {
       title: "Paquetes de Terapia IV | Clínica Premier Health",
       description:
         "Explore nuestros paquetes de Terapia IV diseñados para favorecer la hidratación, energía, recuperación y belleza. Reserve por WhatsApp.",
-      keywords: ["Paquetes Terapia IV", "Sueroterapia Paquetes", "Bienestar IV"],
+      keywords: [
+        "Paquetes Terapia IV",
+        "Sueroterapia Paquetes",
+        "Bienestar IV",
+      ],
     },
     it: {
       title: "Pacchetti di Terapia IV | Clinica Premier Health",
       description:
         "Scopri i nostri pacchetti di Terapia IV per idratazione, energia, recupero e bellezza. Prenota su WhatsApp.",
-      keywords: ["Pacchetti Terapia IV", "Terapia Endovenosa Pacchetti", "Benessere IV"],
+      keywords: [
+        "Pacchetti Terapia IV",
+        "Terapia Endovenosa Pacchetti",
+        "Benessere IV",
+      ],
     },
     tr: {
       title: "IV Terapi Paketleri | Premier Health Kliniği",
       description:
         "Hidrasyon, enerji, toparlanma ve güzelliği destekleyen IV Terapi paketlerimizi keşfedin. WhatsApp üzerinden randevu alın.",
-      keywords: ["IV Terapi Paketleri", "Serum Tedavisi Paketleri", "Premier Health IV"],
+      keywords: [
+        "IV Terapi Paketleri",
+        "Serum Tedavisi Paketleri",
+        "Premier Health IV",
+      ],
     },
     ru: {
       title: "Пакеты IV-Терапии | Клиника Premier Health",
       description:
         "Ознакомьтесь с нашими пакетами IV-терапии для гидратации, энергии, восстановления и красоты. Забронируйте через WhatsApp.",
-      keywords: ["Пакеты IV-терапии", "Капельницы здоровья", "Premier Health IV"],
+      keywords: [
+        "Пакеты IV-терапии",
+        "Капельницы здоровья",
+        "Premier Health IV",
+      ],
     },
   },
   "iv-therapy-packages": {
@@ -352,13 +385,23 @@ export const PAGE_META: Record<
       title: "باقات العلاج الوريدي | عيادة بريمير هيلث",
       description:
         "استكشف باقات العلاج الوريدي IV Therapy المصممة لدعم الترطيب، استعادة الطاقة، التعافي، والجمال. احجز باقتك عبر الواتساب.",
-      keywords: ["باقات العلاج الوريدي", "باقات IV Therapy", "دربات فيتامينات القاهرة", "بريمير هيلث"],
+      keywords: [
+        "باقات العلاج الوريدي",
+        "باقات IV Therapy",
+        "دربات فيتامينات القاهرة",
+        "بريمير هيلث",
+      ],
     },
     en: {
       title: "IV Therapy Packages | Premier Health Clinics",
       description:
         "Explore our IV Therapy packages designed to support hydration, energy, recovery, beauty and overall wellness. Choose your package and book via WhatsApp.",
-      keywords: ["IV Therapy Packages", "IV Drip Packages", "Premier Health IV", "Wellness Drips"],
+      keywords: [
+        "IV Therapy Packages",
+        "IV Drip Packages",
+        "Premier Health IV",
+        "Wellness Drips",
+      ],
     },
     fr: {
       title: "Forfaits de Thérapie IV | Clinique Premier Health",
@@ -370,31 +413,51 @@ export const PAGE_META: Record<
       title: "IV-Therapie-Pakete | Premier Health Klinik",
       description:
         "Entdecken Sie unsere IV-Therapie-Pakete für Hydratation, Energie, Regeneration und Schönheit. Buchen Sie direkt über WhatsApp.",
-      keywords: ["IV-Therapie-Pakete", "Infusionstherapie Pakete", "Wellness Infusion"],
+      keywords: [
+        "IV-Therapie-Pakete",
+        "Infusionstherapie Pakete",
+        "Wellness Infusion",
+      ],
     },
     es: {
       title: "Paquetes de Terapia IV | Clínica Premier Health",
       description:
         "Explore nuestros paquetes de Terapia IV diseñados para favorecer la hidratación, energía, recuperación y belleza. Reserve por WhatsApp.",
-      keywords: ["Paquetes Terapia IV", "Sueroterapia Paquetes", "Bienestar IV"],
+      keywords: [
+        "Paquetes Terapia IV",
+        "Sueroterapia Paquetes",
+        "Bienestar IV",
+      ],
     },
     it: {
       title: "Pacchetti di Terapia IV | Clinica Premier Health",
       description:
         "Scopri i nostri pacchetti di Terapia IV per idratazione, energia, recupero e bellezza. Prenota su WhatsApp.",
-      keywords: ["Pacchetti Terapia IV", "Terapia Endovenosa Pacchetti", "Benessere IV"],
+      keywords: [
+        "Pacchetti Terapia IV",
+        "Terapia Endovenosa Pacchetti",
+        "Benessere IV",
+      ],
     },
     tr: {
       title: "IV Terapi Paketleri | Premier Health Kliniği",
       description:
         "Hidrasyon, enerji, toparlanma ve güzelliği destekleyen IV Terapi paketlerimizi keşfedin. WhatsApp üzerinden randevu alın.",
-      keywords: ["IV Terapi Paketleri", "Serum Tedavisi Paketleri", "Premier Health IV"],
+      keywords: [
+        "IV Terapi Paketleri",
+        "Serum Tedavisi Paketleri",
+        "Premier Health IV",
+      ],
     },
     ru: {
       title: "Пакеты IV-Терапии | Клиника Premier Health",
       description:
         "Ознакомьтесь с нашими пакетами IV-терапии для гидратации, энергии, восстановления и красоты. Забронируйте через WhatsApp.",
-      keywords: ["Пакеты IV-терапии", "Капельницы здоровья", "Premier Health IV"],
+      keywords: [
+        "Пакеты IV-терапии",
+        "Капельницы здоровья",
+        "Premier Health IV",
+      ],
     },
   },
   about: {

@@ -43,11 +43,11 @@ export function SidebarFooter({ user, logout }: SidebarFooterProps) {
         <div style={{ color: "#94a3b8", marginTop: 2, fontSize: 9 }}>
           Designed &amp; Developed by:
           <div style={{ color: "#C8A96B", fontWeight: 600, marginTop: 1 }}>
-            <span>CodeVerse</span> ·{" "}
+            CodeVerse ·{" "}
             <a
               href="tel:+201111453894"
+              style={{ color: "inherit", textDecoration: "none" }}
               dir="ltr"
-              style={{ color: "#C8A96B", textDecoration: "none" }}
             >
               +201111453894
             </a>

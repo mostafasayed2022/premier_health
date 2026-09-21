@@ -1,7 +1,7 @@
 import React from "react";
 import { S } from "../../lib/styles";
 import { Icon } from "../../lib/icons";
-import { getItemIcon } from "../../hooks/useSidebar";
+import { getItemIcon, GROUPS, matchesGroup } from "../../hooks/useSidebar";
 import type { SchemaListing } from "../../api/admin";
 
 interface DashboardNavCardsProps {
@@ -38,6 +38,29 @@ export const DashboardNavCards = React.memo(function DashboardNavCards({
         </h2>
       </div>
 
+      <div style={{ ...S.dashGrid, marginBottom: 16 }} className="admin-dash-grid">
+        {GROUPS.slice(0, 2).map((group) => {
+          const items = schemas.filter((schema) => matchesGroup(schema.name, group));
+          if (!items.length) return null;
+          return (
+            <details key={group.id} style={{ ...S.dashCard, display: "block", padding: 0, borderRadius: 16, border: "1px solid rgba(200, 169, 107, 0.3)" }}>
+              <summary style={{ padding: 22, cursor: "pointer", color: "#5A4E3E", fontWeight: 700 }}>
+                <span style={{ display: "inline-flex", gap: 12, alignItems: "center" }}>
+                  <span style={{ color: "#C8A96B" }}>{group.icon}</span>{group.label}
+                </span>
+              </summary>
+              <div style={{ padding: "0 16px 16px", display: "grid", gap: 6 }}>
+                {items.map((item) => (
+                  <button type="button" key={item.name} onClick={() => navigateTo(`/admin/${item.name.toLowerCase()}`)}
+                    style={{ padding: "10px 12px", borderRadius: 8, border: "1px solid rgba(200, 169, 107, 0.2)", background: "#fff", textAlign: "left", color: "#5A4E3E", cursor: "pointer" }}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </details>
+          );
+        })}
+      </div>
       <div style={S.dashGrid} className="admin-dash-grid">
         {/* Files Card */}
         <button
@@ -59,7 +82,7 @@ export const DashboardNavCards = React.memo(function DashboardNavCards({
         </button>
 
         {/* Model Schemas Cards */}
-        {schemas?.map((s) => {
+        {schemas?.filter((schema) => !GROUPS.slice(0, 2).some((group) => matchesGroup(schema.name, group))).map((s) => {
           const cardIcon = getItemIcon(s.name);
           return (
             <button

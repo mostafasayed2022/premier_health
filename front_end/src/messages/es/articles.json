@@ -1,0 +1,14 @@
+{
+  "pageTitle": "Artículos de Salud",
+  "pageSubtitle": "Consejos de expertos y guías de bienestar de nuestro equipo médico",
+  "allCategories": "Todos",
+  "readMore": "Leer artículo",
+  "readingTime": "{minutes} min de lectura",
+  "publishedOn": "Publicado el {date}",
+  "by": "Por",
+  "relatedTitle": "Artículos Relacionados",
+  "backToArticles": "Volver a los artículos",
+  "loading": "Cargando artículos…",
+  "notFound": "Artículo no encontrado",
+  "noArticles": "No se encontraron artículos"
+}

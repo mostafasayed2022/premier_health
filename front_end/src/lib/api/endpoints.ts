@@ -146,6 +146,9 @@ export interface BookingStatusResponse {
   id: string;
   status: string;
   payment_status: string | null;
+  amount?: string | null;
+  currency?: string;
+  transaction_id?: string | null;
 }
 
 // ─── File Upload ──────────────────────────────────────────────────
@@ -197,9 +200,9 @@ export const uploadFile = async (
 // ─── Departments ──────────────────────────────────────────────────
 
 // Public page (Departments page)
-export const getDepartments = async (): Promise<Department[]> => {
+export const getDepartments = async (locale?: string): Promise<Department[]> => {
   try {
-    const { data } = await api.get<ApiDepartment[]>("wizard/departments/");
+    const { data } = await api.get<ApiDepartment[]>("wizard/departments/", locale ? { headers: { "Accept-Language": locale } } : {});
     return data.map(mergeDept);
   } catch {
     return [];
@@ -226,9 +229,9 @@ export const getDepartmentBySlug = async (
 // ─── Services ─────────────────────────────────────────────────────
 
 // Services Page
-export const getServices = async (): Promise<Service[]> => {
+export const getServices = async (locale?: string): Promise<Service[]> => {
   try {
-    const { data } = await api.get<ApiService[]>("wizard/services/");
+    const { data } = await api.get<ApiService[]>("wizard/services/", locale ? { headers: { "Accept-Language": locale } } : {});
 
     return data.map(mergeSvc);
   } catch {
@@ -275,8 +278,6 @@ export const getBranches = async (): Promise<Branch[]> => {
     return [];
   }
 };
-
-
 
 // Booking Wizard
 export const getBranchesByService = async (
@@ -940,3 +941,6 @@ export const addPatientRecord = async (
   MOCK_PATIENT_RECORDS = [data, ...MOCK_PATIENT_RECORDS];
   return data;
 };
+
+export * from "./iv-drip-articles";
+

@@ -120,11 +120,12 @@ export function FooterBottom() {
         </p>
         <p className="text-[11px] text-slate-400">
           Designed &amp; Developed by:{" "}
-          <span className="text-accent font-semibold">CodeVerse</span> ·{" "}
+          <span className="text-accent font-semibold">CodeVerse</span>
+          {" · "}
           <a
             href="tel:+201111453894"
+            className="text-slate-300 hover:text-accent transition-colors font-medium inline-block"
             dir="ltr"
-            className="text-accent font-semibold hover:underline"
           >
             +201111453894
           </a>

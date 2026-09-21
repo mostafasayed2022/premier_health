@@ -35,7 +35,7 @@ export function JsonLd({ locale }: JsonLdProps) {
           : "Leading luxury medical & wellness clinics offering advanced IV drip therapy, dermatology, NAD+ infusions, and aesthetic medicine in Cairo, Egypt.",
         email: "info@premierhealthclinics.com",
         telephone: "+201200644663",
-        priceRange: "$$$",
+        priceRange: "EGP",
         medicalSpecialty: [
           "Dermatology",
           "Aesthetic Medicine",

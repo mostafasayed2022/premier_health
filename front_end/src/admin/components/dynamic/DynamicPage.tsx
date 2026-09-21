@@ -65,7 +65,6 @@ export function DynamicPage({ modelName }: DynamicPageProps) {
       const payload: Record<string, unknown> = {
         ...formValues,
         title: formValues.title || cleanName,
-        title_ar: formValues.title_ar || formValues.title || cleanName,
         name: formValues.name || cleanName,
         is_active: formValues.is_active !== undefined ? formValues.is_active : true,
       };

@@ -1,0 +1,14 @@
+{
+  "pageTitle": "Gesundheitsartikel",
+  "pageSubtitle": "Experteneinblicke und Wellness-Guides unseres medizinischen Teams",
+  "allCategories": "Alle",
+  "readMore": "Artikel lesen",
+  "readingTime": "{minutes} Min. Lesezeit",
+  "publishedOn": "Veröffentlicht am {date}",
+  "by": "Von",
+  "relatedTitle": "Ähnliche Artikel",
+  "backToArticles": "Zurück zu den Artikeln",
+  "loading": "Artikel werden geladen…",
+  "notFound": "Artikel nicht gefunden",
+  "noArticles": "Keine Artikel gefunden"
+}

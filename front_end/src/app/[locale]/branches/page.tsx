@@ -6,5 +6,3 @@ export const generateMetadata = generatePageMetadata("branches");
 export default function BranchesPage() {
   return <BranchesPageClient />;
 }
-
-

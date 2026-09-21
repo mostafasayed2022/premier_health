@@ -20,8 +20,6 @@ const PII_KEYS = new Set([
   "diagnosis",
   "medical_history",
   "medical_notes",
-  "appointment_notes",
-  "notes",
   "password",
   "ssn",
   "national_id",
@@ -32,6 +30,9 @@ const PII_KEYS = new Set([
   "patient_phone",
   "user_email",
   "user_phone",
+  "user_phone_number",
+  "user_hashed_email",
+  "user_hashed_phone_number",
 ]);
 
 // ─── PII Sanitizer ────────────────────────────────────────────────────────────
@@ -50,6 +51,8 @@ export function sanitizePII(obj: Record<string, unknown>): Record<string, unknow
     // Recursively sanitize nested objects (but not arrays of primitives)
     if (value !== null && typeof value === "object" && !Array.isArray(value)) {
       result[key] = sanitizePII(value as Record<string, unknown>);
+    } else if (Array.isArray(value)) {
+      result[key] = value.map((item) => item && typeof item === "object" ? sanitizePII(item as Record<string, unknown>) : item);
     } else {
       result[key] = value;
     }
@@ -77,7 +80,7 @@ export function pushDataLayer(
     window.dataLayer = window.dataLayer || [];
 
     const sanitized = sanitizePII(parameters);
-    const payload: DataLayerEvent = { event, ...sanitized };
+    const payload: DataLayerEvent = { ...sanitized, event };
 
     if (process.env.NODE_ENV === "development") {
       console.log("[Analytics] dataLayer.push:", JSON.stringify(payload, null, 2));

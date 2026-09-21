@@ -46,23 +46,17 @@ export const queryKeys = {
       branch?: string;
     }) => ["doctors", "filtered", filters] as const,
 
-    bySlug: (slug: string) =>
-      ["doctors", "detail", slug] as const,
+    bySlug: (slug: string) => ["doctors", "detail", slug] as const,
   },
 
   bookingDoctors: {
-    byBranch: (
-      branchId: string | number,
-      serviceId?: string | number,
-    ) =>
+    byBranch: (branchId: string | number, serviceId?: string | number) =>
       ["booking", "doctors", branchId, serviceId] as const,
   },
   // ── Slots ─────────────────────────────────────────────
   slots: {
-    byDoctorAndBranch: (
-      doctorId: string | number,
-      branchId: string | number,
-    ) => ["slots", doctorId, branchId] as const,
+    byDoctorAndBranch: (doctorId: string | number, branchId: string | number) =>
+      ["slots", doctorId, branchId] as const,
   },
   // ── Gallery ───────────────────────────────────────────
   gallery: {
@@ -81,8 +75,7 @@ export const queryKeys = {
 
   // ── Booking Status ────────────────────────────────────
   bookingStatus: {
-    byId: (bookingId: string) =>
-      ["bookingStatus", bookingId] as const,
+    byId: (bookingId: string) => ["bookingStatus", bookingId] as const,
   },
 
   // ── Payments ──────────────────────────────────────────
@@ -98,8 +91,7 @@ export const queryKeys = {
   // ── Doctor Profile ────────────────────────────────────
   doctorProfile: {
     me: ["profile", "doctor", "me"] as const,
-    public: (id: string) =>
-      ["profile", "doctor", "public", id] as const,
+    public: (id: string) => ["profile", "doctor", "public", id] as const,
   },
 
   // ── Patient Medical Records ───────────────────────────

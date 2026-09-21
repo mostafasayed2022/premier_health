@@ -25,7 +25,8 @@ export interface Attribution {
   // Platform click IDs
   fbclid?: string;
   ttclid?: string;
-  sc_click_id?: string; // Standardized Snapchat Click ID
+  scclid?: string;
+  sc_click_id?: string;
 
   // Attribution meta
   landing_page?: string;
@@ -46,11 +47,8 @@ export interface StoredAttribution extends Attribution {
 
 export interface ViewServiceParams {
   service_id: string | number;
-  service_name?: string;
+  service_name: string;
   service_category?: string;
-  price?: number;
-  value?: number;
-  currency?: string;
   page_path?: string;
   locale?: string;
 }
@@ -58,9 +56,8 @@ export interface ViewServiceParams {
 export interface SelectBranchParams {
   branch_id: string | number;
   branch_name: string;
-  service_id?: string | number;
-  service_name?: string;
   page_path?: string;
+  service_name?: string;
   locale?: string;
 }
 
@@ -110,8 +107,6 @@ export interface StartBookingParams {
 }
 
 export interface SubmitLeadParams {
-  service_id?: string | number;
-  branch_id?: string | number;
   lead_type?: string;
   service_name?: string;
   branch_name?: string;
@@ -126,10 +121,8 @@ export interface BookingCompleteParams {
   service_name?: string;
   branch_id?: string | number;
   branch_name?: string;
-  price?: number;
   value?: number;
   currency?: string;
-  event_id?: string;
   page_path?: string;
   locale?: string;
 }
@@ -139,9 +132,7 @@ export interface AppointmentAttendedParams {
   service_id?: string | number;
   branch_id?: string | number;
   value?: number;
-  price?: number;
   currency?: string;
-  event_id?: string;
   page_path?: string;
   locale?: string;
 }
@@ -152,9 +143,42 @@ export interface PurchaseParams {
   service_name?: string;
   branch_name?: string;
   value: number;
-  price?: number;
   currency: string;
-  event_id?: string;
+  page_path?: string;
+  locale?: string;
+}
+
+export interface ViewIVDripParams {
+  drip_id: string | number;
+  drip_name: string;
+  drip_slug: string;
+  price?: string;
+  page_path?: string;
+  locale?: string;
+}
+
+export interface BookIVDripParams {
+  drip_id: string | number;
+  drip_name: string;
+  drip_slug: string;
+  price?: string;
+  booking_source?: "iv_drip_detail" | "iv_drip_main";
+  // Attribution fields (filled by useAttribution hook on the client)
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  page_path?: string;
+  locale?: string;
+}
+
+export interface ViewArticleParams {
+  article_id: string | number;
+  article_title: string;
+  article_slug: string;
+  article_category?: string;
+  reading_time?: number;
   page_path?: string;
   locale?: string;
 }
@@ -172,7 +196,10 @@ export type AnalyticsEventName =
   | "submit_lead"
   | "booking_complete"
   | "appointment_attended"
-  | "purchase";
+  | "purchase"
+  | "view_iv_drip"
+  | "book_iv_drip"
+  | "view_article";
 
 export interface DataLayerEvent {
   event: AnalyticsEventName | string;

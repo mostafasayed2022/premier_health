@@ -17,15 +17,15 @@ function makeQueryClient() {
   });
 }
 
-let browserQueryClient: QueryClient | undefined = undefined;
+const browserQueryClients = new Map<string, QueryClient>();
 
-export function getQueryClient() {
+export function getQueryClient(locale = "en") {
   if (isServer) {
     // Server: always make a new query client
     return makeQueryClient();
   } else {
     // Browser: make a new query client if we don't already have one
-    if (!browserQueryClient) browserQueryClient = makeQueryClient();
-    return browserQueryClient;
+    if (!browserQueryClients.has(locale)) browserQueryClients.set(locale, makeQueryClient());
+    return browserQueryClients.get(locale)!;
   }
 }

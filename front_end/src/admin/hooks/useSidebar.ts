@@ -13,7 +13,14 @@ export interface GroupDef {
   matches: string[];
 }
 
+export const normalizeModelName = (name: string) => name.split(".").pop()!.toLowerCase().replace(/_/g, "");
+export const matchesGroup = (name: string, group: GroupDef) => group.matches.some((item) => normalizeModelName(item) === normalizeModelName(name));
+
 export const GROUPS: GroupDef[] = [
+  { id: "iv-drips", label: "IV Drips", icon: Icon.service,
+    matches: ["ivdrippage", "ivdripproduct", "ivbenefit", "ivadministrationstep", "ivdripfaq"] },
+  { id: "articles", label: "Articles", icon: Icon.file,
+    matches: ["articlespage", "article", "articlecategory", "slugredirect"] },
   {
     id: "branches",
     label: "Branches & Clinics",
@@ -42,12 +49,14 @@ export const GROUPS: GroupDef[] = [
     id: "media",
     label: "Gallery & Reviews",
     icon: Icon.image,
-    matches: ["branchgallery", "branchgalleries", "branch_gallery", "galleryitem", "galleryitems", "gallery", "testimonialitem", "testimonialitems", "testimonial", "testimonials"],
+    matches: ["branchgallery", "branchgalleries", "branch_gallery", "galleryitem", "galleryitems", "gallery", "galleryimage", "testimonialitem", "testimonialitems", "testimonial", "testimonials"],
   },
 ];
 
 export const getItemIcon = (name: string) => {
-  const low = name.toLowerCase();
+  const low = normalizeModelName(name);
+  if (low.startsWith("iv")) return Icon.service;
+  if (low.includes("article")) return Icon.file;
   if (low.includes("branchservice") || low.includes("branch_service")) return Icon.buildingService;
   if (low.includes("branch")) return Icon.building;
   if (low.includes("department")) return Icon.stethoscope;
@@ -80,7 +89,7 @@ export function useSidebar({ schemas, currentModel, onClose }: UseSidebarProps) 
   useEffect(() => {
     if (!currentModel) return;
     const curLow = currentModel.toLowerCase();
-    const activeGrp = GROUPS.find((g) => g.matches.some((m) => curLow.includes(m) || m.includes(curLow)));
+    const activeGrp = GROUPS.find((g) => matchesGroup(curLow, g));
     if (activeGrp) {
       setOpenGroups((prev) => ({ ...prev, [activeGrp.id]: true }));
     }
@@ -110,9 +119,10 @@ export function useSidebar({ schemas, currentModel, onClose }: UseSidebarProps) 
   GROUPS.forEach((g) => {
     const items = schemaList.filter((s) => {
       const nameLow = s.name.toLowerCase();
-      return g.matches.some((m) => nameLow === m || nameLow.includes(m) || m.includes(nameLow));
+      return !assignedNames.has(nameLow) && matchesGroup(nameLow, g);
     });
     if (items.length > 0) {
+      items.sort((a, b) => g.matches.findIndex((m) => normalizeModelName(m) === normalizeModelName(a.name)) - g.matches.findIndex((m) => normalizeModelName(m) === normalizeModelName(b.name)));
       groupedSchemas.push({ group: g, items });
       items.forEach((it) => assignedNames.add(it.name.toLowerCase()));
     }

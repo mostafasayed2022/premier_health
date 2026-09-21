@@ -11,9 +11,8 @@
  */
 
 const RAW_BASE = (
-  (typeof process !== "undefined"
-    ? process.env?.NEXT_PUBLIC_API_URL || process.env?.NEXT_PUBLIC_API_BASE_URL
-    : undefined) || "https://api.premierhealthclinics.com/api"
+  process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL ||
+  "https://api.premierhealthclinics.com/api/"
 ).trim().replace(/\/+$/, "");
 
 /**

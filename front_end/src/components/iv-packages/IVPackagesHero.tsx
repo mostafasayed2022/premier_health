@@ -4,7 +4,13 @@
 // Luxury Hero for IV Therapy Packages using Premier Health brand aesthetics.
 
 import Image from "next/image";
-import { Sparkles, MessageCircle, ShieldCheck, Zap, Droplets } from "lucide-react";
+import {
+  Sparkles,
+  MessageCircle,
+  ShieldCheck,
+  Zap,
+  Droplets,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { CONTACT } from "@/lib/config/contact";
 import { trackClickWhatsApp } from "@/lib/analytics/events";

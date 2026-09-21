@@ -11,11 +11,20 @@ export default function FAQSection() {
 
   const [activeFaq, setActiveFaq] = React.useState<number | null>(null);
 
-  const faqKeys = [1, 2, 3, 4, 5, 6, 7, 8];
-  const faqs = faqKeys.map((num) => ({
-    q: t(`Faqs.q${num}`),
-    a: t(`Faqs.a${num}`),
-  }));
+  const faqs = [
+    {
+      q: t("Faqs.q1"),
+      a: t("Faqs.a1"),
+    },
+    {
+      q: t("Faqs.q2"),
+      a: t("Faqs.a2"),
+    },
+    {
+      q: t("Faqs.q3"),
+      a: t("Faqs.a3"),
+    },
+  ];
 
   return (
     <section className="luxury-container max-w-4xl">

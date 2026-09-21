@@ -5,5 +5,3 @@ export * from "./types";
 export * from "./dataLayer";
 export * from "./attribution";
 export * from "./events";
-export * from "./gtm";
-export * from "./useAttribution";

@@ -54,7 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ) {
         priority = 0.95;
         changeFrequency = "weekly";
-      } else if (route === "doctors" || route === "departments" || route === "branches") {
+      } else if (
+        route === "doctors" ||
+        route === "departments" ||
+        route === "branches"
+      ) {
         priority = 0.85;
         changeFrequency = "weekly";
       } else if (

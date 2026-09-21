@@ -4,7 +4,7 @@ import axios from "axios";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "https://api.premierhealthclinics.com/api/";
+  "http://127.0.0.1:8000/api/";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -23,7 +23,8 @@ export const api = axios.create({
  */
 function getActiveLocale(): string {
   if (typeof window === "undefined") return "en";
-  const supported = ["en", "ar", "fr", "de", "es", "it", "tr"];
+  const supported = ["en", "ar", "fr", "de", "es", "it", "tr", "ru"];
+  if (window.location.pathname.startsWith("/gcc/")) return "ar";
   const segment = window.location.pathname.split("/")[1];
   return supported.includes(segment) ? segment : "en";
 }
@@ -43,14 +44,14 @@ api.interceptors.request.use((config) => {
   }
 
   // 2. Attach locale so Django returns translated content in base fields
-  config.headers["Accept-Language"] = getActiveLocale();
+  if (!config.headers["Accept-Language"]) config.headers["Accept-Language"] = getActiveLocale();
 
   // 3. Attach auth token when available
   const token =
     typeof window !== "undefined"
-      ? localStorage.getItem("patient_access") ||
-        localStorage.getItem("admin_access") ||
-        localStorage.getItem("access_token")
+      ? (/^\/(admin|dashboard)(\/|$)/.test(window.location.pathname)
+        ? localStorage.getItem("admin_access")
+        : localStorage.getItem("patient_access"))
       : null;
   if (
     token &&
@@ -69,7 +70,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      if (typeof window !== "undefined") {
+      if (typeof window !== "undefined" && !/^\/(admin|dashboard)(\/|$)/.test(window.location.pathname)) {
         localStorage.removeItem("patient_access");
         localStorage.removeItem("patient_refresh");
         localStorage.removeItem("patient_user");
@@ -79,8 +80,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-
 
 // Axios configuration سليم
 

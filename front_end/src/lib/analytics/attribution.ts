@@ -25,6 +25,7 @@ const ATTRIBUTION_PARAMS: (keyof Attribution)[] = [
   "wbraid",
   "fbclid",
   "ttclid",
+  "scclid",
   "sc_click_id",
 ];
 
@@ -93,20 +94,11 @@ function parseAttributionFromURL(): Attribution {
       }
     }
 
-    // Normalize any Snapchat Click ID URL aliases into canonical sc_click_id
-    if (!attrs.sc_click_id) {
-      const snapAlias =
-        params.get("sccid") ||
-        params.get("scclid") ||
-        params.get("sclick_id") ||
-        params.get("ScCid");
-      if (snapAlias) {
-        attrs.sc_click_id = snapAlias;
-      }
-    }
-
     attrs.landing_page = window.location.pathname;
-    attrs.referrer = document.referrer || undefined;
+    if (document.referrer) {
+      const referrer = new URL(document.referrer);
+      attrs.referrer = referrer.origin + referrer.pathname;
+    }
 
     return attrs;
   } catch {
