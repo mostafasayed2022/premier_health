@@ -6,7 +6,7 @@ export const MOCK_DEPARTMENTS: Department[] = [
     id: "dep1",
     name: "IV Drip Therapy",
     name_ar: "العلاج بالتقطير الوريدي",
-    slug: "iv-therapy",
+    slug: "iv-drip-therapy",
     doctorsCount: 6,
     description:
       "Rejuvenating vitamin and nutrient infusions delivered directly to your bloodstream for maximum absorption.",
