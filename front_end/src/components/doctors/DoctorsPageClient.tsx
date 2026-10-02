@@ -13,7 +13,7 @@ export function DoctorsPageClient() {
   const t = useTranslations("Doctors");
   const locale = useLocale();
   const isAr = locale === "ar";
-  const { data: doctors = [], isLoading } = useDoctors();
+  const { data: doctors = [], isLoading } = useDoctors(locale);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
