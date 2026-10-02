@@ -16,7 +16,7 @@ export function DepartmentDoctors({ slug }: DepartmentDoctorsProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
 
-  const { data: allDoctors = [], isLoading } = useDoctors({ department: slug });
+  const { data: allDoctors = [], isLoading } = useDoctors(locale,{ department: slug });
 
   // Filter doctors by specialty matches
   const doctors = allDoctors.filter((doc) => {
