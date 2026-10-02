@@ -295,6 +295,7 @@ export function useBranchesByService(
 // ─── Doctors ──────────────────────────────────────────────────────────────────
 
 export function useDoctors(
+  locale: string = "en",
   filters?: {
     search?: string;
     department?: string;
@@ -303,10 +304,15 @@ export function useDoctors(
   options?: QueryOpts<Doctor[]>,
 ): UseQueryResult<Doctor[], ApiError> {
   return useQuery<Doctor[], ApiError>({
-    queryKey: queryKeys.doctors.filtered(filters),
+     queryKey: [
+      "doctors",
+      "filtered",
+      filters ?? {},
+      locale,
+    ],
     queryFn: async () => {
       try {
-        return await getDoctors(filters);
+        return await getDoctors(locale,filters);
       } catch (e) {
         throw normalizeError(e);
       }
