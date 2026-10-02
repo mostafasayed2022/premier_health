@@ -380,14 +380,20 @@ export const getTestimonials = async (): Promise<TestimonialItem[]> => {
 
 // ─── Doctors ──────────────────────────────────────────────────────
 // Doctors Page
-export const getDoctors = async (filters?: {
+export const getDoctors = async (
+  locale: string = "en",
+  filters?: {
   search?: string;
   department?: string;
   branch?: string;
-}): Promise<Doctor[]> => {
+},
+): Promise<Doctor[]> => {
   try {
     const { data } = await api.get<ApiDoctor[]>("wizard/doctors/", {
-      params: filters,
+      params: {
+        ...filters,
+        lang: locale,
+      },
     });
 
     return data.map(mergeDoc);
