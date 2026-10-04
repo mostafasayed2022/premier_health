@@ -194,6 +194,10 @@ export async function fetchIVDripProduct(
     if (found) {
       return {
         ...found,
+        whoIsItFor: found.shortDescription,
+        howItHelps: found.shortDescription,
+        keyIngredients: found.tagline,
+        perfectPairings: "",
         fullDescription: `<p>${found.shortDescription}</p><p>Formulated with medical-grade precision under expert supervision.</p>`,
         fullDescription_ar: `<p>${found.shortDescription_ar}</p><p>تركيبة طبية متطورة بإشراف نخبة من الأطباء المتخصصين.</p>`,
         faqs: [
