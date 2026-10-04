@@ -66,11 +66,11 @@ export default async function LocaleLayout({ children, params }: Props) {
       Promise.allSettled([
         queryClient.prefetchQuery({
           queryKey: queryKeys.departments.all,
-          queryFn: () => getDepartments(locale),
+          queryFn: () => getDepartments(),
         }),
         queryClient.prefetchQuery({
           queryKey: queryKeys.services.all,
-          queryFn: () => getServices(locale),
+          queryFn: () => getServices(),
         }),
       ]),
       new Promise<void>((resolve) => setTimeout(resolve, 1500)),
