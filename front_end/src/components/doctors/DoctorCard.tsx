@@ -21,7 +21,7 @@ export const DoctorCard = React.memo(function DoctorCard({
   const optimizedPhoto = getOptimizedImageUrl(doctor.photo, 600, 75);
 
   return (
-    <Link href={`/doctor/${doctor.id}`} className="group block h-full">
+    <Link href={`/doctors/${doctor.slug || doctor.id}`} className="group block h-full">
       <div className="h-full bg-white rounded-3xl border border-accent/10 shadow-sm overflow-hidden hover:-translate-y-2 transition-transform duration-300 card-gold-accent">
         {/* Photo */}
         <div className="relative aspect-[3/4] overflow-hidden">
