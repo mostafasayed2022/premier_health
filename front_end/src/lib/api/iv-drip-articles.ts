@@ -20,7 +20,7 @@ import type {
  */
 export async function fetchIVDripPage(locale?: string): Promise<IVDripPageResponse> {
   try {
-    const res = await api.get<IVDripPageResponse>("/iv-drip-therapy/", langHeaders(locale));
+    const res = await api.get<IVDripPageResponse>("/iv-drip-therapy/", localizedApiPath("/iv-drip-therapy/", locale));
     return res.data;
   } catch (error) {
     console.warn(
@@ -182,7 +182,7 @@ export async function fetchIVDripProduct(
   locale?: string,
 ): Promise<IVDripProductDetail> {
   try {
-    const res = await api.get<IVDripProductDetail>(`/iv-drip-therapy/${slug}/`, langHeaders(locale));
+    const res = await api.get<IVDripProductDetail>(localizedApiPath(`/iv-drip-therapy/${slug}/`, locale));
     return res.data;
   } catch (error) {
     console.warn(
@@ -626,7 +626,8 @@ export async function fetchArticles(
   locale?: string,
 ): Promise<ArticlesListResponse> {
   try {
-    const res = await api.get<ArticlesListResponse>("/articles/", { params, ...langHeaders(locale) });
+    const res = await api.get<ArticlesListResponse>(  localizedApiPath("/articles/", locale),
+  { params });
     if (res.data && res.data.results && res.data.results.length > 0) {
       return res.data;
     }
@@ -645,7 +646,7 @@ export async function fetchArticles(
  */
 export async function fetchArticle(slug: string, locale?: string): Promise<ArticleDetail> {
   try {
-    const res = await api.get<ArticleDetail>(`/articles/${slug}/`, langHeaders(locale));
+    const res = await api.get<ArticleDetail>( localizedApiPath(`/articles/${slug}/`, locale));
     if (res.data && res.data.title) {
       return res.data;
     }
@@ -679,7 +680,7 @@ export async function fetchAllArticleSlugs(): Promise<{ slug: string }[]> {
  */
 export async function fetchArticleCategories(locale?: string): Promise<ArticleCategory[]> {
   try {
-    const res = await api.get<ArticleCategory[]>("/articles/categories/", langHeaders(locale));
+    const res = await api.get<ArticleCategory[]>(localizedApiPath("/articles/categories/", locale));
     if (res.data && res.data.length > 0) return res.data;
   } catch {}
   return Object.values(MOCK_CATEGORIES);
