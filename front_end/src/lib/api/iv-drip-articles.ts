@@ -20,7 +20,7 @@ import type {
  */
 export async function fetchIVDripPage(locale?: string): Promise<IVDripPageResponse> {
   try {
-    const res = await api.get<IVDripPageResponse>("/iv-drip-therapy/", localizedApiPath("/iv-drip-therapy/", locale));
+    const res = await api.get<IVDripPageResponse>( localizedApiPath("/iv-drip-therapy/", locale));
     return res.data;
   } catch (error) {
     console.warn(
