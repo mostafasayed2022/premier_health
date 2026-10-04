@@ -22,7 +22,7 @@ import type {
   DoctorProfileBooking,
 } from "@/lib/types";
 // mock data removed
-import { api, langHeaders } from "./client";
+import { api, localizedApiPath } from "./client";
 import {
   mergeDept,
   mergeSvc,
