@@ -56,7 +56,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
   const dir = locale === "ar" ? "rtl" : "ltr";
 
-  const queryClient = getQueryClient();
+  const queryClient = getQueryClient(locale);
 
   // In dev: skip SSR prefetch so the page opens instantly.
   // In production: race against 1.5 s — if the backend is fast we ship SSR
@@ -66,11 +66,11 @@ export default async function LocaleLayout({ children, params }: Props) {
       Promise.allSettled([
         queryClient.prefetchQuery({
           queryKey: queryKeys.departments.all,
-          queryFn: () => getDepartments(),
+          queryFn: () => getDepartments(locale),
         }),
         queryClient.prefetchQuery({
           queryKey: queryKeys.services.all,
-          queryFn: () => getServices(),
+          queryFn: () => getServices(locale),
         }),
       ]),
       new Promise<void>((resolve) => setTimeout(resolve, 1500)),
