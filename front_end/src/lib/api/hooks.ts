@@ -312,7 +312,7 @@ export function useDoctors(
     ],
     queryFn: async () => {
       try {
-        return await getDoctors(filters);
+        return await getDoctors(filters,locale);
       } catch (e) {
         throw normalizeError(e);
       }
