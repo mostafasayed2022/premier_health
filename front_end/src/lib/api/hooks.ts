@@ -304,7 +304,7 @@ export function useDoctors(
   options?: QueryOpts<Doctor[]>,
 ): UseQueryResult<Doctor[], ApiError> {
   return useQuery<Doctor[], ApiError>({
-     queryKey: [
+    queryKey: [
       "doctors",
       "filtered",
       filters ?? {},
@@ -312,7 +312,7 @@ export function useDoctors(
     ],
     queryFn: async () => {
       try {
-        return await getDoctors(locale,filters);
+        return await getDoctors(filters);
       } catch (e) {
         throw normalizeError(e);
       }
