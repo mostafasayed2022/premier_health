@@ -588,14 +588,19 @@ function getMockArticlesList(
   const startIndex = (page - 1) * pageSize;
   const results = filtered.slice(startIndex, startIndex + pageSize);
 
-  return {
-    count: filtered.length,
-    next: startIndex + pageSize < filtered.length ? `?page=${page + 1}` : null,
-    previous: page > 1 ? `?page=${page - 1}` : null,
-    results: results.map(
-      ({ content, content_ar, ...summary }) => summary as ArticleSummary,
-    ),
-  };
+ return {
+  page: {
+    title: "Articles",
+    shortDescription: "Explore our latest medical and wellness articles.",
+    heroImage: null,
+  },
+  count: filtered.length,
+  next: startIndex + pageSize < filtered.length ? `?page=${page + 1}` : null,
+  previous: page > 1 ? `?page=${page - 1}` : null,
+  results: results.map(
+    ({ content, content_ar, ...summary }) => summary as ArticleSummary,
+  ),
+};
 }
 
 function getMockArticleDetail(slug: string): ArticleDetail | null {
