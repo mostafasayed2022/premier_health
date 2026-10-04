@@ -52,7 +52,7 @@ export async function proxy(request: NextRequest) {
       const res = await fetch(
         `${apiBase}${locale}/slug-redirect/?old_slug=${encodeURIComponent(slug)}&content_type=${pattern.contentType}`,
         {
-          headers: { "Accept-Language": locale },
+          
           signal: AbortSignal.timeout(2000),
           next: { revalidate: 3600 }, // cache redirect lookups for 1h
         }
