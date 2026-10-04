@@ -146,6 +146,9 @@ export interface BookingStatusResponse {
   id: string;
   status: string;
   payment_status: string | null;
+  transaction_id?: string | null;
+  amount?: string | number | null;
+  currency?: string | null;
 }
 
 // ─── File Upload ──────────────────────────────────────────────────
