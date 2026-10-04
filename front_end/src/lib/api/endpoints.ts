@@ -202,7 +202,7 @@ export const uploadFile = async (
 // Public page (Departments page)
 export const getDepartments = async (locale?: string): Promise<Department[]> => {
   try {
-    const { data } = await api.get<ApiDepartment[]>("wizard/departments/", langHeaders(locale));
+    const { data } = await api.get<ApiDepartment[]>("wizard/departments/",locale));
     return data.map(mergeDept);
   } catch {
     return [];
@@ -231,7 +231,7 @@ export const getDepartmentBySlug = async (
 // Services Page
 export const getServices = async (locale?: string): Promise<Service[]> => {
   try {
-    const { data } = await api.get<ApiService[]>("wizard/services/", langHeaders(locale));
+    const { data } = await api.get<ApiService[]>("wizard/services/",locale);
 
     return data.map(mergeSvc);
   } catch {
@@ -271,7 +271,7 @@ export const getServicesByDepartment = async (
 // Branches Page
 export const getBranches = async (locale?: string): Promise<Branch[]> => {
   try {
-    const { data } = await api.get<ApiBranch[]>("wizard/branches/", langHeaders(locale));
+    const { data } = await api.get<ApiBranch[]>("wizard/branches/",locale);
 
     return data.map(mergeBranch);
   } catch {
@@ -297,7 +297,7 @@ export const getBranchesByService = async (
 
 export const getGallery = async (locale?: string): Promise<GalleryItem[]> => {
   try {
-    const { data } = await api.get<ApiGalleryItem[]>("gallery/", langHeaders(locale));
+    const { data } = await api.get<ApiGalleryItem[]>("gallery/", locale);
     return data.map((g) => ({
       id: String(g.id),
       title: g.title,
@@ -351,7 +351,7 @@ export const getBranchGallery = async (
 
 export const getTestimonials = async (locale?: string): Promise<TestimonialItem[]> => {
   try {
-    const { data } = await api.get<ApiTestimonialItem[]>("testimonials-public/", langHeaders(locale));
+    const { data } = await api.get<ApiTestimonialItem[]>("testimonials-public/", locale);
     if (!data || data.length === 0) {
       return [];
     }
@@ -378,16 +378,21 @@ export const getTestimonials = async (locale?: string): Promise<TestimonialItem[
 
 // ─── Doctors ──────────────────────────────────────────────────────
 // Doctors Page
-export const getDoctors = async (filters?: {
-  search?: string;
-  department?: string;
-  branch?: string;
-}, locale?: string): Promise<Doctor[]> => {
+export const getDoctors = async (
+  filters?: {
+    search?: string;
+    department?: string;
+    branch?: string;
+  },
+  locale?: string,
+): Promise<Doctor[]> => {
   try {
-    const { data } = await api.get<ApiDoctor[]>("wizard/doctors/", {
-      params: filters,
-      ...langHeaders(locale),
-    });
+    const { data } = await api.get<ApiDoctor[]>(
+      localizedApiPath("wizard/doctors/", locale),
+      {
+        params: filters,
+      },
+    );
 
     return data.map(mergeDoc);
   } catch {
