@@ -15,7 +15,7 @@ function getAuthorName(author: ArticleAuthor, isAr: boolean): string {
 }
 
 function getAuthorHref(author: ArticleAuthor): string | null {
-  if (author.type === "doctor") return `/doctor/${author.slug}`;
+  if (author.type === "doctor") return `/doctors/${author.slug}`;
   return null;
 }
 
