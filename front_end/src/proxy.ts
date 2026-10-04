@@ -50,7 +50,7 @@ export async function proxy(request: NextRequest) {
         "https://api.premierhealthclinics.com/api/";
 
       const res = await fetch(
-        `${apiBase}slug-redirect/?old_slug=${encodeURIComponent(slug)}&content_type=${pattern.contentType}`,
+        `${apiBase}${locale}/slug-redirect/?old_slug=${encodeURIComponent(slug)}&content_type=${pattern.contentType}`,
         {
           headers: { "Accept-Language": locale },
           signal: AbortSignal.timeout(2000),
