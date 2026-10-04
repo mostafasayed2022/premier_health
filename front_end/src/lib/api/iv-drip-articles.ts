@@ -1,4 +1,4 @@
-import { api, langHeaders } from "./client";
+import { api, localizedApiPath  } from "./client";
 import type {
   IVDripPageResponse,
   IVDripProductDetail,
