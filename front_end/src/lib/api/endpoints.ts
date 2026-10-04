@@ -22,7 +22,7 @@ import type {
   DoctorProfileBooking,
 } from "@/lib/types";
 // mock data removed
-import { api } from "./client";
+import { api, langHeaders } from "./client";
 import {
   mergeDept,
   mergeSvc,
@@ -146,9 +146,6 @@ export interface BookingStatusResponse {
   id: string;
   status: string;
   payment_status: string | null;
-  amount?: string | null;
-  currency?: string;
-  transaction_id?: string | null;
 }
 
 // ─── File Upload ──────────────────────────────────────────────────
@@ -200,9 +197,9 @@ export const uploadFile = async (
 // ─── Departments ──────────────────────────────────────────────────
 
 // Public page (Departments page)
-export const getDepartments = async (locale?: string): Promise<Department[]> => {
+export const getDepartments = async (): Promise<Department[]> => {
   try {
-    const { data } = await api.get<ApiDepartment[]>("wizard/departments/", locale ? { headers: { "Accept-Language": locale } } : {});
+    const { data } = await api.get<ApiDepartment[]>("wizard/departments/");
     return data.map(mergeDept);
   } catch {
     return [];
@@ -229,9 +226,9 @@ export const getDepartmentBySlug = async (
 // ─── Services ─────────────────────────────────────────────────────
 
 // Services Page
-export const getServices = async (locale?: string): Promise<Service[]> => {
+export const getServices = async (): Promise<Service[]> => {
   try {
-    const { data } = await api.get<ApiService[]>("wizard/services/", locale ? { headers: { "Accept-Language": locale } } : {});
+    const { data } = await api.get<ApiService[]>("wizard/services/");
 
     return data.map(mergeSvc);
   } catch {
@@ -269,9 +266,9 @@ export const getServicesByDepartment = async (
 
 // ─── Branches ─────────────────────────────────────────────────────
 // Branches Page
-export const getBranches = async (): Promise<Branch[]> => {
+export const getBranches = async (locale?: string): Promise<Branch[]> => {
   try {
-    const { data } = await api.get<ApiBranch[]>("wizard/branches/");
+    const { data } = await api.get<ApiBranch[]>("wizard/branches/", langHeaders(locale));
 
     return data.map(mergeBranch);
   } catch {
@@ -295,9 +292,9 @@ export const getBranchesByService = async (
 };
 // ─── Gallery ──────────────────────────────────────────────────────
 
-export const getGallery = async (): Promise<GalleryItem[]> => {
+export const getGallery = async (locale?: string): Promise<GalleryItem[]> => {
   try {
-    const { data } = await api.get<ApiGalleryItem[]>("gallery/");
+    const { data } = await api.get<ApiGalleryItem[]>("gallery/", langHeaders(locale));
     return data.map((g) => ({
       id: String(g.id),
       title: g.title,
@@ -349,7 +346,7 @@ export const getBranchGallery = async (
 
 // ─── Testimonials ─────────────────────────────────────────────────
 
-export const getTestimonials = async (): Promise<TestimonialItem[]> => {
+export const getTestimonials = async (locale?: string): Promise<TestimonialItem[]> => {
   try {
     const { data } = await api.get<ApiTestimonialItem[]>(
       "testimonials-public/",
@@ -380,20 +377,15 @@ export const getTestimonials = async (): Promise<TestimonialItem[]> => {
 
 // ─── Doctors ──────────────────────────────────────────────────────
 // Doctors Page
-export const getDoctors = async (
-  locale: string = "en",
-  filters?: {
+export const getDoctors = async (filters?: {
   search?: string;
   department?: string;
   branch?: string;
-},
-): Promise<Doctor[]> => {
+}, locale?: string): Promise<Doctor[]> => {
   try {
     const { data } = await api.get<ApiDoctor[]>("wizard/doctors/", {
-      params: {
-        ...filters,
-        lang: locale,
-      },
+      params: filters,
+      ...langHeaders(locale),
     });
 
     return data.map(mergeDoc);
@@ -404,6 +396,7 @@ export const getDoctors = async (
 // Doctor Details Page
 export const getDoctorBySlug = async (
   slugOrId: string | number,
+  locale?: string,
 ): Promise<Doctor | undefined> => {
   try {
     const { data } = await api.get<any>(`doctors/${slugOrId}/doctors/`);
@@ -411,7 +404,7 @@ export const getDoctorBySlug = async (
     if (!docData) throw new Error("No doctor found");
     return mergeDoc(docData);
   } catch {
-    const all = await getDoctors();
+    const all = await getDoctors(undefined, locale);
     return all.find(
       (d) => d.slug === String(slugOrId) || String(d.id) === String(slugOrId),
     );

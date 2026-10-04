@@ -12,13 +12,13 @@ import {
 export const generateMetadata = generatePageMetadata("doctors");
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }
 
 export default async function DoctorDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
 
-  const doctor = await getDoctorBySlug(slug);
+  const doctor = await getDoctorBySlug(slug, locale);
   if (!doctor) notFound();
 
   return (

@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import { isAxiosError } from "axios";
 import { notFound } from "next/navigation";
-import { fetchIVDripProduct } from "@/lib/api/iv-drip-articles";
+import { fetchIVDripProduct, fetchAllDripSlugs } from "@/lib/api/iv-drip-articles";
 import { SITE_URL } from "@/lib/seo";
 import { IVDripDetailHero } from "@/components/iv-drip/IVDripDetailHero";
 import { IVDripDescription } from "@/components/iv-drip/IVDripDescription";
 import { IVDripFAQSection } from "@/components/iv-drip/IVDripFAQSection";
 import { IVDripBookingCTA } from "@/components/iv-drip/IVDripBookingCTA";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 // ── generateStaticParams ───────────────────────────────────────────────────────
+export async function generateStaticParams() {
+  try {
+    return await fetchAllDripSlugs();
+  } catch {
+    return [];
+  }
+}
 
 // ── generateMetadata ───────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -53,9 +59,8 @@ export default async function IVDripDetailPage({ params }: Props) {
   let drip;
   try {
     drip = await fetchIVDripProduct(slug, locale);
-  } catch (error) {
-    if (isAxiosError(error) && error.response?.status === 404) notFound();
-    throw error;
+  } catch {
+    notFound();
   }
 
   return (

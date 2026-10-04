@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { fetchArticles, fetchArticleCategories } from "@/lib/api/iv-drip-articles";
 import { SITE_URL } from "@/lib/seo";
 import { ArticlesPageClient } from "@/components/articles/ArticlesPageClient";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -12,15 +13,15 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const { page } = await fetchArticles({ page_size: 1 }, locale);
+  const t = await getTranslations({ locale, namespace: "Articles" });
 
   return {
-    title: page?.title,
-    description: page?.shortDescription,
+    title: t("pageTitle"),
+    description: t("pageSubtitle"),
     alternates: { canonical: `${SITE_URL}/${locale}/articles` },
     openGraph: {
-      title: page?.title,
-      description: page?.shortDescription,
+      title: t("pageTitle"),
+      description: t("pageSubtitle"),
       url: `${SITE_URL}/${locale}/articles`,
     },
   };

@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { isAxiosError } from "axios";
 import { notFound } from "next/navigation";
-import { fetchArticle } from "@/lib/api/iv-drip-articles";
+import { fetchArticle, fetchAllArticleSlugs } from "@/lib/api/iv-drip-articles";
 import { SITE_URL } from "@/lib/seo";
 import { ArticleDetailHero } from "@/components/articles/ArticleDetailHero";
 import { ArticleBody } from "@/components/articles/ArticleBody";
 import { RelatedArticles } from "@/components/articles/RelatedArticles";
 import { ArticleViewTracker } from "@/components/articles/ArticleViewTracker";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
+export async function generateStaticParams() {
+  try {
+    return await fetchAllArticleSlugs();
+  } catch {
+    return [];
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -52,9 +58,8 @@ export default async function ArticleDetailPage({ params }: Props) {
   let article;
   try {
     article = await fetchArticle(slug, locale);
-  } catch (error) {
-    if (isAxiosError(error) && error.response?.status === 404) notFound();
-    throw error;
+  } catch {
+    notFound();
   }
 
   return (
