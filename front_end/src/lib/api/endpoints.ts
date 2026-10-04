@@ -197,9 +197,9 @@ export const uploadFile = async (
 // ─── Departments ──────────────────────────────────────────────────
 
 // Public page (Departments page)
-export const getDepartments = async (): Promise<Department[]> => {
+export const getDepartments = async (locale?: string): Promise<Department[]> => {
   try {
-    const { data } = await api.get<ApiDepartment[]>("wizard/departments/");
+    const { data } = await api.get<ApiDepartment[]>("wizard/departments/", langHeaders(locale));
     return data.map(mergeDept);
   } catch {
     return [];
@@ -226,9 +226,9 @@ export const getDepartmentBySlug = async (
 // ─── Services ─────────────────────────────────────────────────────
 
 // Services Page
-export const getServices = async (): Promise<Service[]> => {
+export const getServices = async (locale?: string): Promise<Service[]> => {
   try {
-    const { data } = await api.get<ApiService[]>("wizard/services/");
+    const { data } = await api.get<ApiService[]>("wizard/services/", langHeaders(locale));
 
     return data.map(mergeSvc);
   } catch {
@@ -348,9 +348,7 @@ export const getBranchGallery = async (
 
 export const getTestimonials = async (locale?: string): Promise<TestimonialItem[]> => {
   try {
-    const { data } = await api.get<ApiTestimonialItem[]>(
-      "testimonials-public/",
-    );
+    const { data } = await api.get<ApiTestimonialItem[]>("testimonials-public/", langHeaders(locale));
     if (!data || data.length === 0) {
       return [];
     }
