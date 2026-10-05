@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fetchIVDripProduct, fetchAllDripSlugs } from "@/lib/api/iv-drip-articles";
+import { fetchIVDripProduct} from "@/lib/api/iv-drip-articles";
 import { SITE_URL } from "@/lib/seo";
 import { IVDripDetailHero } from "@/components/iv-drip/IVDripDetailHero";
 import { IVDripDescription } from "@/components/iv-drip/IVDripDescription";
@@ -12,13 +12,7 @@ export const revalidate = 60;
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 // ── generateStaticParams ───────────────────────────────────────────────────────
-export async function generateStaticParams() {
-  try {
-    return await fetchAllDripSlugs();
-  } catch {
-    return [];
-  }
-}
+
 
 // ── generateMetadata ───────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
