@@ -10,8 +10,7 @@ interface Props {
 
 export async function ArticleBody({ article, locale }: Props) {
   const t = await getTranslations({ locale, namespace: "Articles" });
-  const isAr = locale === "ar";
-  const html = isAr ? article.content_ar : article.content;
+  const html = article.content;
 
   return (
     <section className="py-16 bg-white">
