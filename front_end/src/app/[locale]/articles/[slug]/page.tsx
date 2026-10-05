@@ -21,16 +21,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const isAr = locale === "ar";
 
   try {
     const article = await fetchArticle(slug, locale);
-    const title = isAr
-      ? (article.metaTitle_ar ?? article.title_ar)
-      : (article.metaTitle ?? article.title);
-    const description = isAr
-      ? (article.metaDescription_ar ?? article.excerpt_ar)
-      : (article.metaDescription ?? article.excerpt);
+    const title = article.metaTitle || article.title;
+    const description = article.metaDescription || article.excerpt;
 
     return {
       title: title || "Article | Premier Health Clinics",
