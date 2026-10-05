@@ -1,10 +1,24 @@
 import axios from "axios";
 
+const PRODUCTION_API_URL =
+  "https://api.premierhealthclinics.com/api/";
+
+const LOCAL_API_URL =
+  "http://127.0.0.1:8000/api/";
+
 const API_BASE_URL =
   typeof window === "undefined"
-    ? (process.env.API_URL_SERVER ?? "http://127.0.0.1:8000/api/")
-    : (process.env.NEXT_PUBLIC_API_URL ??
-        "https://api.premierhealthclinics.com/api/");
+    ? (
+        process.env.API_URL_SERVER ||
+        process.env.NEXT_PUBLIC_API_URL ||
+        (process.env.NODE_ENV === "production"
+          ? PRODUCTION_API_URL
+          : LOCAL_API_URL)
+      )
+    : (
+        process.env.NEXT_PUBLIC_API_URL ||
+        PRODUCTION_API_URL
+      );
 
 export const SUPPORTED_LOCALES = [
   "ar",
