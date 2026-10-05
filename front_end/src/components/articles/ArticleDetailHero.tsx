@@ -10,8 +10,8 @@ interface Props {
 }
 
 function getAuthorName(author: ArticleAuthor, isAr: boolean): string {
-  if (author.type === "plain") return isAr ? author.name_ar : author.name;
-  return isAr ? author.name_ar : author.name;
+  if (isAr) return author.name_ar || author.name;
+  return author.name;
 }
 
 function getAuthorHref(author: ArticleAuthor): string | null {
@@ -44,7 +44,7 @@ export async function ArticleDetailHero({ article, locale }: Props) {
       {/* Cover image - Clearly visible */}
       {article.coverImage && <Image
         src={article.coverImage}
-        alt={isAr ? article.title_ar : article.title}
+        alt={article.title}
         fill
         priority
         quality={90}
@@ -57,14 +57,14 @@ export async function ArticleDetailHero({ article, locale }: Props) {
         {article.category && (
           <div className="mb-5">
             <span className="inline-block text-xs uppercase tracking-widest text-accent font-semibold border border-accent/40 rounded-full px-4 py-1.5">
-              {isAr ? article.category.name_ar : article.category.name}
+              {article.category.name}
             </span>
           </div>
         )}
 
         {/* Title */}
         <h1 className="text-3xl md:text-5xl font-serif font-bold text-white leading-tight mb-6">
-          {isAr ? article.title_ar : article.title}
+          {article.title}
         </h1>
 
         {/* Meta row */}
