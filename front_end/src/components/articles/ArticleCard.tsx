@@ -13,8 +13,8 @@ interface Props {
 }
 
 function getAuthorName(author: ArticleAuthor, isAr: boolean): string {
-  if (author.type === "plain") return isAr ? author.name_ar : author.name;
-  return isAr ? author.name_ar : author.name;
+  if (author.type === "plain") if (isAr) return author.name_ar || author.name;
+return author.name;
 }
 
 export function ArticleCard({ article, locale }: Props) {
@@ -46,7 +46,7 @@ export function ArticleCard({ article, locale }: Props) {
         <div className="relative h-52 w-full overflow-hidden bg-beige">
           {article.coverImage && <Image
             src={imageUrl}
-            alt={isAr ? article.title_ar : article.title}
+            alt={article.title}
             fill
             quality={75}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -57,7 +57,7 @@ export function ArticleCard({ article, locale }: Props) {
           {/* Category badge */}
           {article.category && (
             <div className="absolute bottom-3 start-3 bg-primary/70 backdrop-blur-sm text-white text-[10px] font-semibold rounded-full px-3 py-1 border border-white/10">
-              {isAr ? article.category.name_ar : article.category.name}
+              {article.category.name}
             </div>
           )}
         </div>
@@ -66,10 +66,10 @@ export function ArticleCard({ article, locale }: Props) {
         <div className="p-6 flex-1 flex flex-col justify-between gap-4">
           <div>
             <h3 className="text-xl font-serif font-bold text-primary group-hover:text-accent transition-colors mb-2 line-clamp-2">
-              {isAr ? article.title_ar : article.title}
+              {article.title}
             </h3>
             <p className="text-xs text-foreground/65 leading-relaxed line-clamp-3">
-              {isAr ? article.excerpt_ar : article.excerpt}
+              {article.excerpt}
             </p>
           </div>
 
