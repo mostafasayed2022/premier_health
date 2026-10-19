@@ -22,6 +22,14 @@ export function Step6Payment({ selected, onSelect }: Step6PaymentProps) {
         ? "ادفع مباشرة عند وصولك للعيادة نقداً أو بالبطاقة البنكية"
         : "Pay upon arrival at the clinic via cash, credit, or debit card",
     },
+    {
+      id: "cybersource",
+      icon: CreditCard,
+      label: isAr ? "الدفع الآمن بالبطاقة" : "Secure online card payment",
+      subtitle: isAr
+        ? "دفع آمن عبر CyberSource مع التحقق ثلاثي الأبعاد"
+        : "Pay securely online using CyberSource and 3-D Secure",
+    },
     // {
     //   id: "paymob",
     //   icon: CreditCard,
