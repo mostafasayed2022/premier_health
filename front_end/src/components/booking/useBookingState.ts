@@ -325,7 +325,7 @@ export function useBookingState() {
       );
       return "pending";
     },
-    [cyberSourceSession, confirmCyberSourcePayment, queryClient, t, booking],
+    [cyberSourceSession, queryClient, t, booking],
   );
 
   return {
