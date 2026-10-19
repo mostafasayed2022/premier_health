@@ -25,6 +25,7 @@ export {
   getAvailableSlots,
   createBooking,
   getBookingStatus,
+  confirmCyberSourcePayment,
   bookAppointment,
   getAppointments,
   getPayments,
