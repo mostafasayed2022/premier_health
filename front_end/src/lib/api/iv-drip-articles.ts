@@ -14,219 +14,42 @@ import type {
 // ─── IV Drip ──────────────────────────────────────────────────────────────────
 
 /**
- * Fetches the main IV Drip page: singleton content + benefits + administration
- * steps + products grid.
- * Falls back cleanly if backend endpoint returns 404 or is offline.
+ * Fetch the IV Drip page from the live CMS.
+ * Never replace an API failure with demo products or prices.
  */
 export async function fetchIVDripPage(locale?: string): Promise<IVDripPageResponse> {
   try {
-    const res = await api.get<IVDripPageResponse>( localizedApiPath("/iv-drip-therapy/", locale));
+    const res = await api.get<IVDripPageResponse>(
+      localizedApiPath("/iv-drip-therapy/", locale),
+    );
     return res.data;
   } catch (error) {
-    console.warn(
-      "[API] /iv-drip-therapy/ returned an error, using fallback data:",
-      (error as any)?.message,
+    console.error(
+      "[API] Failed to fetch IV Drip CMS page:",
+      error instanceof Error ? error.message : String(error),
     );
-    return {
-      page: {
-        heroImage: "/hero/hero1.webp",
-        title: "IV Drip Therapy",
-        title_ar: "علاج التقطير الوريدي",
-        shortDescription:
-          "Premium intravenous therapy tailored to your body's needs",
-        shortDescription_ar: "علاج وريدي متميز مصمم خصيصًا لاحتياجات جسمك",
-      },
-      benefits: [
-        {
-          id: 1,
-          icon: "⚡",
-          title: "100% Bioavailability",
-          title_ar: "امتصاص حيوي بنسبة 100%",
-          description:
-            "Direct intravenous delivery bypasses digestive degradation for immediate cellular uptake.",
-          description_ar:
-            "التوصيل المباشر عبر الوريد يتجاوز الجهاز الهضمي لتحقيق امتصاص خلوي فوري.",
-          order: 1,
-        },
-        {
-          id: 2,
-          icon: "🛡️",
-          title: "Immune Support",
-          title_ar: "دعم المناعة",
-          description:
-            "High-dose antioxidants and micronutrients strengthen your body's natural defense barriers.",
-          description_ar:
-            "جرعات مركزة من مضادات الأكسدة والمغذيات لتقوية حواجز الدفاع الطبيعية.",
-          order: 2,
-        },
-        {
-          id: 3,
-          icon: "💧",
-          title: "Rapid Cellular Hydration",
-          title_ar: "ترطيب خلوي فوري",
-          description:
-            "Restores electrolyte equilibrium faster than oral hydration, boosting energy.",
-          description_ar:
-            "يعيد توازن الإلكتروليتات أسرع من السوائل الفموية لرفع مستويات النشاط.",
-          order: 3,
-        },
-      ],
-      administrationSteps: [
-        {
-          id: 1,
-          stepNumber: 1,
-          icon: null,
-          title: "Medical Consultation",
-          title_ar: "استشارة طبية أولية",
-          description:
-            "Our doctor reviews your vitals and medical background to select the optimal formula.",
-          description_ar:
-            "يقوم طبيبنا بمراجعة علاماتك الحيوية وتاريخك الطبي لاختيار التركيبة الأنسب.",
-        },
-        {
-          id: 2,
-          stepNumber: 2,
-          icon: null,
-          title: "Formula Preparation",
-          title_ar: "تحضير التركيبة المعقمة",
-          description:
-            "Custom medical-grade vitamins and nutrients are freshly prepared in our clinic.",
-          description_ar:
-            "يتم تحضير الفيتامينات والمغذيات الطبية النقية طازجة في عيادتنا.",
-        },
-        {
-          id: 3,
-          stepNumber: 3,
-          icon: null,
-          title: "Relaxing Session",
-          title_ar: "جلسة استرخاء مريحة",
-          description:
-            "Sit back comfortably for 30 to 45 minutes under continuous nursing care.",
-          description_ar:
-            "استرخِ في مقاعد مريحة لمدة 30 إلى 45 دقيقة تحت رعاية تمريضية مستمرة.",
-        },
-        {
-          id: 4,
-          stepNumber: 4,
-          icon: null,
-          title: "Immediate Rejuvenation",
-          title_ar: "انتعاش ونشاط فوري",
-          description:
-            "Feel revitalized immediately and resume your day with enhanced vigor.",
-          description_ar:
-            "اشعر بالحيوية فور انتهاء الجلسة واستأنف يومك بكامل طاقتك.",
-        },
-      ],
-      products: [
-        {
-          id: 1,
-          name: "Immunity & Recovery Drip",
-          name_ar: "دريب المناعة والتعافي",
-          slug: "immunity-recovery-drip",
-          tagline: "High-dose Vitamin C, Zinc & Antioxidants",
-          tagline_ar: "جرعة عالية من فيتامين سي والزنك ومضادات الأكسدة",
-          shortDescription:
-            "Strengthens immunity and accelerates recovery from fatigue and travel exhaustion.",
-          shortDescription_ar:
-            "يقوي الجهاز المناعي ويسرع التعافي من الإرهاق البدني وإجهاد السفر.",
-          image: "/Treatments/Detox.webp",
-          price: "3500.00",
-          durationMinutes: 45,
-          isFeatured: true,
-          order: 1,
-        },
-        {
-          id: 2,
-          name: "NAD+ Longevity & Vitality",
-          name_ar: "دريب NAD+ لطول العمر والنشاط",
-          slug: "nad-longevity-vitality",
-          tagline: "Cellular Energy, DNA Repair & Anti-Aging",
-          tagline_ar: "طاقة خلوية، إصلاح الحمض النووي ومكافحة الشيخوخة",
-          shortDescription:
-            "Boosts mental clarity, cellular rejuvenation and mitochondrial vitality.",
-          shortDescription_ar:
-            "يعزز الصفاء الذهني وتجديد الخلايا وحيوية الميتوكوندريا.",
-          image: "/Treatments/nad.webp",
-          price: "6500.00",
-          durationMinutes: 60,
-          isFeatured: true,
-          order: 2,
-        },
-        {
-          id: 3,
-          name: "Glow & Detox Beauty Drip",
-          name_ar: "دريب النضارة وإزالة السموم",
-          slug: "glow-detox-beauty-drip",
-          tagline: "Glutathione, Biotin & Essential Nutrients",
-          tagline_ar: "جلوتاثيون، بيوتين وعناصر غذائية حيوية",
-          shortDescription:
-            "Promotes luminous skin tone, liver detoxification and hair-skin vitality.",
-          shortDescription_ar:
-            "يمنح البشرة نضارة وإشراقاً ويدعم تنقية الكبد وحيوية الشعر.",
-          image: "/Treatments/myers.webp",
-          price: "4200.00",
-          durationMinutes: 45,
-          isFeatured: false,
-          order: 3,
-        },
-      ],
-    };
+    throw error;
   }
 }
 
 /**
- * Fetches a single drip product detail by slug.
+ * Fetch one active IV Drip product from the live CMS.
+ * Do not manufacture product details when the API request fails.
  */
 export async function fetchIVDripProduct(
   slug: string,
   locale?: string,
 ): Promise<IVDripProductDetail> {
   try {
-    const res = await api.get<IVDripProductDetail>(localizedApiPath(`/iv-drip-therapy/${slug}/`, locale));
+    const res = await api.get<IVDripProductDetail>(
+      localizedApiPath(`/iv-drip-therapy/${slug}/`, locale),
+    );
     return res.data;
   } catch (error) {
-    console.warn(
-      `[API] /iv-drip-therapy/${slug}/ returned error, using fallback:`,
-      (error as any)?.message,
+    console.error(
+      `[API] Failed to fetch IV Drip product "${slug}":`,
+      error instanceof Error ? error.message : String(error),
     );
-    const pageData = await fetchIVDripPage();
-    const found = pageData.products.find((p) => p.slug === slug);
-    if (found) {
-      return {
-        ...found,
-        whoIsItFor: found.shortDescription,
-        howItHelps: found.shortDescription,
-        keyIngredients: found.tagline,
-        perfectPairings: "",
-        fullDescription: `<p>${found.shortDescription}</p><p>Formulated with medical-grade precision under expert supervision.</p>`,
-        fullDescription_ar: `<p>${found.shortDescription_ar}</p><p>تركيبة طبية متطورة بإشراف نخبة من الأطباء المتخصصين.</p>`,
-        faqs: [
-          {
-            id: 1,
-            question: "How long does the session take?",
-            question_ar: "كم تستغرق الجلسة؟",
-            answer: `The session typically lasts ${found.durationMinutes} minutes in a relaxing clinical environment.`,
-            answer_ar: `تستغرق الجلسة عادة حوالي ${found.durationMinutes} دقيقة في بيئة طبية مريحة.`,
-            order: 1,
-          },
-          {
-            id: 2,
-            question: "When will I feel the effects?",
-            question_ar: "متى أشعر بالنتائج؟",
-            answer:
-              "Most patients report increased energy, focus, and hydration within hours after the infusion.",
-            answer_ar:
-              "يشعر معظم المراجعين بنشاط وتركيز وترطيب ملحوظ خلال ساعات قليلة بعد الجلسة.",
-            order: 2,
-          },
-        ],
-        metaTitle: `${found.name} | Premier Health Clinics`,
-        metaTitle_ar: `${found.name_ar} | بريمير هيلث`,
-        metaDescription: found.shortDescription,
-        metaDescription_ar: found.shortDescription_ar,
-        ogImage: found.image,
-      };
-    }
     throw error;
   }
 }
