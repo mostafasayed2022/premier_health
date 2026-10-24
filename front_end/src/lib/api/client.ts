@@ -6,14 +6,16 @@ const PRODUCTION_API_URL =
 const LOCAL_API_URL =
   "http://127.0.0.1:8000/api/";
 
+// Server-side rendering runs on the same host as Django in production.
+// Prefer the loopback API to avoid a public DNS/TLS/hairpin round trip.
+// Set API_URL_SERVER explicitly if the backend is hosted elsewhere.
 const API_BASE_URL =
   typeof window === "undefined"
     ? (
         process.env.API_URL_SERVER ||
-        process.env.NEXT_PUBLIC_API_URL ||
         (process.env.NODE_ENV === "production"
-          ? PRODUCTION_API_URL
-          : LOCAL_API_URL)
+          ? LOCAL_API_URL
+          : process.env.NEXT_PUBLIC_API_URL || LOCAL_API_URL)
       )
     : (
         process.env.NEXT_PUBLIC_API_URL ||
