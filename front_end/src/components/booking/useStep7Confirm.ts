@@ -147,6 +147,7 @@ export function useStep7Confirm({
   const getPaymentLabel = (method: string) => {
     if (method === "cash" || method === "card") return t("payCash");
     if (method === "paymob" || method === "online") return t("payOnline");
+    if (method === "cybersource") return "CyberSource — Secure card payment";
     return method;
   };
 
