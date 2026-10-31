@@ -1,5 +1,8 @@
 import Script from "next/script";
-
+import {
+  directPixelMode,
+  trackingEnabled,
+} from "@/lib/config/contact";
 const SNAP_PIXEL_ID = process.env.NEXT_PUBLIC_SNAP_PIXEL_ID;
 
 /**
@@ -8,8 +11,14 @@ const SNAP_PIXEL_ID = process.env.NEXT_PUBLIC_SNAP_PIXEL_ID;
  * Mount once in [locale]/layout.tsx inside <head>.
  */
 export function SnapPixelScript() {
-  if (process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "true" || process.env.NEXT_PUBLIC_PIXEL_MODE !== "direct" || !SNAP_PIXEL_ID || !/^[a-zA-Z0-9-]+$/.test(SNAP_PIXEL_ID)) return null;
-
+  if (
+    !trackingEnabled ||
+    !directPixelMode ||
+    !SNAP_PIXEL_ID ||
+    !/^[a-zA-Z0-9-]+$/.test(SNAP_PIXEL_ID)
+  ) {
+    return null;
+  }
   return (
     <Script
       id="snap-pixel-script"

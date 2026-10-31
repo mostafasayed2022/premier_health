@@ -1,4 +1,6 @@
 import { sanitizePII } from "./dataLayer";
+import { directPixelMode, trackingEnabled } from "../config/contact";
+
 // ─── pixels.ts ────────────────────────────────────────────────────────────────
 // Typed helpers for firing Meta (Facebook) Pixel and Snap Pixel events.
 // Import these wherever you need to fire a tracking event.
@@ -21,7 +23,7 @@ declare global {
  * @param params     Optional event parameters object
  */
 export function fbTrack(eventName: string, params?: Record<string, unknown>) {
-  if (process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "true" || process.env.NEXT_PUBLIC_PIXEL_MODE !== "direct" || typeof window === "undefined" || !window.fbq) return;
+  if (!trackingEnabled || !directPixelMode || typeof window === "undefined" || !window.fbq) return;
   window.fbq("track", eventName, sanitizePII({ ...params }));
 }
 
@@ -76,7 +78,7 @@ export function snapTrack(
   eventName: string,
   params?: SnapViewContentParams | Record<string, unknown>
 ) {
-  if (process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "true" || process.env.NEXT_PUBLIC_PIXEL_MODE !== "direct" || typeof window === "undefined" || !window.snaptr) return;
+  if (!trackingEnabled || !directPixelMode || typeof window === "undefined" || !window.snaptr) return;
   window.snaptr("track", eventName, sanitizePII({ ...params }));
 }
 

@@ -42,7 +42,7 @@ function AnimatedCount({ value }: { value: string }) {
     requestAnimationFrame(step);
   }, [isInView, numericVal, animationStarted]);
 
-  const formattedCount = count >= 1000 ? count.toLocaleString() : count;
+  const formattedCount = count.toLocaleString("en-US");
 
   return (
     <span ref={ref}>

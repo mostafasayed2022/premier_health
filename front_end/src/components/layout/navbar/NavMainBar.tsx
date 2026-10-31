@@ -49,14 +49,14 @@ export function NavMainBar({ isOpen, setIsOpen }: NavMainBarProps) {
             <span className="text-primary font-black text-xl lg:text-2xl tracking-tight leading-none mb-1">
               PREMIER <span className="text-accent font-medium">HEALTH</span>
             </span>
-            <span className="text-[9px] lg:text-[11px] text-slate-400 font-bold tracking-[0.2em] uppercase leading-none">
+            <span className="text-[7px] lg:text-[9px] text-slate-400 font-bold tracking-[0.2em] uppercase leading-none">
               {t("tagline")}
             </span>
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6">
           {navItems.map((item) => {
             if (item.hasDropdown) {
               const isAnySubActive = item.subItems?.some(

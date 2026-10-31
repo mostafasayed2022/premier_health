@@ -1,9 +1,10 @@
 import Script from "next/script";
+import { trackingEnabled } from "@/lib/config/contact";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-NHV29W2S";
 
 export function GoogleTagManagerScript() {
-  if (process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "true" || !/^GTM-[A-Z0-9]+$/.test(GTM_ID)) return null;
+  if (!trackingEnabled || !/^GTM-[A-Z0-9]+$/.test(GTM_ID)) return null;
   return (
     <Script
       id="gtm-script"
@@ -20,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 export function GoogleTagManagerNoScript() {
-  if (process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "true" || !/^GTM-[A-Z0-9]+$/.test(GTM_ID)) return null;
+  if (!trackingEnabled || !/^GTM-[A-Z0-9]+$/.test(GTM_ID)) return null;
   return (
     <noscript>
       <iframe

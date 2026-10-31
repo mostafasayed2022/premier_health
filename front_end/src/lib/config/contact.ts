@@ -76,5 +76,14 @@ export const BRANCHES = {
       "https://www.google.com/maps?q=2G87+5RC+D+solutions,+Eastown,+New+Cairo+1",
   },
 } as const;
+// Client-side analytics configuration.
+// Tracking is active by default for server deployments. Set either value only
+// when an environment needs to override the production defaults.
+export const trackingEnabled =
+  process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "false";
+
+export const directPixelMode =
+  (process.env.NEXT_PUBLIC_PIXEL_MODE ?? "direct") === "direct";
+
 
 export type BranchKey = keyof typeof BRANCHES;

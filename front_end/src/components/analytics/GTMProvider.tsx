@@ -4,7 +4,10 @@ import { usePathname } from "next/navigation";
 import { captureAttribution } from "@/lib/analytics/attribution";
 import { pushDataLayer } from "@/lib/analytics/dataLayer";
 import { fbTrack, snapTrack } from "@/lib/analytics/pixels";
-
+import {
+  directPixelMode,
+  trackingEnabled,
+} from "@/lib/config/contact";
 export function GTMProvider(): null {
   const pathname = usePathname();
   const previous = useRef<string | null>(null);
@@ -17,7 +20,7 @@ export function GTMProvider(): null {
       pushDataLayer("page_view", { page_path: pathname, page_location: window.location.origin + pathname, locale });
       previous.current = pathname;
     }
-    if (process.env.NEXT_PUBLIC_TRACKING_ENABLED !== "true" || process.env.NEXT_PUBLIC_PIXEL_MODE !== "direct") return;
+    if (!trackingEnabled || !directPixelMode) return;
     let metaSent = false, snapSent = false, attempts = 0;
     const timer = window.setInterval(() => {
       if (!metaSent && window.fbq) { fbTrack("PageView"); metaSent = true; }
