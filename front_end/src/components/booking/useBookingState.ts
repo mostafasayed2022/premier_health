@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { BookingData } from "./types";
-import { createBooking, getBookingStatus } from "@/lib/api";
+import { createBooking, getBookingStatus, confirmCyberSourcePayment } from "@/lib/api";
+import type { CyberSourceCheckoutSession } from "@/lib/api/endpoints";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import { getErrorMessage } from "@/lib/utils/error";
@@ -34,6 +35,7 @@ export function useBookingState() {
   const [confirmed, setConfirmed] = useState(false);
   const [booking, setBooking] = useState<BookingData>(initialBookingData);
   const [isPolling, setIsPolling] = useState(false);
+  const [cyberSourceSession, setCyberSourceSession] = useState<CyberSourceCheckoutSession | null>(null);
 
   // ─── Idempotency Guards ────────────────────────────────────────────
   // Prevent duplicate analytics events (React StrictMode, re-renders)
@@ -45,6 +47,13 @@ export function useBookingState() {
   const bookingMutation = useMutation({
     mutationFn: createBooking,
     onSuccess: (data) => {
+      // Online CyberSource checkout is not a confirmed booking yet.
+      if (data.cybersource) {
+        setCyberSourceSession(data.cybersource);
+        queryClient.invalidateQueries({ queryKey: ["bookings"] });
+        return;
+      }
+
       toast.success(t("bookingConfirmed"));
       queryClient.invalidateQueries({ queryKey: ["bookings"] });
 
@@ -165,6 +174,7 @@ export function useBookingState() {
     setBooking(initialBookingData);
     setStep(1);
     setConfirmed(false);
+    setCyberSourceSession(null);
     firedStartBookingRef.current = false;
     firedSubmitLeadRef.current = false;
   }, []);
@@ -258,10 +268,72 @@ export function useBookingState() {
     bookingMutation.mutate(bookingData);
   }, [booking, bookingMutation]);
 
+  const handleCyberSourceComplete = useCallback(
+    async (resultJwt: string): Promise<"paid" | "failed" | "pending"> => {
+      if (!cyberSourceSession) {
+        throw new Error("CyberSource checkout session is missing.");
+      }
+
+      const verification = await confirmCyberSourcePayment(
+        cyberSourceSession.booking_id,
+        resultJwt,
+      );
+      const bookingId = cyberSourceSession.booking_id;
+
+      if (verification.payment_status === "paid") {
+        if (bookingId && !firedBookingsRef.current.has(bookingId)) {
+          firedBookingsRef.current.add(bookingId);
+          trackBookingComplete({
+            booking_id: bookingId,
+            service_id: booking.service,
+            service_name: undefined,
+            branch_id: booking.branch,
+            branch_name: undefined,
+            value: Number(verification.amount || 0),
+            currency: verification.currency || "EGP",
+          });
+        }
+
+        const transactionId = verification.transaction_id || bookingId;
+        const storageKey = `premier_purchased_${transactionId}`;
+        if (!sessionStorage.getItem(storageKey)) {
+          trackPurchase({
+            transaction_id: transactionId,
+            booking_id: bookingId,
+            value: Number(verification.amount || 0),
+            currency: verification.currency || "EGP",
+          });
+          sessionStorage.setItem(storageKey, "1");
+        }
+
+        setCyberSourceSession(null);
+        setConfirmed(true);
+        queryClient.invalidateQueries({ queryKey: ["bookings"] });
+        toast.success(t("paymentSuccess"));
+        return "paid";
+      }
+
+      if (verification.payment_status === "failed") {
+        setCyberSourceSession(null);
+        setStep(6);
+        toast.error(t("paymentFailed"));
+        return "failed";
+      }
+
+      toast.warning(
+        "Payment is awaiting verification. Do not submit another payment yet.",
+      );
+      return "pending";
+    },
+    [cyberSourceSession, queryClient, t, booking],
+  );
+
   return {
     step,
     confirmed,
     booking,
+    cyberSourceSession,
+    handleCyberSourceComplete,
     isSubmitting: bookingMutation.isPending || isPolling,
     isError: bookingMutation.isError,
     error: bookingMutation.error,

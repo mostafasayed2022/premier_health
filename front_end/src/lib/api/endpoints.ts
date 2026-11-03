@@ -137,9 +137,28 @@ export interface CreateBookingPayload {
   attribution?: Attribution;
 }
 
+export interface CyberSourceCheckoutSession {
+  booking_id: string;
+  capture_context: string;
+  client_library: string;
+  client_library_integrity: string;
+}
+
+export type CyberSourcePaymentState = "paid" | "failed" | "pending";
+
+export interface CyberSourceConfirmResult {
+  booking_id: string;
+  payment_status: CyberSourcePaymentState;
+  status?: string;
+  transaction_id?: string | null;
+  amount?: string | number | null;
+  currency?: string | null;
+}
+
 export interface CreateBookingResult {
   booking: ApiBooking;
   payment_url: string;
+  cybersource?: CyberSourceCheckoutSession;
 }
 
 export interface BookingStatusResponse {
@@ -473,6 +492,17 @@ export const getBookingStatus = async (
 ): Promise<BookingStatusResponse> => {
   const { data } = await api.get<BookingStatusResponse>(
     `/bookings/${bookingId}/status/`,
+  );
+  return data;
+};
+
+export const confirmCyberSourcePayment = async (
+  bookingId: string,
+  result: string,
+): Promise<CyberSourceConfirmResult> => {
+  const { data } = await api.post<CyberSourceConfirmResult>(
+    "payments/cybersource/confirm/",
+    { booking_id: bookingId, result },
   );
   return data;
 };

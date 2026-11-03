@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { CyberSourceCheckout } from "./CyberSourceCheckout";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -51,10 +52,25 @@ export function BookAppointmentClient() {
     prevStep,
     handleConfirm,
     isSubmitting,
+    cyberSourceSession,
+    handleCyberSourceComplete,
   } = useBookingState();
 
   if (confirmed) {
     return <BookingSuccess onReset={resetBooking} />;
+  }
+
+  if (cyberSourceSession) {
+    return (
+      <div className="min-h-screen bg-slate-50/60 px-3 py-10 sm:px-6">
+        <div className="mx-auto max-w-4xl">
+          <CyberSourceCheckout
+            session={cyberSourceSession}
+            onComplete={handleCyberSourceComplete}
+          />
+        </div>
+      </div>
+    );
   }
 
   const stepTitles = [
