@@ -1,9 +1,6 @@
 import Script from "next/script";
-import {
-  directPixelMode,
-  trackingEnabled,
-} from "@/lib/config/contact";
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+import { directPixelMode, trackingEnabled } from "@/lib/config/contact";
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "949323007603074";
 
 /**
  * Injects the Meta (Facebook) Pixel base code into <head>.
@@ -35,6 +32,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
+fbq('track', 'PageView');
 
 `,
         }}
